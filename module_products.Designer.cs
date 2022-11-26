@@ -28,12 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.linkLabel1 = new System.Windows.Forms.LinkLabel();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.panel_head = new System.Windows.Forms.Panel();
+            this.tb_search = new System.Windows.Forms.TextBox();
+            this.btn_addProduct = new System.Windows.Forms.LinkLabel();
+            this.lbl_products = new System.Windows.Forms.Label();
             this.dgv_products = new System.Windows.Forms.DataGridView();
             this.col_no = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_productID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -45,50 +47,52 @@
             this.col_restock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_edit = new System.Windows.Forms.DataGridViewImageColumn();
             this.col_delete = new System.Windows.Forms.DataGridViewImageColumn();
-            this.panel1.SuspendLayout();
+            this.panel_head.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_products)).BeginInit();
             this.SuspendLayout();
             // 
-            // panel1
+            // panel_head
             // 
-            this.panel1.Controls.Add(this.textBox1);
-            this.panel1.Controls.Add(this.linkLabel1);
-            this.panel1.Controls.Add(this.label1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1064, 75);
-            this.panel1.TabIndex = 0;
+            this.panel_head.Controls.Add(this.tb_search);
+            this.panel_head.Controls.Add(this.btn_addProduct);
+            this.panel_head.Controls.Add(this.lbl_products);
+            this.panel_head.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel_head.Location = new System.Drawing.Point(0, 0);
+            this.panel_head.Name = "panel_head";
+            this.panel_head.Size = new System.Drawing.Size(1064, 75);
+            this.panel_head.TabIndex = 0;
             // 
-            // label1
+            // tb_search
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(26, 19);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(130, 31);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Products";
+            this.tb_search.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_search.Location = new System.Drawing.Point(770, 24);
+            this.tb_search.Name = "tb_search";
+            this.tb_search.Size = new System.Drawing.Size(250, 26);
+            this.tb_search.TabIndex = 2;
+            this.tb_search.TextChanged += new System.EventHandler(this.tb_search_TextChanged);
             // 
-            // linkLabel1
+            // btn_addProduct
             // 
-            this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.linkLabel1.LinkColor = System.Drawing.Color.White;
-            this.linkLabel1.Location = new System.Drawing.Point(638, 27);
-            this.linkLabel1.Name = "linkLabel1";
-            this.linkLabel1.Size = new System.Drawing.Size(105, 20);
-            this.linkLabel1.TabIndex = 1;
-            this.linkLabel1.TabStop = true;
-            this.linkLabel1.Text = "[Add Product]";
+            this.btn_addProduct.AutoSize = true;
+            this.btn_addProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_addProduct.LinkColor = System.Drawing.Color.White;
+            this.btn_addProduct.Location = new System.Drawing.Point(638, 27);
+            this.btn_addProduct.Name = "btn_addProduct";
+            this.btn_addProduct.Size = new System.Drawing.Size(105, 20);
+            this.btn_addProduct.TabIndex = 1;
+            this.btn_addProduct.TabStop = true;
+            this.btn_addProduct.Text = "[Add Product]";
+            this.btn_addProduct.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.btn_addProduct_LinkClicked);
             // 
-            // textBox1
+            // lbl_products
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(770, 24);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(250, 26);
-            this.textBox1.TabIndex = 2;
+            this.lbl_products.AutoSize = true;
+            this.lbl_products.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_products.Location = new System.Drawing.Point(26, 19);
+            this.lbl_products.Name = "lbl_products";
+            this.lbl_products.Size = new System.Drawing.Size(130, 31);
+            this.lbl_products.TabIndex = 0;
+            this.lbl_products.Text = "Products";
             // 
             // dgv_products
             // 
@@ -98,15 +102,18 @@
             this.dgv_products.AllowUserToResizeRows = false;
             this.dgv_products.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgv_products.BackgroundColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.dgv_products.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_products.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgv_products.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgv_products.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
+            this.dgv_products.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableWithoutHeaderText;
+            this.dgv_products.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_products.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgv_products.ColumnHeadersHeight = 25;
             this.dgv_products.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.col_no,
@@ -119,22 +126,38 @@
             this.col_restock,
             this.col_edit,
             this.col_delete});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv_products.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgv_products.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgv_products.EnableHeadersVisualStyles = false;
             this.dgv_products.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.dgv_products.Location = new System.Drawing.Point(0, 75);
             this.dgv_products.Name = "dgv_products";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+            this.dgv_products.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_products.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgv_products.RowHeadersVisible = false;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_products.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgv_products.RowHeadersVisible = false;
+            this.dgv_products.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgv_products.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_products.Size = new System.Drawing.Size(1064, 661);
             this.dgv_products.TabIndex = 1;
+            this.dgv_products.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_products_CellContentClick);
             // 
             // col_no
             // 
@@ -226,13 +249,14 @@
             this.ClientSize = new System.Drawing.Size(1064, 736);
             this.ControlBox = false;
             this.Controls.Add(this.dgv_products);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panel_head);
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "module_products";
             this.Text = "module_products";
-            this.panel1.ResumeLayout(false);
-            this.panel1.PerformLayout();
+            this.Load += new System.EventHandler(this.module_products_Load);
+            this.panel_head.ResumeLayout(false);
+            this.panel_head.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_products)).EndInit();
             this.ResumeLayout(false);
 
@@ -240,11 +264,10 @@
 
         #endregion
 
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.LinkLabel linkLabel1;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.DataGridView dgv_products;
+        private System.Windows.Forms.Panel panel_head;
+        private System.Windows.Forms.TextBox tb_search;
+        private System.Windows.Forms.LinkLabel btn_addProduct;
+        private System.Windows.Forms.Label lbl_products;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_no;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_productID;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_barcode;
@@ -255,5 +278,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn col_restock;
         private System.Windows.Forms.DataGridViewImageColumn col_edit;
         private System.Windows.Forms.DataGridViewImageColumn col_delete;
+        public System.Windows.Forms.DataGridView dgv_products;
     }
 }

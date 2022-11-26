@@ -74,6 +74,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DBConnector.cs" />
+    <Compile Include="form_addProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form_addProduct.Designer.cs">
+      <DependentUpon>form_addProduct.cs</DependentUpon>
+    </Compile>
     <Compile Include="form_updateCategory.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,6 +91,12 @@
     </Compile>
     <Compile Include="form_addCategory.Designer.cs">
       <DependentUpon>form_addCategory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form_updateProduct.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form_updateProduct.Designer.cs">
+      <DependentUpon>form_updateProduct.cs</DependentUpon>
     </Compile>
     <Compile Include="module_admin.cs">
       <SubType>Form</SubType>
@@ -143,11 +155,17 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <EmbeddedResource Include="form_addProduct.resx">
+      <DependentUpon>form_addProduct.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="form_updateCategory.resx">
       <DependentUpon>form_updateCategory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="form_addCategory.resx">
       <DependentUpon>form_addCategory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form_updateProduct.resx">
+      <DependentUpon>form_updateProduct.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="module_admin.resx">
       <DependentUpon>module_admin.cs</DependentUpon>

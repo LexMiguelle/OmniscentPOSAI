@@ -16,7 +16,7 @@ namespace OmniscentPOSAI
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new module_categories());
+            Application.Run(new module_products());
         }
     }
 }
