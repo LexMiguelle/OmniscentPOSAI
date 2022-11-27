@@ -39,6 +39,16 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle40 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel_head = new System.Windows.Forms.Panel();
             this.tb_search = new System.Windows.Forms.TextBox();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle19 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle20 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle21 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle22 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle23 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle24 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle17 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle18 = new System.Windows.Forms.DataGridViewCellStyle();
+            this.panel_head = new System.Windows.Forms.Panel();
+            this.tb_search = new System.Windows.Forms.TextBox();
             this.lbl_stocks = new System.Windows.Forms.Label();
             this.tc_stocks = new System.Windows.Forms.TabControl();
             this.tp_overView = new System.Windows.Forms.TabPage();
@@ -303,6 +313,23 @@
             this.dgv_stockOverview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle37;
             this.dgv_stockOverview.ColumnHeadersHeight = 25;
             this.dgv_stockOverview.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgv_stockOverview.AllowUserToAddRows = false;
+            this.dgv_stockOverview.AllowUserToDeleteRows = false;
+            this.dgv_stockOverview.AllowUserToResizeColumns = false;
+            this.dgv_stockOverview.AllowUserToResizeRows = false;
+            this.dgv_stockOverview.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv_stockOverview.BackgroundColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.dgv_stockOverview.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle19.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle19.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle19.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle19.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle19.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle19.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_stockOverview.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle19;
+            this.dgv_stockOverview.ColumnHeadersHeight = 25;
+            this.dgv_stockOverview.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.col_no,
             this.col_referenceNo,
             this.col_productID,
@@ -323,6 +350,22 @@
             dataGridViewCellStyle38.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle38.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgv_stockOverview.RowHeadersDefaultCellStyle = dataGridViewCellStyle38;
+            this.dgv_stockOverview.RowHeadersVisible = false;
+            this.dgv_stockOverview.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgv_stockOverview.Size = new System.Drawing.Size(1040, 440);
+            this.dgv_stockOverview.TabIndex = 2;
+            this.dgv_stockOverview.EnableHeadersVisualStyles = false;
+            this.dgv_stockOverview.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.dgv_stockOverview.Location = new System.Drawing.Point(8, 6);
+            this.dgv_stockOverview.Name = "dgv_stockOverview";
+            dataGridViewCellStyle20.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle20.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle20.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle20.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle20.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle20.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle20.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_stockOverview.RowHeadersDefaultCellStyle = dataGridViewCellStyle20;
             this.dgv_stockOverview.RowHeadersVisible = false;
             this.dgv_stockOverview.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_stockOverview.Size = new System.Drawing.Size(1040, 440);
@@ -487,6 +530,14 @@
             dataGridViewCellStyle33.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle33.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgv_addProducts.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle33;
+            dataGridViewCellStyle21.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle21.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle21.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle21.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle21.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle21.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle21.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_addProducts.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle21;
             this.dgv_addProducts.ColumnHeadersHeight = 25;
             this.dgv_addProducts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn6,
@@ -506,6 +557,14 @@
             dataGridViewCellStyle34.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle34.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgv_addProducts.RowHeadersDefaultCellStyle = dataGridViewCellStyle34;
+            dataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle22.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle22.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle22.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle22.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle22.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle22.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_addProducts.RowHeadersDefaultCellStyle = dataGridViewCellStyle22;
             this.dgv_addProducts.RowHeadersVisible = false;
             this.dgv_addProducts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_addProducts.Size = new System.Drawing.Size(439, 382);
@@ -592,6 +651,23 @@
             this.dgv_addStocks.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle35;
             this.dgv_addStocks.ColumnHeadersHeight = 25;
             this.dgv_addStocks.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgv_addStocks.AllowUserToAddRows = false;
+            this.dgv_addStocks.AllowUserToDeleteRows = false;
+            this.dgv_addStocks.AllowUserToResizeColumns = false;
+            this.dgv_addStocks.AllowUserToResizeRows = false;
+            this.dgv_addStocks.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv_addStocks.BackgroundColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.dgv_addStocks.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle23.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle23.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle23.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle23.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle23.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle23.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_addStocks.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle23;
+            this.dgv_addStocks.ColumnHeadersHeight = 25;
+            this.dgv_addStocks.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn1,
             this.col_ID,
             this.col_refNo,
@@ -612,6 +688,22 @@
             dataGridViewCellStyle36.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle36.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgv_addStocks.RowHeadersDefaultCellStyle = dataGridViewCellStyle36;
+            this.dgv_addStocks.RowHeadersVisible = false;
+            this.dgv_addStocks.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgv_addStocks.Size = new System.Drawing.Size(547, 478);
+            this.dgv_addStocks.TabIndex = 2;
+            this.dgv_addStocks.EnableHeadersVisualStyles = false;
+            this.dgv_addStocks.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.dgv_addStocks.Location = new System.Drawing.Point(486, 20);
+            this.dgv_addStocks.Name = "dgv_addStocks";
+            dataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle24.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle24.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle24.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle24.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle24.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle24.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_addStocks.RowHeadersDefaultCellStyle = dataGridViewCellStyle24;
             this.dgv_addStocks.RowHeadersVisible = false;
             this.dgv_addStocks.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_addStocks.Size = new System.Drawing.Size(547, 478);
@@ -827,6 +919,23 @@
             this.dgv_manageStocks.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle39;
             this.dgv_manageStocks.ColumnHeadersHeight = 25;
             this.dgv_manageStocks.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgv_manageStocks.AllowUserToAddRows = false;
+            this.dgv_manageStocks.AllowUserToDeleteRows = false;
+            this.dgv_manageStocks.AllowUserToResizeColumns = false;
+            this.dgv_manageStocks.AllowUserToResizeRows = false;
+            this.dgv_manageStocks.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgv_manageStocks.BackgroundColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.dgv_manageStocks.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
+            dataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle17.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle17.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle17.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle17.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle17.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle17.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_manageStocks.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle17;
+            this.dgv_manageStocks.ColumnHeadersHeight = 25;
+            this.dgv_manageStocks.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.dataGridViewTextBoxColumn2,
             this.dataGridViewTextBoxColumn3,
             this.dataGridViewTextBoxColumn4,
@@ -847,6 +956,22 @@
             dataGridViewCellStyle40.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle40.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgv_manageStocks.RowHeadersDefaultCellStyle = dataGridViewCellStyle40;
+            this.dgv_manageStocks.RowHeadersVisible = false;
+            this.dgv_manageStocks.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgv_manageStocks.Size = new System.Drawing.Size(1040, 396);
+            this.dgv_manageStocks.TabIndex = 3;
+            this.dgv_manageStocks.EnableHeadersVisualStyles = false;
+            this.dgv_manageStocks.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.dgv_manageStocks.Location = new System.Drawing.Point(8, 6);
+            this.dgv_manageStocks.Name = "dgv_manageStocks";
+            dataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle18.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle18.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle18.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle18.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle18.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle18.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_manageStocks.RowHeadersDefaultCellStyle = dataGridViewCellStyle18;
             this.dgv_manageStocks.RowHeadersVisible = false;
             this.dgv_manageStocks.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_manageStocks.Size = new System.Drawing.Size(1040, 396);
