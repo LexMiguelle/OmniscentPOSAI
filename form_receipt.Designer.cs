@@ -29,11 +29,10 @@
         private void InitializeComponent()
         {
             this.panel_addQuantityHead = new System.Windows.Forms.Panel();
+            this.lbl_printPreview = new System.Windows.Forms.Label();
             this.btn_closeAddQuantity = new System.Windows.Forms.Button();
             this.panel_addToCart = new System.Windows.Forms.Panel();
-            this.tb_searchBox = new System.Windows.Forms.TextBox();
             this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
-            this.lbl_printPreview = new System.Windows.Forms.Label();
             this.panel_addQuantityHead.SuspendLayout();
             this.panel_addToCart.SuspendLayout();
             this.SuspendLayout();
@@ -48,6 +47,17 @@
             this.panel_addQuantityHead.Name = "panel_addQuantityHead";
             this.panel_addQuantityHead.Size = new System.Drawing.Size(384, 30);
             this.panel_addQuantityHead.TabIndex = 4;
+            // 
+            // lbl_printPreview
+            // 
+            this.lbl_printPreview.AutoSize = true;
+            this.lbl_printPreview.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_printPreview.ForeColor = System.Drawing.Color.White;
+            this.lbl_printPreview.Location = new System.Drawing.Point(11, 6);
+            this.lbl_printPreview.Name = "lbl_printPreview";
+            this.lbl_printPreview.Size = new System.Drawing.Size(97, 16);
+            this.lbl_printPreview.TabIndex = 6;
+            this.lbl_printPreview.Text = "Print Preview";
             // 
             // btn_closeAddQuantity
             // 
@@ -66,20 +76,11 @@
             // panel_addToCart
             // 
             this.panel_addToCart.Controls.Add(this.reportViewer1);
-            this.panel_addToCart.Controls.Add(this.tb_searchBox);
             this.panel_addToCart.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel_addToCart.Location = new System.Drawing.Point(0, 30);
             this.panel_addToCart.Name = "panel_addToCart";
             this.panel_addToCart.Size = new System.Drawing.Size(384, 554);
             this.panel_addToCart.TabIndex = 11;
-            // 
-            // tb_searchBox
-            // 
-            this.tb_searchBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_searchBox.Location = new System.Drawing.Point(628, 20);
-            this.tb_searchBox.Name = "tb_searchBox";
-            this.tb_searchBox.Size = new System.Drawing.Size(0, 29);
-            this.tb_searchBox.TabIndex = 5;
             // 
             // reportViewer1
             // 
@@ -88,18 +89,7 @@
             this.reportViewer1.Name = "reportViewer1";
             this.reportViewer1.ServerReport.BearerToken = null;
             this.reportViewer1.Size = new System.Drawing.Size(384, 554);
-            this.reportViewer1.TabIndex = 6;
-            // 
-            // lbl_printPreview
-            // 
-            this.lbl_printPreview.AutoSize = true;
-            this.lbl_printPreview.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_printPreview.ForeColor = System.Drawing.Color.White;
-            this.lbl_printPreview.Location = new System.Drawing.Point(11, 6);
-            this.lbl_printPreview.Name = "lbl_printPreview";
-            this.lbl_printPreview.Size = new System.Drawing.Size(97, 16);
-            this.lbl_printPreview.TabIndex = 6;
-            this.lbl_printPreview.Text = "Print Preview";
+            this.reportViewer1.TabIndex = 0;
             // 
             // form_receipt
             // 
@@ -111,11 +101,9 @@
             this.Controls.Add(this.panel_addToCart);
             this.Controls.Add(this.panel_addQuantityHead);
             this.Name = "form_receipt";
-            this.Load += new System.EventHandler(this.form_receipt_Load);
             this.panel_addQuantityHead.ResumeLayout(false);
             this.panel_addQuantityHead.PerformLayout();
             this.panel_addToCart.ResumeLayout(false);
-            this.panel_addToCart.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -124,8 +112,7 @@
         private System.Windows.Forms.Panel panel_addQuantityHead;
         private System.Windows.Forms.Button btn_closeAddQuantity;
         private System.Windows.Forms.Panel panel_addToCart;
-        private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
-        private System.Windows.Forms.TextBox tb_searchBox;
         private System.Windows.Forms.Label lbl_printPreview;
+        private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
     }
 }

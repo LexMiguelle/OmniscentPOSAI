@@ -299,7 +299,13 @@ namespace OmniscentPOSAI
             int i = dgv_cart.CurrentRow.Index;
             transactionID = dgv_cart[1, i].Value.ToString();
             prc = dgv_cart[6, i].Value.ToString();
-        }   
+        }
+
+        private void module_cashier_Load(object sender, EventArgs e)
+        {
+
+            this.reportViewer1.RefreshReport();
+        }
     }
 }
             
