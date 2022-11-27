@@ -178,6 +178,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="module_stocks.resx">
       <DependentUpon>module_stocks.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="module_dashboard.resx">
       <DependentUpon>module_dashboard.cs</DependentUpon>
