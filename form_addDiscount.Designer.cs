@@ -225,11 +225,11 @@
         private System.Windows.Forms.Label lbl_price;
         private System.Windows.Forms.Label lbl_discountPercentage;
         private System.Windows.Forms.Label lbl_discountedPrice;
-        private System.Windows.Forms.TextBox tb_price;
         private System.Windows.Forms.Button btn_confirmDiscount;
-        private System.Windows.Forms.TextBox tb_discountPercentage;
-        private System.Windows.Forms.TextBox tb_discountedPrice;
         public System.Windows.Forms.Label lbl_prc;
         public System.Windows.Forms.Label lbl_ID;
+        public System.Windows.Forms.TextBox tb_price;
+        public System.Windows.Forms.TextBox tb_discountPercentage;
+        public System.Windows.Forms.TextBox tb_discountedPrice;
     }
 }

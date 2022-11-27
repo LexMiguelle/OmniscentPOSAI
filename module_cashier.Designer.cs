@@ -387,9 +387,9 @@
             this.lbl_totalVATable.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_totalVATable.Location = new System.Drawing.Point(14, 69);
             this.lbl_totalVATable.Name = "lbl_totalVATable";
-            this.lbl_totalVATable.Size = new System.Drawing.Size(74, 20);
+            this.lbl_totalVATable.Size = new System.Drawing.Size(86, 20);
             this.lbl_totalVATable.TabIndex = 1;
-            this.lbl_totalVATable.Text = "VATable:";
+            this.lbl_totalVATable.Text = "VATABLE:";
             // 
             // lbl_totalVAT
             // 
@@ -407,9 +407,9 @@
             this.lbl_totalDiscount.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_totalDiscount.Location = new System.Drawing.Point(14, 29);
             this.lbl_totalDiscount.Name = "lbl_totalDiscount";
-            this.lbl_totalDiscount.Size = new System.Drawing.Size(115, 20);
+            this.lbl_totalDiscount.Size = new System.Drawing.Size(150, 20);
             this.lbl_totalDiscount.TabIndex = 1;
-            this.lbl_totalDiscount.Text = "Total Discount:";
+            this.lbl_totalDiscount.Text = "TOTAL DISCOUNT:";
             // 
             // lbl_subTotal
             // 
@@ -417,9 +417,9 @@
             this.lbl_subTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_subTotal.Location = new System.Drawing.Point(14, 8);
             this.lbl_subTotal.Name = "lbl_subTotal";
-            this.lbl_subTotal.Size = new System.Drawing.Size(82, 20);
+            this.lbl_subTotal.Size = new System.Drawing.Size(102, 20);
             this.lbl_subTotal.TabIndex = 1;
-            this.lbl_subTotal.Text = "Sub-Total:";
+            this.lbl_subTotal.Text = "SUB-TOTAL:";
             // 
             // panel_totalAmount
             // 
@@ -597,6 +597,7 @@
             this.dgv_cart.Size = new System.Drawing.Size(966, 438);
             this.dgv_cart.TabIndex = 6;
             this.dgv_cart.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_cart_CellContentClick);
+            this.dgv_cart.SelectionChanged += new System.EventHandler(this.dgv_cart_SelectionChanged);
             // 
             // cart_num
             // 

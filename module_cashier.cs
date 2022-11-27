@@ -43,7 +43,7 @@ namespace OmniscentPOSAI
 
                 sql_connect.Open();
                 sql_command = new SqlCommand("SELECT TOP 1 transactionNo FROM tbl_transaction WHERE transactionNo LIKE '" + transDate + "%' ORDER BY transactionID DESC", sql_connect); ;
-                sql_datareader = sql_command.ExecuteReader();
+                sql_datareader = sql_command.ExecuteReader();   
                 sql_datareader.Read();
 
                 if (sql_datareader.HasRows)
@@ -73,14 +73,14 @@ namespace OmniscentPOSAI
         public void getTotal()
         {
             double total = Double.Parse(subTotal.Text);
-            double discount = 0;
+            double discount = Double.Parse(totalDiscount.Text);
             double vat = total * db_connect.getVAT();
             double vatable = total - vat;
             double amountTotal = total - discount;
 
 
             totalAmount.Text = amountTotal.ToString("#,##0.00");
-            totalVAT.Text = vat.ToString("#,##0.00");
+            totalVAT.Text = vat.ToString("#,##0.00");                                                                            
             totalVATable.Text = vatable.ToString("#,##0.00");
 
         }
@@ -96,14 +96,14 @@ namespace OmniscentPOSAI
 
                 dgv_cart.Rows.Clear();
                 sql_connect.Open();
-                sql_command = new SqlCommand("SELECT y.barcode, x.productID, y.productName, z.categoryName, x.price, x.quantity, x.discount, x.total FROM tbl_transaction AS x INNER JOIN tbl_products as y ON x.productID = y.productID INNER JOIN tbl_categories as z ON y.categoryID = z.categoryID WHERE transactionNo LIKE '" + transactionNo.Text + "' AND status LIKE 'Pending'", sql_connect);
+                sql_command = new SqlCommand("SELECT x.transactionID, y.barcode, x.productID, y.productName, z.categoryName, x.price, x.quantity, x.discount, x.total FROM tbl_transaction AS x INNER JOIN tbl_products as y ON x.productID = y.productID INNER JOIN tbl_categories as z ON y.categoryID = z.categoryID WHERE transactionNo LIKE '" + transactionNo.Text + "' AND status LIKE 'Pending'", sql_connect);
                 sql_datareader = sql_command.ExecuteReader();
                 while (sql_datareader.Read())
                 {
                     i++;
-                    total += double.Parse(sql_datareader["total"].ToString());
-                    //disc += double.Parse(sql_datareader["discount"].ToString());
-                    dgv_cart.Rows.Add(i, sql_datareader["barcode"].ToString(), sql_datareader["productID"].ToString(), sql_datareader["productName"].ToString(), sql_datareader["categoryName"].ToString(), sql_datareader["price"].ToString(), sql_datareader["quantity"].ToString(), sql_datareader["discount"].ToString(), Double.Parse(sql_datareader["total"].ToString()).ToString("#,##0.00"));
+                    total += Double.Parse(sql_datareader["total"].ToString());
+                    disc += Double.Parse(sql_datareader["discount"].ToString());
+                    dgv_cart.Rows.Add(i, sql_datareader["transactionID"].ToString(), sql_datareader["barcode"].ToString(), sql_datareader["productID"].ToString(), sql_datareader["productName"].ToString(), sql_datareader["categoryName"].ToString(), sql_datareader["price"].ToString(), sql_datareader["quantity"].ToString(), sql_datareader["discount"].ToString(), Double.Parse(sql_datareader["total"].ToString()).ToString("#,##0.00"));
                 }
                 sql_datareader.Close();
                 sql_connect.Close();
@@ -228,8 +228,8 @@ namespace OmniscentPOSAI
         private void btn_addDiscount_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             form_addDiscount addDiscount = new form_addDiscount(this);
-            addDiscount.lbl_ID.Text = transactionID     ;
-            addDiscount.lbl_prc.Text = prc;
+            addDiscount.lbl_ID.Text = transactionID;
+            addDiscount.tb_price.Text = prc;  
             addDiscount.ShowDialog();
         }
 
@@ -299,7 +299,7 @@ namespace OmniscentPOSAI
             int i = dgv_cart.CurrentRow.Index;
             transactionID = dgv_cart[1, i].Value.ToString();
             prc = dgv_cart[6, i].Value.ToString();
-        }
+        }   
     }
 }
             
