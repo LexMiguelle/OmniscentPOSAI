@@ -42,8 +42,8 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel_stocksHead = new System.Windows.Forms.Panel();
-            this.tb_searchBar = new System.Windows.Forms.TextBox();
             this.lbl_stocks = new System.Windows.Forms.Label();
+            this.tb_searchBar = new System.Windows.Forms.TextBox();
             this.tc_stocks = new System.Windows.Forms.TabControl();
             this.tp_overView = new System.Windows.Forms.TabPage();
             this.panel_dateFilter = new System.Windows.Forms.Panel();
@@ -80,21 +80,6 @@
             this.lbl_date = new System.Windows.Forms.Label();
             this.lbl_referenceNo = new System.Windows.Forms.Label();
             this.dgv_addStocks = new System.Windows.Forms.DataGridView();
-            this.tp_manageStock = new System.Windows.Forms.TabPage();
-            this.btn_clearTextboxes = new System.Windows.Forms.Button();
-            this.btn_confirm = new System.Windows.Forms.Button();
-            this.cb_action = new System.Windows.Forms.ComboBox();
-            this.tb_quantity = new System.Windows.Forms.TextBox();
-            this.tb_productName = new System.Windows.Forms.TextBox();
-            this.lbl_quantity = new System.Windows.Forms.Label();
-            this.tb_productID = new System.Windows.Forms.TextBox();
-            this.lbl_productName = new System.Windows.Forms.Label();
-            this.tb_refNo = new System.Windows.Forms.TextBox();
-            this.lbl_productID = new System.Windows.Forms.Label();
-            this.dgv_manageStocks = new System.Windows.Forms.DataGridView();
-            this.lbl_remarks = new System.Windows.Forms.Label();
-            this.lbl_action = new System.Windows.Forms.Label();
-            this.lbl_refNo = new System.Windows.Forms.Label();
             this.addStocks_num = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.addStocks_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.addStocks_referenceNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -103,6 +88,19 @@
             this.addStocks_quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.addStocks_date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.addStocks_remove = new System.Windows.Forms.DataGridViewImageColumn();
+            this.tp_manageStock = new System.Windows.Forms.TabPage();
+            this.btn_clearTextboxes = new System.Windows.Forms.Button();
+            this.btn_confirm = new System.Windows.Forms.Button();
+            this.cb_action = new System.Windows.Forms.ComboBox();
+            this.tb_remarks = new System.Windows.Forms.TextBox();
+            this.tb_quantity = new System.Windows.Forms.TextBox();
+            this.tb_productName = new System.Windows.Forms.TextBox();
+            this.lbl_quantity = new System.Windows.Forms.Label();
+            this.tb_productID = new System.Windows.Forms.TextBox();
+            this.lbl_productName = new System.Windows.Forms.Label();
+            this.tb_refNo = new System.Windows.Forms.TextBox();
+            this.lbl_productID = new System.Windows.Forms.Label();
+            this.dgv_manageStocks = new System.Windows.Forms.DataGridView();
             this.manageStocks_num = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.manageStocks_productID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.manageStocks_barcode = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -111,7 +109,9 @@
             this.manageStocks_price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.manageStocks_quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.manageStocks_select = new System.Windows.Forms.DataGridViewImageColumn();
-            this.tb_remarks = new System.Windows.Forms.TextBox();
+            this.lbl_remarks = new System.Windows.Forms.Label();
+            this.lbl_action = new System.Windows.Forms.Label();
+            this.lbl_refNo = new System.Windows.Forms.Label();
             this.panel_stocksHead.SuspendLayout();
             this.tc_stocks.SuspendLayout();
             this.tp_overView.SuspendLayout();
@@ -135,15 +135,6 @@
             this.panel_stocksHead.Size = new System.Drawing.Size(1064, 75);
             this.panel_stocksHead.TabIndex = 1;
             // 
-            // tb_searchBar
-            // 
-            this.tb_searchBar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_searchBar.Location = new System.Drawing.Point(786, 13);
-            this.tb_searchBar.Name = "tb_searchBar";
-            this.tb_searchBar.Size = new System.Drawing.Size(262, 26);
-            this.tb_searchBar.TabIndex = 2;
-            this.tb_searchBar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_searchBar_KeyPress);
-            // 
             // lbl_stocks
             // 
             this.lbl_stocks.AutoSize = true;
@@ -153,6 +144,15 @@
             this.lbl_stocks.Size = new System.Drawing.Size(103, 31);
             this.lbl_stocks.TabIndex = 0;
             this.lbl_stocks.Text = "Stocks";
+            // 
+            // tb_searchBar
+            // 
+            this.tb_searchBar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_searchBar.Location = new System.Drawing.Point(786, 13);
+            this.tb_searchBar.Name = "tb_searchBar";
+            this.tb_searchBar.Size = new System.Drawing.Size(262, 26);
+            this.tb_searchBar.TabIndex = 2;
+            this.tb_searchBar.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_searchBar_KeyPress);
             // 
             // tc_stocks
             // 
@@ -317,7 +317,7 @@
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
@@ -508,7 +508,7 @@
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
@@ -623,7 +623,7 @@
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
@@ -645,6 +645,69 @@
             this.dgv_addStocks.Size = new System.Drawing.Size(585, 478);
             this.dgv_addStocks.TabIndex = 2;
             this.dgv_addStocks.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_addStocks_CellContentClick);
+            // 
+            // addStocks_num
+            // 
+            this.addStocks_num.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.addStocks_num.HeaderText = "#";
+            this.addStocks_num.MinimumWidth = 25;
+            this.addStocks_num.Name = "addStocks_num";
+            this.addStocks_num.Width = 25;
+            // 
+            // addStocks_ID
+            // 
+            this.addStocks_ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.addStocks_ID.HeaderText = "ID";
+            this.addStocks_ID.Name = "addStocks_ID";
+            this.addStocks_ID.Visible = false;
+            this.addStocks_ID.Width = 43;
+            // 
+            // addStocks_referenceNo
+            // 
+            this.addStocks_referenceNo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.addStocks_referenceNo.FillWeight = 90.14085F;
+            this.addStocks_referenceNo.HeaderText = "REFERENCE NO.";
+            this.addStocks_referenceNo.Name = "addStocks_referenceNo";
+            this.addStocks_referenceNo.Width = 117;
+            // 
+            // addStocks_productID
+            // 
+            this.addStocks_productID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.addStocks_productID.FillWeight = 90.14085F;
+            this.addStocks_productID.HeaderText = "PRODUCT ID";
+            this.addStocks_productID.Name = "addStocks_productID";
+            this.addStocks_productID.Width = 97;
+            // 
+            // addStocks_productName
+            // 
+            this.addStocks_productName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.addStocks_productName.FillWeight = 90.14085F;
+            this.addStocks_productName.HeaderText = "PRODUCT";
+            this.addStocks_productName.Name = "addStocks_productName";
+            // 
+            // addStocks_quantity
+            // 
+            this.addStocks_quantity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.addStocks_quantity.FillWeight = 90.14085F;
+            this.addStocks_quantity.HeaderText = "QUANTITY";
+            this.addStocks_quantity.Name = "addStocks_quantity";
+            this.addStocks_quantity.Width = 85;
+            // 
+            // addStocks_date
+            // 
+            this.addStocks_date.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.addStocks_date.FillWeight = 90.14085F;
+            this.addStocks_date.HeaderText = "DATE";
+            this.addStocks_date.Name = "addStocks_date";
+            this.addStocks_date.Width = 59;
+            // 
+            // addStocks_remove
+            // 
+            this.addStocks_remove.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.addStocks_remove.HeaderText = "";
+            this.addStocks_remove.MinimumWidth = 30;
+            this.addStocks_remove.Name = "addStocks_remove";
+            this.addStocks_remove.Width = 30;
             // 
             // tp_manageStock
             // 
@@ -704,6 +767,15 @@
             this.cb_action.Name = "cb_action";
             this.cb_action.Size = new System.Drawing.Size(323, 28);
             this.cb_action.TabIndex = 4;
+            // 
+            // tb_remarks
+            // 
+            this.tb_remarks.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_remarks.Location = new System.Drawing.Point(536, 454);
+            this.tb_remarks.Multiline = true;
+            this.tb_remarks.Name = "tb_remarks";
+            this.tb_remarks.Size = new System.Drawing.Size(323, 88);
+            this.tb_remarks.TabIndex = 2;
             // 
             // tb_quantity
             // 
@@ -826,105 +898,6 @@
             this.dgv_manageStocks.TabIndex = 3;
             this.dgv_manageStocks.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_manageStocks_CellContentClick);
             // 
-            // lbl_remarks
-            // 
-            this.lbl_remarks.AutoSize = true;
-            this.lbl_remarks.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_remarks.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_remarks.ForeColor = System.Drawing.Color.White;
-            this.lbl_remarks.Location = new System.Drawing.Point(433, 454);
-            this.lbl_remarks.Name = "lbl_remarks";
-            this.lbl_remarks.Size = new System.Drawing.Size(97, 24);
-            this.lbl_remarks.TabIndex = 0;
-            this.lbl_remarks.Text = "Remarks:";
-            // 
-            // lbl_action
-            // 
-            this.lbl_action.AutoSize = true;
-            this.lbl_action.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_action.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_action.ForeColor = System.Drawing.Color.White;
-            this.lbl_action.Location = new System.Drawing.Point(455, 420);
-            this.lbl_action.Name = "lbl_action";
-            this.lbl_action.Size = new System.Drawing.Size(75, 24);
-            this.lbl_action.TabIndex = 0;
-            this.lbl_action.Text = "Action:";
-            // 
-            // lbl_refNo
-            // 
-            this.lbl_refNo.AutoSize = true;
-            this.lbl_refNo.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_refNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_refNo.ForeColor = System.Drawing.Color.White;
-            this.lbl_refNo.Location = new System.Drawing.Point(25, 420);
-            this.lbl_refNo.Name = "lbl_refNo";
-            this.lbl_refNo.Size = new System.Drawing.Size(152, 24);
-            this.lbl_refNo.TabIndex = 0;
-            this.lbl_refNo.Text = "Reference No.:";
-            // 
-            // addStocks_num
-            // 
-            this.addStocks_num.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.addStocks_num.HeaderText = "#";
-            this.addStocks_num.MinimumWidth = 25;
-            this.addStocks_num.Name = "addStocks_num";
-            this.addStocks_num.Width = 25;
-            // 
-            // addStocks_ID
-            // 
-            this.addStocks_ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.addStocks_ID.HeaderText = "ID";
-            this.addStocks_ID.Name = "addStocks_ID";
-            this.addStocks_ID.Visible = false;
-            this.addStocks_ID.Width = 41;
-            // 
-            // addStocks_referenceNo
-            // 
-            this.addStocks_referenceNo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.addStocks_referenceNo.FillWeight = 90.14085F;
-            this.addStocks_referenceNo.HeaderText = "REFERENCE NO.";
-            this.addStocks_referenceNo.Name = "addStocks_referenceNo";
-            this.addStocks_referenceNo.Width = 117;
-            // 
-            // addStocks_productID
-            // 
-            this.addStocks_productID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.addStocks_productID.FillWeight = 90.14085F;
-            this.addStocks_productID.HeaderText = "PRODUCT ID";
-            this.addStocks_productID.Name = "addStocks_productID";
-            this.addStocks_productID.Width = 97;
-            // 
-            // addStocks_productName
-            // 
-            this.addStocks_productName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.addStocks_productName.FillWeight = 90.14085F;
-            this.addStocks_productName.HeaderText = "PRODUCT";
-            this.addStocks_productName.Name = "addStocks_productName";
-            // 
-            // addStocks_quantity
-            // 
-            this.addStocks_quantity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.addStocks_quantity.FillWeight = 90.14085F;
-            this.addStocks_quantity.HeaderText = "QUANTITY";
-            this.addStocks_quantity.Name = "addStocks_quantity";
-            this.addStocks_quantity.Width = 85;
-            // 
-            // addStocks_date
-            // 
-            this.addStocks_date.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.addStocks_date.FillWeight = 90.14085F;
-            this.addStocks_date.HeaderText = "DATE";
-            this.addStocks_date.Name = "addStocks_date";
-            this.addStocks_date.Width = 59;
-            // 
-            // addStocks_remove
-            // 
-            this.addStocks_remove.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.addStocks_remove.HeaderText = "";
-            this.addStocks_remove.MinimumWidth = 30;
-            this.addStocks_remove.Name = "addStocks_remove";
-            this.addStocks_remove.Width = 30;
-            // 
             // manageStocks_num
             // 
             this.manageStocks_num.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
@@ -986,14 +959,41 @@
             this.manageStocks_select.Name = "manageStocks_select";
             this.manageStocks_select.Width = 30;
             // 
-            // tb_remarks
+            // lbl_remarks
             // 
-            this.tb_remarks.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_remarks.Location = new System.Drawing.Point(536, 454);
-            this.tb_remarks.Multiline = true;
-            this.tb_remarks.Name = "tb_remarks";
-            this.tb_remarks.Size = new System.Drawing.Size(323, 88);
-            this.tb_remarks.TabIndex = 2;
+            this.lbl_remarks.AutoSize = true;
+            this.lbl_remarks.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_remarks.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_remarks.ForeColor = System.Drawing.Color.White;
+            this.lbl_remarks.Location = new System.Drawing.Point(433, 454);
+            this.lbl_remarks.Name = "lbl_remarks";
+            this.lbl_remarks.Size = new System.Drawing.Size(97, 24);
+            this.lbl_remarks.TabIndex = 0;
+            this.lbl_remarks.Text = "Remarks:";
+            // 
+            // lbl_action
+            // 
+            this.lbl_action.AutoSize = true;
+            this.lbl_action.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_action.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_action.ForeColor = System.Drawing.Color.White;
+            this.lbl_action.Location = new System.Drawing.Point(455, 420);
+            this.lbl_action.Name = "lbl_action";
+            this.lbl_action.Size = new System.Drawing.Size(75, 24);
+            this.lbl_action.TabIndex = 0;
+            this.lbl_action.Text = "Action:";
+            // 
+            // lbl_refNo
+            // 
+            this.lbl_refNo.AutoSize = true;
+            this.lbl_refNo.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_refNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_refNo.ForeColor = System.Drawing.Color.White;
+            this.lbl_refNo.Location = new System.Drawing.Point(25, 420);
+            this.lbl_refNo.Name = "lbl_refNo";
+            this.lbl_refNo.Size = new System.Drawing.Size(152, 24);
+            this.lbl_refNo.TabIndex = 0;
+            this.lbl_refNo.Text = "Reference No.:";
             // 
             // module_stocks
             // 

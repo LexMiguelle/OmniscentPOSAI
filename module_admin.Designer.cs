@@ -34,20 +34,20 @@ namespace OmniscentPOSAI
             this.btn_close = new System.Windows.Forms.Button();
             this.panel_menu = new System.Windows.Forms.Panel();
             this.lbl_role = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
+            this.lbl_name = new System.Windows.Forms.Label();
+            this.btn_logout = new System.Windows.Forms.Button();
+            this.btn_users = new System.Windows.Forms.Button();
+            this.btn_sales = new System.Windows.Forms.Button();
+            this.btn_records = new System.Windows.Forms.Button();
+            this.btn_stocks = new System.Windows.Forms.Button();
             this.btn_products = new System.Windows.Forms.Button();
             this.btn_categories = new System.Windows.Forms.Button();
             this.btn_dashboard = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pb_logo = new System.Windows.Forms.PictureBox();
             this.panel_activity = new System.Windows.Forms.Panel();
             this.panel_head.SuspendLayout();
             this.panel_menu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_logo)).BeginInit();
             this.SuspendLayout();
             // 
             // panel_head
@@ -72,21 +72,22 @@ namespace OmniscentPOSAI
             this.btn_close.TabIndex = 0;
             this.btn_close.Text = "X";
             this.btn_close.UseVisualStyleBackColor = false;
+            this.btn_close.Click += new System.EventHandler(this.btn_close_Click);
             // 
             // panel_menu
             // 
             this.panel_menu.BackColor = System.Drawing.Color.Black;
             this.panel_menu.Controls.Add(this.lbl_role);
-            this.panel_menu.Controls.Add(this.label1);
-            this.panel_menu.Controls.Add(this.button5);
-            this.panel_menu.Controls.Add(this.button8);
-            this.panel_menu.Controls.Add(this.button7);
-            this.panel_menu.Controls.Add(this.button6);
-            this.panel_menu.Controls.Add(this.button4);
+            this.panel_menu.Controls.Add(this.lbl_name);
+            this.panel_menu.Controls.Add(this.btn_logout);
+            this.panel_menu.Controls.Add(this.btn_users);
+            this.panel_menu.Controls.Add(this.btn_sales);
+            this.panel_menu.Controls.Add(this.btn_records);
+            this.panel_menu.Controls.Add(this.btn_stocks);
             this.panel_menu.Controls.Add(this.btn_products);
             this.panel_menu.Controls.Add(this.btn_categories);
             this.panel_menu.Controls.Add(this.btn_dashboard);
-            this.panel_menu.Controls.Add(this.pictureBox1);
+            this.panel_menu.Controls.Add(this.pb_logo);
             this.panel_menu.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel_menu.Location = new System.Drawing.Point(0, 30);
             this.panel_menu.Name = "panel_menu";
@@ -106,84 +107,89 @@ namespace OmniscentPOSAI
             this.lbl_role.TabIndex = 2;
             this.lbl_role.Text = "@role";
             // 
-            // label1
+            // lbl_name
             // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(65, 244);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(170, 31);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "@username";
+            this.lbl_name.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.lbl_name.AutoSize = true;
+            this.lbl_name.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_name.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_name.ForeColor = System.Drawing.Color.White;
+            this.lbl_name.Location = new System.Drawing.Point(65, 244);
+            this.lbl_name.Name = "lbl_name";
+            this.lbl_name.Size = new System.Drawing.Size(170, 31);
+            this.lbl_name.TabIndex = 2;
+            this.lbl_name.Text = "@username";
             // 
-            // button5
+            // btn_logout
             // 
-            this.button5.BackColor = System.Drawing.Color.Red;
-            this.button5.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.ForeColor = System.Drawing.Color.White;
-            this.button5.Location = new System.Drawing.Point(0, 676);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(300, 60);
-            this.button5.TabIndex = 1;
-            this.button5.Text = "LOGOUT";
-            this.button5.UseVisualStyleBackColor = false;
+            this.btn_logout.BackColor = System.Drawing.Color.Red;
+            this.btn_logout.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btn_logout.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_logout.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_logout.ForeColor = System.Drawing.Color.White;
+            this.btn_logout.Location = new System.Drawing.Point(0, 676);
+            this.btn_logout.Name = "btn_logout";
+            this.btn_logout.Size = new System.Drawing.Size(300, 60);
+            this.btn_logout.TabIndex = 1;
+            this.btn_logout.Text = "LOGOUT";
+            this.btn_logout.UseVisualStyleBackColor = false;
+            this.btn_logout.Click += new System.EventHandler(this.btn_logout_Click);
             // 
-            // button8
+            // btn_users
             // 
-            this.button8.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.ForeColor = System.Drawing.Color.White;
-            this.button8.Location = new System.Drawing.Point(0, 594);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(300, 40);
-            this.button8.TabIndex = 1;
-            this.button8.Text = "Users";
-            this.button8.UseVisualStyleBackColor = true;
+            this.btn_users.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_users.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_users.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_users.ForeColor = System.Drawing.Color.White;
+            this.btn_users.Location = new System.Drawing.Point(0, 594);
+            this.btn_users.Name = "btn_users";
+            this.btn_users.Size = new System.Drawing.Size(300, 40);
+            this.btn_users.TabIndex = 1;
+            this.btn_users.Text = "Users";
+            this.btn_users.UseVisualStyleBackColor = true;
+            this.btn_users.Click += new System.EventHandler(this.btn_users_Click);
             // 
-            // button7
+            // btn_sales
             // 
-            this.button7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.ForeColor = System.Drawing.Color.White;
-            this.button7.Location = new System.Drawing.Point(0, 502);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(300, 40);
-            this.button7.TabIndex = 1;
-            this.button7.Text = "Sales";
-            this.button7.UseVisualStyleBackColor = true;
+            this.btn_sales.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_sales.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_sales.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_sales.ForeColor = System.Drawing.Color.White;
+            this.btn_sales.Location = new System.Drawing.Point(0, 502);
+            this.btn_sales.Name = "btn_sales";
+            this.btn_sales.Size = new System.Drawing.Size(300, 40);
+            this.btn_sales.TabIndex = 1;
+            this.btn_sales.Text = "Sales";
+            this.btn_sales.UseVisualStyleBackColor = true;
+            this.btn_sales.Click += new System.EventHandler(this.btn_sales_Click);
             // 
-            // button6
+            // btn_records
             // 
-            this.button6.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.ForeColor = System.Drawing.Color.White;
-            this.button6.Location = new System.Drawing.Point(0, 548);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(300, 40);
-            this.button6.TabIndex = 1;
-            this.button6.Text = "Records";
-            this.button6.UseVisualStyleBackColor = true;
+            this.btn_records.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_records.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_records.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_records.ForeColor = System.Drawing.Color.White;
+            this.btn_records.Location = new System.Drawing.Point(0, 548);
+            this.btn_records.Name = "btn_records";
+            this.btn_records.Size = new System.Drawing.Size(300, 40);
+            this.btn_records.TabIndex = 1;
+            this.btn_records.Text = "Records";
+            this.btn_records.UseVisualStyleBackColor = true;
+            this.btn_records.Click += new System.EventHandler(this.btn_records_Click);
             // 
-            // button4
+            // btn_stocks
             // 
-            this.button4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(0, 456);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(300, 40);
-            this.button4.TabIndex = 1;
-            this.button4.Text = "Stocks";
-            this.button4.UseVisualStyleBackColor = true;
+            this.btn_stocks.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.btn_stocks.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_stocks.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_stocks.ForeColor = System.Drawing.Color.White;
+            this.btn_stocks.Location = new System.Drawing.Point(0, 456);
+            this.btn_stocks.Name = "btn_stocks";
+            this.btn_stocks.Size = new System.Drawing.Size(300, 40);
+            this.btn_stocks.TabIndex = 1;
+            this.btn_stocks.Text = "Stocks";
+            this.btn_stocks.UseVisualStyleBackColor = true;
+            this.btn_stocks.Click += new System.EventHandler(this.btn_stocks_Click);
             // 
             // btn_products
             // 
@@ -197,6 +203,7 @@ namespace OmniscentPOSAI
             this.btn_products.TabIndex = 1;
             this.btn_products.Text = "Products";
             this.btn_products.UseVisualStyleBackColor = true;
+            this.btn_products.Click += new System.EventHandler(this.btn_products_Click);
             // 
             // btn_categories
             // 
@@ -210,6 +217,7 @@ namespace OmniscentPOSAI
             this.btn_categories.TabIndex = 1;
             this.btn_categories.Text = "Categories";
             this.btn_categories.UseVisualStyleBackColor = true;
+            this.btn_categories.Click += new System.EventHandler(this.btn_categories_Click);
             // 
             // btn_dashboard
             // 
@@ -223,19 +231,20 @@ namespace OmniscentPOSAI
             this.btn_dashboard.TabIndex = 1;
             this.btn_dashboard.Text = "Dashboard";
             this.btn_dashboard.UseVisualStyleBackColor = true;
+            this.btn_dashboard.Click += new System.EventHandler(this.btn_dashboard_Click);
             // 
-            // pictureBox1
+            // pb_logo
             // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.pb_logo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(53, 32);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(200, 200);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 0;
-            this.pictureBox1.TabStop = false;
+            this.pb_logo.Image = ((System.Drawing.Image)(resources.GetObject("pb_logo.Image")));
+            this.pb_logo.Location = new System.Drawing.Point(53, 32);
+            this.pb_logo.Name = "pb_logo";
+            this.pb_logo.Size = new System.Drawing.Size(200, 200);
+            this.pb_logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pb_logo.TabIndex = 0;
+            this.pb_logo.TabStop = false;
             // 
             // panel_activity
             // 
@@ -258,11 +267,10 @@ namespace OmniscentPOSAI
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "module_admin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Load += new System.EventHandler(this.module_admin_Load);
             this.panel_head.ResumeLayout(false);
             this.panel_menu.ResumeLayout(false);
             this.panel_menu.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pb_logo)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -273,16 +281,16 @@ namespace OmniscentPOSAI
         private System.Windows.Forms.Button btn_close;
         private System.Windows.Forms.Panel panel_menu;
         private System.Windows.Forms.Label lbl_role;
-        private System.Windows.Forms.Label label1;
-        public System.Windows.Forms.Button button5;
-        public System.Windows.Forms.Button button4;
+        private System.Windows.Forms.Label lbl_name;
+        public System.Windows.Forms.Button btn_logout;
+        public System.Windows.Forms.Button btn_stocks;
         public System.Windows.Forms.Button btn_products;
         public System.Windows.Forms.Button btn_categories;
         public System.Windows.Forms.Button btn_dashboard;
-        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.PictureBox pb_logo;
         private System.Windows.Forms.Panel panel_activity;
-        public System.Windows.Forms.Button button8;
-        public System.Windows.Forms.Button button7;
-        public System.Windows.Forms.Button button6;
+        public System.Windows.Forms.Button btn_users;
+        public System.Windows.Forms.Button btn_sales;
+        public System.Windows.Forms.Button btn_records;
     }
 }

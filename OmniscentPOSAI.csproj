@@ -74,11 +74,41 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DBConnector.cs" />
+    <Compile Include="form_addDiscount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form_addDiscount.Designer.cs">
+      <DependentUpon>form_addDiscount.cs</DependentUpon>
+    </Compile>
     <Compile Include="form_addProduct.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="form_addProduct.Designer.cs">
       <DependentUpon>form_addProduct.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form_addQuantity.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form_addQuantity.Designer.cs">
+      <DependentUpon>form_addQuantity.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form_addToCart.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form_addToCart.Designer.cs">
+      <DependentUpon>form_addToCart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form_checkPrice.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form_checkPrice.Designer.cs">
+      <DependentUpon>form_checkPrice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form_settleTransaction.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form_settleTransaction.Designer.cs">
+      <DependentUpon>form_settleTransaction.cs</DependentUpon>
     </Compile>
     <Compile Include="form_updateCategory.cs">
       <SubType>Form</SubType>
@@ -104,6 +134,12 @@
     <Compile Include="module_admin.Designer.cs">
       <DependentUpon>module_admin.cs</DependentUpon>
     </Compile>
+    <Compile Include="module_cashier.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module_cashier.Designer.cs">
+      <DependentUpon>module_cashier.cs</DependentUpon>
+    </Compile>
     <Compile Include="module_records.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -115,6 +151,12 @@
     </Compile>
     <Compile Include="module_sales.Designer.cs">
       <DependentUpon>module_sales.cs</DependentUpon>
+    </Compile>
+    <Compile Include="module_settings.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module_settings.Designer.cs">
+      <DependentUpon>module_settings.cs</DependentUpon>
     </Compile>
     <Compile Include="module_stocks.cs">
       <SubType>Form</SubType>
@@ -155,8 +197,23 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SqlServerTypes\Loader.cs" />
+    <EmbeddedResource Include="form_addDiscount.resx">
+      <DependentUpon>form_addDiscount.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="form_addProduct.resx">
       <DependentUpon>form_addProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form_addQuantity.resx">
+      <DependentUpon>form_addQuantity.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form_addToCart.resx">
+      <DependentUpon>form_addToCart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form_checkPrice.resx">
+      <DependentUpon>form_checkPrice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form_settleTransaction.resx">
+      <DependentUpon>form_settleTransaction.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="form_updateCategory.resx">
       <DependentUpon>form_updateCategory.cs</DependentUpon>
@@ -170,11 +227,17 @@
     <EmbeddedResource Include="module_admin.resx">
       <DependentUpon>module_admin.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="module_cashier.resx">
+      <DependentUpon>module_cashier.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="module_records.resx">
       <DependentUpon>module_records.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="module_sales.resx">
       <DependentUpon>module_sales.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module_settings.resx">
+      <DependentUpon>module_settings.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="module_stocks.resx">
       <DependentUpon>module_stocks.cs</DependentUpon>

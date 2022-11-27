@@ -56,7 +56,7 @@ namespace OmniscentPOSAI
         {
             int i = 0;
             string dateMin = dtp_from.Value.ToString("yyyy-MM-dd 00:00:00");
-            string dateMax = dtp_to.Value.ToString("yyyy-MM-dd 11:59:59");
+            string dateMax = dtp_to.Value.ToString("yyyy-MM-dd 23:59:59");
             string status = cb_status.Text;
 
             dgv_stockOverview.Rows.Clear();
@@ -269,9 +269,9 @@ namespace OmniscentPOSAI
             }
         }
 
-        public void reset()
+        // reset textboxes function
+        public void resetTextboxes()
         {
-            tb_refNo.Clear();
             tb_productID.Clear();
             tb_productName.Clear();
             tb_quantity.Clear();
@@ -279,14 +279,14 @@ namespace OmniscentPOSAI
             tb_remarks.Clear();
         }
 
-        // clear textboxes event
+        // clear textboxes button event
         private void btn_clearTextboxes_Click(object sender, EventArgs e)
         {
-            reset();
+            resetTextboxes();
         }
 
 
-        // 
+        // confirm button event
         private void btn_confirm_Click(object sender, EventArgs e)
         {
             try
@@ -310,7 +310,7 @@ namespace OmniscentPOSAI
                 MessageBox.Show("Stocks have been successfully modified", "Manage Stocks", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 LoadManageStocks();
-                reset();
+                resetTextboxes();
                 referenceNo();
 
             } catch (Exception except)

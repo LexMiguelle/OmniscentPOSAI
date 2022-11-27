@@ -31,13 +31,13 @@ namespace OmniscentPOSAI
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(module_login));
             this.panel_head = new System.Windows.Forms.Panel();
-            this.lbl_login = new System.Windows.Forms.Label();
             this.pb_logo = new System.Windows.Forms.PictureBox();
+            this.lbl_login = new System.Windows.Forms.Label();
             this.tb_username = new System.Windows.Forms.TextBox();
             this.tb_password = new System.Windows.Forms.TextBox();
             this.lbl_username = new System.Windows.Forms.Label();
             this.lbl_password = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btn_login = new System.Windows.Forms.Button();
             this.btn_exit = new System.Windows.Forms.Button();
             this.panel_head.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_logo)).BeginInit();
@@ -53,19 +53,6 @@ namespace OmniscentPOSAI
             this.panel_head.Size = new System.Drawing.Size(358, 200);
             this.panel_head.TabIndex = 0;
             // 
-            // lbl_login
-            // 
-            this.lbl_login.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.lbl_login.AutoSize = true;
-            this.lbl_login.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_login.ForeColor = System.Drawing.Color.White;
-            this.lbl_login.Location = new System.Drawing.Point(116, 203);
-            this.lbl_login.Name = "lbl_login";
-            this.lbl_login.Size = new System.Drawing.Size(129, 39);
-            this.lbl_login.TabIndex = 1;
-            this.lbl_login.Text = "LOGIN";
-            // 
             // pb_logo
             // 
             this.pb_logo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -78,6 +65,19 @@ namespace OmniscentPOSAI
             this.pb_logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pb_logo.TabIndex = 0;
             this.pb_logo.TabStop = false;
+            // 
+            // lbl_login
+            // 
+            this.lbl_login.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.lbl_login.AutoSize = true;
+            this.lbl_login.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_login.ForeColor = System.Drawing.Color.White;
+            this.lbl_login.Location = new System.Drawing.Point(116, 203);
+            this.lbl_login.Name = "lbl_login";
+            this.lbl_login.Size = new System.Drawing.Size(129, 39);
+            this.lbl_login.TabIndex = 1;
+            this.lbl_login.Text = "LOGIN";
             // 
             // tb_username
             // 
@@ -127,20 +127,21 @@ namespace OmniscentPOSAI
             this.lbl_password.TabIndex = 1;
             this.lbl_password.Text = "Password:";
             // 
-            // button1
+            // btn_login
             // 
-            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.btn_login.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(78, 378);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(200, 40);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "LOGIN";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btn_login.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.btn_login.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_login.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_login.Location = new System.Drawing.Point(78, 378);
+            this.btn_login.Name = "btn_login";
+            this.btn_login.Size = new System.Drawing.Size(200, 40);
+            this.btn_login.TabIndex = 3;
+            this.btn_login.Text = "LOGIN";
+            this.btn_login.UseVisualStyleBackColor = false;
+            this.btn_login.Click += new System.EventHandler(this.btn_login_Click);
             // 
             // btn_exit
             // 
@@ -157,6 +158,7 @@ namespace OmniscentPOSAI
             this.btn_exit.TabIndex = 3;
             this.btn_exit.Text = "EXIT";
             this.btn_exit.UseVisualStyleBackColor = false;
+            this.btn_exit.Click += new System.EventHandler(this.btn_exit_Click);
             // 
             // module_login
             // 
@@ -166,7 +168,7 @@ namespace OmniscentPOSAI
             this.ClientSize = new System.Drawing.Size(358, 478);
             this.ControlBox = false;
             this.Controls.Add(this.btn_exit);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btn_login);
             this.Controls.Add(this.tb_password);
             this.Controls.Add(this.tb_username);
             this.Controls.Add(this.lbl_password);
@@ -192,7 +194,7 @@ namespace OmniscentPOSAI
         public System.Windows.Forms.TextBox tb_password;
         private System.Windows.Forms.Label lbl_username;
         private System.Windows.Forms.Label lbl_password;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn_login;
         private System.Windows.Forms.Button btn_exit;
     }
 }
