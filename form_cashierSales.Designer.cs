@@ -1,6 +1,6 @@
 ﻿namespace OmniscentPOSAI
 {
-    partial class module_sales
+    partial class form_cashierSales
     {
         /// <summary>
         /// Required designer variable.
@@ -28,23 +28,21 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(module_sales));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.panel_salesHead = new System.Windows.Forms.Panel();
-            this.tb_salesTotal = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.btn_printSales = new System.Windows.Forms.Button();
+            this.panel_cashierSalesHead = new System.Windows.Forms.Panel();
+            this.btn_closeCashierSales = new System.Windows.Forms.Button();
+            this.panel_cashierSales = new System.Windows.Forms.Panel();
+            this.tb_totalSales = new System.Windows.Forms.TextBox();
             this.dtp_to = new System.Windows.Forms.DateTimePicker();
             this.dtp_from = new System.Windows.Forms.DateTimePicker();
-            this.lbl_from = new System.Windows.Forms.Label();
             this.lbl_to = new System.Windows.Forms.Label();
-            this.lbl_cashierName = new System.Windows.Forms.Label();
+            this.lbl_from = new System.Windows.Forms.Label();
             this.lbl_dateFilter = new System.Windows.Forms.Label();
-            this.lbl_sales = new System.Windows.Forms.Label();
-            this.dgv_sales = new System.Windows.Forms.DataGridView();
+            this.lbl_cashierSales = new System.Windows.Forms.Label();
+            this.dgv_cashierSales = new System.Windows.Forms.DataGridView();
             this.cashierSales_num = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cashierSales_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cashierSales_transactionNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -54,140 +52,132 @@
             this.cashierSale_quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cashierSale_discount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cashierSale_total = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.panel_salesHead.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_sales)).BeginInit();
+            this.testMe = new System.Windows.Forms.Label();
+            this.panel_cashierSalesHead.SuspendLayout();
+            this.panel_cashierSales.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_cashierSales)).BeginInit();
             this.SuspendLayout();
             // 
-            // panel_salesHead
+            // panel_cashierSalesHead
             // 
-            this.panel_salesHead.Controls.Add(this.tb_salesTotal);
-            this.panel_salesHead.Controls.Add(this.comboBox1);
-            this.panel_salesHead.Controls.Add(this.btn_printSales);
-            this.panel_salesHead.Controls.Add(this.dtp_to);
-            this.panel_salesHead.Controls.Add(this.dtp_from);
-            this.panel_salesHead.Controls.Add(this.lbl_from);
-            this.panel_salesHead.Controls.Add(this.lbl_to);
-            this.panel_salesHead.Controls.Add(this.lbl_cashierName);
-            this.panel_salesHead.Controls.Add(this.lbl_dateFilter);
-            this.panel_salesHead.Controls.Add(this.lbl_sales);
-            this.panel_salesHead.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel_salesHead.Location = new System.Drawing.Point(0, 0);
-            this.panel_salesHead.Name = "panel_salesHead";
-            this.panel_salesHead.Size = new System.Drawing.Size(1064, 75);
-            this.panel_salesHead.TabIndex = 0;
+            this.panel_cashierSalesHead.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel_cashierSalesHead.Controls.Add(this.btn_closeCashierSales);
+            this.panel_cashierSalesHead.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel_cashierSalesHead.ForeColor = System.Drawing.Color.White;
+            this.panel_cashierSalesHead.Location = new System.Drawing.Point(0, 0);
+            this.panel_cashierSalesHead.Name = "panel_cashierSalesHead";
+            this.panel_cashierSalesHead.Size = new System.Drawing.Size(922, 30);
+            this.panel_cashierSalesHead.TabIndex = 4;
             // 
-            // tb_salesTotal
+            // btn_closeCashierSales
             // 
-            this.tb_salesTotal.BackColor = System.Drawing.Color.Black;
-            this.tb_salesTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_salesTotal.ForeColor = System.Drawing.Color.Lime;
-            this.tb_salesTotal.Location = new System.Drawing.Point(852, 8);
-            this.tb_salesTotal.Name = "tb_salesTotal";
-            this.tb_salesTotal.Size = new System.Drawing.Size(200, 53);
-            this.tb_salesTotal.TabIndex = 13;
-            this.tb_salesTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.btn_closeCashierSales.BackColor = System.Drawing.Color.Red;
+            this.btn_closeCashierSales.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btn_closeCashierSales.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_closeCashierSales.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_closeCashierSales.ForeColor = System.Drawing.Color.White;
+            this.btn_closeCashierSales.Location = new System.Drawing.Point(890, 0);
+            this.btn_closeCashierSales.Name = "btn_closeCashierSales";
+            this.btn_closeCashierSales.Size = new System.Drawing.Size(30, 28);
+            this.btn_closeCashierSales.TabIndex = 1;
+            this.btn_closeCashierSales.Text = "X";
+            this.btn_closeCashierSales.UseVisualStyleBackColor = false;
+            this.btn_closeCashierSales.Click += new System.EventHandler(this.btn_closeCashierSales_Click);
             // 
-            // comboBox1
+            // panel_cashierSales
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(519, 32);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(150, 24);
-            this.comboBox1.TabIndex = 12;
+            this.panel_cashierSales.Controls.Add(this.tb_totalSales);
+            this.panel_cashierSales.Controls.Add(this.dtp_to);
+            this.panel_cashierSales.Controls.Add(this.dtp_from);
+            this.panel_cashierSales.Controls.Add(this.lbl_to);
+            this.panel_cashierSales.Controls.Add(this.lbl_from);
+            this.panel_cashierSales.Controls.Add(this.lbl_dateFilter);
+            this.panel_cashierSales.Controls.Add(this.testMe);
+            this.panel_cashierSales.Controls.Add(this.lbl_cashierSales);
+            this.panel_cashierSales.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel_cashierSales.Location = new System.Drawing.Point(0, 30);
+            this.panel_cashierSales.Name = "panel_cashierSales";
+            this.panel_cashierSales.Size = new System.Drawing.Size(922, 75);
+            this.panel_cashierSales.TabIndex = 5;
             // 
-            // btn_printSales
+            // tb_totalSales
             // 
-            this.btn_printSales.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.btn_printSales.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btn_printSales.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_printSales.ForeColor = System.Drawing.Color.Black;
-            this.btn_printSales.Image = ((System.Drawing.Image)(resources.GetObject("btn_printSales.Image")));
-            this.btn_printSales.Location = new System.Drawing.Point(712, 26);
-            this.btn_printSales.Name = "btn_printSales";
-            this.btn_printSales.Size = new System.Drawing.Size(100, 30);
-            this.btn_printSales.TabIndex = 11;
-            this.btn_printSales.Text = "Print";
-            this.btn_printSales.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btn_printSales.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btn_printSales.UseVisualStyleBackColor = false;
+            this.tb_totalSales.BackColor = System.Drawing.Color.Black;
+            this.tb_totalSales.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_totalSales.ForeColor = System.Drawing.Color.Lime;
+            this.tb_totalSales.Location = new System.Drawing.Point(710, 11);
+            this.tb_totalSales.Name = "tb_totalSales";
+            this.tb_totalSales.Size = new System.Drawing.Size(200, 53);
+            this.tb_totalSales.TabIndex = 4;
+            this.tb_totalSales.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // dtp_to
             // 
-            this.dtp_to.Location = new System.Drawing.Point(296, 43);
+            this.dtp_to.Location = new System.Drawing.Point(324, 42);
             this.dtp_to.Name = "dtp_to";
             this.dtp_to.Size = new System.Drawing.Size(200, 20);
-            this.dtp_to.TabIndex = 9;
+            this.dtp_to.TabIndex = 2;
+            this.dtp_to.ValueChanged += new System.EventHandler(this.dtp_to_ValueChanged);
             // 
             // dtp_from
             // 
-            this.dtp_from.Location = new System.Drawing.Point(296, 16);
+            this.dtp_from.Location = new System.Drawing.Point(324, 15);
             this.dtp_from.Name = "dtp_from";
             this.dtp_from.Size = new System.Drawing.Size(200, 20);
-            this.dtp_from.TabIndex = 10;
-            // 
-            // lbl_from
-            // 
-            this.lbl_from.AutoSize = true;
-            this.lbl_from.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_from.ForeColor = System.Drawing.Color.White;
-            this.lbl_from.Location = new System.Drawing.Point(249, 19);
-            this.lbl_from.Name = "lbl_from";
-            this.lbl_from.Size = new System.Drawing.Size(41, 16);
-            this.lbl_from.TabIndex = 6;
-            this.lbl_from.Text = "From:";
+            this.dtp_from.TabIndex = 2;
+            this.dtp_from.ValueChanged += new System.EventHandler(this.dtp_from_ValueChanged);
             // 
             // lbl_to
             // 
             this.lbl_to.AutoSize = true;
             this.lbl_to.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_to.ForeColor = System.Drawing.Color.White;
-            this.lbl_to.Location = new System.Drawing.Point(263, 47);
+            this.lbl_to.Location = new System.Drawing.Point(291, 46);
             this.lbl_to.Name = "lbl_to";
             this.lbl_to.Size = new System.Drawing.Size(27, 16);
-            this.lbl_to.TabIndex = 6;
+            this.lbl_to.TabIndex = 1;
             this.lbl_to.Text = "To:";
             // 
-            // lbl_cashierName
+            // lbl_from
             // 
-            this.lbl_cashierName.AutoSize = true;
-            this.lbl_cashierName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_cashierName.ForeColor = System.Drawing.Color.White;
-            this.lbl_cashierName.Location = new System.Drawing.Point(516, 12);
-            this.lbl_cashierName.Name = "lbl_cashierName";
-            this.lbl_cashierName.Size = new System.Drawing.Size(96, 16);
-            this.lbl_cashierName.TabIndex = 7;
-            this.lbl_cashierName.Text = "Cashier Name:";
+            this.lbl_from.AutoSize = true;
+            this.lbl_from.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_from.Location = new System.Drawing.Point(277, 19);
+            this.lbl_from.Name = "lbl_from";
+            this.lbl_from.Size = new System.Drawing.Size(41, 16);
+            this.lbl_from.TabIndex = 1;
+            this.lbl_from.Text = "From:";
             // 
             // lbl_dateFilter
             // 
             this.lbl_dateFilter.AutoSize = true;
             this.lbl_dateFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_dateFilter.ForeColor = System.Drawing.Color.White;
-            this.lbl_dateFilter.Location = new System.Drawing.Point(144, 16);
+            this.lbl_dateFilter.Location = new System.Drawing.Point(172, 15);
             this.lbl_dateFilter.Name = "lbl_dateFilter";
             this.lbl_dateFilter.Size = new System.Drawing.Size(99, 20);
-            this.lbl_dateFilter.TabIndex = 8;
+            this.lbl_dateFilter.TabIndex = 1;
             this.lbl_dateFilter.Text = "Date Filter:";
             // 
-            // lbl_sales
+            // lbl_cashierSales
             // 
-            this.lbl_sales.AutoSize = true;
-            this.lbl_sales.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_sales.ForeColor = System.Drawing.Color.White;
-            this.lbl_sales.Location = new System.Drawing.Point(35, 22);
-            this.lbl_sales.Name = "lbl_sales";
-            this.lbl_sales.Size = new System.Drawing.Size(87, 31);
-            this.lbl_sales.TabIndex = 3;
-            this.lbl_sales.Text = "Sales";
+            this.lbl_cashierSales.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.lbl_cashierSales.AutoSize = true;
+            this.lbl_cashierSales.BackColor = System.Drawing.Color.Transparent;
+            this.lbl_cashierSales.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_cashierSales.ForeColor = System.Drawing.Color.White;
+            this.lbl_cashierSales.Location = new System.Drawing.Point(24, 20);
+            this.lbl_cashierSales.Name = "lbl_cashierSales";
+            this.lbl_cashierSales.Size = new System.Drawing.Size(87, 31);
+            this.lbl_cashierSales.TabIndex = 0;
+            this.lbl_cashierSales.Text = "Sales";
             // 
-            // dgv_sales
+            // dgv_cashierSales
             // 
-            this.dgv_sales.AllowUserToAddRows = false;
-            this.dgv_sales.AllowUserToResizeColumns = false;
-            this.dgv_sales.AllowUserToResizeRows = false;
-            this.dgv_sales.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgv_sales.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.dgv_cashierSales.AllowUserToAddRows = false;
+            this.dgv_cashierSales.AllowUserToResizeColumns = false;
+            this.dgv_cashierSales.AllowUserToResizeRows = false;
+            this.dgv_cashierSales.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dgv_cashierSales.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -195,9 +185,9 @@
             dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_sales.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
-            this.dgv_sales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgv_sales.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgv_cashierSales.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgv_cashierSales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgv_cashierSales.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.cashierSales_num,
             this.cashierSales_ID,
             this.cashierSales_transactionNo,
@@ -210,18 +200,18 @@
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv_sales.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dgv_sales.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgv_sales.EnableHeadersVisualStyles = false;
-            this.dgv_sales.GridColor = System.Drawing.Color.Black;
-            this.dgv_sales.Location = new System.Drawing.Point(0, 75);
-            this.dgv_sales.MultiSelect = false;
-            this.dgv_sales.Name = "dgv_sales";
-            this.dgv_sales.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.dgv_cashierSales.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgv_cashierSales.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgv_cashierSales.EnableHeadersVisualStyles = false;
+            this.dgv_cashierSales.GridColor = System.Drawing.Color.Black;
+            this.dgv_cashierSales.Location = new System.Drawing.Point(0, 105);
+            this.dgv_cashierSales.MultiSelect = false;
+            this.dgv_cashierSales.Name = "dgv_cashierSales";
+            this.dgv_cashierSales.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -229,20 +219,20 @@
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_sales.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dgv_sales.RowHeadersVisible = false;
+            this.dgv_cashierSales.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            this.dgv_cashierSales.RowHeadersVisible = false;
             dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgv_sales.RowsDefaultCellStyle = dataGridViewCellStyle4;
-            this.dgv_sales.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.White;
-            this.dgv_sales.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
-            this.dgv_sales.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.dgv_sales.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgv_sales.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_sales.Size = new System.Drawing.Size(1064, 586);
-            this.dgv_sales.TabIndex = 7;
+            this.dgv_cashierSales.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.dgv_cashierSales.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.White;
+            this.dgv_cashierSales.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
+            this.dgv_cashierSales.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.dgv_cashierSales.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgv_cashierSales.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgv_cashierSales.Size = new System.Drawing.Size(922, 440);
+            this.dgv_cashierSales.TabIndex = 6;
             // 
             // cashierSales_num
             // 
@@ -307,30 +297,54 @@
             this.cashierSale_total.Name = "cashierSale_total";
             this.cashierSale_total.Width = 66;
             // 
-            // module_sales
+            // testMe
+            // 
+            this.testMe.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.testMe.AutoSize = true;
+            this.testMe.BackColor = System.Drawing.Color.Transparent;
+            this.testMe.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.testMe.ForeColor = System.Drawing.Color.White;
+            this.testMe.Location = new System.Drawing.Point(563, 20);
+            this.testMe.Name = "testMe";
+            this.testMe.Size = new System.Drawing.Size(87, 31);
+            this.testMe.TabIndex = 0;
+            this.testMe.Text = "Sales";
+            // 
+            // form_cashierSales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(1064, 661);
+            this.ClientSize = new System.Drawing.Size(922, 545);
             this.ControlBox = false;
-            this.Controls.Add(this.dgv_sales);
-            this.Controls.Add(this.panel_salesHead);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "module_sales";
-            this.Text = "module_sales";
-            this.panel_salesHead.ResumeLayout(false);
-            this.panel_salesHead.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_sales)).EndInit();
+            this.Controls.Add(this.dgv_cashierSales);
+            this.Controls.Add(this.panel_cashierSales);
+            this.Controls.Add(this.panel_cashierSalesHead);
+            this.ForeColor = System.Drawing.Color.White;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Name = "form_cashierSales";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.panel_cashierSalesHead.ResumeLayout(false);
+            this.panel_cashierSales.ResumeLayout(false);
+            this.panel_cashierSales.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_cashierSales)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Panel panel_salesHead;
-        private System.Windows.Forms.Label lbl_sales;
-        private System.Windows.Forms.DataGridView dgv_sales;
+        private System.Windows.Forms.Panel panel_cashierSalesHead;
+        private System.Windows.Forms.Button btn_closeCashierSales;
+        private System.Windows.Forms.Panel panel_cashierSales;
+        private System.Windows.Forms.Label lbl_cashierSales;
+        private System.Windows.Forms.DataGridView dgv_cashierSales;
+        private System.Windows.Forms.DateTimePicker dtp_to;
+        private System.Windows.Forms.DateTimePicker dtp_from;
+        private System.Windows.Forms.Label lbl_to;
+        private System.Windows.Forms.Label lbl_from;
+        private System.Windows.Forms.Label lbl_dateFilter;
         private System.Windows.Forms.DataGridViewTextBoxColumn cashierSales_num;
         private System.Windows.Forms.DataGridViewTextBoxColumn cashierSales_ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn cashierSales_transactionNo;
@@ -340,14 +354,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cashierSale_quantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn cashierSale_discount;
         private System.Windows.Forms.DataGridViewTextBoxColumn cashierSale_total;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.DateTimePicker dtp_to;
-        private System.Windows.Forms.DateTimePicker dtp_from;
-        private System.Windows.Forms.Label lbl_to;
-        private System.Windows.Forms.Label lbl_cashierName;
-        private System.Windows.Forms.Label lbl_dateFilter;
-        private System.Windows.Forms.TextBox tb_salesTotal;
-        private System.Windows.Forms.Button btn_printSales;
-        private System.Windows.Forms.Label lbl_from;
+        private System.Windows.Forms.TextBox tb_totalSales;
+        private System.Windows.Forms.Label testMe;
     }
 }

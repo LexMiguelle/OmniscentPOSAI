@@ -30,13 +30,13 @@
         {
             this.lbl_stocks = new System.Windows.Forms.Label();
             this.panel_stocksHead = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.btn_closeSettings = new System.Windows.Forms.Button();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btn_settingsLogout = new System.Windows.Forms.Button();
             this.lbl_userName = new System.Windows.Forms.Label();
             this.lbl_OldPassword = new System.Windows.Forms.Label();
             this.lbl_NewPassword = new System.Windows.Forms.Label();
             this.btn_back = new System.Windows.Forms.Button();
-            this.btn_cashierLogout = new System.Windows.Forms.Button();
             this.tb_userName = new System.Windows.Forms.TextBox();
             this.lbl_confirmPassword = new System.Windows.Forms.Label();
             this.tb_oldPasswod = new System.Windows.Forms.TextBox();
@@ -72,16 +72,6 @@
             this.panel_stocksHead.Size = new System.Drawing.Size(500, 30);
             this.panel_stocksHead.TabIndex = 3;
             // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.lbl_stocks);
-            this.panel1.Controls.Add(this.btn_cashierLogout);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel1.Location = new System.Drawing.Point(0, 30);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(500, 75);
-            this.panel1.TabIndex = 4;
-            // 
             // btn_closeSettings
             // 
             this.btn_closeSettings.BackColor = System.Drawing.Color.Red;
@@ -96,6 +86,30 @@
             this.btn_closeSettings.Text = "X";
             this.btn_closeSettings.UseVisualStyleBackColor = false;
             this.btn_closeSettings.Click += new System.EventHandler(this.btn_closeSettings_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.lbl_stocks);
+            this.panel1.Controls.Add(this.btn_settingsLogout);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(0, 30);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(500, 75);
+            this.panel1.TabIndex = 4;
+            // 
+            // btn_settingsLogout
+            // 
+            this.btn_settingsLogout.BackColor = System.Drawing.Color.Red;
+            this.btn_settingsLogout.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_settingsLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_settingsLogout.ForeColor = System.Drawing.Color.White;
+            this.btn_settingsLogout.Location = new System.Drawing.Point(288, 19);
+            this.btn_settingsLogout.Name = "btn_settingsLogout";
+            this.btn_settingsLogout.Size = new System.Drawing.Size(200, 40);
+            this.btn_settingsLogout.TabIndex = 6;
+            this.btn_settingsLogout.Text = "Logout";
+            this.btn_settingsLogout.UseVisualStyleBackColor = false;
+            this.btn_settingsLogout.Click += new System.EventHandler(this.btn_settingsLogout_Click);
             // 
             // lbl_userName
             // 
@@ -151,19 +165,6 @@
             this.btn_back.Text = "Back";
             this.btn_back.UseVisualStyleBackColor = false;
             this.btn_back.Click += new System.EventHandler(this.btn_back_Click);
-            // 
-            // btn_cashierLogout
-            // 
-            this.btn_cashierLogout.BackColor = System.Drawing.Color.Red;
-            this.btn_cashierLogout.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btn_cashierLogout.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_cashierLogout.ForeColor = System.Drawing.Color.White;
-            this.btn_cashierLogout.Location = new System.Drawing.Point(288, 19);
-            this.btn_cashierLogout.Name = "btn_cashierLogout";
-            this.btn_cashierLogout.Size = new System.Drawing.Size(200, 40);
-            this.btn_cashierLogout.TabIndex = 6;
-            this.btn_cashierLogout.Text = "Logout";
-            this.btn_cashierLogout.UseVisualStyleBackColor = false;
             // 
             // tb_userName
             // 
@@ -259,7 +260,7 @@
         private System.Windows.Forms.Panel panel_stocksHead;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btn_closeSettings;
-        private System.Windows.Forms.Button btn_cashierLogout;
+        private System.Windows.Forms.Button btn_settingsLogout;
         private System.Windows.Forms.Label lbl_userName;
         private System.Windows.Forms.Label lbl_OldPassword;
         private System.Windows.Forms.Label lbl_NewPassword;

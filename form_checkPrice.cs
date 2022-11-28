@@ -19,13 +19,10 @@ namespace OmniscentPOSAI
         DBConnector db_connect = new DBConnector();
         SqlDataReader sql_datareader;
 
-        module_cashier cashierModule;
-
-        public form_checkPrice(module_cashier cashier)
+        public form_checkPrice()
         {
             InitializeComponent();
             sql_connect = new SqlConnection(db_connect.DBConnection());
-            cashierModule = cashier;
         }
 
         // clearAll function

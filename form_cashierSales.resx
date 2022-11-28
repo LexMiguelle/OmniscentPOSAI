@@ -117,17 +117,6 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
-  <data name="btn_printSales.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
-    <value>
-        iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
-        YQUAAAAJcEhZcwAAAHUAAAB1AePCB2UAAAAZdEVYdFNvZnR3YXJlAHd3dy5pbmtzY2FwZS5vcmeb7jwa
-        AAAAnUlEQVQ4T52T0Q2AIAxEGcsVjN8u4h4uoh+O4R7qHnqH1kBTqPGSlwC9HkIwKE3gdKCnKBZX0Bdg
-        zQ2oGbz6v4AOHMA6b40dtCAOFmCduQZ7NhDTuOBJGps4u8fs/Rwgnz7H2Y8ALTNgAHLTJeihzAAaeKm6
-        SZAaVQwQg6W0ngWMz4L3VFmTp86eNyDFC9D+TOkOFp9+Jr2DJgkI4QJLoGp0TyeH3wAAAABJRU5ErkJg
-        gg==
-</value>
-  </data>
   <metadata name="cashierSales_num.UserAddedColumn" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>

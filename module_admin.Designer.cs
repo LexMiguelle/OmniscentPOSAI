@@ -33,8 +33,7 @@ namespace OmniscentPOSAI
             this.panel_head = new System.Windows.Forms.Panel();
             this.btn_close = new System.Windows.Forms.Button();
             this.panel_menu = new System.Windows.Forms.Panel();
-            this.lbl_role = new System.Windows.Forms.Label();
-            this.lbl_name = new System.Windows.Forms.Label();
+            this.tb_name = new System.Windows.Forms.TextBox();
             this.btn_logout = new System.Windows.Forms.Button();
             this.btn_users = new System.Windows.Forms.Button();
             this.btn_sales = new System.Windows.Forms.Button();
@@ -45,6 +44,8 @@ namespace OmniscentPOSAI
             this.btn_dashboard = new System.Windows.Forms.Button();
             this.pb_logo = new System.Windows.Forms.PictureBox();
             this.panel_activity = new System.Windows.Forms.Panel();
+            this.tb_username = new System.Windows.Forms.TextBox();
+            this.tb_role = new System.Windows.Forms.TextBox();
             this.panel_head.SuspendLayout();
             this.panel_menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_logo)).BeginInit();
@@ -77,8 +78,9 @@ namespace OmniscentPOSAI
             // panel_menu
             // 
             this.panel_menu.BackColor = System.Drawing.Color.Black;
-            this.panel_menu.Controls.Add(this.lbl_role);
-            this.panel_menu.Controls.Add(this.lbl_name);
+            this.panel_menu.Controls.Add(this.tb_role);
+            this.panel_menu.Controls.Add(this.tb_username);
+            this.panel_menu.Controls.Add(this.tb_name);
             this.panel_menu.Controls.Add(this.btn_logout);
             this.panel_menu.Controls.Add(this.btn_users);
             this.panel_menu.Controls.Add(this.btn_sales);
@@ -94,31 +96,19 @@ namespace OmniscentPOSAI
             this.panel_menu.Size = new System.Drawing.Size(300, 736);
             this.panel_menu.TabIndex = 1;
             // 
-            // lbl_role
+            // tb_name
             // 
-            this.lbl_role.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.lbl_role.AutoSize = true;
-            this.lbl_role.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_role.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_role.ForeColor = System.Drawing.Color.White;
-            this.lbl_role.Location = new System.Drawing.Point(122, 275);
-            this.lbl_role.Name = "lbl_role";
-            this.lbl_role.Size = new System.Drawing.Size(51, 20);
-            this.lbl_role.TabIndex = 2;
-            this.lbl_role.Text = "@role";
-            // 
-            // lbl_name
-            // 
-            this.lbl_name.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.lbl_name.AutoSize = true;
-            this.lbl_name.BackColor = System.Drawing.Color.Transparent;
-            this.lbl_name.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_name.ForeColor = System.Drawing.Color.White;
-            this.lbl_name.Location = new System.Drawing.Point(65, 244);
-            this.lbl_name.Name = "lbl_name";
-            this.lbl_name.Size = new System.Drawing.Size(170, 31);
-            this.lbl_name.TabIndex = 2;
-            this.lbl_name.Text = "@username";
+            this.tb_name.BackColor = System.Drawing.Color.Black;
+            this.tb_name.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tb_name.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_name.ForeColor = System.Drawing.Color.White;
+            this.tb_name.Location = new System.Drawing.Point(0, 238);
+            this.tb_name.Name = "tb_name";
+            this.tb_name.ReadOnly = true;
+            this.tb_name.Size = new System.Drawing.Size(300, 22);
+            this.tb_name.TabIndex = 3;
+            this.tb_name.Text = "Last name, First name";
+            this.tb_name.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // btn_logout
             // 
@@ -138,12 +128,15 @@ namespace OmniscentPOSAI
             // btn_users
             // 
             this.btn_users.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_users.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_users.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btn_users.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.btn_users.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btn_users.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_users.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_users.ForeColor = System.Drawing.Color.White;
-            this.btn_users.Location = new System.Drawing.Point(0, 594);
+            this.btn_users.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btn_users.Location = new System.Drawing.Point(0, 605);
             this.btn_users.Name = "btn_users";
-            this.btn_users.Size = new System.Drawing.Size(300, 40);
+            this.btn_users.Size = new System.Drawing.Size(300, 45);
             this.btn_users.TabIndex = 1;
             this.btn_users.Text = "Users";
             this.btn_users.UseVisualStyleBackColor = true;
@@ -152,12 +145,15 @@ namespace OmniscentPOSAI
             // btn_sales
             // 
             this.btn_sales.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_sales.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_sales.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btn_sales.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.btn_sales.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btn_sales.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_sales.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_sales.ForeColor = System.Drawing.Color.White;
-            this.btn_sales.Location = new System.Drawing.Point(0, 502);
+            this.btn_sales.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btn_sales.Location = new System.Drawing.Point(0, 515);
             this.btn_sales.Name = "btn_sales";
-            this.btn_sales.Size = new System.Drawing.Size(300, 40);
+            this.btn_sales.Size = new System.Drawing.Size(300, 45);
             this.btn_sales.TabIndex = 1;
             this.btn_sales.Text = "Sales";
             this.btn_sales.UseVisualStyleBackColor = true;
@@ -166,12 +162,15 @@ namespace OmniscentPOSAI
             // btn_records
             // 
             this.btn_records.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_records.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_records.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btn_records.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.btn_records.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btn_records.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_records.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_records.ForeColor = System.Drawing.Color.White;
-            this.btn_records.Location = new System.Drawing.Point(0, 548);
+            this.btn_records.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btn_records.Location = new System.Drawing.Point(0, 560);
             this.btn_records.Name = "btn_records";
-            this.btn_records.Size = new System.Drawing.Size(300, 40);
+            this.btn_records.Size = new System.Drawing.Size(300, 45);
             this.btn_records.TabIndex = 1;
             this.btn_records.Text = "Records";
             this.btn_records.UseVisualStyleBackColor = true;
@@ -180,12 +179,15 @@ namespace OmniscentPOSAI
             // btn_stocks
             // 
             this.btn_stocks.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_stocks.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_stocks.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btn_stocks.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.btn_stocks.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btn_stocks.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_stocks.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_stocks.ForeColor = System.Drawing.Color.White;
-            this.btn_stocks.Location = new System.Drawing.Point(0, 456);
+            this.btn_stocks.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btn_stocks.Location = new System.Drawing.Point(0, 470);
             this.btn_stocks.Name = "btn_stocks";
-            this.btn_stocks.Size = new System.Drawing.Size(300, 40);
+            this.btn_stocks.Size = new System.Drawing.Size(300, 45);
             this.btn_stocks.TabIndex = 1;
             this.btn_stocks.Text = "Stocks";
             this.btn_stocks.UseVisualStyleBackColor = true;
@@ -194,12 +196,15 @@ namespace OmniscentPOSAI
             // btn_products
             // 
             this.btn_products.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_products.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_products.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btn_products.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.btn_products.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btn_products.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_products.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_products.ForeColor = System.Drawing.Color.White;
-            this.btn_products.Location = new System.Drawing.Point(0, 410);
+            this.btn_products.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btn_products.Location = new System.Drawing.Point(0, 425);
             this.btn_products.Name = "btn_products";
-            this.btn_products.Size = new System.Drawing.Size(300, 40);
+            this.btn_products.Size = new System.Drawing.Size(300, 45);
             this.btn_products.TabIndex = 1;
             this.btn_products.Text = "Products";
             this.btn_products.UseVisualStyleBackColor = true;
@@ -208,12 +213,15 @@ namespace OmniscentPOSAI
             // btn_categories
             // 
             this.btn_categories.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_categories.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_categories.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btn_categories.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.btn_categories.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btn_categories.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_categories.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_categories.ForeColor = System.Drawing.Color.White;
-            this.btn_categories.Location = new System.Drawing.Point(0, 364);
+            this.btn_categories.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btn_categories.Location = new System.Drawing.Point(0, 380);
             this.btn_categories.Name = "btn_categories";
-            this.btn_categories.Size = new System.Drawing.Size(300, 40);
+            this.btn_categories.Size = new System.Drawing.Size(300, 45);
             this.btn_categories.TabIndex = 1;
             this.btn_categories.Text = "Categories";
             this.btn_categories.UseVisualStyleBackColor = true;
@@ -222,12 +230,15 @@ namespace OmniscentPOSAI
             // btn_dashboard
             // 
             this.btn_dashboard.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.btn_dashboard.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_dashboard.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btn_dashboard.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Black;
+            this.btn_dashboard.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.btn_dashboard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_dashboard.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_dashboard.ForeColor = System.Drawing.Color.White;
-            this.btn_dashboard.Location = new System.Drawing.Point(0, 318);
+            this.btn_dashboard.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(255)))), ((int)(((byte)(192)))));
+            this.btn_dashboard.Location = new System.Drawing.Point(0, 335);
             this.btn_dashboard.Name = "btn_dashboard";
-            this.btn_dashboard.Size = new System.Drawing.Size(300, 40);
+            this.btn_dashboard.Size = new System.Drawing.Size(300, 45);
             this.btn_dashboard.TabIndex = 1;
             this.btn_dashboard.Text = "Dashboard";
             this.btn_dashboard.UseVisualStyleBackColor = true;
@@ -254,6 +265,34 @@ namespace OmniscentPOSAI
             this.panel_activity.Size = new System.Drawing.Size(1064, 736);
             this.panel_activity.TabIndex = 2;
             // 
+            // tb_username
+            // 
+            this.tb_username.BackColor = System.Drawing.Color.Black;
+            this.tb_username.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tb_username.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_username.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.tb_username.Location = new System.Drawing.Point(0, 266);
+            this.tb_username.Name = "tb_username";
+            this.tb_username.ReadOnly = true;
+            this.tb_username.Size = new System.Drawing.Size(300, 19);
+            this.tb_username.TabIndex = 3;
+            this.tb_username.Text = "@username";
+            this.tb_username.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // tb_role
+            // 
+            this.tb_role.BackColor = System.Drawing.Color.Black;
+            this.tb_role.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tb_role.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_role.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.tb_role.Location = new System.Drawing.Point(-3, 294);
+            this.tb_role.Name = "tb_role";
+            this.tb_role.ReadOnly = true;
+            this.tb_role.Size = new System.Drawing.Size(300, 15);
+            this.tb_role.TabIndex = 3;
+            this.tb_role.Text = "administrator";
+            this.tb_role.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // module_admin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -266,7 +305,7 @@ namespace OmniscentPOSAI
             this.Controls.Add(this.panel_head);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "module_admin";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.panel_head.ResumeLayout(false);
             this.panel_menu.ResumeLayout(false);
             this.panel_menu.PerformLayout();
@@ -280,8 +319,6 @@ namespace OmniscentPOSAI
         private System.Windows.Forms.Panel panel_head;
         private System.Windows.Forms.Button btn_close;
         private System.Windows.Forms.Panel panel_menu;
-        private System.Windows.Forms.Label lbl_role;
-        private System.Windows.Forms.Label lbl_name;
         public System.Windows.Forms.Button btn_logout;
         public System.Windows.Forms.Button btn_stocks;
         public System.Windows.Forms.Button btn_products;
@@ -292,5 +329,8 @@ namespace OmniscentPOSAI
         public System.Windows.Forms.Button btn_users;
         public System.Windows.Forms.Button btn_sales;
         public System.Windows.Forms.Button btn_records;
+        public System.Windows.Forms.TextBox tb_role;
+        public System.Windows.Forms.TextBox tb_username;
+        public System.Windows.Forms.TextBox tb_name;
     }
 }

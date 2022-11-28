@@ -227,10 +227,10 @@
             this.Controls.Add(this.lbl_product);
             this.Controls.Add(this.lbl_productID);
             this.Controls.Add(this.panel_checkPriceHead);
-            this.Enabled = false;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.Enabled = true;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "form_checkPrice";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.panel_checkPriceHead.ResumeLayout(false);
             this.panel_checkPrice.ResumeLayout(false);
             this.panel_checkPrice.PerformLayout();

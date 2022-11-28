@@ -39,8 +39,8 @@
             this.panel_dateTime = new System.Windows.Forms.Panel();
             this.lbl_date = new System.Windows.Forms.Label();
             this.lbl_time = new System.Windows.Forms.Label();
-            this.lbl_role = new System.Windows.Forms.Label();
-            this.lbl_name = new System.Windows.Forms.Label();
+            this.tb_role = new System.Windows.Forms.TextBox();
+            this.tb_name = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panel_buttonMenu = new System.Windows.Forms.Panel();
             this.btn_settleTransaction = new System.Windows.Forms.Button();
@@ -86,14 +86,13 @@
             this.cart_add = new System.Windows.Forms.DataGridViewImageColumn();
             this.cart_remove = new System.Windows.Forms.DataGridViewImageColumn();
             this.timer_clock = new System.Windows.Forms.Timer(this.components);
-            this.reportViewer1 = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.tb_username = new System.Windows.Forms.TextBox();
             this.panel_cashierHead.SuspendLayout();
             this.panel_cashierInfo.SuspendLayout();
             this.panel_dateTime.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel_buttonMenu.SuspendLayout();
             this.panel1.SuspendLayout();
-            this.panel_preview.SuspendLayout();
             this.panel_compute.SuspendLayout();
             this.panel_totalAmount.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -122,12 +121,14 @@
             this.btn_close.TabIndex = 0;
             this.btn_close.Text = "X";
             this.btn_close.UseVisualStyleBackColor = false;
+            this.btn_close.Click += new System.EventHandler(this.btn_close_Click);
             // 
             // panel_cashierInfo
             // 
             this.panel_cashierInfo.Controls.Add(this.panel_dateTime);
-            this.panel_cashierInfo.Controls.Add(this.lbl_role);
-            this.panel_cashierInfo.Controls.Add(this.lbl_name);
+            this.panel_cashierInfo.Controls.Add(this.tb_username);
+            this.panel_cashierInfo.Controls.Add(this.tb_role);
+            this.panel_cashierInfo.Controls.Add(this.tb_name);
             this.panel_cashierInfo.Controls.Add(this.pictureBox1);
             this.panel_cashierInfo.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel_cashierInfo.Location = new System.Drawing.Point(0, 30);
@@ -165,25 +166,31 @@
             this.lbl_time.TabIndex = 7;
             this.lbl_time.Text = "00:00:00 am";
             // 
-            // lbl_role
+            // tb_role
             // 
-            this.lbl_role.AutoSize = true;
-            this.lbl_role.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_role.Location = new System.Drawing.Point(94, 53);
-            this.lbl_role.Name = "lbl_role";
-            this.lbl_role.Size = new System.Drawing.Size(74, 24);
-            this.lbl_role.TabIndex = 1;
-            this.lbl_role.Text = "Cashier";
+            this.tb_role.BackColor = System.Drawing.Color.Black;
+            this.tb_role.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tb_role.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_role.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
+            this.tb_role.Location = new System.Drawing.Point(99, 71);
+            this.tb_role.Name = "tb_role";
+            this.tb_role.Size = new System.Drawing.Size(77, 19);
+            this.tb_role.TabIndex = 2;
+            this.tb_role.Text = "cashier";
+            this.tb_role.TextChanged += new System.EventHandler(this.tb_searchBox_TextChanged);
             // 
-            // lbl_name
+            // tb_name
             // 
-            this.lbl_name.AutoSize = true;
-            this.lbl_name.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_name.Location = new System.Drawing.Point(93, 12);
-            this.lbl_name.Name = "lbl_name";
-            this.lbl_name.Size = new System.Drawing.Size(113, 31);
-            this.lbl_name.TabIndex = 1;
-            this.lbl_name.Text = "@name";
+            this.tb_name.BackColor = System.Drawing.Color.Black;
+            this.tb_name.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tb_name.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_name.ForeColor = System.Drawing.Color.White;
+            this.tb_name.Location = new System.Drawing.Point(99, 12);
+            this.tb_name.Name = "tb_name";
+            this.tb_name.Size = new System.Drawing.Size(310, 28);
+            this.tb_name.TabIndex = 2;
+            this.tb_name.Text = "Last name, First name ";
+            this.tb_name.TextChanged += new System.EventHandler(this.tb_searchBox_TextChanged);
             // 
             // pictureBox1
             // 
@@ -214,6 +221,7 @@
             // 
             this.btn_settleTransaction.BackColor = System.Drawing.Color.Green;
             this.btn_settleTransaction.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btn_settleTransaction.Enabled = false;
             this.btn_settleTransaction.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_settleTransaction.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_settleTransaction.Location = new System.Drawing.Point(966, 0);
@@ -317,7 +325,6 @@
             // 
             // panel_preview
             // 
-            this.panel_preview.Controls.Add(this.reportViewer1);
             this.panel_preview.Location = new System.Drawing.Point(7, 6);
             this.panel_preview.Name = "panel_preview";
             this.panel_preview.Size = new System.Drawing.Size(385, 339);
@@ -525,6 +532,7 @@
             // 
             this.transactionNo.AutoSize = true;
             this.transactionNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.transactionNo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.transactionNo.Location = new System.Drawing.Point(182, 20);
             this.transactionNo.Name = "transactionNo";
             this.transactionNo.Size = new System.Drawing.Size(130, 24);
@@ -587,19 +595,24 @@
             this.dgv_cart.MultiSelect = false;
             this.dgv_cart.Name = "dgv_cart";
             dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle12.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgv_cart.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
             this.dgv_cart.RowHeadersVisible = false;
             this.dgv_cart.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
+            this.dgv_cart.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.White;
+            this.dgv_cart.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
+            this.dgv_cart.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.dgv_cart.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
             this.dgv_cart.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_cart.Size = new System.Drawing.Size(966, 438);
             this.dgv_cart.TabIndex = 6;
             this.dgv_cart.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_cart_CellContentClick);
+            this.dgv_cart.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgv_cart_RowsAdded);
             this.dgv_cart.SelectionChanged += new System.EventHandler(this.dgv_cart_SelectionChanged);
             // 
             // cart_num
@@ -724,16 +737,21 @@
             // 
             // timer_clock
             // 
+            this.timer_clock.Enabled = true;
             this.timer_clock.Tick += new System.EventHandler(this.timer_clock_Tick);
             // 
-            // reportViewer1
+            // tb_username
             // 
-            this.reportViewer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.reportViewer1.Location = new System.Drawing.Point(0, 0);
-            this.reportViewer1.Name = "reportViewer1";
-            this.reportViewer1.ServerReport.BearerToken = null;
-            this.reportViewer1.Size = new System.Drawing.Size(385, 339);
-            this.reportViewer1.TabIndex = 0;
+            this.tb_username.BackColor = System.Drawing.Color.Black;
+            this.tb_username.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tb_username.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_username.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.tb_username.Location = new System.Drawing.Point(99, 46);
+            this.tb_username.Name = "tb_username";
+            this.tb_username.Size = new System.Drawing.Size(227, 19);
+            this.tb_username.TabIndex = 2;
+            this.tb_username.Text = "@username";
+            this.tb_username.TextChanged += new System.EventHandler(this.tb_searchBox_TextChanged);
             // 
             // module_cashier
             // 
@@ -751,8 +769,8 @@
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "module_cashier";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "module_cashier";
-            this.Load += new System.EventHandler(this.module_cashier_Load);
             this.panel_cashierHead.ResumeLayout(false);
             this.panel_cashierInfo.ResumeLayout(false);
             this.panel_cashierInfo.PerformLayout();
@@ -761,7 +779,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel_buttonMenu.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
-            this.panel_preview.ResumeLayout(false);
             this.panel_compute.ResumeLayout(false);
             this.panel_compute.PerformLayout();
             this.panel_totalAmount.ResumeLayout(false);
@@ -781,8 +798,6 @@
         private System.Windows.Forms.Panel panel_dateTime;
         private System.Windows.Forms.Label lbl_date;
         private System.Windows.Forms.Label lbl_time;
-        private System.Windows.Forms.Label lbl_role;
-        private System.Windows.Forms.Label lbl_name;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel_buttonMenu;
         private System.Windows.Forms.Button btn_settleTransaction;
@@ -829,5 +844,8 @@
         private System.Windows.Forms.LinkLabel btn_addDiscount;
         private System.Windows.Forms.Timer timer_clock;
         private Microsoft.Reporting.WinForms.ReportViewer reportViewer1;
+        public System.Windows.Forms.TextBox tb_role;
+        public System.Windows.Forms.TextBox tb_name;
+        public System.Windows.Forms.TextBox tb_username;
     }
 }

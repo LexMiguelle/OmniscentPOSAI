@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -13,12 +14,17 @@ namespace OmniscentPOSAI
 {
     public partial class module_settings : Form
     {
+        SqlConnection sql_connect;
+        SqlCommand sql_command;
+        SqlDataReader sql_datareader;
+        DBConnector db_connect = new DBConnector();
 
-        Thread thread;
+        module_cashier cashierModule;
 
-        public module_settings()
+        public module_settings(module_cashier cashier)
         {
             InitializeComponent();
+            cashierModule = cashier;
         }
 
         // closeCashier function
@@ -27,15 +33,6 @@ namespace OmniscentPOSAI
             Application.Exit();
             Application.Run(new module_login());
         }
-
-        // logout button event
-        private void btn_logout_Click(object sender, EventArgs e)
-        {
-            thread = new Thread(closeCashier);
-            thread.SetApartmentState(ApartmentState.STA);
-            thread.Start();
-        }
-
 
         // update button event
         private void btn_updatePassword_Click(object sender, EventArgs e)
@@ -53,6 +50,13 @@ namespace OmniscentPOSAI
         private void btn_closeSettings_Click(object sender, EventArgs e)
         {
             this.Dispose();
+        }
+
+        // logout button event
+        private void btn_settingsLogout_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
+            cashierModule.cashierLogout();
         }
     }
 }

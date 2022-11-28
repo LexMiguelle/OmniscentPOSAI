@@ -22,14 +22,24 @@ namespace OmniscentPOSAI
         SqlDataReader sql_datareader;
         DBConnector db_connect = new DBConnector();
 
-        public module_cashier()
-        { 
+        module_login loginModule;
+
+        public module_cashier(module_login login)
+        {
             InitializeComponent();
             sql_connect = new SqlConnection(db_connect.DBConnection());
             this.KeyPreview = true;
             btn_addProduct.Enabled = false;
             tb_searchBox.Enabled = false;
             btn_scanBarcode.Enabled = false;
+            loginModule = login;
+        }
+
+        // logout function
+        public void cashierLogout()
+        {
+            this.Dispose();
+            loginModule.Dispose();
         }
 
         // generate transaction number function
@@ -171,20 +181,21 @@ namespace OmniscentPOSAI
         // check price button event
         private void btn_checkPrice_Click(object sender, EventArgs e)
         {
-            form_checkPrice checkPrice = new form_checkPrice(this);
-            checkPrice.ShowDialog(this);
+            form_checkPrice checkPrice = new form_checkPrice();
+            checkPrice.ShowDialog();
         }
 
         // sales button event
         private void btn_cashierSales_Click(object sender, EventArgs e)
         {
-
+            form_cashierSales cashierSales = new form_cashierSales(this);
+            cashierSales.ShowDialog();
         }
 
         // settings button event
         private void btn_settings_Click(object sender, EventArgs e)
         {
-            module_settings settings = new module_settings();
+            module_settings settings = new module_settings(this);
             settings.ShowDialog();
 
         }
@@ -301,10 +312,18 @@ namespace OmniscentPOSAI
             prc = dgv_cart[6, i].Value.ToString();
         }
 
-        private void module_cashier_Load(object sender, EventArgs e)
+        // close button event
+        private void btn_close_Click(object sender, EventArgs e)
         {
-
-            this.reportViewer1.RefreshReport();
+            if (MessageBox.Show("Close the application without logging out?", "Omniscent: Point of Sale System", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                this.Dispose();
+                loginModule.Dispose();
+            }
+            else
+            {
+                return;
+            }
         }
     }
 }

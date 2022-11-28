@@ -18,12 +18,15 @@ namespace OmniscentPOSAI
         SqlConnection sql_connect;
         DBConnector db_connect = new DBConnector();
 
-        public module_admin()
+        module_login loginModule;
+
+        public module_admin(module_login login)
         {
 
             InitializeComponent();
             sql_connect = new SqlConnection(db_connect.DBConnection());
             sql_connect.Open();
+            loginModule = login;
         }
 
         // closeAdmin function
@@ -121,10 +124,8 @@ namespace OmniscentPOSAI
         // logout button event
         private void btn_logout_Click(object sender, EventArgs e)
         {
-            this.Close();
-            thread = new Thread(closeAdmin);
-            thread.SetApartmentState(ApartmentState.STA);
-            thread.Start();
+            this.Dispose();
+            loginModule.Show();
         }
 
         
@@ -132,7 +133,15 @@ namespace OmniscentPOSAI
         // close button event
         private void btn_close_Click(object sender, EventArgs e)
         {
-            this.Dispose();
+            if (MessageBox.Show("Close the application without logging out?", "Omniscent: Inventory System", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                this.Dispose();
+                loginModule.Dispose();
+            } else
+            {
+                return;
+            }
+            
         }
     }
 }

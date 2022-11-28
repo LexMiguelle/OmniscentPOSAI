@@ -16,6 +16,8 @@ namespace OmniscentPOSAI
         SqlConnection sql_connect = new SqlConnection();
         SqlCommand sql_command = new SqlCommand();
         DBConnector db_connect = new DBConnector();
+        SqlDataReader sql_datareader;
+
         module_cashier cashierModule;
 
         private string productID;
@@ -43,13 +45,89 @@ namespace OmniscentPOSAI
         {
             if ((e.KeyChar == 13) && (tb_addQuantity.Text != String.Empty))
             {
+                bool hasRows = false;
+                string transactionID = "";
+
                 sql_connect.Open();
-                sql_command = new SqlCommand("INSERT INTO tbl_transaction (transactionNo, productID, price, quantity, transactionDate) VALUES (@transactionNo, @productID, @price, @quantity, @transactionDate)", sql_connect);
-                sql_command.Parameters.AddWithValue("@transactionNo", transactionNo);
+                sql_command = new SqlCommand("SELECT * FROM tbl_transaction WHERE transactionNo = @transactionNo AND productID = @productID", sql_connect);
+                sql_command.Parameters.AddWithValue("@transactionNo", cashierModule.transactionNo.Text);
                 sql_command.Parameters.AddWithValue("@productID", productID);
-                sql_command.Parameters.AddWithValue("@price", price);
-                sql_command.Parameters.AddWithValue("@quantity", int.Parse(tb_addQuantity.Text));
-                sql_command.Parameters.AddWithValue("@transactionDate", DateTime.Now);
+                sql_datareader = sql_command.ExecuteReader();
+                sql_datareader.Read();
+                if (sql_datareader.HasRows)
+                {
+                    hasRows = true;
+                    transactionID = sql_datareader["transactionID"].ToString();
+                }
+                else
+                {
+                    hasRows = false;
+                }
+                sql_datareader.Close();
+                sql_connect.Close();
+
+                if (hasRows == true)
+                {
+                    sql_connect.Open();
+                    sql_command = new SqlCommand("UPDATE tbl_transaction SET quantity = (quantity + " + int.Parse(tb_addQuantity.Text) + ") WHERE transactionID = '" + transactionID + "'", sql_connect);
+                    sql_command.ExecuteNonQuery();
+                    sql_connect.Close();
+
+                    cashierModule.tb_searchBox.Clear();
+                    cashierModule.tb_searchBox.Focus();
+                    cashierModule.LoadCart();
+                    this.Dispose();
+                }
+                else
+                {
+                    sql_connect.Open();
+                    sql_command = new SqlCommand("INSERT INTO tbl_transaction (transactionNo, productID, price, quantity, transactionDate, cashierName) VALUES (@transactionNo, @productID, @price, @quantity, @transactionDate, @cashierName)", sql_connect);
+                    sql_command.Parameters.AddWithValue("@transactionNo", transactionNo);
+                    sql_command.Parameters.AddWithValue("@productID", productID);
+                    sql_command.Parameters.AddWithValue("@price", price);
+                    sql_command.Parameters.AddWithValue("@quantity", int.Parse(tb_addQuantity.Text));
+                    sql_command.Parameters.AddWithValue("@transactionDate", DateTime.Now);
+                    sql_command.Parameters.AddWithValue("@cashierName", cashierModule.tb_name.Text);
+                    sql_command.ExecuteNonQuery();
+                    sql_connect.Close();
+
+                    cashierModule.tb_searchBox.Clear();
+                    cashierModule.tb_searchBox.Focus();
+                    cashierModule.LoadCart();
+                    this.Dispose();
+                }
+                
+            }
+        }
+
+        // OK button event
+        private void btn_OK_Click(object sender, EventArgs e)
+        {
+            bool hasRows = false;
+            string transactionID = "";
+
+            sql_connect.Open();
+            sql_command = new SqlCommand("SELECT * FROM tbl_transaction WHERE transactionNo = @transactionNo AND productID = @productID", sql_connect);
+            sql_command.Parameters.AddWithValue("@transactionNo", cashierModule.transactionNo.Text);
+            sql_command.Parameters.AddWithValue("@productID", productID);
+            sql_datareader = sql_command.ExecuteReader();
+            sql_datareader.Read();
+            if (sql_datareader.HasRows)
+            {
+                hasRows = true;
+                transactionID = sql_datareader["transactionID"].ToString();
+            }
+            else
+            {
+                hasRows = false;
+            }
+            sql_datareader.Close();
+            sql_connect.Close();
+
+            if (hasRows == true)
+            {
+                sql_connect.Open();
+                sql_command = new SqlCommand("UPDATE tbl_transaction SET quantity = (quantity + " + int.Parse(tb_addQuantity.Text) + ") WHERE transactionID = '" + transactionID + "'", sql_connect);
                 sql_command.ExecuteNonQuery();
                 sql_connect.Close();
 
@@ -58,20 +136,16 @@ namespace OmniscentPOSAI
                 cashierModule.LoadCart();
                 this.Dispose();
             }
-        }
-
-        // OK button event
-        private void btn_OK_Click(object sender, EventArgs e)
-        {
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                 if (tb_addQuantity.Text != String.Empty)
+            else
             {
                 sql_connect.Open();
-                sql_command = new SqlCommand("INSERT INTO tbl_transaction (transactionNo, productID, price, quantity, transactionDate) VALUES (@transactionNo, @productID, @price, @quantity, @transactionDate)", sql_connect);
+                sql_command = new SqlCommand("INSERT INTO tbl_transaction (transactionNo, productID, price, quantity, transactionDate, cashierName) VALUES (@transactionNo, @productID, @price, @quantity, @transactionDate, @cashierName)", sql_connect);
                 sql_command.Parameters.AddWithValue("@transactionNo", transactionNo);
                 sql_command.Parameters.AddWithValue("@productID", productID);
                 sql_command.Parameters.AddWithValue("@price", price);
                 sql_command.Parameters.AddWithValue("@quantity", int.Parse(tb_addQuantity.Text));
                 sql_command.Parameters.AddWithValue("@transactionDate", DateTime.Now);
+                sql_command.Parameters.AddWithValue("@cashierName", cashierModule.tb_name.Text);
                 sql_command.ExecuteNonQuery();
                 sql_connect.Close();
 
