@@ -1,23 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Data.SqlClient;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.Data.SqlClient;
 
 namespace OmniscentPOSAI
 {
-    
+
 
     public partial class module_login : Form
     {
-        Thread thread;
 
         SqlConnection sql_connect = new SqlConnection();
         SqlCommand sql_command = new SqlCommand();
@@ -30,48 +20,6 @@ namespace OmniscentPOSAI
             sql_connect = new SqlConnection(db_connect.DBConnection());
         }
 
-        /* public void openAdmin()
-        {
-            Application.Run(new module_admin());
-        }
-
-        public void openCashier()
-        {
-            Application.Run(new module_cashier());
-        }
-
-
-        private void btn_login_Click(object sender, EventArgs e)
-        {
-            
-            try
-            {
-                if (tb_username.Text == "admin" && tb_password.Text == "admin")
-                {
-                    this.Close();
-                    thread = new Thread(openAdmin);
-                    thread.SetApartmentState(ApartmentState.STA);
-                    thread.Start();
-
-                }
-                else if (tb_username.Text == "cashier" && tb_password.Text == "cashier")
-                {
-                    this.Close();
-                    thread = new Thread(openCashier);
-                    thread.SetApartmentState(ApartmentState.STA);
-                    thread.Start();
-                }
-                else
-                {
-                    MessageBox.Show("Please recheck your username or password", "INVALID USER", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-            }
-            catch
-            {
-                MessageBox.Show("Please recheck your username or password", "INVALID USER", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-           */
-
         private void btn_login_Click(object sender, EventArgs e)
         {
             string _username = "";
@@ -79,8 +27,11 @@ namespace OmniscentPOSAI
             string _lastName = "";
             string _firstName = "";
 
+            
+
             try
             {
+                
                 bool found = false;
 
                 sql_connect.Open();
@@ -89,6 +40,7 @@ namespace OmniscentPOSAI
                 sql_command.Parameters.AddWithValue("@password", tb_password.Text);
                 sql_datareader = sql_command.ExecuteReader();
                 sql_datareader.Read();
+
                 if (sql_datareader.HasRows)
                 {
                     found = true;
@@ -100,8 +52,8 @@ namespace OmniscentPOSAI
                 else
                 {
                     found = false;
-
                 }
+
                 sql_datareader.Close();
                 sql_connect.Close();
 
@@ -134,27 +86,49 @@ namespace OmniscentPOSAI
                         cashierModule.tb_role.Text = _role;
                         cashierModule.ShowDialog();
                     }
+                    else if (_role == "manager")
+                    {
+                        MessageBox.Show("Welcome " + _firstName + " " + _lastName + "!", "Access Granted", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        tb_username.Clear();
+                        tb_password.Clear();
+                        this.Hide();
+                    }
                     else
                     {
-                        MessageBox.Show("Invalid User!", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                        return;
+                        MessageBox.Show("Invalid User!", "LOGIN", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        this.Dispose();
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Invalid username or password", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }}
+                    int attempts = 1;
+                    int maxAttempts = 3;
+                    int remainingAttempts = maxAttempts - attempts;
+
+                    if (attempts <= maxAttempts)
+                    {
+                        if (MessageBox.Show("Invalid username/password\nYou have " + remainingAttempts + " attempts left", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Error) == DialogResult.OK)
+                        {
+                            attempts++;
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Max login attempts reached", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        this.Dispose();
+                    } 
+                }
+            }
             catch (Exception except)
             {
                 sql_connect.Close();
                 MessageBox.Show(except.Message, "LOGIN", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
+        } 
 
         private void btn_exit_Click(object sender, EventArgs e)
         {
-            Close();
+            this.Dispose();
         }
     }
 }

@@ -22,6 +22,8 @@ namespace OmniscentPOSAI
 
         module_cashier cashierModule;
 
+        string userCashier;
+
         public form_cashierSales(module_cashier cashier)
         {
             InitializeComponent();
@@ -29,11 +31,7 @@ namespace OmniscentPOSAI
             LoadCashierSales();
             cashierModule = cashier;
             testMe.Text = cashierModule.tb_username.Text;
-        }
-
-        private void btn_closeCashierSales_Click(object sender, EventArgs e)
-        {
-            this.Dispose();
+            userCashier = cashierModule.tb_name.Text.ToString();
         }
 
         // load to dgv_cashierSales
@@ -44,11 +42,11 @@ namespace OmniscentPOSAI
 
             string dateMin = dtp_from.Value.ToString("yyyy-MM-dd 00:00:00");
             string dateMax = dtp_to.Value.ToString("yyyy-MM-dd 23:59:59");
-            string cashier = cashierModule.tb_username.Text;
-
+            
+            
             dgv_cashierSales.Rows.Clear();
             sql_connect.Open();
-            sql_command = new SqlCommand("SELECT x.transactionID, x.transactionNo, x.productID, y.productName, x.price, x.quantity, x.discount, x.total FROM tbl_transaction AS x INNER JOIN tbl_products AS y ON x.productID = y.productID WHERE (status LIKE 'Sold') AND (cashierName LIKE '" + cashier + "') AND (transactionDate BETWEEN '" + dateMin + "' AND '" + dateMax + "')", sql_connect);
+            sql_command = new SqlCommand("SELECT x.transactionID, x.transactionNo, x.productID, y.productName, x.price, x.quantity, x.discount, x.total FROM tbl_transaction AS x INNER JOIN tbl_products AS y ON x.productID = y.productID WHERE (status LIKE 'Sold') AND (cashierName LIKE '" + userCashier + "') AND (transactionDate BETWEEN '" + dateMin + "' AND '" + dateMax + "')", sql_connect);
             sql_datareader = sql_command.ExecuteReader();
             while(sql_datareader.Read()) 
             {
@@ -74,6 +72,11 @@ namespace OmniscentPOSAI
         private void dtp_to_ValueChanged(object sender, EventArgs e)
         {
             LoadCashierSales();
+        }
+
+        private void btn_closeCashierSales_Click(object sender, EventArgs e)
+        {
+            this.Dispose();
         }
     }
 }

@@ -17,13 +17,13 @@ namespace OmniscentPOSAI
         SqlCommand sql_command;
         SqlDataReader sql_datareader;
         DBConnector db_connect = new DBConnector();
-        module_products productList;
+        module_products productModule;
 
-        public form_addProduct(module_products prodList)
+        public form_addProduct(module_products products)
         {
             InitializeComponent();
             sql_connect = new SqlConnection(db_connect.DBConnection());
-            productList = prodList;
+            productModule = products;
         }
 
         // clear function
@@ -57,8 +57,36 @@ namespace OmniscentPOSAI
         {
             try
             {
-                if (MessageBox.Show("Are you sure you want to add this product?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                bool hasRows = false;
+                string productName = "";
+
+                sql_connect.Open();
+                sql_command = new SqlCommand("SELECT * FROM tbl_products WHERE productName = @productName", sql_connect);
+                sql_command.Parameters.AddWithValue("@productName", tb_productName.Text);
+                sql_datareader = sql_command.ExecuteReader();
+                sql_datareader.Read();
+
+                if (sql_datareader.HasRows)
                 {
+                    hasRows = true;
+                    productName = sql_datareader["productName"].ToString();
+                }
+                else
+                {
+                    hasRows = false;
+                }
+                sql_datareader.Close();
+                sql_connect.Close();
+
+                if (hasRows == true)
+                {
+                    MessageBox.Show("This product has already been added into the list");
+                }
+                else
+                {
+
+                    if (MessageBox.Show("Are you sure you want to add this product?", "Add Product", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
                     string categoryID = "";
                     sql_connect.Open();
                     sql_command = new SqlCommand("SELECT categoryID FROM tbl_categories WHERE categoryName LIKE '" + cb_category.Text + "'", sql_connect);
@@ -73,8 +101,9 @@ namespace OmniscentPOSAI
                     sql_datareader.Close();
                     sql_connect.Close();
 
+                    
                     sql_connect.Open();
-                    sql_command = new SqlCommand("INSERT INTO tbl_products (productID, barcode, productName, categoryID, price) VALUES(@productID, @barcode, @productName, @categoryID, @price)", sql_connect);
+                    sql_command = new SqlCommand("INSERT INTO tbl_products (productID, barcode, productName, categoryID, price) VALUES (@productID, @barcode, @productName, @categoryID, @price)", sql_connect);
                     sql_command.Parameters.AddWithValue("@productID", tb_productID.Text);
                     sql_command.Parameters.AddWithValue("@barcode", tb_barcode.Text);
                     sql_command.Parameters.AddWithValue("@productName", tb_productName.Text);
@@ -83,13 +112,14 @@ namespace OmniscentPOSAI
                     sql_command.ExecuteNonQuery();
                     sql_connect.Close();
                     MessageBox.Show("A product has been successfully added");
-                    productList.LoadProducts();
-                    Clear();
+                    productModule.LoadProducts();
+                    this.Dispose();
+                    }
                 }
             }
             catch (Exception except)
             {
-                MessageBox.Show(except.Message);
+                MessageBox.Show(except.Message, "Add Product", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -113,7 +143,7 @@ namespace OmniscentPOSAI
         // cancel button event
         private void btn_cancel_Click(object sender, EventArgs e)
         {
-            Dispose();
+            this.Dispose();
         }
     }
 }

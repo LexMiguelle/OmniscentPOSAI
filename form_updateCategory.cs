@@ -16,6 +16,8 @@ namespace OmniscentPOSAI
         SqlConnection sql_connect;
         SqlCommand sql_command;
         DBConnector db_connect = new DBConnector();
+        SqlDataReader sql_datareader;
+
         module_categories categoriesList;
 
         public form_updateCategory(module_categories catList)
@@ -29,16 +31,43 @@ namespace OmniscentPOSAI
         {
             try
             {
-                if (MessageBox.Show("Are you sure you want to update this category?", "Update Category", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                bool hasRows = false;
+                string categoryName = "";
+
+                sql_connect.Open();
+                sql_command = new SqlCommand("SELECT * FROM tbl_categories WHERE categoryName = @categoryName", sql_connect);
+                sql_command.Parameters.AddWithValue("@categoryName", tb_updateCategory.Text);
+                sql_datareader = sql_command.ExecuteReader();
+                sql_datareader.Read();
+                if (sql_datareader.HasRows)
                 {
-                    sql_connect.Open();
-                    sql_command = new SqlCommand("UPDATE tbl_categories SET categoryName = @categoryName WHERE categoryID LIKE '" + lbl_ID.Text + "'", sql_connect);
-                    sql_command.Parameters.AddWithValue("@categoryName", tb_updateCategory.Text);
-                    sql_command.ExecuteNonQuery();
-                    sql_connect.Close();
-                    MessageBox.Show("Category list updated");
-                    categoriesList.LoadCategory();
-                    this.Dispose();
+                    hasRows = true;
+                    categoryName = sql_datareader["categoryName"].ToString();
+                }
+                else
+                {
+                    hasRows = false;
+                }
+                sql_datareader.Close();
+                sql_connect.Close();
+
+                if (hasRows == true)
+                {
+                    MessageBox.Show("Duplicate category name detected!", "Update Category", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    if (MessageBox.Show("Are you sure you want to update this category?", "Update Category", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        sql_connect.Open();
+                        sql_command = new SqlCommand("UPDATE tbl_categories SET categoryName = @categoryName WHERE categoryID LIKE '" + lbl_ID.Text + "'", sql_connect);
+                        sql_command.Parameters.AddWithValue("@categoryName", tb_updateCategory.Text);
+                        sql_command.ExecuteNonQuery();
+                        sql_connect.Close();
+                        MessageBox.Show("Category list updated");
+                        categoriesList.LoadCategory();
+                        this.Dispose();
+                    }
                 }
             }
             catch (Exception except)

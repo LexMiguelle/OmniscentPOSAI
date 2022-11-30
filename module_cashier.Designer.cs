@@ -30,15 +30,16 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(module_cashier));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel_cashierHead = new System.Windows.Forms.Panel();
             this.btn_close = new System.Windows.Forms.Button();
             this.panel_cashierInfo = new System.Windows.Forms.Panel();
             this.panel_dateTime = new System.Windows.Forms.Panel();
             this.lbl_date = new System.Windows.Forms.Label();
             this.lbl_time = new System.Windows.Forms.Label();
+            this.tb_username = new System.Windows.Forms.TextBox();
             this.tb_role = new System.Windows.Forms.TextBox();
             this.tb_name = new System.Windows.Forms.TextBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -86,7 +87,6 @@
             this.cart_add = new System.Windows.Forms.DataGridViewImageColumn();
             this.cart_remove = new System.Windows.Forms.DataGridViewImageColumn();
             this.timer_clock = new System.Windows.Forms.Timer(this.components);
-            this.tb_username = new System.Windows.Forms.TextBox();
             this.panel_cashierHead.SuspendLayout();
             this.panel_cashierInfo.SuspendLayout();
             this.panel_dateTime.SuspendLayout();
@@ -165,6 +165,19 @@
             this.lbl_time.Size = new System.Drawing.Size(303, 55);
             this.lbl_time.TabIndex = 7;
             this.lbl_time.Text = "00:00:00 am";
+            // 
+            // tb_username
+            // 
+            this.tb_username.BackColor = System.Drawing.Color.Black;
+            this.tb_username.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tb_username.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_username.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.tb_username.Location = new System.Drawing.Point(99, 46);
+            this.tb_username.Name = "tb_username";
+            this.tb_username.Size = new System.Drawing.Size(227, 19);
+            this.tb_username.TabIndex = 2;
+            this.tb_username.Text = "@username";
+            this.tb_username.TextChanged += new System.EventHandler(this.tb_searchBox_TextChanged);
             // 
             // tb_role
             // 
@@ -556,14 +569,14 @@
             this.dgv_cart.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgv_cart.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.SingleHorizontal;
             this.dgv_cart.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.None;
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_cart.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_cart.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgv_cart.ColumnHeadersHeight = 25;
             this.dgv_cart.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgv_cart.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -580,28 +593,28 @@
             this.cart_subtract,
             this.cart_add,
             this.cart_remove});
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv_cart.DefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv_cart.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgv_cart.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv_cart.EnableHeadersVisualStyles = false;
             this.dgv_cart.GridColor = System.Drawing.Color.Black;
             this.dgv_cart.Location = new System.Drawing.Point(0, 230);
             this.dgv_cart.MultiSelect = false;
             this.dgv_cart.Name = "dgv_cart";
-            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_cart.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_cart.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgv_cart.RowHeadersVisible = false;
             this.dgv_cart.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
             this.dgv_cart.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.White;
@@ -740,19 +753,6 @@
             this.timer_clock.Enabled = true;
             this.timer_clock.Tick += new System.EventHandler(this.timer_clock_Tick);
             // 
-            // tb_username
-            // 
-            this.tb_username.BackColor = System.Drawing.Color.Black;
-            this.tb_username.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tb_username.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_username.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.tb_username.Location = new System.Drawing.Point(99, 46);
-            this.tb_username.Name = "tb_username";
-            this.tb_username.Size = new System.Drawing.Size(227, 19);
-            this.tb_username.TabIndex = 2;
-            this.tb_username.Text = "@username";
-            this.tb_username.TextChanged += new System.EventHandler(this.tb_searchBox_TextChanged);
-            // 
             // module_cashier
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -796,8 +796,6 @@
         private System.Windows.Forms.Button btn_close;
         private System.Windows.Forms.Panel panel_cashierInfo;
         private System.Windows.Forms.Panel panel_dateTime;
-        private System.Windows.Forms.Label lbl_date;
-        private System.Windows.Forms.Label lbl_time;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel panel_buttonMenu;
         private System.Windows.Forms.Button btn_settleTransaction;
@@ -810,16 +808,11 @@
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Panel panel_preview;
         private System.Windows.Forms.Panel panel_compute;
-        private System.Windows.Forms.Label subTotal;
-        private System.Windows.Forms.Label totalDiscount;
-        private System.Windows.Forms.Label totalVAT;
-        private System.Windows.Forms.Label totalVATable;
         private System.Windows.Forms.Label lbl_totalVATable;
         private System.Windows.Forms.Label lbl_totalVAT;
         private System.Windows.Forms.Label lbl_totalDiscount;
         private System.Windows.Forms.Label lbl_subTotal;
         private System.Windows.Forms.Panel panel_totalAmount;
-        private System.Windows.Forms.Label totalAmount;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.LinkLabel btn_addProduct;
         private System.Windows.Forms.Label lbl_transactionDate;
@@ -847,5 +840,12 @@
         public System.Windows.Forms.TextBox tb_role;
         public System.Windows.Forms.TextBox tb_name;
         public System.Windows.Forms.TextBox tb_username;
+        public System.Windows.Forms.Label lbl_date;
+        public System.Windows.Forms.Label lbl_time;
+        public System.Windows.Forms.Label subTotal;
+        public System.Windows.Forms.Label totalDiscount;
+        public System.Windows.Forms.Label totalVAT;
+        public System.Windows.Forms.Label totalVATable;
+        public System.Windows.Forms.Label totalAmount;
     }
 }

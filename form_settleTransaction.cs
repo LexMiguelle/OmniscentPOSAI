@@ -18,13 +18,15 @@ namespace OmniscentPOSAI
         SqlCommand sql_command = new SqlCommand();
         DBConnector db_connect = new DBConnector();
 
-        module_cashier cashier_module;
+        module_cashier cashierModule;
 
         public form_settleTransaction(module_cashier cashier)
         {
             InitializeComponent();
             sql_connect = new SqlConnection(db_connect.DBConnection());
-            cashier_module = cashier;
+            cashierModule = cashier;
+
+            transactionNo.Text = cashierModule.transactionNo.Text;
         }
 
         // load form_settleTransaction
@@ -142,22 +144,26 @@ namespace OmniscentPOSAI
                 }
                 else
                 {
-                    for (int x = 0; x < cashier_module.dgv_cart.Rows.Count; x++)
+                    for (int x = 0; x < cashierModule.dgv_cart.Rows.Count; x++)
                     {
                         sql_connect.Open();
-                        sql_command = new SqlCommand("UPDATE tbl_products SET quantity = quantity - " + int.Parse(cashier_module.dgv_cart.Rows[x].Cells[7].Value.ToString()) + " WHERE productID = '" + cashier_module.dgv_cart.Rows[x].Cells[3].Value.ToString() + "'", sql_connect);
+                        sql_command = new SqlCommand("UPDATE tbl_products SET quantity = quantity - " + int.Parse(cashierModule.dgv_cart.Rows[x].Cells[7].Value.ToString()) + " WHERE productID = '" + cashierModule.dgv_cart.Rows[x].Cells[3].Value.ToString() + "'", sql_connect);
                         sql_command.ExecuteNonQuery();
                         sql_connect.Close();
 
                         sql_connect.Open();
-                        sql_command = new SqlCommand("UPDATE tbl_transaction SET status = 'Sold' WHERE transactionID LIKE '" + cashier_module.dgv_cart.Rows[x].Cells[1].Value.ToString() + "'", sql_connect);
+                        sql_command = new SqlCommand("UPDATE tbl_transaction SET status = 'Sold' WHERE transactionID LIKE '" + cashierModule.dgv_cart.Rows[x].Cells[1].Value.ToString() + "'", sql_connect);
                         sql_command.ExecuteNonQuery();
                         sql_connect.Close();
                     }
 
+                    form_receipt receipt = new form_receipt(cashierModule);
+                    receipt.LoadReport(tb_amountPaid.Text, tb_change.Text);
+                    receipt.ShowDialog();
+
                     MessageBox.Show("Transaction settled successfully", "Settle Transaction", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    cashier_module.getTransactionNo();
-                    cashier_module.LoadCart();
+                    cashierModule.getTransactionNo();
+                    cashierModule.LoadCart();
                     this.Dispose();
                 }
             }

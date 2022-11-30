@@ -35,7 +35,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel_salesHead = new System.Windows.Forms.Panel();
             this.tb_salesTotal = new System.Windows.Forms.TextBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.cb_cashierName = new System.Windows.Forms.ComboBox();
             this.btn_printSales = new System.Windows.Forms.Button();
             this.dtp_to = new System.Windows.Forms.DateTimePicker();
             this.dtp_from = new System.Windows.Forms.DateTimePicker();
@@ -61,7 +61,7 @@
             // panel_salesHead
             // 
             this.panel_salesHead.Controls.Add(this.tb_salesTotal);
-            this.panel_salesHead.Controls.Add(this.comboBox1);
+            this.panel_salesHead.Controls.Add(this.cb_cashierName);
             this.panel_salesHead.Controls.Add(this.btn_printSales);
             this.panel_salesHead.Controls.Add(this.dtp_to);
             this.panel_salesHead.Controls.Add(this.dtp_from);
@@ -87,14 +87,15 @@
             this.tb_salesTotal.TabIndex = 13;
             this.tb_salesTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // comboBox1
+            // cb_cashierName
             // 
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(519, 32);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(150, 24);
-            this.comboBox1.TabIndex = 12;
+            this.cb_cashierName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cb_cashierName.FormattingEnabled = true;
+            this.cb_cashierName.Location = new System.Drawing.Point(519, 32);
+            this.cb_cashierName.Name = "cb_cashierName";
+            this.cb_cashierName.Size = new System.Drawing.Size(150, 24);
+            this.cb_cashierName.TabIndex = 12;
+            this.cb_cashierName.SelectedValueChanged += new System.EventHandler(this.cb_cashierName_SelectedValueChanged);
             // 
             // btn_printSales
             // 
@@ -111,6 +112,7 @@
             this.btn_printSales.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             this.btn_printSales.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btn_printSales.UseVisualStyleBackColor = false;
+            this.btn_printSales.Click += new System.EventHandler(this.btn_printSales_Click);
             // 
             // dtp_to
             // 
@@ -118,6 +120,7 @@
             this.dtp_to.Name = "dtp_to";
             this.dtp_to.Size = new System.Drawing.Size(200, 20);
             this.dtp_to.TabIndex = 9;
+            this.dtp_to.ValueChanged += new System.EventHandler(this.dtp_to_ValueChanged);
             // 
             // dtp_from
             // 
@@ -125,6 +128,7 @@
             this.dtp_from.Name = "dtp_from";
             this.dtp_from.Size = new System.Drawing.Size(200, 20);
             this.dtp_from.TabIndex = 10;
+            this.dtp_from.ValueChanged += new System.EventHandler(this.dtp_from_ValueChanged);
             // 
             // lbl_from
             // 
@@ -340,14 +344,14 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cashierSale_quantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn cashierSale_discount;
         private System.Windows.Forms.DataGridViewTextBoxColumn cashierSale_total;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.DateTimePicker dtp_to;
-        private System.Windows.Forms.DateTimePicker dtp_from;
         private System.Windows.Forms.Label lbl_to;
         private System.Windows.Forms.Label lbl_cashierName;
         private System.Windows.Forms.Label lbl_dateFilter;
-        private System.Windows.Forms.TextBox tb_salesTotal;
         private System.Windows.Forms.Button btn_printSales;
         private System.Windows.Forms.Label lbl_from;
+        public System.Windows.Forms.ComboBox cb_cashierName;
+        public System.Windows.Forms.DateTimePicker dtp_to;
+        public System.Windows.Forms.DateTimePicker dtp_from;
+        public System.Windows.Forms.TextBox tb_salesTotal;
     }
 }

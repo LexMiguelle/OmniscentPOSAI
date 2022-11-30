@@ -31,7 +31,7 @@ namespace OmniscentPOSAI
         // tb_discountPercentage text changed event
         private void tb_discountPercentage_TextChanged(object sender, EventArgs e)
         {
-                    try
+            try
             {   
                 double disc = Double.Parse(tb_price.Text) * Double.Parse(tb_discountPercentage.Text);
                 tb_discountedPrice.Text = disc.ToString("#,##0.00");

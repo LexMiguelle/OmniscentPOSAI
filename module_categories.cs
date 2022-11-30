@@ -18,10 +18,14 @@ namespace OmniscentPOSAI
         SqlDataReader sql_datareader;
         DBConnector db_connect = new DBConnector();
 
+        String catID;
+        
+
         public module_categories()
         {
             InitializeComponent();
             sql_connect = new SqlConnection(db_connect.DBConnection());
+            
         }
 
         public void LoadCategory()
@@ -55,14 +59,41 @@ namespace OmniscentPOSAI
             }
             else if (column_name == "col_delete")
             {
-                if (MessageBox.Show("Are you sure you want to delete this category?", "Delete Category", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                bool hasRows = false;
+
+                sql_connect.Open();
+                sql_command = new SqlCommand("SELECT * FROM tbl_products WHERE categoryID = @categoryID", sql_connect);
+                sql_command.Parameters.AddWithValue("@categoryID", catID);
+                sql_datareader = sql_command.ExecuteReader();
+                sql_datareader.Read();
+
+                if (sql_datareader.HasRows)
                 {
-                    sql_connect.Open();
-                    sql_command = new SqlCommand("DELETE FROM tbl_categories WHERE categoryID LIKE '" + dgv_categories.Rows[e.RowIndex].Cells[1].Value.ToString() + "'", sql_connect);
-                    sql_command.ExecuteNonQuery();
-                    sql_connect.Close();
-                    MessageBox.Show("Category removed successfully");
-                    LoadCategory();
+                    hasRows = true;
+                    catID = sql_datareader["categoryID"].ToString();
+                }
+                else
+                {
+                    hasRows = false;
+                }
+                sql_datareader.Close();
+                sql_connect.Close();
+
+                if (hasRows == true)
+                {
+                    MessageBox.Show("This category cannot be deleted.");
+                }
+                else
+                {
+                    if (MessageBox.Show("Are you sure you want to delete this category?", "Delete Category", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        sql_connect.Open();
+                        sql_command = new SqlCommand("DELETE FROM tbl_categories WHERE categoryID LIKE '" + dgv_categories.Rows[e.RowIndex].Cells[1].Value.ToString() + "'", sql_connect);
+                        sql_command.ExecuteNonQuery();
+                        sql_connect.Close();
+                        MessageBox.Show("Category removed successfully");
+                        LoadCategory();
+                    }
                 }
             }
         }
@@ -71,6 +102,13 @@ namespace OmniscentPOSAI
         {
             form_addCategory add_category = new form_addCategory(this);
             add_category.ShowDialog();
+        }
+
+        private void dgv_categories_SelectionChanged(object sender, EventArgs e)
+        {
+            int i = dgv_categories.CurrentRow.Index;
+            catID = dgv_categories[1, i].Value.ToString();
+            lbl_catID.Text = catID;
         }
     }
 }

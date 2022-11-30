@@ -42,11 +42,13 @@
             this.tb_price = new System.Windows.Forms.TextBox();
             this.tb_productName = new System.Windows.Forms.TextBox();
             this.tb_productID = new System.Windows.Forms.TextBox();
+            this.lbl_categoryID = new System.Windows.Forms.Label();
             this.panel_head.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel_head
             // 
+            this.panel_head.Controls.Add(this.lbl_categoryID);
             this.panel_head.Controls.Add(this.lbl_updateProduct);
             this.panel_head.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel_head.Location = new System.Drawing.Point(0, 0);
@@ -183,7 +185,18 @@
             this.tb_productID.Size = new System.Drawing.Size(200, 26);
             this.tb_productID.TabIndex = 16;
             // 
-            // form_updateProducts
+            // lbl_categoryID
+            // 
+            this.lbl_categoryID.AutoSize = true;
+            this.lbl_categoryID.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_categoryID.ForeColor = System.Drawing.Color.White;
+            this.lbl_categoryID.Location = new System.Drawing.Point(383, 19);
+            this.lbl_categoryID.Name = "lbl_categoryID";
+            this.lbl_categoryID.Size = new System.Drawing.Size(30, 31);
+            this.lbl_categoryID.TabIndex = 0;
+            this.lbl_categoryID.Text = "#";
+            // 
+            // form_updateProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -204,7 +217,7 @@
             this.Controls.Add(this.panel_head);
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Name = "form_updateProducts";
+            this.Name = "form_updateProduct";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "form_updateProduct";
             this.panel_head.ResumeLayout(false);
@@ -230,5 +243,6 @@
         public System.Windows.Forms.TextBox tb_price;
         public System.Windows.Forms.TextBox tb_productName;
         public System.Windows.Forms.TextBox tb_productID;
+        private System.Windows.Forms.Label lbl_categoryID;
     }
 }

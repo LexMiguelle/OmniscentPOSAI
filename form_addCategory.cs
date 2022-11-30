@@ -16,6 +16,8 @@ namespace OmniscentPOSAI
         SqlConnection sql_connect;
         SqlCommand sql_command;
         DBConnector db_connect = new DBConnector();
+        SqlDataReader sql_datareader;
+
         module_categories categoriesList;
 
         public form_addCategory(module_categories catList)
@@ -35,16 +37,44 @@ namespace OmniscentPOSAI
         {
             try
             {
-                if (MessageBox.Show("Are you sure you want to add this category?", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                bool hasRows = false;
+                string categoryName = "";
+
+                sql_connect.Open();
+                sql_command = new SqlCommand("SELECT * FROM tbl_categories WHERE categoryName = @categoryName", sql_connect);
+                sql_command.Parameters.AddWithValue("@categoryName", tb_addCategory.Text);
+                sql_datareader = sql_command.ExecuteReader();
+                sql_datareader.Read();
+
+                if (sql_datareader.HasRows)
                 {
-                    sql_connect.Open();
-                    sql_command = new SqlCommand("INSERT INTO tbl_categories(categoryName) VALUES (@categoryName)", sql_connect);
-                    sql_command.Parameters.AddWithValue("@categoryName", tb_addCategory.Text);
-                    sql_command.ExecuteNonQuery();
-                    sql_connect.Close();
-                    MessageBox.Show("A new category has been successfully added.");
-                    categoriesList.LoadCategory();
-                    this.Clear();
+                    hasRows = true;
+                    categoryName = sql_datareader["categoryName"].ToString();
+                }
+                else
+                {
+                    hasRows = false;
+                }   
+                sql_datareader.Close();
+                sql_connect.Close();
+
+                if (hasRows == true)
+                {
+                    MessageBox.Show("Duplicate input detected!", "Add Category", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                else
+                {
+                    if (MessageBox.Show("Are you sure you want to add this category?", "Add Category", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        sql_connect.Open();
+                        sql_command = new SqlCommand("INSERT INTO tbl_categories(categoryName) VALUES (@categoryName)", sql_connect);
+                        sql_command.Parameters.AddWithValue("@categoryName", tb_addCategory.Text);
+                        sql_command.ExecuteNonQuery();
+                        sql_connect.Close();
+                        MessageBox.Show("A new category has been successfully added.");
+                        categoriesList.LoadCategory();
+                        this.Dispose();
+                    }
                 }
             }
             catch (Exception except)

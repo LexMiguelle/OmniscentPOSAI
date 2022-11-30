@@ -1,6 +1,6 @@
 ﻿namespace OmniscentPOSAI
 {
-    partial class form_receipt
+    partial class form_salesReport
     {
         /// <summary>
         /// Required designer variable.
@@ -28,12 +28,27 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.btn_closeCheckPrice = new System.Windows.Forms.Button();
             this.panel_checkPriceHead = new System.Windows.Forms.Panel();
             this.lbl_printPreview = new System.Windows.Forms.Label();
-            this.btn_closeCheckPrice = new System.Windows.Forms.Button();
-            this.rv_receipt = new Microsoft.Reporting.WinForms.ReportViewer();
+            this.rv_sales = new Microsoft.Reporting.WinForms.ReportViewer();
             this.panel_checkPriceHead.SuspendLayout();
             this.SuspendLayout();
+            // 
+            // btn_closeCheckPrice
+            // 
+            this.btn_closeCheckPrice.BackColor = System.Drawing.Color.Red;
+            this.btn_closeCheckPrice.Dock = System.Windows.Forms.DockStyle.Right;
+            this.btn_closeCheckPrice.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_closeCheckPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_closeCheckPrice.ForeColor = System.Drawing.Color.White;
+            this.btn_closeCheckPrice.Location = new System.Drawing.Point(770, 0);
+            this.btn_closeCheckPrice.Name = "btn_closeCheckPrice";
+            this.btn_closeCheckPrice.Size = new System.Drawing.Size(28, 28);
+            this.btn_closeCheckPrice.TabIndex = 5;
+            this.btn_closeCheckPrice.Text = "X";
+            this.btn_closeCheckPrice.UseVisualStyleBackColor = false;
+            this.btn_closeCheckPrice.Click += new System.EventHandler(this.btn_closeCheckPrice_Click);
             // 
             // panel_checkPriceHead
             // 
@@ -43,8 +58,8 @@
             this.panel_checkPriceHead.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel_checkPriceHead.Location = new System.Drawing.Point(0, 0);
             this.panel_checkPriceHead.Name = "panel_checkPriceHead";
-            this.panel_checkPriceHead.Size = new System.Drawing.Size(460, 30);
-            this.panel_checkPriceHead.TabIndex = 1;
+            this.panel_checkPriceHead.Size = new System.Drawing.Size(800, 30);
+            this.panel_checkPriceHead.TabIndex = 2;
             // 
             // lbl_printPreview
             // 
@@ -57,42 +72,29 @@
             this.lbl_printPreview.TabIndex = 6;
             this.lbl_printPreview.Text = "Print Preview";
             // 
-            // btn_closeCheckPrice
+            // rv_sales
             // 
-            this.btn_closeCheckPrice.BackColor = System.Drawing.Color.Red;
-            this.btn_closeCheckPrice.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btn_closeCheckPrice.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btn_closeCheckPrice.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_closeCheckPrice.ForeColor = System.Drawing.Color.White;
-            this.btn_closeCheckPrice.Location = new System.Drawing.Point(430, 0);
-            this.btn_closeCheckPrice.Name = "btn_closeCheckPrice";
-            this.btn_closeCheckPrice.Size = new System.Drawing.Size(28, 28);
-            this.btn_closeCheckPrice.TabIndex = 5;
-            this.btn_closeCheckPrice.Text = "X";
-            this.btn_closeCheckPrice.UseVisualStyleBackColor = false;
-            this.btn_closeCheckPrice.Click += new System.EventHandler(this.btn_closeCheckPrice_Click);
+            this.rv_sales.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rv_sales.Location = new System.Drawing.Point(0, 30);
+            this.rv_sales.Name = "rv_sales";
+            this.rv_sales.ServerReport.BearerToken = null;
+            this.rv_sales.Size = new System.Drawing.Size(800, 420);
+            this.rv_sales.TabIndex = 3;
             // 
-            // rv_receipt
-            // 
-            this.rv_receipt.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rv_receipt.Location = new System.Drawing.Point(0, 30);
-            this.rv_receipt.Name = "rv_receipt";
-            this.rv_receipt.ServerReport.BearerToken = null;
-            this.rv_receipt.Size = new System.Drawing.Size(460, 611);
-            this.rv_receipt.TabIndex = 2;
-            // 
-            // form_receipt
+            // form_salesReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(460, 641);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.ControlBox = false;
-            this.Controls.Add(this.rv_receipt);
+            this.Controls.Add(this.rv_sales);
             this.Controls.Add(this.panel_checkPriceHead);
+            this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Name = "form_receipt";
-            this.Load += new System.EventHandler(this.form_receipt_Load);
+            this.Name = "form_salesReport";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.Load += new System.EventHandler(this.form_salesReport_Load);
             this.panel_checkPriceHead.ResumeLayout(false);
             this.panel_checkPriceHead.PerformLayout();
             this.ResumeLayout(false);
@@ -101,9 +103,9 @@
 
         #endregion
 
-        private System.Windows.Forms.Panel panel_checkPriceHead;
         private System.Windows.Forms.Button btn_closeCheckPrice;
-        private Microsoft.Reporting.WinForms.ReportViewer rv_receipt;
+        private System.Windows.Forms.Panel panel_checkPriceHead;
         private System.Windows.Forms.Label lbl_printPreview;
+        private Microsoft.Reporting.WinForms.ReportViewer rv_sales;
     }
 }
