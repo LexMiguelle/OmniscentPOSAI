@@ -14,10 +14,51 @@ namespace OmniscentPOSAI
         DBConnector db_connect = new DBConnector();
         SqlDataReader sql_datareader;
 
+        int attempt;
+        int count;
+
         public module_login()
         {
             InitializeComponent();
             sql_connect = new SqlConnection(db_connect.DBConnection());
+        }
+
+        private void module_login_Load(object sender, EventArgs e)
+        {
+            attempt = 0;
+            
+        }
+
+        private void loginTimer_Tick(object sender, EventArgs e)
+        {
+            if(count == 0)
+            {
+                loginTimer.Enabled = false;
+                btn_login.Enabled = true;
+                tb_username.Enabled = true;
+                tb_password.Enabled = true;
+                tb_username.Focus();
+                lbl_try.Text = "";
+            } 
+            else
+            {
+                lbl_try.Text = "Try again in " + count;
+                count--;
+            }
+        }
+
+        public void disableLogin()
+        {
+            if(attempt == 3)
+            {
+                MessageBox.Show("Max login attempts reached. Please try again later");
+                attempt = 0;
+                count = 10;
+                loginTimer.Enabled = true;
+                btn_login.Enabled = false;
+                tb_username.Enabled = false;
+                tb_password.Enabled = false;
+            }
         }
 
         private void btn_login_Click(object sender, EventArgs e)
@@ -101,22 +142,12 @@ namespace OmniscentPOSAI
                 }
                 else
                 {
-                    int attempts = 1;
-                    int maxAttempts = 3;
-                    int remainingAttempts = maxAttempts - attempts;
-
-                    if (attempts <= maxAttempts)
-                    {
-                        if (MessageBox.Show("Invalid username/password\nYou have " + remainingAttempts + " attempts left", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Error) == DialogResult.OK)
-                        {
-                            attempts++;
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Max login attempts reached", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        this.Dispose();
-                    } 
+                    MessageBox.Show("Invalid username/password\nPlease try again.", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    tb_username.Clear();
+                    tb_password.Clear();
+                    tb_username.Focus();
+                    attempt++;
+                    disableLogin();
                 }
             }
             catch (Exception except)
@@ -129,6 +160,22 @@ namespace OmniscentPOSAI
         private void btn_exit_Click(object sender, EventArgs e)
         {
             this.Dispose();
+        }
+
+        private void tb_username_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsLetterOrDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void tb_password_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsLetterOrDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

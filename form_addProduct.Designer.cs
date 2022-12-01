@@ -42,6 +42,7 @@
             this.cb_category = new System.Windows.Forms.ComboBox();
             this.btn_save = new System.Windows.Forms.Button();
             this.btn_cancel = new System.Windows.Forms.Button();
+            this.tb_prodID = new System.Windows.Forms.TextBox();
             this.panel_head.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -68,9 +69,9 @@
             // tb_productID
             // 
             this.tb_productID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_productID.Location = new System.Drawing.Point(143, 97);
+            this.tb_productID.Location = new System.Drawing.Point(206, 97);
             this.tb_productID.Name = "tb_productID";
-            this.tb_productID.Size = new System.Drawing.Size(200, 26);
+            this.tb_productID.Size = new System.Drawing.Size(137, 26);
             this.tb_productID.TabIndex = 5;
             // 
             // tb_productName
@@ -161,6 +162,7 @@
             this.cb_category.Name = "cb_category";
             this.cb_category.Size = new System.Drawing.Size(455, 28);
             this.cb_category.TabIndex = 6;
+            this.cb_category.SelectedValueChanged += new System.EventHandler(this.cb_category_SelectedValueChanged);
             // 
             // btn_save
             // 
@@ -184,6 +186,14 @@
             this.btn_cancel.UseVisualStyleBackColor = true;
             this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
             // 
+            // tb_prodID
+            // 
+            this.tb_prodID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_prodID.Location = new System.Drawing.Point(143, 97);
+            this.tb_prodID.Name = "tb_prodID";
+            this.tb_prodID.Size = new System.Drawing.Size(57, 26);
+            this.tb_prodID.TabIndex = 5;
+            // 
             // form_addProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -202,6 +212,7 @@
             this.Controls.Add(this.tb_barcode);
             this.Controls.Add(this.tb_price);
             this.Controls.Add(this.tb_productName);
+            this.Controls.Add(this.tb_prodID);
             this.Controls.Add(this.tb_productID);
             this.Controls.Add(this.panel_head);
             this.ForeColor = System.Drawing.Color.White;
@@ -232,5 +243,6 @@
         public System.Windows.Forms.TextBox tb_barcode;
         public System.Windows.Forms.TextBox tb_price;
         public System.Windows.Forms.ComboBox cb_category;
+        public System.Windows.Forms.TextBox tb_prodID;
     }
 }

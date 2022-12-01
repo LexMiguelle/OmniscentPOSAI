@@ -29,6 +29,7 @@ namespace OmniscentPOSAI
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(module_login));
             this.panel_head = new System.Windows.Forms.Panel();
             this.pb_logo = new System.Windows.Forms.PictureBox();
@@ -39,6 +40,8 @@ namespace OmniscentPOSAI
             this.lbl_password = new System.Windows.Forms.Label();
             this.btn_login = new System.Windows.Forms.Button();
             this.btn_exit = new System.Windows.Forms.Button();
+            this.loginTimer = new System.Windows.Forms.Timer(this.components);
+            this.lbl_try = new System.Windows.Forms.Label();
             this.panel_head.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_logo)).BeginInit();
             this.SuspendLayout();
@@ -86,9 +89,11 @@ namespace OmniscentPOSAI
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tb_username.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_username.Location = new System.Drawing.Point(78, 280);
+            this.tb_username.MaxLength = 50;
             this.tb_username.Name = "tb_username";
             this.tb_username.Size = new System.Drawing.Size(200, 29);
-            this.tb_username.TabIndex = 2;
+            this.tb_username.TabIndex = 1;
+            this.tb_username.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_username_KeyPress);
             // 
             // tb_password
             // 
@@ -97,11 +102,13 @@ namespace OmniscentPOSAI
             | System.Windows.Forms.AnchorStyles.Right)));
             this.tb_password.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_password.Location = new System.Drawing.Point(78, 339);
+            this.tb_password.MaxLength = 50;
             this.tb_password.Name = "tb_password";
-            this.tb_password.PasswordChar = '*';
+            this.tb_password.PasswordChar = '•';
             this.tb_password.Size = new System.Drawing.Size(200, 29);
             this.tb_password.TabIndex = 2;
             this.tb_password.UseSystemPasswordChar = true;
+            this.tb_password.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_password_KeyPress);
             // 
             // lbl_username
             // 
@@ -155,10 +162,26 @@ namespace OmniscentPOSAI
             this.btn_exit.Location = new System.Drawing.Point(123, 435);
             this.btn_exit.Name = "btn_exit";
             this.btn_exit.Size = new System.Drawing.Size(100, 25);
-            this.btn_exit.TabIndex = 3;
+            this.btn_exit.TabIndex = 4;
             this.btn_exit.Text = "EXIT";
             this.btn_exit.UseVisualStyleBackColor = false;
             this.btn_exit.Click += new System.EventHandler(this.btn_exit_Click);
+            // 
+            // loginTimer
+            // 
+            this.loginTimer.Interval = 1000;
+            this.loginTimer.Tick += new System.EventHandler(this.loginTimer_Tick);
+            // 
+            // lbl_try
+            // 
+            this.lbl_try.AutoSize = true;
+            this.lbl_try.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_try.ForeColor = System.Drawing.Color.Red;
+            this.lbl_try.Location = new System.Drawing.Point(120, 419);
+            this.lbl_try.Name = "lbl_try";
+            this.lbl_try.Size = new System.Drawing.Size(11, 16);
+            this.lbl_try.TabIndex = 4;
+            this.lbl_try.Text = " ";
             // 
             // module_login
             // 
@@ -167,6 +190,7 @@ namespace OmniscentPOSAI
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.ClientSize = new System.Drawing.Size(358, 478);
             this.ControlBox = false;
+            this.Controls.Add(this.lbl_try);
             this.Controls.Add(this.btn_exit);
             this.Controls.Add(this.btn_login);
             this.Controls.Add(this.tb_password);
@@ -178,6 +202,7 @@ namespace OmniscentPOSAI
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "module_login";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Load += new System.EventHandler(this.module_login_Load);
             this.panel_head.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pb_logo)).EndInit();
             this.ResumeLayout(false);
@@ -196,5 +221,7 @@ namespace OmniscentPOSAI
         private System.Windows.Forms.Label lbl_password;
         private System.Windows.Forms.Button btn_login;
         private System.Windows.Forms.Button btn_exit;
+        private System.Windows.Forms.Timer loginTimer;
+        private System.Windows.Forms.Label lbl_try;
     }
 }

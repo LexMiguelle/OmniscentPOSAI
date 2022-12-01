@@ -75,6 +75,7 @@
             this.tb_addCategory.Name = "tb_addCategory";
             this.tb_addCategory.Size = new System.Drawing.Size(352, 26);
             this.tb_addCategory.TabIndex = 4;
+            this.tb_addCategory.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_addCategory_KeyPress);
             // 
             // btn_cancel
             // 

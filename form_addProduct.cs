@@ -52,6 +52,28 @@ namespace OmniscentPOSAI
             sql_connect.Close();
         }
 
+        public void nullChecker()
+        {
+             
+        }
+
+        // tb_price restriction
+        private void tb_price_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 46)
+            {
+
+            }
+            else if (e.KeyChar == 8)
+            {
+
+            }
+            else if ((e.KeyChar < 48) || (e.KeyChar > 57))
+            {
+                e.Handled = true;
+            }
+        }
+
         // save button event
         private void btn_save_Click(object sender, EventArgs e)
         {
@@ -100,7 +122,6 @@ namespace OmniscentPOSAI
 
                     sql_datareader.Close();
                     sql_connect.Close();
-
                     
                     sql_connect.Open();
                     sql_command = new SqlCommand("INSERT INTO tbl_products (productID, barcode, productName, categoryID, price) VALUES (@productID, @barcode, @productName, @categoryID, @price)", sql_connect);
@@ -123,27 +144,15 @@ namespace OmniscentPOSAI
             }
         }
 
-        // tb_price restriction
-        private void tb_price_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (e.KeyChar == 46)
-            {
-
-            }
-            else if (e.KeyChar == 8)
-            {
-
-            }
-            else if ((e.KeyChar < 48) || (e.KeyChar > 57))
-            {
-                e.Handled = true;
-            }
-        }
-
         // cancel button event
         private void btn_cancel_Click(object sender, EventArgs e)
         {
             this.Dispose();
+        }
+
+        private void cb_category_SelectedValueChanged(object sender, EventArgs e)
+        {
+            
         }
     }
 }

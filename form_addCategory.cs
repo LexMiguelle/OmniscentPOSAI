@@ -87,5 +87,33 @@ namespace OmniscentPOSAI
         {
             this.Dispose();
         }
+
+        private void tb_addCategory_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == 8)
+            {
+                e.Handled = true;
+            }
+            else if (e.KeyChar == 13)
+            {
+                e.Handled = true;
+            }
+            else if ((e.KeyChar < 48) || (e.KeyChar > 57))
+            {
+                e.Handled = true;
+            }
+            else if ((e.KeyChar < 65) || (e.KeyChar > 90))
+            {
+                e.Handled = true;
+            }
+            else if ((e.KeyChar < 97) || (e.KeyChar > 122))
+            {
+                e.Handled = true;
+            }
+            else if ((e.KeyChar < 192) || (e.KeyChar > 255))
+            {
+                e.Handled = true;
+            }
+        }
     }
 }
