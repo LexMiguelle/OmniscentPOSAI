@@ -103,7 +103,7 @@
             this.dgv_manageStocks = new System.Windows.Forms.DataGridView();
             this.manageStocks_num = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.manageStocks_productID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.manageStocks_barcode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.manageStocks_productCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.manageStocks_productName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.manageStocks_category = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.manageStocks_price = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -866,7 +866,7 @@
             this.dgv_manageStocks.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.manageStocks_num,
             this.manageStocks_productID,
-            this.manageStocks_barcode,
+            this.manageStocks_productCode,
             this.manageStocks_productName,
             this.manageStocks_category,
             this.manageStocks_price,
@@ -914,12 +914,12 @@
             this.manageStocks_productID.Name = "manageStocks_productID";
             this.manageStocks_productID.Width = 97;
             // 
-            // manageStocks_barcode
+            // manageStocks_productCode
             // 
-            this.manageStocks_barcode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.manageStocks_barcode.HeaderText = "BARCODE";
-            this.manageStocks_barcode.Name = "manageStocks_barcode";
-            this.manageStocks_barcode.Width = 82;
+            this.manageStocks_productCode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.manageStocks_productCode.HeaderText = "BARCODE";
+            this.manageStocks_productCode.Name = "manageStocks_productCode";
+            this.manageStocks_productCode.Width = 82;
             // 
             // manageStocks_productName
             // 
@@ -1093,7 +1093,7 @@
         private System.Windows.Forms.DataGridViewImageColumn addStocks_remove;
         private System.Windows.Forms.DataGridViewTextBoxColumn manageStocks_num;
         private System.Windows.Forms.DataGridViewTextBoxColumn manageStocks_productID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn manageStocks_barcode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn manageStocks_productCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn manageStocks_productName;
         private System.Windows.Forms.DataGridViewTextBoxColumn manageStocks_category;
         private System.Windows.Forms.DataGridViewTextBoxColumn manageStocks_price;

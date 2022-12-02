@@ -32,23 +32,23 @@ namespace OmniscentPOSAI
             tb_productName.Clear();
             tb_price.Clear();
             tb_category.Clear();
-            tb_barcode.Clear();
+            tb_productCode.Clear();
             sql_connect.Close();
         }
 
 
-        // tb_barcode text changed event
-        private void tb_barcode_TextChanged(object sender, EventArgs e)
+        // tb_productCode text changed event
+        private void tb_productCode_TextChanged(object sender, EventArgs e)
         {
-            if (tb_barcode.Text == "")
+            if (tb_productCode.Text == "")
             {
-                tb_barcode.Enabled = false;
+                tb_productCode.Enabled = false;
                 return;
             }
             else
             {
                 sql_connect.Open();
-                sql_command = new SqlCommand("SELECT x.productID, x.productName, x.price, y.categoryName FROM tbl_products AS x INNER JOIN tbl_categories AS Y ON x.categoryID = y.categoryID WHERE barcode LIKE '%" + tb_barcode.Text + "%'", sql_connect);
+                sql_command = new SqlCommand("SELECT x.productID, x.productName, x.price, y.categoryName FROM tbl_products AS x INNER JOIN tbl_categories AS Y ON x.categoryID = y.categoryID WHERE productCode LIKE '%" + tb_productCode.Text + "%'", sql_connect);
                 sql_datareader = sql_command.ExecuteReader();
 
                 while (sql_datareader.Read())
@@ -65,9 +65,9 @@ namespace OmniscentPOSAI
         // scan button event
         private void btn_scanBarcode_Click(object sender, EventArgs e)
         {
-            tb_barcode.Enabled = true;
+            tb_productCode.Enabled = true;
             this.clearAll();
-            tb_barcode.Focus();
+            tb_productCode.Focus();
         }
 
         // close button event

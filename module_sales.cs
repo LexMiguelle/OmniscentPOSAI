@@ -21,6 +21,7 @@ namespace OmniscentPOSAI
         public module_sales()
         {
             InitializeComponent();
+            sql_connect = new SqlConnection(db_connect.DBConnection());
             LoadCashiers();
             LoadSalesRecords();
         }
@@ -50,7 +51,7 @@ namespace OmniscentPOSAI
 
             dgv_sales.Rows.Clear();
             sql_connect.Open();
-            sql_command = new SqlCommand("SELECT x.transactionID, x.transactionNo, x.productID, y.productName, x.price, x.quantity, x.discount, x.total, x.cashierName FROM tbl_transaction AS x INNER JOIN tbl_products AS y ON x.productID = y.productID WHERE (status LIKE 'Sold') AND (cashierName LIKE '" + cb_cashierName.Text + "') AND (transactionDate BETWEEN '" + dateMin + "' AND '" + dateMax + "')", sql_connect);
+            sql_command = new SqlCommand("SELECT x.transactionID, x.transactionNo, x.productID, y.productName, x.price, x.quantity, x.discount, x.total, x.cashierName FROM tbl_transaction AS x INNER JOIN tbl_products AS y ON x.productID = y.productID WHERE (status LIKE 'Sold') AND (cashierName LIKE '%" + cb_cashierName.Text + "%') AND (transactionDate BETWEEN '" + dateMin + "' AND '" + dateMax + "')", sql_connect);
             sql_datareader = sql_command.ExecuteReader();
             while (sql_datareader.Read())
             {
@@ -73,14 +74,15 @@ namespace OmniscentPOSAI
             LoadSalesRecords();
         }
 
-        private void cb_cashierName_SelectedValueChanged(object sender, EventArgs e)
-        {          
+        private void cb_cashierName_TextChanged(object sender, EventArgs e)
+        {
             LoadSalesRecords();
         }
 
         private void btn_printSales_Click(object sender, EventArgs e)
         {
             form_salesReport salesReport = new form_salesReport(this);
+            salesReport.LoadSalesReport();
             salesReport.ShowDialog();
         }
     }

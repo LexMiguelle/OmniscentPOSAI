@@ -22,7 +22,7 @@ namespace OmniscentPOSAI
         module_cashier cashierModule;
 
         string storeName = "Omniscent";
-        string storeAddress = "Quezon City, Metro Manila";
+        string storeAddress = "12A Plata St., Brgy. Caniogan, Pasig City, Metro Manila";
 
         public form_receipt(module_cashier cashier)
         {
@@ -56,6 +56,7 @@ namespace OmniscentPOSAI
                 ReportParameter rp_storeName = new ReportParameter("rp_storeName", storeName);
                 ReportParameter rp_storeAddress = new ReportParameter("rp_storeAddress", storeAddress);
                 ReportParameter rp_transactionNo = new ReportParameter("rp_transactionNo", "Invoice No.: " + cashierModule.transactionNo.Text);
+                ReportParameter rp_cashierName = new ReportParameter("rp_cashierName", cashierModule.tb_name.Text);
 
                 rv_receipt.LocalReport.SetParameters(rp_VATable);
                 rv_receipt.LocalReport.SetParameters(rp_VAT);
@@ -66,6 +67,7 @@ namespace OmniscentPOSAI
                 rv_receipt.LocalReport.SetParameters(rp_storeName);
                 rv_receipt.LocalReport.SetParameters(rp_storeAddress);
                 rv_receipt.LocalReport.SetParameters(rp_transactionNo);
+                rv_receipt.LocalReport.SetParameters(rp_cashierName);
 
                 reportDataSource = new ReportDataSource("DataSet1", dataset.Tables["dt_sold"]);
                 rv_receipt.LocalReport.DataSources.Add(reportDataSource);

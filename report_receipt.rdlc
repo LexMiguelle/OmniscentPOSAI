@@ -526,7 +526,7 @@
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
-            <Textbox Name="rp_storeName">
+            <Textbox Name="lbl_storeName">
               <CanGrow>true</CanGrow>
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
@@ -542,7 +542,6 @@
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <rd:DefaultName>rp_storeName</rd:DefaultName>
               <Top>2.23766cm</Top>
               <Height>0.6cm</Height>
               <Width>9.93917cm</Width>
@@ -556,7 +555,7 @@
                 <PaddingBottom>2pt</PaddingBottom>
               </Style>
             </Textbox>
-            <Textbox Name="rp_storeAddress">
+            <Textbox Name="lbl_storeAddress">
               <CanGrow>true</CanGrow>
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
@@ -572,7 +571,6 @@
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <rd:DefaultName>rp_storeAddress</rd:DefaultName>
               <Top>2.83766cm</Top>
               <Height>0.6cm</Height>
               <Width>9.93917cm</Width>
@@ -587,24 +585,23 @@
                 <PaddingBottom>2pt</PaddingBottom>
               </Style>
             </Textbox>
-            <Textbox Name="Textbox25">
+            <Textbox Name="lbl_cashierName">
               <CanGrow>true</CanGrow>
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
                 <Paragraph>
                   <TextRuns>
                     <TextRun>
-                      <Value>Cashier: __________________</Value>
+                      <Value>Cashier: </Value>
                       <Style />
                     </TextRun>
                   </TextRuns>
                   <Style />
                 </Paragraph>
               </Paragraphs>
-              <rd:DefaultName>Textbox25</rd:DefaultName>
               <Top>3.93884cm</Top>
               <Height>0.6cm</Height>
-              <Width>9.93917cm</Width>
+              <Width>1.4725cm</Width>
               <ZIndex>2</ZIndex>
               <Style>
                 <Border>
@@ -616,7 +613,7 @@
                 <PaddingBottom>2pt</PaddingBottom>
               </Style>
             </Textbox>
-            <Textbox Name="Textbox26">
+            <Textbox Name="lbl_transactionNo">
               <CanGrow>true</CanGrow>
               <KeepTogether>true</KeepTogether>
               <Paragraphs>
@@ -630,9 +627,7 @@
                   <Style />
                 </Paragraph>
               </Paragraphs>
-              <rd:DefaultName>Textbox26</rd:DefaultName>
               <Top>4.53884cm</Top>
-              <Left>0cm</Left>
               <Height>0.6cm</Height>
               <Width>9.93917cm</Width>
               <ZIndex>3</ZIndex>
@@ -658,7 +653,7 @@
                 </Border>
               </Style>
             </Line>
-            <Image Name="Image1">
+            <Image Name="img_logo">
               <Source>Embedded</Source>
               <Value>omniscent_64</Value>
               <Sizing>FitProportional</Sizing>
@@ -673,6 +668,36 @@
                 </Border>
               </Style>
             </Image>
+            <Textbox Name="Textbox1">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Parameters!rp_cashierName.Value</Value>
+                      <Style />
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox1</rd:DefaultName>
+              <Top>3.93884cm</Top>
+              <Left>1.4725cm</Left>
+              <Height>0.6cm</Height>
+              <Width>8.46667cm</Width>
+              <ZIndex>6</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
           </ReportItems>
           <Style>
             <Border>
@@ -1180,6 +1205,10 @@
       <DataType>String</DataType>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
+    <ReportParameter Name="rp_cashierName">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
   </ReportParameters>
   <ReportParametersLayout>
     <GridLayoutDefinition>
@@ -1230,6 +1259,11 @@
           <ColumnIndex>0</ColumnIndex>
           <RowIndex>2</RowIndex>
           <ParameterName>rp_transactionNo</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>1</ColumnIndex>
+          <RowIndex>2</RowIndex>
+          <ParameterName>rp_cashierName</ParameterName>
         </CellDefinition>
       </CellDefinitions>
     </GridLayoutDefinition>

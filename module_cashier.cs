@@ -106,14 +106,14 @@ namespace OmniscentPOSAI
 
                 dgv_cart.Rows.Clear();
                 sql_connect.Open();
-                sql_command = new SqlCommand("SELECT x.transactionID, y.barcode, x.productID, y.productName, z.categoryName, x.price, x.quantity, x.discount, x.total FROM tbl_transaction AS x INNER JOIN tbl_products as y ON x.productID = y.productID INNER JOIN tbl_categories as z ON y.categoryID = z.categoryID WHERE transactionNo LIKE '" + transactionNo.Text + "' AND status LIKE 'Pending'", sql_connect);
+                sql_command = new SqlCommand("SELECT x.transactionID, y.productCode, x.productID, y.productName, z.categoryName, x.price, x.quantity, x.discount, x.total FROM tbl_transaction AS x INNER JOIN tbl_products as y ON x.productID = y.productID INNER JOIN tbl_categories as z ON y.categoryID = z.categoryID WHERE transactionNo LIKE '" + transactionNo.Text + "' AND status LIKE 'Pending'", sql_connect);
                 sql_datareader = sql_command.ExecuteReader();
                 while (sql_datareader.Read())
                 {
                     i++;
                     total += Double.Parse(sql_datareader["total"].ToString());
                     disc += Double.Parse(sql_datareader["discount"].ToString());
-                    dgv_cart.Rows.Add(i, sql_datareader["transactionID"].ToString(), sql_datareader["barcode"].ToString(), sql_datareader["productID"].ToString(), sql_datareader["productName"].ToString(), sql_datareader["categoryName"].ToString(), sql_datareader["price"].ToString(), sql_datareader["quantity"].ToString(), sql_datareader["discount"].ToString(), Double.Parse(sql_datareader["total"].ToString()).ToString("#,##0.00"));
+                    dgv_cart.Rows.Add(i, sql_datareader["transactionID"].ToString(), sql_datareader["productCode"].ToString(), sql_datareader["productID"].ToString(), sql_datareader["productName"].ToString(), sql_datareader["categoryName"].ToString(), sql_datareader["price"].ToString(), sql_datareader["quantity"].ToString(), sql_datareader["discount"].ToString(), Double.Parse(sql_datareader["total"].ToString()).ToString("#,##0.00"));
                 }
                 sql_datareader.Close();
                 sql_connect.Close();
@@ -170,12 +170,12 @@ namespace OmniscentPOSAI
 
         }
 
-        // scan barcode button event
+        // scan productCode button event
         private void btn_scanBarcode_Click(object sender, EventArgs e)
         {
             tb_searchBox.Enabled = true;
             tb_searchBox.Focus();
-            //enable barcode scanner
+            //enable productCode scanner
         }
 
         // check price button event
@@ -256,7 +256,7 @@ namespace OmniscentPOSAI
                 else
                 {
                     sql_connect.Open();
-                    sql_command = new SqlCommand("SELECT * FROM tbl_products WHERE barcode LIKE '" + tb_searchBox.Text + "'", sql_connect);
+                    sql_command = new SqlCommand("SELECT * FROM tbl_products WHERE productCode LIKE '" + tb_searchBox.Text + "'", sql_connect);
                     sql_datareader = sql_command.ExecuteReader();
                     sql_datareader.Read();
                     if (sql_datareader.HasRows)

@@ -229,7 +229,7 @@ namespace OmniscentPOSAI
             int i = 0;
             dgv_manageStocks.Rows.Clear();
             sql_connect.Open();
-            sql_command = new SqlCommand("SELECT x.productID, x.barcode, x.productName, y.categoryName, x.price, x.quantity FROM tbl_products AS x INNER JOIN tbl_categories AS y ON y.categoryID = x.categoryID WHERE x.productName LIKE '%" + tb_searchBar.Text + "' ORDER BY x.productName", sql_connect);
+            sql_command = new SqlCommand("SELECT x.productID, x.productCode, x.productName, y.categoryName, x.price, x.quantity FROM tbl_products AS x INNER JOIN tbl_categories AS y ON y.categoryID = x.categoryID WHERE x.productName LIKE '%" + tb_searchBar.Text + "' ORDER BY x.productName", sql_connect);
             sql_datareader = sql_command.ExecuteReader();
             while (sql_datareader.Read())
             {

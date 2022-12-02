@@ -36,8 +36,8 @@
             this.lbl_productName = new System.Windows.Forms.Label();
             this.lbl_category = new System.Windows.Forms.Label();
             this.lbl_price = new System.Windows.Forms.Label();
-            this.lbl_barcode = new System.Windows.Forms.Label();
-            this.tb_barcode = new System.Windows.Forms.TextBox();
+            this.lbl_productCode = new System.Windows.Forms.Label();
+            this.tb_productCode = new System.Windows.Forms.TextBox();
             this.tb_price = new System.Windows.Forms.TextBox();
             this.cb_category = new System.Windows.Forms.ComboBox();
             this.btn_save = new System.Windows.Forms.Button();
@@ -69,18 +69,22 @@
             // tb_productID
             // 
             this.tb_productID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_productID.Location = new System.Drawing.Point(206, 97);
+            this.tb_productID.Location = new System.Drawing.Point(199, 97);
+            this.tb_productID.MaxLength = 4;
             this.tb_productID.Name = "tb_productID";
-            this.tb_productID.Size = new System.Drawing.Size(137, 26);
-            this.tb_productID.TabIndex = 5;
+            this.tb_productID.Size = new System.Drawing.Size(100, 26);
+            this.tb_productID.TabIndex = 1;
+            this.tb_productID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_productID_KeyPress);
             // 
             // tb_productName
             // 
             this.tb_productName.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_productName.Location = new System.Drawing.Point(143, 149);
+            this.tb_productName.MaxLength = 50;
             this.tb_productName.Name = "tb_productName";
             this.tb_productName.Size = new System.Drawing.Size(455, 26);
-            this.tb_productName.TabIndex = 5;
+            this.tb_productName.TabIndex = 2;
+            this.tb_productName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_productName_KeyPress);
             // 
             // lbl_productID
             // 
@@ -126,32 +130,36 @@
             this.lbl_price.TabIndex = 0;
             this.lbl_price.Text = "Price:";
             // 
-            // lbl_barcode
+            // lbl_productCode
             // 
-            this.lbl_barcode.AutoSize = true;
-            this.lbl_barcode.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_barcode.ForeColor = System.Drawing.Color.White;
-            this.lbl_barcode.Location = new System.Drawing.Point(349, 99);
-            this.lbl_barcode.Name = "lbl_barcode";
-            this.lbl_barcode.Size = new System.Drawing.Size(93, 24);
-            this.lbl_barcode.TabIndex = 0;
-            this.lbl_barcode.Text = "barcode:";
+            this.lbl_productCode.AutoSize = true;
+            this.lbl_productCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_productCode.ForeColor = System.Drawing.Color.White;
+            this.lbl_productCode.Location = new System.Drawing.Point(305, 99);
+            this.lbl_productCode.Name = "lbl_productCode";
+            this.lbl_productCode.Size = new System.Drawing.Size(137, 24);
+            this.lbl_productCode.TabIndex = 0;
+            this.lbl_productCode.Text = "productCode:";
             // 
-            // tb_barcode
+            // tb_productCode
             // 
-            this.tb_barcode.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_barcode.Location = new System.Drawing.Point(448, 97);
-            this.tb_barcode.Name = "tb_barcode";
-            this.tb_barcode.Size = new System.Drawing.Size(150, 22);
-            this.tb_barcode.TabIndex = 5;
+            this.tb_productCode.Enabled = false;
+            this.tb_productCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_productCode.Location = new System.Drawing.Point(448, 101);
+            this.tb_productCode.Name = "tb_productCode";
+            this.tb_productCode.ReadOnly = true;
+            this.tb_productCode.Size = new System.Drawing.Size(150, 22);
+            this.tb_productCode.TabIndex = 5;
             // 
             // tb_price
             // 
             this.tb_price.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_price.Location = new System.Drawing.Point(143, 264);
+            this.tb_price.MaxLength = 8;
             this.tb_price.Name = "tb_price";
             this.tb_price.Size = new System.Drawing.Size(121, 26);
-            this.tb_price.TabIndex = 5;
+            this.tb_price.TabIndex = 4;
+            this.tb_price.TextChanged += new System.EventHandler(this.tb_price_TextChanged);
             this.tb_price.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_price_KeyPress);
             // 
             // cb_category
@@ -161,8 +169,8 @@
             this.cb_category.Location = new System.Drawing.Point(143, 209);
             this.cb_category.Name = "cb_category";
             this.cb_category.Size = new System.Drawing.Size(455, 28);
-            this.cb_category.TabIndex = 6;
-            this.cb_category.SelectedValueChanged += new System.EventHandler(this.cb_category_SelectedValueChanged);
+            this.cb_category.TabIndex = 3;
+            this.cb_category.TextChanged += new System.EventHandler(this.cb_category_TextChanged);
             // 
             // btn_save
             // 
@@ -170,7 +178,7 @@
             this.btn_save.Location = new System.Drawing.Point(353, 299);
             this.btn_save.Name = "btn_save";
             this.btn_save.Size = new System.Drawing.Size(120, 30);
-            this.btn_save.TabIndex = 7;
+            this.btn_save.TabIndex = 5;
             this.btn_save.Text = "Save";
             this.btn_save.UseVisualStyleBackColor = true;
             this.btn_save.Click += new System.EventHandler(this.btn_save_Click);
@@ -181,17 +189,19 @@
             this.btn_cancel.Location = new System.Drawing.Point(478, 299);
             this.btn_cancel.Name = "btn_cancel";
             this.btn_cancel.Size = new System.Drawing.Size(120, 30);
-            this.btn_cancel.TabIndex = 7;
+            this.btn_cancel.TabIndex = 6;
             this.btn_cancel.Text = "Cancel";
             this.btn_cancel.UseVisualStyleBackColor = true;
             this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
             // 
             // tb_prodID
             // 
+            this.tb_prodID.Enabled = false;
             this.tb_prodID.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_prodID.Location = new System.Drawing.Point(143, 97);
             this.tb_prodID.Name = "tb_prodID";
-            this.tb_prodID.Size = new System.Drawing.Size(57, 26);
+            this.tb_prodID.ReadOnly = true;
+            this.tb_prodID.Size = new System.Drawing.Size(50, 26);
             this.tb_prodID.TabIndex = 5;
             // 
             // form_addProduct
@@ -204,12 +214,12 @@
             this.Controls.Add(this.btn_cancel);
             this.Controls.Add(this.btn_save);
             this.Controls.Add(this.cb_category);
-            this.Controls.Add(this.lbl_barcode);
+            this.Controls.Add(this.lbl_productCode);
             this.Controls.Add(this.lbl_price);
             this.Controls.Add(this.lbl_category);
             this.Controls.Add(this.lbl_productName);
             this.Controls.Add(this.lbl_productID);
-            this.Controls.Add(this.tb_barcode);
+            this.Controls.Add(this.tb_productCode);
             this.Controls.Add(this.tb_price);
             this.Controls.Add(this.tb_productName);
             this.Controls.Add(this.tb_prodID);
@@ -220,6 +230,7 @@
             this.Name = "form_addProduct";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "form_addProduct";
+            this.Load += new System.EventHandler(this.form_addProduct_Load);
             this.panel_head.ResumeLayout(false);
             this.panel_head.PerformLayout();
             this.ResumeLayout(false);
@@ -235,12 +246,12 @@
         private System.Windows.Forms.Label lbl_productName;
         private System.Windows.Forms.Label lbl_category;
         private System.Windows.Forms.Label lbl_price;
-        private System.Windows.Forms.Label lbl_barcode;
+        private System.Windows.Forms.Label lbl_productCode;
         public System.Windows.Forms.Button btn_save;
         public System.Windows.Forms.Button btn_cancel;
         public System.Windows.Forms.TextBox tb_productID;
         public System.Windows.Forms.TextBox tb_productName;
-        public System.Windows.Forms.TextBox tb_barcode;
+        public System.Windows.Forms.TextBox tb_productCode;
         public System.Windows.Forms.TextBox tb_price;
         public System.Windows.Forms.ComboBox cb_category;
         public System.Windows.Forms.TextBox tb_prodID;

@@ -1,14 +1,14 @@
-﻿using Microsoft.Reporting.WebForms;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
-using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.Reporting.WinForms;
+using System.Data.SqlClient;
 
 namespace OmniscentPOSAI
 {
@@ -26,6 +26,7 @@ namespace OmniscentPOSAI
         public form_salesReport(module_sales sales)
         {
             InitializeComponent();
+            sql_connect = new SqlConnection(db_connect.DBConnection());
             salesModule = sales;
         }
 
@@ -33,7 +34,7 @@ namespace OmniscentPOSAI
         {
             try
             {
-                ReportDataSource reportDataSource; 
+                ReportDataSource rds; 
 
                 this.rv_sales.LocalReport.ReportPath = Application.StartupPath + @"\Reports\report_sales.rdlc";
                 this.rv_sales.LocalReport.DataSources.Clear();
@@ -43,8 +44,15 @@ namespace OmniscentPOSAI
 
 
                 sql_connect.Open();
-                sql_dataadapter.SelectCommand = new SqlCommand("SELECT x.transactionID, x.transactionNo, x.productID, y.productName, x.price, x.quantity, x.discount, x.total FROM tbl_transaction AS x INNER JOIN tbl_products AS y ON x.productID = y.productID WHERE (status LIKE 'Sold')  AND (transactionDate BETWEEN '" + dateMin + "' AND '" + dateMax + "')", sql_connect);
+                sql_dataadapter.SelectCommand = new SqlCommand("SELECT x.transactionID, x.transactionNo, x.productID, y.productName, x.price, x.quantity, x.discount, x.total FROM tbl_transaction AS x INNER JOIN tbl_products AS y ON x.productID = y.productID WHERE (status LIKE 'Sold')  AND (transactionDate BETWEEN '" + dateMin + "' AND '" + dateMax + "') AND (cashierName LIKE '%" + salesModule.cb_cashierName.Text + "%')", sql_connect);
+                sql_dataadapter.Fill(dataset.Tables["dt_soldReport"]);
                 sql_connect.Close();
+
+                rds = new ReportDataSource("DataSet1", dataset.Tables["dt_soldReport"]);
+                rv_sales.LocalReport.DataSources.Add(rds);
+                rv_sales.SetDisplayMode(Microsoft.Reporting.WinForms.DisplayMode.PrintLayout);
+                rv_sales.ZoomMode = ZoomMode.Percent;
+                rv_sales.ZoomPercent = 100;
             }
             catch
             {

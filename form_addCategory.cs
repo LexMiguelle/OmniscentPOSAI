@@ -18,21 +18,23 @@ namespace OmniscentPOSAI
         DBConnector db_connect = new DBConnector();
         SqlDataReader sql_datareader;
 
-        module_categories categoriesList;
+        module_categories categoryModule;
 
-        public form_addCategory(module_categories catList)
+        public form_addCategory(module_categories categories)
         {
             InitializeComponent();
             sql_connect = new SqlConnection(db_connect.DBConnection());
-            categoriesList = catList;
+            categoryModule = categories;
         }
 
+        // clear function
         private void Clear()
         {
             tb_addCategory.Clear();
             tb_addCategory.Focus();
         }
 
+        // save button event
         private void btn_save_Click(object sender, EventArgs e)
         {
             try
@@ -41,8 +43,9 @@ namespace OmniscentPOSAI
                 string categoryName = "";
 
                 sql_connect.Open();
-                sql_command = new SqlCommand("SELECT * FROM tbl_categories WHERE categoryName = @categoryName", sql_connect);
+                sql_command = new SqlCommand("SELECT * FROM tbl_categories WHERE categoryName = @categoryName OR categoryPrefix = @categoryPrefix", sql_connect);
                 sql_command.Parameters.AddWithValue("@categoryName", tb_addCategory.Text);
+                sql_command.Parameters.AddWithValue("@categoryPrefix", tb_categoryPrefix.Text);
                 sql_datareader = sql_command.ExecuteReader();
                 sql_datareader.Read();
 
@@ -64,16 +67,29 @@ namespace OmniscentPOSAI
                 }
                 else
                 {
-                    if (MessageBox.Show("Are you sure you want to add this category?", "Add Category", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    if (string.IsNullOrEmpty(tb_addCategory.Text) || string.IsNullOrEmpty(tb_categoryPrefix.Text))
                     {
-                        sql_connect.Open();
-                        sql_command = new SqlCommand("INSERT INTO tbl_categories(categoryName) VALUES (@categoryName)", sql_connect);
-                        sql_command.Parameters.AddWithValue("@categoryName", tb_addCategory.Text);
-                        sql_command.ExecuteNonQuery();
-                        sql_connect.Close();
-                        MessageBox.Show("A new category has been successfully added.");
-                        categoriesList.LoadCategory();
-                        this.Dispose();
+                        MessageBox.Show("One or more textbox is empty.\nPlease try again", "Add Category", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+                    else if (tb_categoryPrefix.Text.Length < 2) 
+                    {
+                        MessageBox.Show("Category Prefix must contain 2 letters\nPlease try again.", "Add Category", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else
+                    {
+                        if (MessageBox.Show("Are you sure you want to add this category?", "Add Category", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        {
+                            sql_connect.Open();
+                            sql_command = new SqlCommand("INSERT INTO tbl_categories(categoryName, categoryPrefix) VALUES (@categoryName, @categoryPrefix)", sql_connect);
+                            sql_command.Parameters.AddWithValue("@categoryName", tb_addCategory.Text);
+                            sql_command.Parameters.AddWithValue("@categoryPrefix", tb_categoryPrefix.Text);
+                            sql_command.ExecuteNonQuery();
+                            sql_connect.Close();
+                            MessageBox.Show("A new category has been successfully added.");
+                            categoryModule.LoadCategory();
+                            this.Dispose();
+                        }
                     }
                 }
             }
@@ -83,36 +99,34 @@ namespace OmniscentPOSAI
             }
         }
 
+        // cancel button event
         private void btn_cancel_Click(object sender, EventArgs e)
         {
             this.Dispose();
         }
 
+        // tb_addCategory restrictions
         private void tb_addCategory_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (e.KeyChar == 8)
+            if (!char.IsLetterOrDigit(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar) && !char.IsControl(e.KeyChar))
             {
                 e.Handled = true;
             }
-            else if (e.KeyChar == 13)
+        }
+
+        // tb_categoryPrefix restrictions
+        private void tb_categoryPrefix_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar))
             {
-                e.Handled = true;
-            }
-            else if ((e.KeyChar < 48) || (e.KeyChar > 57))
-            {
-                e.Handled = true;
-            }
-            else if ((e.KeyChar < 65) || (e.KeyChar > 90))
-            {
-                e.Handled = true;
-            }
-            else if ((e.KeyChar < 97) || (e.KeyChar > 122))
-            {
-                e.Handled = true;
-            }
-            else if ((e.KeyChar < 192) || (e.KeyChar > 255))
-            {
-                e.Handled = true;
+                if (char.IsLetter(e.KeyChar))
+                {
+                    char.ToUpper(e.KeyChar);
+                }
+                else
+                {
+                    e.Handled = true;
+                }
             }
         }
     }

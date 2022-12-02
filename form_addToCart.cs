@@ -33,7 +33,7 @@ namespace OmniscentPOSAI
             int i = 0;
             dgv_productList.Rows.Clear();
             sql_connect.Open();
-            sql_command = new SqlCommand("SELECT x.productID, x.productName, y.categoryName, x.quantity, x.price FROM tbl_products AS x INNER JOIN tbl_categories AS y ON y.categoryID = x.categoryID WHERE x.barcode LIKE '" + tb_searchProductList.Text + "%' OR x.productName LIKE '" + tb_searchProductList.Text + "%'", sql_connect);
+            sql_command = new SqlCommand("SELECT x.productID, x.productName, y.categoryName, x.quantity, x.price FROM tbl_products AS x INNER JOIN tbl_categories AS y ON y.categoryID = x.categoryID WHERE x.productCode LIKE '" + tb_searchProductList.Text + "%' OR x.productName LIKE '" + tb_searchProductList.Text + "%'", sql_connect);
             sql_datareader = sql_command.ExecuteReader();
             while (sql_datareader.Read())
             {

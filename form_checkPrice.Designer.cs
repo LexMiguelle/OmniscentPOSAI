@@ -33,14 +33,14 @@
             this.lbl_checkPrice = new System.Windows.Forms.Label();
             this.lbl_productID = new System.Windows.Forms.Label();
             this.lbl_product = new System.Windows.Forms.Label();
-            this.lbl_barcode = new System.Windows.Forms.Label();
+            this.lbl_productCode = new System.Windows.Forms.Label();
             this.lbl_price = new System.Windows.Forms.Label();
             this.lbl_category = new System.Windows.Forms.Label();
             this.tb_productID = new System.Windows.Forms.TextBox();
             this.tb_productName = new System.Windows.Forms.TextBox();
             this.tb_category = new System.Windows.Forms.TextBox();
             this.tb_price = new System.Windows.Forms.TextBox();
-            this.tb_barcode = new System.Windows.Forms.TextBox();
+            this.tb_productCode = new System.Windows.Forms.TextBox();
             this.panel_checkPrice = new System.Windows.Forms.Panel();
             this.btn_scanBarcode = new System.Windows.Forms.Button();
             this.panel_checkPriceHead.SuspendLayout();
@@ -105,16 +105,16 @@
             this.lbl_product.TabIndex = 4;
             this.lbl_product.Text = "Product:";
             // 
-            // lbl_barcode
+            // lbl_productCode
             // 
-            this.lbl_barcode.AutoSize = true;
-            this.lbl_barcode.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_barcode.ForeColor = System.Drawing.Color.White;
-            this.lbl_barcode.Location = new System.Drawing.Point(62, 297);
-            this.lbl_barcode.Name = "lbl_barcode";
-            this.lbl_barcode.Size = new System.Drawing.Size(86, 24);
-            this.lbl_barcode.TabIndex = 4;
-            this.lbl_barcode.Text = "Barcode:";
+            this.lbl_productCode.AutoSize = true;
+            this.lbl_productCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_productCode.ForeColor = System.Drawing.Color.White;
+            this.lbl_productCode.Location = new System.Drawing.Point(62, 297);
+            this.lbl_productCode.Name = "lbl_productCode";
+            this.lbl_productCode.Size = new System.Drawing.Size(86, 24);
+            this.lbl_productCode.TabIndex = 4;
+            this.lbl_productCode.Text = "Barcode:";
             // 
             // lbl_price
             // 
@@ -174,15 +174,15 @@
             this.tb_price.Size = new System.Drawing.Size(200, 26);
             this.tb_price.TabIndex = 6;
             // 
-            // tb_barcode
+            // tb_productCode
             // 
-            this.tb_barcode.Enabled = false;
-            this.tb_barcode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_barcode.Location = new System.Drawing.Point(154, 295);
-            this.tb_barcode.Name = "tb_barcode";
-            this.tb_barcode.Size = new System.Drawing.Size(200, 26);
-            this.tb_barcode.TabIndex = 6;
-            this.tb_barcode.TextChanged += new System.EventHandler(this.tb_barcode_TextChanged);
+            this.tb_productCode.Enabled = false;
+            this.tb_productCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_productCode.Location = new System.Drawing.Point(154, 295);
+            this.tb_productCode.Name = "tb_productCode";
+            this.tb_productCode.Size = new System.Drawing.Size(200, 26);
+            this.tb_productCode.TabIndex = 6;
+            this.tb_productCode.TextChanged += new System.EventHandler(this.tb_productCode_TextChanged);
             // 
             // panel_checkPrice
             // 
@@ -216,13 +216,13 @@
             this.ControlBox = false;
             this.Controls.Add(this.btn_scanBarcode);
             this.Controls.Add(this.panel_checkPrice);
-            this.Controls.Add(this.tb_barcode);
+            this.Controls.Add(this.tb_productCode);
             this.Controls.Add(this.tb_price);
             this.Controls.Add(this.tb_category);
             this.Controls.Add(this.tb_productName);
             this.Controls.Add(this.tb_productID);
             this.Controls.Add(this.lbl_price);
-            this.Controls.Add(this.lbl_barcode);
+            this.Controls.Add(this.lbl_productCode);
             this.Controls.Add(this.lbl_category);
             this.Controls.Add(this.lbl_product);
             this.Controls.Add(this.lbl_productID);
@@ -245,7 +245,7 @@
         private System.Windows.Forms.Label lbl_checkPrice;
         private System.Windows.Forms.Label lbl_productID;
         private System.Windows.Forms.Label lbl_product;
-        private System.Windows.Forms.Label lbl_barcode;
+        private System.Windows.Forms.Label lbl_productCode;
         private System.Windows.Forms.Label lbl_price;
         private System.Windows.Forms.Button btn_closeCheckPrice;
         private System.Windows.Forms.Label lbl_category;
@@ -253,7 +253,7 @@
         private System.Windows.Forms.TextBox tb_productName;
         private System.Windows.Forms.TextBox tb_category;
         private System.Windows.Forms.TextBox tb_price;
-        private System.Windows.Forms.TextBox tb_barcode;
+        private System.Windows.Forms.TextBox tb_productCode;
         private System.Windows.Forms.Panel panel_checkPrice;
         private System.Windows.Forms.Button btn_scanBarcode;
     }

@@ -28,18 +28,20 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgv_categories = new System.Windows.Forms.DataGridView();
-            this.col_no = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_category = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_edit = new System.Windows.Forms.DataGridViewImageColumn();
-            this.col_delete = new System.Windows.Forms.DataGridViewImageColumn();
             this.lbl_categories = new System.Windows.Forms.Label();
             this.panel_head = new System.Windows.Forms.Panel();
             this.btn_addCategory = new System.Windows.Forms.LinkLabel();
             this.lbl_catID = new System.Windows.Forms.Label();
+            this.categories_num = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.categories_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.categoriescategory = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.categories_categoryPrefix = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.categories_edit = new System.Windows.Forms.DataGridViewImageColumn();
+            this.categories_delete = new System.Windows.Forms.DataGridViewImageColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_categories)).BeginInit();
             this.panel_head.SuspendLayout();
             this.SuspendLayout();
@@ -53,84 +55,51 @@
             this.dgv_categories.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dgv_categories.BackgroundColor = System.Drawing.SystemColors.ControlDarkDark;
             this.dgv_categories.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.dgv_categories.CellBorderStyle = System.Windows.Forms.DataGridViewCellBorderStyle.Sunken;
+            this.dgv_categories.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_categories.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dgv_categories.ColumnHeadersHeight = 25;
+            this.dgv_categories.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.categories_num,
+            this.categories_ID,
+            this.categoriescategory,
+            this.categories_categoryPrefix,
+            this.categories_edit,
+            this.categories_delete});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv_categories.DefaultCellStyle = dataGridViewCellStyle2;
+            this.dgv_categories.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgv_categories.EnableHeadersVisualStyles = false;
+            this.dgv_categories.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.dgv_categories.Location = new System.Drawing.Point(0, 75);
+            this.dgv_categories.Name = "dgv_categories";
+            this.dgv_categories.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Black;
             dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_categories.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle3;
-            this.dgv_categories.ColumnHeadersHeight = 25;
-            this.dgv_categories.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.col_no,
-            this.col_ID,
-            this.col_category,
-            this.col_edit,
-            this.col_delete});
-            this.dgv_categories.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgv_categories.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.dgv_categories.Location = new System.Drawing.Point(0, 75);
-            this.dgv_categories.Name = "dgv_categories";
-            this.dgv_categories.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_categories.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            this.dgv_categories.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgv_categories.RowHeadersVisible = false;
             this.dgv_categories.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_categories.Size = new System.Drawing.Size(1064, 661);
             this.dgv_categories.TabIndex = 3;
             this.dgv_categories.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_categories_CellContentClick);
             this.dgv_categories.SelectionChanged += new System.EventHandler(this.dgv_categories_SelectionChanged);
-            // 
-            // col_no
-            // 
-            this.col_no.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.col_no.HeaderText = "#";
-            this.col_no.MinimumWidth = 25;
-            this.col_no.Name = "col_no";
-            this.col_no.Width = 25;
-            // 
-            // col_ID
-            // 
-            this.col_ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.col_ID.FillWeight = 90.14085F;
-            this.col_ID.HeaderText = "ID";
-            this.col_ID.Name = "col_ID";
-            this.col_ID.Visible = false;
-            this.col_ID.Width = 43;
-            // 
-            // col_category
-            // 
-            this.col_category.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.col_category.FillWeight = 90.14085F;
-            this.col_category.HeaderText = "Category";
-            this.col_category.Name = "col_category";
-            // 
-            // col_edit
-            // 
-            this.col_edit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.col_edit.FillWeight = 169.0141F;
-            this.col_edit.HeaderText = "";
-            this.col_edit.MinimumWidth = 30;
-            this.col_edit.Name = "col_edit";
-            this.col_edit.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.col_edit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.col_edit.Width = 30;
-            // 
-            // col_delete
-            // 
-            this.col_delete.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.col_delete.HeaderText = "";
-            this.col_delete.MinimumWidth = 30;
-            this.col_delete.Name = "col_delete";
-            this.col_delete.Width = 30;
             // 
             // lbl_categories
             // 
@@ -178,6 +147,64 @@
             this.lbl_catID.TabIndex = 0;
             this.lbl_catID.Text = "#";
             // 
+            // categories_num
+            // 
+            this.categories_num.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.categories_num.HeaderText = "#";
+            this.categories_num.MinimumWidth = 25;
+            this.categories_num.Name = "categories_num";
+            this.categories_num.ReadOnly = true;
+            this.categories_num.Width = 25;
+            // 
+            // categories_ID
+            // 
+            this.categories_ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.categories_ID.FillWeight = 90.14085F;
+            this.categories_ID.HeaderText = "ID";
+            this.categories_ID.Name = "categories_ID";
+            this.categories_ID.ReadOnly = true;
+            this.categories_ID.Visible = false;
+            this.categories_ID.Width = 42;
+            // 
+            // categoriescategory
+            // 
+            this.categoriescategory.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.categoriescategory.FillWeight = 90.14085F;
+            this.categoriescategory.HeaderText = "CATEGORY";
+            this.categoriescategory.Name = "categoriescategory";
+            this.categoriescategory.ReadOnly = true;
+            // 
+            // categories_categoryPrefix
+            // 
+            this.categories_categoryPrefix.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.categories_categoryPrefix.HeaderText = "PREFIX";
+            this.categories_categoryPrefix.Name = "categories_categoryPrefix";
+            this.categories_categoryPrefix.ReadOnly = true;
+            this.categories_categoryPrefix.Width = 69;
+            // 
+            // categories_edit
+            // 
+            this.categories_edit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.categories_edit.FillWeight = 169.0141F;
+            this.categories_edit.HeaderText = "";
+            this.categories_edit.Image = global::OmniscentPOSAI.Properties.Resources.edit_16;
+            this.categories_edit.MinimumWidth = 30;
+            this.categories_edit.Name = "categories_edit";
+            this.categories_edit.ReadOnly = true;
+            this.categories_edit.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.categories_edit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.categories_edit.Width = 30;
+            // 
+            // categories_delete
+            // 
+            this.categories_delete.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.categories_delete.HeaderText = "";
+            this.categories_delete.Image = global::OmniscentPOSAI.Properties.Resources.trash_16;
+            this.categories_delete.MinimumWidth = 30;
+            this.categories_delete.Name = "categories_delete";
+            this.categories_delete.ReadOnly = true;
+            this.categories_delete.Width = 30;
+            // 
             // module_categories
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -199,14 +226,15 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dgv_categories;
-        private System.Windows.Forms.DataGridViewTextBoxColumn col_no;
-        private System.Windows.Forms.DataGridViewTextBoxColumn col_ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn col_category;
-        private System.Windows.Forms.DataGridViewImageColumn col_edit;
-        private System.Windows.Forms.DataGridViewImageColumn col_delete;
         private System.Windows.Forms.Label lbl_categories;
         private System.Windows.Forms.Panel panel_head;
         private System.Windows.Forms.LinkLabel btn_addCategory;
         private System.Windows.Forms.Label lbl_catID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn categories_num;
+        private System.Windows.Forms.DataGridViewTextBoxColumn categories_ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn categoriescategory;
+        private System.Windows.Forms.DataGridViewTextBoxColumn categories_categoryPrefix;
+        private System.Windows.Forms.DataGridViewImageColumn categories_edit;
+        private System.Windows.Forms.DataGridViewImageColumn categories_delete;
     }
 }

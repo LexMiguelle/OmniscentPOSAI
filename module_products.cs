@@ -1,4 +1,5 @@
-﻿using System.Data.SqlClient;
+﻿using System;
+using System.Data.SqlClient;
 using System.Windows.Forms;
 
 namespace OmniscentPOSAI
@@ -10,6 +11,7 @@ namespace OmniscentPOSAI
         SqlDataReader sql_datareader;
         DBConnector db_connect = new DBConnector();
 
+        String prodID;
 
         public module_products()
         {
@@ -30,7 +32,7 @@ namespace OmniscentPOSAI
 
             dgv_products.Rows.Clear();
             sql_connect.Open();
-            sql_command = new SqlCommand("SELECT x.productID, x.barcode, x.productName, y.categoryName, x.price, x.quantity, x.restock FROM tbl_products AS x INNER JOIN tbl_categories AS y ON y.categoryID = x.categoryID WHERE x.productName LIKE '" + tb_search.Text + "%'", sql_connect);
+            sql_command = new SqlCommand("SELECT x.productID, x.productCode, x.productName, y.categoryName, x.price, x.quantity, x.restock FROM tbl_products AS x INNER JOIN tbl_categories AS y ON y.categoryID = x.categoryID WHERE x.productName LIKE '" + tb_search.Text + "%'", sql_connect);
             sql_datareader = sql_command.ExecuteReader();
             while (sql_datareader.Read())
             {
@@ -40,6 +42,15 @@ namespace OmniscentPOSAI
             sql_datareader.Close();
             sql_connect.Close();
         }
+
+        // addProduct button event
+        private void btn_addProduct_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            form_addProduct addProduct = new form_addProduct(this);
+            addProduct.LoadCategory();
+            addProduct.ShowDialog();
+        }
+
 
         // search event
         private void tb_search_TextChanged(object sender, System.EventArgs e)
@@ -53,10 +64,14 @@ namespace OmniscentPOSAI
             string col_name = dgv_products.Columns[e.ColumnIndex].Name;
             if (col_name == "col_edit") //edit column event
             {
+                string prodID = dgv_products.Rows[e.RowIndex].Cells[1].Value.ToString();
+                string productID = prodID.Substring(prodID.Length - 4);
+
                 form_updateProduct updateProduct = new form_updateProduct(this);
                 updateProduct.LoadCategory();
-                updateProduct.tb_productID.Text = dgv_products.Rows[e.RowIndex].Cells[1].Value.ToString();
-                updateProduct.tb_barcode.Text = dgv_products.Rows[e.RowIndex].Cells[2].Value.ToString();
+                updateProduct.lbl_ID.Text = dgv_products.Rows[e.RowIndex].Cells[1].Value.ToString();
+                updateProduct.tb_productID.Text = productID;
+                updateProduct.tb_productCode.Text = dgv_products.Rows[e.RowIndex].Cells[2].Value.ToString();
                 updateProduct.tb_productName.Text = dgv_products.Rows[e.RowIndex].Cells[3].Value.ToString();
                 updateProduct.cb_category.Text = dgv_products.Rows[e.RowIndex].Cells[4].Value.ToString();
                 updateProduct.tb_price.Text = dgv_products.Rows[e.RowIndex].Cells[5].Value.ToString();
@@ -64,25 +79,50 @@ namespace OmniscentPOSAI
             }
             else if (col_name == "col_delete") //delete column event
             {
-                if (MessageBox.Show("Delete this product?", "Delete Product", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                bool hasRows = false;
+                int i = dgv_products.CurrentRow.Index;
+                string productID = dgv_products[1, i].Value.ToString();
+
+                sql_connect.Open();
+                sql_command = new SqlCommand("SELECT quantity FROM tbl_products WHERE productID = @productID", sql_connect);
+                sql_command.Parameters.AddWithValue("@productID", productID);
+                sql_datareader = sql_command.ExecuteReader();
+                sql_datareader.Read();
+
+                if (int.Parse(dgv_products[6, i].Value.ToString()) != 0 )
                 {
-                    sql_connect.Open();
-                    sql_command = new SqlCommand("DELETE FROM tbl_products WHERE productID LIKE '" + dgv_products.Rows[e.RowIndex].Cells[1].Value.ToString() + "'", sql_connect);
-                    sql_command.ExecuteNonQuery();
-                    sql_connect.Close();
-                    LoadProducts();
+                    hasRows = true;
+                }
+                else
+                {
+                    hasRows = false;
+                }
+                sql_datareader.Close();
+                sql_connect.Close();
+
+                if (hasRows == true)
+                {
+                    MessageBox.Show("This product cannot be deleted.\nSelected product still contain stocks in the inventory.", "Delete Product", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                }
+                else
+                {
+                    if (MessageBox.Show("Delete this product?", "Delete Product", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                    {
+                        sql_connect.Open();
+                        sql_command = new SqlCommand("DELETE FROM tbl_products WHERE productID LIKE '" + dgv_products.Rows[e.RowIndex].Cells[1].Value.ToString() + "'", sql_connect);
+                        sql_command.ExecuteNonQuery();
+                        sql_connect.Close();
+                        LoadProducts();
+                    }
                 }
             }
         }
 
-        // addProduct button event
-        private void btn_addProduct_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        private void dgv_products_SelectionChanged(object sender, System.EventArgs e)
         {
-            form_addProduct addProduct = new form_addProduct(this);
-            addProduct.LoadCategory();
-            addProduct.ShowDialog();
+            int i = dgv_products.CurrentRow.Index;
+            prodID = dgv_products[1, i].Value.ToString();
+            lbl_prodID.Text = prodID;
         }
-
-
     }
 }

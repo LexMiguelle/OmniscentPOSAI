@@ -39,7 +39,7 @@
             this.dgv_products = new System.Windows.Forms.DataGridView();
             this.col_no = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_productID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_barcode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_productCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_product = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_category = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_price = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,6 +47,7 @@
             this.col_restock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_edit = new System.Windows.Forms.DataGridViewImageColumn();
             this.col_delete = new System.Windows.Forms.DataGridViewImageColumn();
+            this.lbl_prodID = new System.Windows.Forms.Label();
             this.panel_head.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_products)).BeginInit();
             this.SuspendLayout();
@@ -55,6 +56,7 @@
             // 
             this.panel_head.Controls.Add(this.tb_search);
             this.panel_head.Controls.Add(this.btn_addProduct);
+            this.panel_head.Controls.Add(this.lbl_prodID);
             this.panel_head.Controls.Add(this.lbl_products);
             this.panel_head.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel_head.Location = new System.Drawing.Point(0, 0);
@@ -118,7 +120,7 @@
             this.dgv_products.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.col_no,
             this.col_productID,
-            this.col_barcode,
+            this.col_productCode,
             this.col_product,
             this.col_category,
             this.col_price,
@@ -129,7 +131,7 @@
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
@@ -158,6 +160,7 @@
             this.dgv_products.Size = new System.Drawing.Size(1064, 661);
             this.dgv_products.TabIndex = 1;
             this.dgv_products.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_products_CellContentClick);
+            this.dgv_products.SelectionChanged += new System.EventHandler(this.dgv_products_SelectionChanged);
             // 
             // col_no
             // 
@@ -171,62 +174,63 @@
             // 
             this.col_productID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.col_productID.FillWeight = 90.14085F;
-            this.col_productID.HeaderText = "Product ID";
+            this.col_productID.HeaderText = "PRODUCT ID";
             this.col_productID.Name = "col_productID";
-            this.col_productID.Width = 83;
+            this.col_productID.Width = 98;
             // 
-            // col_barcode
+            // col_productCode
             // 
-            this.col_barcode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.col_barcode.FillWeight = 90.14085F;
-            this.col_barcode.HeaderText = "barcode";
-            this.col_barcode.Name = "col_barcode";
-            this.col_barcode.Width = 71;
+            this.col_productCode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.col_productCode.FillWeight = 90.14085F;
+            this.col_productCode.HeaderText = "PRODUCT CODE";
+            this.col_productCode.Name = "col_productCode";
+            this.col_productCode.Width = 117;
             // 
             // col_product
             // 
             this.col_product.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.col_product.FillWeight = 90.14085F;
-            this.col_product.HeaderText = "Product";
+            this.col_product.HeaderText = "PRODUCT";
             this.col_product.Name = "col_product";
             // 
             // col_category
             // 
             this.col_category.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.col_category.FillWeight = 90.14085F;
-            this.col_category.HeaderText = "Category";
+            this.col_category.HeaderText = "CATEGORY";
             this.col_category.Name = "col_category";
-            this.col_category.Width = 74;
+            this.col_category.Width = 90;
             // 
             // col_price
             // 
             this.col_price.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.col_price.FillWeight = 90.14085F;
-            this.col_price.HeaderText = "Price";
+            this.col_price.HeaderText = "PRICE";
             this.col_price.Name = "col_price";
-            this.col_price.Width = 56;
+            this.col_price.Width = 63;
             // 
             // col_quantity
             // 
             this.col_quantity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.col_quantity.FillWeight = 90.14085F;
-            this.col_quantity.HeaderText = "Quantity";
+            this.col_quantity.HeaderText = "QUANTITY";
             this.col_quantity.Name = "col_quantity";
-            this.col_quantity.Width = 71;
+            this.col_quantity.Width = 86;
             // 
             // col_restock
             // 
             this.col_restock.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.col_restock.FillWeight = 90.14085F;
-            this.col_restock.HeaderText = "Re-stock";
+            this.col_restock.HeaderText = "RESTOCK";
             this.col_restock.Name = "col_restock";
-            this.col_restock.Width = 75;
+            this.col_restock.Width = 82;
             // 
             // col_edit
             // 
             this.col_edit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.col_edit.FillWeight = 169.0141F;
             this.col_edit.HeaderText = "";
+            this.col_edit.Image = global::OmniscentPOSAI.Properties.Resources.edit_16;
             this.col_edit.MinimumWidth = 30;
             this.col_edit.Name = "col_edit";
             this.col_edit.Resizable = System.Windows.Forms.DataGridViewTriState.True;
@@ -237,9 +241,20 @@
             // 
             this.col_delete.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.col_delete.HeaderText = "";
+            this.col_delete.Image = global::OmniscentPOSAI.Properties.Resources.trash_16;
             this.col_delete.MinimumWidth = 30;
             this.col_delete.Name = "col_delete";
             this.col_delete.Width = 30;
+            // 
+            // lbl_prodID
+            // 
+            this.lbl_prodID.AutoSize = true;
+            this.lbl_prodID.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_prodID.Location = new System.Drawing.Point(185, 19);
+            this.lbl_prodID.Name = "lbl_prodID";
+            this.lbl_prodID.Size = new System.Drawing.Size(30, 31);
+            this.lbl_prodID.TabIndex = 0;
+            this.lbl_prodID.Text = "#";
             // 
             // module_products
             // 
@@ -268,9 +283,10 @@
         private System.Windows.Forms.TextBox tb_search;
         private System.Windows.Forms.LinkLabel btn_addProduct;
         private System.Windows.Forms.Label lbl_products;
+        public System.Windows.Forms.DataGridView dgv_products;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_no;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_productID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn col_barcode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_productCode;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_product;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_category;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_price;
@@ -278,6 +294,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn col_restock;
         private System.Windows.Forms.DataGridViewImageColumn col_edit;
         private System.Windows.Forms.DataGridViewImageColumn col_delete;
-        public System.Windows.Forms.DataGridView dgv_products;
+        private System.Windows.Forms.Label lbl_prodID;
     }
 }

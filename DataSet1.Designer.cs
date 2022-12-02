@@ -334,6 +334,8 @@ namespace OmniscentPOSAI {
             
             private global::System.Data.DataColumn columnproductName;
             
+            private global::System.Data.DataColumn columncashierName;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public dt_soldDataTable() {
@@ -449,6 +451,14 @@ namespace OmniscentPOSAI {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn cashierNameColumn {
+                get {
+                    return this.columncashierName;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -484,7 +494,7 @@ namespace OmniscentPOSAI {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public dt_soldRow Adddt_soldRow(string transactionID, string transactionNo, string productID, string price, string quantity, string discount, string total, string stockDate, string status, string productName) {
+            public dt_soldRow Adddt_soldRow(string transactionID, string transactionNo, string productID, string price, string quantity, string discount, string total, string stockDate, string status, string productName, string cashierName) {
                 dt_soldRow rowdt_soldRow = ((dt_soldRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         transactionID,
@@ -496,7 +506,8 @@ namespace OmniscentPOSAI {
                         total,
                         stockDate,
                         status,
-                        productName};
+                        productName,
+                        cashierName};
                 rowdt_soldRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowdt_soldRow);
                 return rowdt_soldRow;
@@ -529,6 +540,7 @@ namespace OmniscentPOSAI {
                 this.columnstockDate = base.Columns["stockDate"];
                 this.columnstatus = base.Columns["status"];
                 this.columnproductName = base.Columns["productName"];
+                this.columncashierName = base.Columns["cashierName"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -554,6 +566,8 @@ namespace OmniscentPOSAI {
                 base.Columns.Add(this.columnstatus);
                 this.columnproductName = new global::System.Data.DataColumn("productName", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnproductName);
+                this.columncashierName = new global::System.Data.DataColumn("cashierName", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columncashierName);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1201,6 +1215,22 @@ namespace OmniscentPOSAI {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string cashierName {
+                get {
+                    try {
+                        return ((string)(this[this.tabledt_sold.cashierNameColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'cashierName\' in table \'dt_sold\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tabledt_sold.cashierNameColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IstransactionIDNull() {
                 return this.IsNull(this.tabledt_sold.transactionIDColumn);
             }
@@ -1317,6 +1347,18 @@ namespace OmniscentPOSAI {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetproductNameNull() {
                 this[this.tabledt_sold.productNameColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IscashierNameNull() {
+                return this.IsNull(this.tabledt_sold.cashierNameColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetcashierNameNull() {
+                this[this.tabledt_sold.cashierNameColumn] = global::System.Convert.DBNull;
             }
         }
         

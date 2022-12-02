@@ -28,6 +28,7 @@ namespace OmniscentPOSAI
             
         }
 
+        // load categories to dgv_categories
         public void LoadCategory()
         {
             int id = 0;
@@ -39,25 +40,27 @@ namespace OmniscentPOSAI
             while (sql_datareader.Read())
             {
                 id++;
-                dgv_categories.Rows.Add(id, sql_datareader[0].ToString(), sql_datareader[1].ToString());
+                dgv_categories.Rows.Add(id, sql_datareader[0].ToString(), sql_datareader[1].ToString(), sql_datareader[2].ToString());
             }
             sql_datareader.Close();
             sql_connect.Close();
         }
 
+        // dgv_categories click events
         private void dgv_categories_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             string column_name = dgv_categories.Columns[e.ColumnIndex].Name;
 
-            if (column_name == "col_edit")
+            if (column_name == "categories_edit")
             {
                 form_updateCategory updateCategory = new form_updateCategory(this);
-                updateCategory.tb_updateCategory.Text = dgv_categories.Rows[e.RowIndex].Cells[2].Value.ToString();
                 updateCategory.lbl_ID.Text = dgv_categories.Rows[e.RowIndex].Cells[1].Value.ToString();
+                updateCategory.tb_updateCategory.Text = dgv_categories.Rows[e.RowIndex].Cells[2].Value.ToString();
+                updateCategory.tb_updateCategoryPrefix.Text = dgv_categories.Rows[e.RowIndex].Cells[3].Value.ToString();
                 updateCategory.ShowDialog();
 
             }
-            else if (column_name == "col_delete")
+            else if (column_name == "categories_delete")
             {
                 bool hasRows = false;
 

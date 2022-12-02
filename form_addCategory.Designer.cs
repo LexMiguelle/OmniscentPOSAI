@@ -34,6 +34,8 @@
             this.tb_addCategory = new System.Windows.Forms.TextBox();
             this.btn_cancel = new System.Windows.Forms.Button();
             this.btn_save = new System.Windows.Forms.Button();
+            this.lbl_categoryPrefix = new System.Windows.Forms.Label();
+            this.tb_categoryPrefix = new System.Windows.Forms.TextBox();
             this.panel_head.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -62,7 +64,7 @@
             this.lbl_categoryName.AutoSize = true;
             this.lbl_categoryName.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_categoryName.ForeColor = System.Drawing.Color.White;
-            this.lbl_categoryName.Location = new System.Drawing.Point(88, 111);
+            this.lbl_categoryName.Location = new System.Drawing.Point(90, 98);
             this.lbl_categoryName.Name = "lbl_categoryName";
             this.lbl_categoryName.Size = new System.Drawing.Size(226, 31);
             this.lbl_categoryName.TabIndex = 0;
@@ -71,10 +73,11 @@
             // tb_addCategory
             // 
             this.tb_addCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_addCategory.Location = new System.Drawing.Point(318, 116);
+            this.tb_addCategory.Location = new System.Drawing.Point(320, 103);
+            this.tb_addCategory.MaxLength = 50;
             this.tb_addCategory.Name = "tb_addCategory";
             this.tb_addCategory.Size = new System.Drawing.Size(352, 26);
-            this.tb_addCategory.TabIndex = 4;
+            this.tb_addCategory.TabIndex = 1;
             this.tb_addCategory.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_addCategory_KeyPress);
             // 
             // btn_cancel
@@ -83,7 +86,7 @@
             this.btn_cancel.Location = new System.Drawing.Point(570, 164);
             this.btn_cancel.Name = "btn_cancel";
             this.btn_cancel.Size = new System.Drawing.Size(100, 25);
-            this.btn_cancel.TabIndex = 5;
+            this.btn_cancel.TabIndex = 4;
             this.btn_cancel.Text = "Cancel";
             this.btn_cancel.UseVisualStyleBackColor = true;
             this.btn_cancel.Click += new System.EventHandler(this.btn_cancel_Click);
@@ -94,10 +97,31 @@
             this.btn_save.Location = new System.Drawing.Point(453, 164);
             this.btn_save.Name = "btn_save";
             this.btn_save.Size = new System.Drawing.Size(100, 25);
-            this.btn_save.TabIndex = 5;
+            this.btn_save.TabIndex = 3;
             this.btn_save.Text = "Save";
             this.btn_save.UseVisualStyleBackColor = true;
             this.btn_save.Click += new System.EventHandler(this.btn_save_Click);
+            // 
+            // lbl_categoryPrefix
+            // 
+            this.lbl_categoryPrefix.AutoSize = true;
+            this.lbl_categoryPrefix.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_categoryPrefix.ForeColor = System.Drawing.Color.White;
+            this.lbl_categoryPrefix.Location = new System.Drawing.Point(90, 129);
+            this.lbl_categoryPrefix.Name = "lbl_categoryPrefix";
+            this.lbl_categoryPrefix.Size = new System.Drawing.Size(225, 31);
+            this.lbl_categoryPrefix.TabIndex = 0;
+            this.lbl_categoryPrefix.Text = "Category Prefix:";
+            // 
+            // tb_categoryPrefix
+            // 
+            this.tb_categoryPrefix.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_categoryPrefix.Location = new System.Drawing.Point(320, 134);
+            this.tb_categoryPrefix.MaxLength = 2;
+            this.tb_categoryPrefix.Name = "tb_categoryPrefix";
+            this.tb_categoryPrefix.Size = new System.Drawing.Size(49, 26);
+            this.tb_categoryPrefix.TabIndex = 2;
+            this.tb_categoryPrefix.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_categoryPrefix_KeyPress);
             // 
             // form_addCategory
             // 
@@ -108,8 +132,10 @@
             this.ControlBox = false;
             this.Controls.Add(this.btn_save);
             this.Controls.Add(this.btn_cancel);
+            this.Controls.Add(this.tb_categoryPrefix);
             this.Controls.Add(this.tb_addCategory);
             this.Controls.Add(this.panel_head);
+            this.Controls.Add(this.lbl_categoryPrefix);
             this.Controls.Add(this.lbl_categoryName);
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
@@ -131,5 +157,7 @@
         private System.Windows.Forms.TextBox tb_addCategory;
         private System.Windows.Forms.Button btn_cancel;
         private System.Windows.Forms.Button btn_save;
+        private System.Windows.Forms.Label lbl_categoryPrefix;
+        private System.Windows.Forms.TextBox tb_categoryPrefix;
     }
 }

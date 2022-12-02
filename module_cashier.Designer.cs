@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(module_cashier));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -73,9 +72,10 @@
             this.transactionNo = new System.Windows.Forms.Label();
             this.lbl_transactionNo = new System.Windows.Forms.Label();
             this.dgv_cart = new System.Windows.Forms.DataGridView();
+            this.timer_clock = new System.Windows.Forms.Timer(this.components);
             this.cart_num = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cart_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cart_barcode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cart_productCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cart_productID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cart_productName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cart_category = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -86,7 +86,6 @@
             this.cart_subtract = new System.Windows.Forms.DataGridViewImageColumn();
             this.cart_add = new System.Windows.Forms.DataGridViewImageColumn();
             this.cart_remove = new System.Windows.Forms.DataGridViewImageColumn();
-            this.timer_clock = new System.Windows.Forms.Timer(this.components);
             this.panel_cashierHead.SuspendLayout();
             this.panel_cashierInfo.SuspendLayout();
             this.panel_dateTime.SuspendLayout();
@@ -207,7 +206,7 @@
             // 
             // pictureBox1
             // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Image = global::OmniscentPOSAI.Properties.Resources.omniscent_128;
             this.pictureBox1.Location = new System.Drawing.Point(12, 12);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(75, 75);
@@ -582,7 +581,7 @@
             this.dgv_cart.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.cart_num,
             this.cart_ID,
-            this.cart_barcode,
+            this.cart_productCode,
             this.cart_productID,
             this.cart_productName,
             this.cart_category,
@@ -628,6 +627,11 @@
             this.dgv_cart.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgv_cart_RowsAdded);
             this.dgv_cart.SelectionChanged += new System.EventHandler(this.dgv_cart_SelectionChanged);
             // 
+            // timer_clock
+            // 
+            this.timer_clock.Enabled = true;
+            this.timer_clock.Tick += new System.EventHandler(this.timer_clock_Tick);
+            // 
             // cart_num
             // 
             this.cart_num.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
@@ -649,14 +653,14 @@
             this.cart_ID.Visible = false;
             this.cart_ID.Width = 30;
             // 
-            // cart_barcode
+            // cart_productCode
             // 
-            this.cart_barcode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.cart_barcode.HeaderText = "BARCODE";
-            this.cart_barcode.Name = "cart_barcode";
-            this.cart_barcode.ReadOnly = true;
-            this.cart_barcode.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.cart_barcode.Width = 82;
+            this.cart_productCode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.cart_productCode.HeaderText = "PRODUCT CODE";
+            this.cart_productCode.Name = "cart_productCode";
+            this.cart_productCode.ReadOnly = true;
+            this.cart_productCode.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.cart_productCode.Width = 116;
             // 
             // cart_productID
             // 
@@ -748,11 +752,6 @@
             this.cart_remove.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.cart_remove.Width = 25;
             // 
-            // timer_clock
-            // 
-            this.timer_clock.Enabled = true;
-            this.timer_clock.Tick += new System.EventHandler(this.timer_clock_Tick);
-            // 
             // module_cashier
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -818,19 +817,6 @@
         private System.Windows.Forms.Label lbl_transactionDate;
         private System.Windows.Forms.Label lbl_transactionNo;
         public System.Windows.Forms.DataGridView dgv_cart;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cart_num;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cart_ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cart_barcode;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cart_productID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cart_productName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cart_category;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cart_price;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cart_quantity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cart_discount;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cart_total;
-        private System.Windows.Forms.DataGridViewImageColumn cart_subtract;
-        private System.Windows.Forms.DataGridViewImageColumn cart_add;
-        private System.Windows.Forms.DataGridViewImageColumn cart_remove;
         public System.Windows.Forms.TextBox tb_searchBox;
         public System.Windows.Forms.Label transactionDate;
         public System.Windows.Forms.Label transactionNo;
@@ -847,5 +833,18 @@
         public System.Windows.Forms.Label totalVAT;
         public System.Windows.Forms.Label totalVATable;
         public System.Windows.Forms.Label totalAmount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cart_num;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cart_ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cart_productCode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cart_productID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cart_productName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cart_category;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cart_price;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cart_quantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cart_discount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cart_total;
+        private System.Windows.Forms.DataGridViewImageColumn cart_subtract;
+        private System.Windows.Forms.DataGridViewImageColumn cart_add;
+        private System.Windows.Forms.DataGridViewImageColumn cart_remove;
     }
 }

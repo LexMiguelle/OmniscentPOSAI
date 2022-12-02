@@ -90,6 +90,7 @@
     <Reference Include="System.Drawing.Common, Version=4.0.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
       <HintPath>packages\System.Drawing.Common.4.7.0\lib\net461\System.Drawing.Common.dll</HintPath>
     </Reference>
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -207,6 +208,12 @@
     <Compile Include="module_cashier.Designer.cs">
       <DependentUpon>module_cashier.cs</DependentUpon>
     </Compile>
+    <Compile Include="module_manager.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module_manager.Designer.cs">
+      <DependentUpon>module_manager.cs</DependentUpon>
+    </Compile>
     <Compile Include="module_records.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -311,6 +318,9 @@
     <EmbeddedResource Include="module_cashier.resx">
       <DependentUpon>module_cashier.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="module_manager.resx">
+      <DependentUpon>module_manager.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="module_records.resx">
       <DependentUpon>module_records.cs</DependentUpon>
     </EmbeddedResource>
@@ -378,6 +388,24 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="omniscent_icon.ico" />
+    <None Include="Resources\add_64.png" />
+    <None Include="Resources\edit_16.png" />
+    <None Include="Resources\trash_16.png" />
+    <None Include="Resources\minus_16.png" />
+    <None Include="Resources\plus_16.png" />
+    <None Include="Resources\cross_64.png" />
+    <None Include="Resources\cross_32.png" />
+    <None Include="Resources\cross_small_16.png" />
+    <None Include="Resources\print_16.png" />
+    <None Include="Resources\check_16.png" />
+    <None Include="Resources\logout_64.png" />
+    <None Include="Resources\omniscent_512.png" />
+    <None Include="Resources\omniscent_256.png" />
+    <None Include="Resources\omniscent_64.png" />
+    <None Include="Resources\omniscent_128.png" />
+    <None Include="Resources\omniscent_24.png" />
+    <None Include="Resources\omniscent_32.png" />
+    <None Include="Resources\omniscent_16.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
