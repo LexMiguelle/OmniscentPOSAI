@@ -47,6 +47,7 @@ namespace OmniscentPOSAI
         private void btn_addProduct_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
             form_addProduct addProduct = new form_addProduct(this);
+            addProduct.tb_ID.Text = "OS";
             addProduct.LoadCategory();
             addProduct.ShowDialog();
         }
@@ -64,14 +65,17 @@ namespace OmniscentPOSAI
             string col_name = dgv_products.Columns[e.ColumnIndex].Name;
             if (col_name == "col_edit") //edit column event
             {
-                string prodID = dgv_products.Rows[e.RowIndex].Cells[1].Value.ToString();
-                string productID = prodID.Substring(prodID.Length - 4);
+                string IDprefix = dgv_products.Rows[e.RowIndex].Cells[1].Value.ToString();
+                string catPrefix = dgv_products.Rows[e.RowIndex].Cells[2].Value.ToString();
+                string productID = IDprefix.Substring(IDprefix.Length - 4);
+                string productCode = catPrefix.Substring(catPrefix.Length - 4);
 
                 form_updateProduct updateProduct = new form_updateProduct(this);
                 updateProduct.LoadCategory();
                 updateProduct.lbl_ID.Text = dgv_products.Rows[e.RowIndex].Cells[1].Value.ToString();
+                updateProduct.tb_ID.Text = "OS";
                 updateProduct.tb_productID.Text = productID;
-                updateProduct.tb_productCode.Text = dgv_products.Rows[e.RowIndex].Cells[2].Value.ToString();
+                updateProduct.tb_productCode.Text = productCode;
                 updateProduct.tb_productName.Text = dgv_products.Rows[e.RowIndex].Cells[3].Value.ToString();
                 updateProduct.cb_category.Text = dgv_products.Rows[e.RowIndex].Cells[4].Value.ToString();
                 updateProduct.tb_price.Text = dgv_products.Rows[e.RowIndex].Cells[5].Value.ToString();

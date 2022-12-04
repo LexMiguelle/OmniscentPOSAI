@@ -42,6 +42,44 @@ namespace OmniscentPOSAI
             sql_connect.Close();
         }
 
+
+        private void tb_productCode_TextChanged(object sender, EventArgs e)
+        {
+            sql_connect.Open();
+            sql_command = new SqlCommand("SELECT productID FROM tbl_products WHERE productCode = @productCode", sql_connect);
+            sql_command.Parameters.AddWithValue("@productCode", tb_productCode.Text);
+            sql_datareader = sql_command.ExecuteReader();
+            while (sql_datareader.Read())
+            {
+                lbl_productCodeID.Text = sql_datareader["productCode"].ToString();
+            }
+
+            if (!sql_datareader.HasRows)
+            {
+                lbl_productCodeID.Text = lbl_ID.Text;
+            }
+            sql_datareader.Close();
+            sql_connect.Close();
+        }
+
+        private void tb_productName_TextChanged(object sender, EventArgs e)
+        {
+            sql_connect.Open();
+            sql_command = new SqlCommand("SELECT productID FROM tbl_products WHERE productName = @productName", sql_connect);
+            sql_command.Parameters.AddWithValue("@productName", tb_productName.Text);
+            sql_datareader = sql_command.ExecuteReader();
+            while (sql_datareader.Read())
+            {
+                lbl_productNameID.Text = sql_datareader["productID"].ToString();
+            }
+
+            if (!sql_datareader.HasRows)
+            {
+                lbl_productNameID.Text = lbl_ID.Text;
+            }
+            sql_datareader.Close();
+            sql_connect.Close();
+        }
         // cb_category text change event
         private void cb_category_TextChanged(object sender, EventArgs e)
         {
@@ -50,7 +88,23 @@ namespace OmniscentPOSAI
             sql_datareader = sql_command.ExecuteReader();
             while (sql_datareader.Read())
             {
-                tb_prodID.Text = sql_datareader[0].ToString();
+                tb_categoryPrefix.Text = sql_datareader[0].ToString();
+            }
+            sql_datareader.Close();
+            sql_connect.Close();
+
+            sql_connect.Open();
+            sql_command = new SqlCommand("SELECT productID FROM tbl_products WHERE categoryID = @categoryID", sql_connect);
+            sql_command.Parameters.AddWithValue("@categoryID", cb_category.Text);
+            sql_datareader = sql_command.ExecuteReader();
+            while (sql_datareader.Read())
+            {
+                lbl_categoryID.Text = sql_datareader["categoryID"].ToString();
+            }
+
+            if (!sql_datareader.HasRows)
+            {
+                lbl_categoryID.Text = lbl_ID.Text;
             }
             sql_datareader.Close();
             sql_connect.Close();
@@ -69,20 +123,6 @@ namespace OmniscentPOSAI
         private void tb_price_TextChanged(object sender, EventArgs e)
         {
             addDot();
-        }
-
-        // cb_category text change event
-        private void cb_category_TextChange(object sender, EventArgs e)
-        {
-            sql_connect.Open();
-            sql_command = new SqlCommand("SELECT categoryPrefix FROM tbl_categories WHERE categoryName = '" + cb_category.Text + "'", sql_connect);
-            sql_datareader = sql_command.ExecuteReader();
-            while (sql_datareader.Read())
-            {
-                tb_prodID.Text = sql_datareader[0].ToString();
-            }
-            sql_datareader.Close();
-            sql_connect.Close();
         }
 
         // tb_productID restriction
@@ -125,8 +165,8 @@ namespace OmniscentPOSAI
                 sql_connect.Open();
                 sql_command = new SqlCommand("SELECT * FROM tbl_products WHERE (productName, productID, productCode) VALUES (@productName, @productID, @productCode)", sql_connect);
                 sql_command.Parameters.AddWithValue("@productName", tb_productName.Text);
-                sql_command.Parameters.AddWithValue("@productID", tb_prodID.Text + tb_productID.Text);
-                sql_command.Parameters.AddWithValue("@productCode", tb_productCode.Text);
+                sql_command.Parameters.AddWithValue("@productID", tb_ID.Text + tb_productID.Text);
+                sql_command.Parameters.AddWithValue("@productCode", tb_categoryPrefix.Text + tb_productCode.Text);
                 sql_datareader = sql_command.ExecuteReader();
                 sql_datareader.Read();
 
@@ -199,44 +239,6 @@ namespace OmniscentPOSAI
             this.Dispose();
         }
 
-        private void tb_productCode_TextChanged(object sender, EventArgs e)
-        {
-            sql_connect.Open();
-            sql_command = new SqlCommand("SELECT productCode FROM tbl_products WHERE productCode = @productCode", sql_connect);
-            sql_command.Parameters.AddWithValue("@productCode", tb_productCode.Text);
-            sql_datareader = sql_command.ExecuteReader();
-            while (sql_datareader.Read())
-            {
-                lbl_productCode.Text = sql_datareader["productCode"].ToString();
-            }
-
-            if (!sql_datareader.HasRows)
-            {
-                lbl_productCode.Text = lbl_ID.Text;
-            }
-
-            sql_datareader.Close();
-            sql_connect.Close();
-        }
-
-        private void tb_productName_TextChanged(object sender, EventArgs e)
-        {
-            sql_connect.Open();
-            sql_command = new SqlCommand("SELECT productID FROM tbl_products WHERE productName = @productName", sql_connect);
-            sql_command.Parameters.AddWithValue("@productName", tb_productName.Text);
-            sql_datareader = sql_command.ExecuteReader();
-            while (sql_datareader.Read())
-            {
-                lbl_prodCatID.Text = sql_datareader["productID"].ToString();
-            }
-
-            if (!sql_datareader.HasRows)
-            {
-                lbl_prodCatID.Text = lbl_ID.Text;
-            }
-
-            sql_datareader.Close();
-            sql_connect.Close();
-        }
+        
     }
 }

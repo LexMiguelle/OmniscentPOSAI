@@ -31,12 +31,13 @@ namespace OmniscentPOSAI
         {
             tb_price.Text = "0.00";
             generateProductCode();
+            
         }
 
         // generate product code function
         public void generateProductCode()
         {
-            tb_productCode.Text = DateTime.Now.ToString("MMddyyyyHHmm");
+            tb_productCode.Text = DateTime.Now.ToString("yyyyMMddHHmm");
         }
 
         // add dot to tb_price
@@ -51,7 +52,7 @@ namespace OmniscentPOSAI
         // clear function
         private void Clear()
         {
-            tb_prodID.Clear();
+            tb_categoryPrefix.Clear();
             tb_productID.Clear();
             tb_productCode.Clear();
             tb_productName.Clear();
@@ -83,7 +84,7 @@ namespace OmniscentPOSAI
             sql_datareader = sql_command.ExecuteReader();
             while (sql_datareader.Read())
             {
-                tb_prodID.Text = sql_datareader[0].ToString();
+                tb_categoryPrefix.Text = sql_datareader[0].ToString();
             }
             sql_datareader.Close();
             sql_connect.Close();
@@ -94,7 +95,7 @@ namespace OmniscentPOSAI
         {
             addDot();
         }
-
+        
         // tb_productID restriction
         private void tb_productID_KeyPress(object sender, KeyPressEventArgs e)
         {
@@ -119,8 +120,6 @@ namespace OmniscentPOSAI
             if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
             {
                 e.Handled = true;
-
-                
             }
         }
 
@@ -137,8 +136,8 @@ namespace OmniscentPOSAI
                 sql_connect.Open();
                 sql_command = new SqlCommand("SELECT * FROM tbl_products WHERE productName = @productName OR productID = @productID OR productCode = @productCode", sql_connect);
                 sql_command.Parameters.AddWithValue("@productName", tb_productName.Text);
-                sql_command.Parameters.AddWithValue("@productID", tb_prodID.Text + tb_productID.Text);
-                sql_command.Parameters.AddWithValue("@productCode", tb_productCode.Text);
+                sql_command.Parameters.AddWithValue("@productID", tb_ID.Text + tb_productID.Text);
+                sql_command.Parameters.AddWithValue("@productCode", tb_categoryPrefix + tb_productCode.Text);
                 sql_datareader = sql_command.ExecuteReader();
                 sql_datareader.Read();
 
@@ -191,8 +190,8 @@ namespace OmniscentPOSAI
 
                             sql_connect.Open();
                             sql_command = new SqlCommand("INSERT INTO tbl_products (productID, productCode, productName, categoryID, price, restock) VALUES (@productID, @productCode, @productName, @categoryID, @price, @restock)", sql_connect);
-                            sql_command.Parameters.AddWithValue("@productID", tb_prodID.Text + tb_productID.Text);
-                            sql_command.Parameters.AddWithValue("@productCode", tb_productCode.Text);
+                            sql_command.Parameters.AddWithValue("@productID",  tb_ID.Text + tb_productID.Text);
+                            sql_command.Parameters.AddWithValue("@productCode", tb_categoryPrefix.Text + tb_productCode.Text);
                             sql_command.Parameters.AddWithValue("@productName", tb_productName.Text);
                             sql_command.Parameters.AddWithValue("@categoryID", categoryID);
                             sql_command.Parameters.AddWithValue("@price", tb_price.Text);
@@ -216,11 +215,6 @@ namespace OmniscentPOSAI
         private void btn_cancel_Click(object sender, EventArgs e)
         {
             this.Dispose();
-        }
-
-        private void label1_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
