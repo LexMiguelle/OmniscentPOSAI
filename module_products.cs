@@ -68,7 +68,7 @@ namespace OmniscentPOSAI
                 string IDprefix = dgv_products.Rows[e.RowIndex].Cells[1].Value.ToString();
                 string catPrefix = dgv_products.Rows[e.RowIndex].Cells[2].Value.ToString();
                 string productID = IDprefix.Substring(IDprefix.Length - 4);
-                string productCode = catPrefix.Substring(catPrefix.Length - 4);
+                string productCode = catPrefix.Substring(catPrefix.Length - 12);
 
                 form_updateProduct updateProduct = new form_updateProduct(this);
                 updateProduct.LoadCategory();
@@ -79,7 +79,7 @@ namespace OmniscentPOSAI
                 updateProduct.tb_productName.Text = dgv_products.Rows[e.RowIndex].Cells[3].Value.ToString();
                 updateProduct.cb_category.Text = dgv_products.Rows[e.RowIndex].Cells[4].Value.ToString();
                 updateProduct.tb_price.Text = dgv_products.Rows[e.RowIndex].Cells[5].Value.ToString();
-                updateProduct.tb_restock.Text = dgv_products.Rows[e.RowIndex].Cells[6].Value.ToString();
+                updateProduct.tb_restock.Text = dgv_products.Rows[e.RowIndex].Cells[7].Value.ToString();
                 updateProduct.ShowDialog();
             }
             else if (col_name == "col_delete") //delete column event
