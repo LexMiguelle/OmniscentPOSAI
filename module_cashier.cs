@@ -39,7 +39,7 @@ namespace OmniscentPOSAI
         public void cashierLogout()
         {
             this.Dispose();
-            loginModule.Dispose();
+            loginModule.Show();
         }
 
         // generate transaction number function
@@ -141,33 +141,37 @@ namespace OmniscentPOSAI
             btn_clearTransaction.Enabled = true;
         }
 
+        // clear transaction function
+        public void clearTransaction()
+        {
+            sql_connect.Open();
+            sql_command = new SqlCommand("DELETE FROM tbl_transaction WHERE transactionNo LIKE '" + transactionNo.Text + "'", sql_connect);
+            sql_command.ExecuteNonQuery();
+            sql_connect.Close();
+            LoadCart();
+
+            transactionNo.Text = "000000000000";
+            transactionDate.Text = "00/00/00";
+            btn_newTransaction.Enabled = true;
+            btn_clearTransaction.Enabled = false;
+            btn_scanBarcode.Enabled = false;
+            btn_addProduct.Enabled = false;
+            btn_addDiscount.Enabled = false;
+            tb_searchBox.Enabled = false;
+            btn_settleTransaction.Enabled = false;
+        }
+
         // clear transaction button event
         private void btn_clearTransaction_Click(object sender, EventArgs e)
         {
             if (MessageBox.Show("Do you want to cancel this transaction?", "Cancel Transaction", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                sql_connect.Open();
-                sql_command = new SqlCommand("DELETE FROM tbl_transaction WHERE transactionNo LIKE '" + transactionNo.Text + "'", sql_connect);
-                sql_command.ExecuteNonQuery();
-                sql_connect.Close();
-                LoadCart();
-
-                transactionNo.Text = "000000000000";
-                transactionDate.Text = "00/00/00";
-                btn_newTransaction.Enabled = true;
-                btn_clearTransaction.Enabled = false;
-                btn_scanBarcode.Enabled = false;
-                btn_addProduct.Enabled = false;
-                btn_addDiscount.Enabled = false;
-                tb_searchBox.Enabled = false;
-                btn_settleTransaction.Enabled = false;
-                
+                clearTransaction();
             }
             else
             {
                 return;
             }
-
         }
 
         // scan productCode button event
@@ -189,6 +193,7 @@ namespace OmniscentPOSAI
         private void btn_cashierSales_Click(object sender, EventArgs e)
         {
             form_cashierSales cashierSales = new form_cashierSales(this);
+            cashierSales.LoadCashierSales();
             cashierSales.ShowDialog();
         }
 
@@ -315,8 +320,9 @@ namespace OmniscentPOSAI
         // close button event
         private void btn_close_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Close the application without logging out?", "Omniscent: Point of Sale System", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            if (MessageBox.Show("Close the application without logging out?\nClosing the application will cancel the current transaction.", "Omniscent: Point of Sale System", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
+                clearTransaction();
                 this.Dispose();
                 loginModule.Dispose();
             }

@@ -43,6 +43,8 @@
             this.btn_save = new System.Windows.Forms.Button();
             this.btn_cancel = new System.Windows.Forms.Button();
             this.tb_prodID = new System.Windows.Forms.TextBox();
+            this.tb_restock = new System.Windows.Forms.TextBox();
+            this.lbl_restock = new System.Windows.Forms.Label();
             this.panel_head.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -113,7 +115,7 @@
             this.lbl_category.AutoSize = true;
             this.lbl_category.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_category.ForeColor = System.Drawing.Color.White;
-            this.lbl_category.Location = new System.Drawing.Point(38, 213);
+            this.lbl_category.Location = new System.Drawing.Point(38, 197);
             this.lbl_category.Name = "lbl_category";
             this.lbl_category.Size = new System.Drawing.Size(99, 24);
             this.lbl_category.TabIndex = 0;
@@ -124,7 +126,7 @@
             this.lbl_price.AutoSize = true;
             this.lbl_price.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_price.ForeColor = System.Drawing.Color.White;
-            this.lbl_price.Location = new System.Drawing.Point(73, 266);
+            this.lbl_price.Location = new System.Drawing.Point(73, 242);
             this.lbl_price.Name = "lbl_price";
             this.lbl_price.Size = new System.Drawing.Size(64, 24);
             this.lbl_price.TabIndex = 0;
@@ -154,7 +156,7 @@
             // tb_price
             // 
             this.tb_price.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_price.Location = new System.Drawing.Point(143, 264);
+            this.tb_price.Location = new System.Drawing.Point(143, 240);
             this.tb_price.MaxLength = 8;
             this.tb_price.Name = "tb_price";
             this.tb_price.Size = new System.Drawing.Size(121, 26);
@@ -166,7 +168,7 @@
             // 
             this.cb_category.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cb_category.FormattingEnabled = true;
-            this.cb_category.Location = new System.Drawing.Point(143, 209);
+            this.cb_category.Location = new System.Drawing.Point(143, 193);
             this.cb_category.Name = "cb_category";
             this.cb_category.Size = new System.Drawing.Size(455, 28);
             this.cb_category.TabIndex = 3;
@@ -204,6 +206,28 @@
             this.tb_prodID.Size = new System.Drawing.Size(50, 26);
             this.tb_prodID.TabIndex = 5;
             // 
+            // tb_restock
+            // 
+            this.tb_restock.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_restock.Location = new System.Drawing.Point(448, 240);
+            this.tb_restock.MaxLength = 8;
+            this.tb_restock.Name = "tb_restock";
+            this.tb_restock.Size = new System.Drawing.Size(150, 26);
+            this.tb_restock.TabIndex = 4;
+            this.tb_restock.TextChanged += new System.EventHandler(this.tb_price_TextChanged);
+            this.tb_restock.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_price_KeyPress);
+            // 
+            // lbl_restock
+            // 
+            this.lbl_restock.AutoSize = true;
+            this.lbl_restock.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_restock.ForeColor = System.Drawing.Color.White;
+            this.lbl_restock.Location = new System.Drawing.Point(296, 240);
+            this.lbl_restock.Name = "lbl_restock";
+            this.lbl_restock.Size = new System.Drawing.Size(146, 24);
+            this.lbl_restock.TabIndex = 0;
+            this.lbl_restock.Text = "Restock Level:";
+            // 
             // form_addProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -215,11 +239,13 @@
             this.Controls.Add(this.btn_save);
             this.Controls.Add(this.cb_category);
             this.Controls.Add(this.lbl_productCode);
+            this.Controls.Add(this.lbl_restock);
             this.Controls.Add(this.lbl_price);
             this.Controls.Add(this.lbl_category);
             this.Controls.Add(this.lbl_productName);
             this.Controls.Add(this.lbl_productID);
             this.Controls.Add(this.tb_productCode);
+            this.Controls.Add(this.tb_restock);
             this.Controls.Add(this.tb_price);
             this.Controls.Add(this.tb_productName);
             this.Controls.Add(this.tb_prodID);
@@ -255,5 +281,7 @@
         public System.Windows.Forms.TextBox tb_price;
         public System.Windows.Forms.ComboBox cb_category;
         public System.Windows.Forms.TextBox tb_prodID;
+        public System.Windows.Forms.TextBox tb_restock;
+        private System.Windows.Forms.Label lbl_restock;
     }
 }

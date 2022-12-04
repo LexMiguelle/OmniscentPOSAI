@@ -172,14 +172,16 @@ namespace OmniscentPOSAI
                         sql_connect.Close();
 
                         sql_connect.Open();
-                        sql_command = new SqlCommand("UPDATE tbl_products SET productCode = @productCode, productName = @productName, categoryID = @categoryID, price = @price WHERE productID LIKE @productID", sql_connect);
+                        sql_command = new SqlCommand("UPDATE tbl_products SET productCode = @productCode, productName = @productName, categoryID = @categoryID, price = @price, restock = @restock WHERE productID LIKE @productID", sql_connect);
                         sql_command.Parameters.AddWithValue("@productID", prodID);
                         sql_command.Parameters.AddWithValue("@productCode", tb_productCode.Text);
                         sql_command.Parameters.AddWithValue("@productName", tb_productName.Text);
                         sql_command.Parameters.AddWithValue("@categoryID", cb_category.Text);
                         sql_command.Parameters.AddWithValue("@price", tb_price.Text);
+                        sql_command.Parameters.AddWithValue("@restock", tb_restock.Text);
                         sql_command.ExecuteNonQuery();
                         sql_connect.Close();
+
                         productsModule.LoadProducts();
                         MessageBox.Show("A product has been successfully updated");
                         this.Dispose();
@@ -231,26 +233,6 @@ namespace OmniscentPOSAI
             if (!sql_datareader.HasRows)
             {
                 lbl_prodCatID.Text = lbl_ID.Text;
-            }
-
-            sql_datareader.Close();
-            sql_connect.Close();
-        }
-
-        private void tb_prodID_TextChanged(object sender, EventArgs e)
-        {
-            sql_connect.Open();
-            sql_command = new SqlCommand("SELECT productID FROM tbl_products WHERE productID = @productID", sql_connect);
-            sql_command.Parameters.AddWithValue("@productID", tb_prodID.Text + tb_productID.Text);
-            sql_datareader = sql_command.ExecuteReader();
-            while (sql_datareader.Read())
-            {
-                lbl_prodID.Text = sql_datareader["productID"].ToString();
-            }
-
-            if (!sql_datareader.HasRows)
-            {
-                lbl_prodID.Text = lbl_ID.Text;
             }
 
             sql_datareader.Close();

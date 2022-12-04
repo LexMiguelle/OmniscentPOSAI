@@ -44,10 +44,25 @@ namespace OmniscentPOSAI
 
 
                 sql_connect.Open();
-                sql_dataadapter.SelectCommand = new SqlCommand("SELECT x.transactionID, x.transactionNo, x.productID, y.productName, x.price, x.quantity, x.discount, x.total FROM tbl_transaction AS x INNER JOIN tbl_products AS y ON x.productID = y.productID WHERE (status LIKE 'Sold')  AND (transactionDate BETWEEN '" + dateMin + "' AND '" + dateMax + "') AND (cashierName LIKE '%" + salesModule.cb_cashierName.Text + "%')", sql_connect);
+                if (salesModule.cb_cashierName.Text == "All Cashiers")
+                {
+                    sql_dataadapter.SelectCommand = new SqlCommand("SELECT x.transactionID, x.transactionNo, x.productID, y.productName, x.price, x.quantity, x.discount, x.total FROM tbl_transaction AS x INNER JOIN tbl_products AS y ON x.productID = y.productID WHERE status LIKE 'Sold'  AND transactionDate BETWEEN '" + dateMin + "' AND '" + dateMax + "'", sql_connect);
+
+                }
+                else
+                {
+                    sql_dataadapter.SelectCommand = new SqlCommand("SELECT x.transactionID, x.transactionNo, x.productID, y.productName, x.price, x.quantity, x.discount, x.total FROM tbl_transaction AS x INNER JOIN tbl_products AS y ON x.productID = y.productID WHERE (status LIKE 'Sold')  AND (transactionDate BETWEEN '" + dateMin + "' AND '" + dateMax + "') AND (cashierName LIKE '%" + salesModule.cb_cashierName.Text + "%')", sql_connect);
+                }
                 sql_dataadapter.Fill(dataset.Tables["dt_soldReport"]);
                 sql_connect.Close();
 
+                ReportParameter rp_date = new ReportParameter("rp_date", "Date From: " + dateMin + " - Date To: " + dateMax);
+                ReportParameter rp_cashierName = new ReportParameter("rp_cashierName", "Cashier: " + salesModule.cb_cashierName.Text);
+                ReportParameter rp_headTitle = new ReportParameter("rp_headTitle", "SALES REPORT");
+
+                rv_sales.LocalReport.SetParameters(rp_date);
+                rv_sales.LocalReport.SetParameters(rp_cashierName);
+                rv_sales.LocalReport.SetParameters(rp_headTitle);
                 rds = new ReportDataSource("DataSet1", dataset.Tables["dt_soldReport"]);
                 rv_sales.LocalReport.DataSources.Add(rds);
                 rv_sales.SetDisplayMode(Microsoft.Reporting.WinForms.DisplayMode.PrintLayout);

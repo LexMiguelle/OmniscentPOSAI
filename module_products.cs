@@ -75,6 +75,7 @@ namespace OmniscentPOSAI
                 updateProduct.tb_productName.Text = dgv_products.Rows[e.RowIndex].Cells[3].Value.ToString();
                 updateProduct.cb_category.Text = dgv_products.Rows[e.RowIndex].Cells[4].Value.ToString();
                 updateProduct.tb_price.Text = dgv_products.Rows[e.RowIndex].Cells[5].Value.ToString();
+                updateProduct.tb_restock.Text = dgv_products.Rows[e.RowIndex].Cells[6].Value.ToString();
                 updateProduct.ShowDialog();
             }
             else if (col_name == "col_delete") //delete column event

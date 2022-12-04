@@ -12,7 +12,7 @@ using System.Threading;
 
 namespace OmniscentPOSAI
 {
-    public partial class module_admin : Form
+    public partial class module_inventory : Form
     {
         Thread thread;
         SqlConnection sql_connect;
@@ -20,7 +20,7 @@ namespace OmniscentPOSAI
 
         module_login loginModule;
 
-        public module_admin(module_login login)
+        public module_inventory(module_login login)
         {
 
             InitializeComponent();
@@ -103,7 +103,7 @@ namespace OmniscentPOSAI
         private void btn_sales_Click(object sender, EventArgs e)
         {
             panel_activity.Controls.Clear();
-            module_sales sales = new module_sales();
+            module_sales sales = new module_sales(this);
             sales.TopLevel = false;
             panel_activity.Controls.Add(sales);
             sales.BringToFront();
@@ -114,7 +114,8 @@ namespace OmniscentPOSAI
         private void btn_users_Click(object sender, EventArgs e)
         {
             panel_activity.Controls.Clear();
-            module_users users = new module_users();
+            module_users users = new module_users(this);
+            users.LoadCode();
             users.TopLevel = false;
             panel_activity.Controls.Add(users);
             users.BringToFront();

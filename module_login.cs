@@ -107,11 +107,11 @@ namespace OmniscentPOSAI
                         tb_password.Clear();
                         this.Hide();
 
-                        module_admin adminModule = new module_admin(this);
-                        adminModule.tb_name.Text = _lastName + ", " + _firstName;
-                        adminModule.tb_username.Text = _username;
-                        adminModule.tb_role.Text = _role;
-                        adminModule.ShowDialog();
+                        module_inventory inventory = new module_inventory(this);
+                        inventory.tb_name.Text = _lastName + ", " + _firstName;
+                        inventory.tb_username.Text = _username;
+                        inventory.tb_role.Text = _role;
+                        inventory.ShowDialog();
                         
                     }
                     else if (_role == "cashier")
@@ -133,6 +133,13 @@ namespace OmniscentPOSAI
                         tb_username.Clear();
                         tb_password.Clear();
                         this.Hide();
+
+                        module_inventory inventory = new module_inventory(this);
+                        inventory.tb_name.Text = _lastName + ", " + _firstName;
+                        inventory.tb_username.Text = _username;
+                        inventory.tb_role.Text = _role;
+                        inventory.ShowDialog();
+
                     }
                     else
                     {

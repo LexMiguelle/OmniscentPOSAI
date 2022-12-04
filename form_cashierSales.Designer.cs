@@ -41,18 +41,19 @@
             this.lbl_to = new System.Windows.Forms.Label();
             this.lbl_from = new System.Windows.Forms.Label();
             this.lbl_dateFilter = new System.Windows.Forms.Label();
+            this.testMe = new System.Windows.Forms.Label();
             this.lbl_cashierSales = new System.Windows.Forms.Label();
             this.dgv_cashierSales = new System.Windows.Forms.DataGridView();
             this.cashierSales_num = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cashierSales_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cashierSales_transactionNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.salesCashier_productID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cashierSale_productName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cashierSale_price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cashierSale_quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cashierSale_discount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cashierSale_total = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.testMe = new System.Windows.Forms.Label();
+            this.cashierSales_productID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cashierSales_productName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cashierSales_price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cashierSales_quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cashierSales_discount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cashierSales_total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.cashierSales_cancel = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel_cashierSalesHead.SuspendLayout();
             this.panel_cashierSales.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_cashierSales)).BeginInit();
@@ -157,6 +158,20 @@
             this.lbl_dateFilter.TabIndex = 1;
             this.lbl_dateFilter.Text = "Date Filter:";
             // 
+            // testMe
+            // 
+            this.testMe.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
+            this.testMe.AutoSize = true;
+            this.testMe.BackColor = System.Drawing.Color.Transparent;
+            this.testMe.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.testMe.ForeColor = System.Drawing.Color.White;
+            this.testMe.Location = new System.Drawing.Point(563, 20);
+            this.testMe.Name = "testMe";
+            this.testMe.Size = new System.Drawing.Size(87, 31);
+            this.testMe.TabIndex = 0;
+            this.testMe.Text = "Sales";
+            // 
             // lbl_cashierSales
             // 
             this.lbl_cashierSales.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -191,12 +206,13 @@
             this.cashierSales_num,
             this.cashierSales_ID,
             this.cashierSales_transactionNo,
-            this.salesCashier_productID,
-            this.cashierSale_productName,
-            this.cashierSale_price,
-            this.cashierSale_quantity,
-            this.cashierSale_discount,
-            this.cashierSale_total});
+            this.cashierSales_productID,
+            this.cashierSales_productName,
+            this.cashierSales_price,
+            this.cashierSales_quantity,
+            this.cashierSales_discount,
+            this.cashierSales_total,
+            this.cashierSales_cancel});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -233,6 +249,7 @@
             this.dgv_cashierSales.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_cashierSales.Size = new System.Drawing.Size(922, 440);
             this.dgv_cashierSales.TabIndex = 6;
+            this.dgv_cashierSales.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_cashierSales_CellContentClick);
             // 
             // cashierSales_num
             // 
@@ -248,6 +265,7 @@
             this.cashierSales_ID.HeaderText = "ID";
             this.cashierSales_ID.Name = "cashierSales_ID";
             this.cashierSales_ID.Visible = false;
+            this.cashierSales_ID.Width = 42;
             // 
             // cashierSales_transactionNo
             // 
@@ -256,60 +274,55 @@
             this.cashierSales_transactionNo.Name = "cashierSales_transactionNo";
             this.cashierSales_transactionNo.Width = 119;
             // 
-            // salesCashier_productID
+            // cashierSales_productID
             // 
-            this.salesCashier_productID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.salesCashier_productID.HeaderText = "PRODUCT ID";
-            this.salesCashier_productID.Name = "salesCashier_productID";
-            this.salesCashier_productID.Width = 90;
+            this.cashierSales_productID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.cashierSales_productID.HeaderText = "PRODUCT ID";
+            this.cashierSales_productID.Name = "cashierSales_productID";
+            this.cashierSales_productID.Width = 90;
             // 
-            // cashierSale_productName
+            // cashierSales_productName
             // 
-            this.cashierSale_productName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.cashierSale_productName.HeaderText = "PRODUCT";
-            this.cashierSale_productName.Name = "cashierSale_productName";
+            this.cashierSales_productName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.cashierSales_productName.HeaderText = "PRODUCT";
+            this.cashierSales_productName.Name = "cashierSales_productName";
             // 
-            // cashierSale_price
+            // cashierSales_price
             // 
-            this.cashierSale_price.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.cashierSale_price.HeaderText = "PRICE";
-            this.cashierSale_price.Name = "cashierSale_price";
-            this.cashierSale_price.Width = 63;
+            this.cashierSales_price.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.cashierSales_price.HeaderText = "PRICE";
+            this.cashierSales_price.Name = "cashierSales_price";
+            this.cashierSales_price.Width = 63;
             // 
-            // cashierSale_quantity
+            // cashierSales_quantity
             // 
-            this.cashierSale_quantity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.cashierSale_quantity.HeaderText = "QUANTITY";
-            this.cashierSale_quantity.Name = "cashierSale_quantity";
-            this.cashierSale_quantity.Width = 86;
+            this.cashierSales_quantity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.cashierSales_quantity.HeaderText = "QUANTITY";
+            this.cashierSales_quantity.Name = "cashierSales_quantity";
+            this.cashierSales_quantity.Width = 86;
             // 
-            // cashierSale_discount
+            // cashierSales_discount
             // 
-            this.cashierSale_discount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.cashierSale_discount.HeaderText = "DISCOUNT";
-            this.cashierSale_discount.Name = "cashierSale_discount";
-            this.cashierSale_discount.Width = 87;
+            this.cashierSales_discount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.cashierSales_discount.HeaderText = "DISCOUNT";
+            this.cashierSales_discount.Name = "cashierSales_discount";
+            this.cashierSales_discount.Width = 87;
             // 
-            // cashierSale_total
+            // cashierSales_total
             // 
-            this.cashierSale_total.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.cashierSale_total.HeaderText = "TOTAL";
-            this.cashierSale_total.Name = "cashierSale_total";
-            this.cashierSale_total.Width = 66;
+            this.cashierSales_total.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.cashierSales_total.HeaderText = "TOTAL";
+            this.cashierSales_total.Name = "cashierSales_total";
+            this.cashierSales_total.Width = 66;
             // 
-            // testMe
+            // cashierSales_cancel
             // 
-            this.testMe.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left)));
-            this.testMe.AutoSize = true;
-            this.testMe.BackColor = System.Drawing.Color.Transparent;
-            this.testMe.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.testMe.ForeColor = System.Drawing.Color.White;
-            this.testMe.Location = new System.Drawing.Point(563, 20);
-            this.testMe.Name = "testMe";
-            this.testMe.Size = new System.Drawing.Size(87, 31);
-            this.testMe.TabIndex = 0;
-            this.testMe.Text = "Sales";
+            this.cashierSales_cancel.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.cashierSales_cancel.HeaderText = "";
+            this.cashierSales_cancel.Image = global::OmniscentPOSAI.Properties.Resources.cross_small_16;
+            this.cashierSales_cancel.MinimumWidth = 25;
+            this.cashierSales_cancel.Name = "cashierSales_cancel";
+            this.cashierSales_cancel.Width = 25;
             // 
             // form_cashierSales
             // 
@@ -345,16 +358,17 @@
         private System.Windows.Forms.Label lbl_to;
         private System.Windows.Forms.Label lbl_from;
         private System.Windows.Forms.Label lbl_dateFilter;
+        private System.Windows.Forms.TextBox tb_totalSales;
+        private System.Windows.Forms.Label testMe;
         private System.Windows.Forms.DataGridViewTextBoxColumn cashierSales_num;
         private System.Windows.Forms.DataGridViewTextBoxColumn cashierSales_ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn cashierSales_transactionNo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn salesCashier_productID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cashierSale_productName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cashierSale_price;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cashierSale_quantity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cashierSale_discount;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cashierSale_total;
-        private System.Windows.Forms.TextBox tb_totalSales;
-        private System.Windows.Forms.Label testMe;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cashierSales_productID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cashierSales_productName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cashierSales_price;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cashierSales_quantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cashierSales_discount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn cashierSales_total;
+        private System.Windows.Forms.DataGridViewImageColumn cashierSales_cancel;
     }
 }

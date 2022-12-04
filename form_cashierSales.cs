@@ -48,7 +48,7 @@ namespace OmniscentPOSAI
             sql_connect.Open();
             sql_command = new SqlCommand("SELECT x.transactionID, x.transactionNo, x.productID, y.productName, x.price, x.quantity, x.discount, x.total FROM tbl_transaction AS x INNER JOIN tbl_products AS y ON x.productID = y.productID WHERE (status LIKE 'Sold') AND (cashierName LIKE '" + userCashier + "') AND (transactionDate BETWEEN '" + dateMin + "' AND '" + dateMax + "')", sql_connect);
             sql_datareader = sql_command.ExecuteReader();
-            while(sql_datareader.Read()) 
+            while(sql_datareader.Read())    
             {
                 i++;
                 totalSales += double.Parse(sql_datareader[7].ToString());
@@ -57,6 +57,25 @@ namespace OmniscentPOSAI
             sql_datareader.Close();
             sql_connect.Close();
             tb_totalSales.Text = totalSales.ToString("#,##0.00");
+        }
+
+        private void dgv_cashierSales_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            string col_name = dgv_cashierSales.Columns[e.ColumnIndex].Name;
+            if (col_name == "cashierSales_cancel")
+            {
+                form_cancelOrder cancelOrder = new form_cancelOrder(this);
+                cancelOrder.transactionID.Text = dgv_cashierSales.Rows[e.RowIndex].Cells[1].Value.ToString();
+                cancelOrder.tb_transactionNo.Text = dgv_cashierSales.Rows[e.RowIndex].Cells[2].Value.ToString();
+                cancelOrder.tb_productID.Text = dgv_cashierSales.Rows[e.RowIndex].Cells[3].Value.ToString();
+                cancelOrder.tb_productName.Text = dgv_cashierSales.Rows[e.RowIndex].Cells[4].Value.ToString();
+                cancelOrder.tb_price.Text = dgv_cashierSales.Rows[e.RowIndex].Cells[5].Value.ToString();
+                cancelOrder.tb_quantity.Text = dgv_cashierSales.Rows[e.RowIndex].Cells[6].Value.ToString();
+                cancelOrder.tb_discount.Text = dgv_cashierSales.Rows[e.RowIndex].Cells[7].Value.ToString();
+                cancelOrder.tb_total.Text = dgv_cashierSales.Rows[e.RowIndex].Cells[8].Value.ToString();
+                cancelOrder.tb_cancelledBy.Text = cashierModule.tb_name.Text;
+                cancelOrder.ShowDialog();
+            }
         }
 
         private void btn_loadSales_Click(object sender, EventArgs e)
@@ -78,5 +97,7 @@ namespace OmniscentPOSAI
         {
             this.Dispose();
         }
+
+        
     }
 }

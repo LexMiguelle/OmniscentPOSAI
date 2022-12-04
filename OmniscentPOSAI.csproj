@@ -112,23 +112,29 @@
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </Compile>
     <Compile Include="DBConnector.cs" />
+    <Compile Include="form_voidConfirm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form_voidConfirm.Designer.cs">
+      <DependentUpon>form_voidConfirm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form_voidOrder.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form_voidOrder.Designer.cs">
+      <DependentUpon>form_voidOrder.cs</DependentUpon>
+    </Compile>
     <Compile Include="form_cashierSales.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="form_cashierSales.Designer.cs">
       <DependentUpon>form_cashierSales.cs</DependentUpon>
     </Compile>
-    <Compile Include="form_adminCode.cs">
+    <Compile Include="form_voidCode.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="form_adminCode.Designer.cs">
-      <DependentUpon>form_adminCode.cs</DependentUpon>
-    </Compile>
-    <Compile Include="form_managerCode.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="form_managerCode.Designer.cs">
-      <DependentUpon>form_managerCode.cs</DependentUpon>
+    <Compile Include="form_voidCode.Designer.cs">
+      <DependentUpon>form_voidCode.cs</DependentUpon>
     </Compile>
     <Compile Include="form_receipt.cs">
       <SubType>Form</SubType>
@@ -196,11 +202,17 @@
     <Compile Include="form_updateProduct.Designer.cs">
       <DependentUpon>form_updateProduct.cs</DependentUpon>
     </Compile>
-    <Compile Include="module_admin.cs">
+    <Compile Include="form_cancelOrder.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="module_admin.Designer.cs">
-      <DependentUpon>module_admin.cs</DependentUpon>
+    <Compile Include="form_cancelOrder.Designer.cs">
+      <DependentUpon>form_cancelOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="module_inventory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="module_inventory.Designer.cs">
+      <DependentUpon>module_inventory.cs</DependentUpon>
     </Compile>
     <Compile Include="module_cashier.cs">
       <SubType>Form</SubType>
@@ -270,14 +282,17 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="form_voidConfirm.resx">
+      <DependentUpon>form_voidConfirm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form_voidOrder.resx">
+      <DependentUpon>form_voidOrder.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="form_cashierSales.resx">
       <DependentUpon>form_cashierSales.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="form_adminCode.resx">
-      <DependentUpon>form_adminCode.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="form_managerCode.resx">
-      <DependentUpon>form_managerCode.cs</DependentUpon>
+    <EmbeddedResource Include="form_voidCode.resx">
+      <DependentUpon>form_voidCode.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="form_receipt.resx">
       <DependentUpon>form_receipt.cs</DependentUpon>
@@ -312,8 +327,11 @@
     <EmbeddedResource Include="form_updateProduct.resx">
       <DependentUpon>form_updateProduct.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="module_admin.resx">
-      <DependentUpon>module_admin.cs</DependentUpon>
+    <EmbeddedResource Include="form_cancelOrder.resx">
+      <DependentUpon>form_cancelOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="module_inventory.resx">
+      <DependentUpon>module_inventory.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="module_cashier.resx">
       <DependentUpon>module_cashier.cs</DependentUpon>

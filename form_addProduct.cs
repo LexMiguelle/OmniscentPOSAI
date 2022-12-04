@@ -190,12 +190,13 @@ namespace OmniscentPOSAI
                             sql_connect.Close();
 
                             sql_connect.Open();
-                            sql_command = new SqlCommand("INSERT INTO tbl_products (productID, productCode, productName, categoryID, price) VALUES (@productID, @productCode, @productName, @categoryID, @price)", sql_connect);
+                            sql_command = new SqlCommand("INSERT INTO tbl_products (productID, productCode, productName, categoryID, price, restock) VALUES (@productID, @productCode, @productName, @categoryID, @price, @restock)", sql_connect);
                             sql_command.Parameters.AddWithValue("@productID", tb_prodID.Text + tb_productID.Text);
                             sql_command.Parameters.AddWithValue("@productCode", tb_productCode.Text);
                             sql_command.Parameters.AddWithValue("@productName", tb_productName.Text);
                             sql_command.Parameters.AddWithValue("@categoryID", categoryID);
                             sql_command.Parameters.AddWithValue("@price", tb_price.Text);
+                            sql_command.Parameters.AddWithValue("@restock", tb_restock.Text);
                             sql_command.ExecuteNonQuery();
                             sql_connect.Close();
                             MessageBox.Show("A product has been successfully added");
@@ -215,6 +216,11 @@ namespace OmniscentPOSAI
         private void btn_cancel_Click(object sender, EventArgs e)
         {
             this.Dispose();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

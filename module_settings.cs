@@ -55,8 +55,19 @@ namespace OmniscentPOSAI
         // logout button event
         private void btn_settingsLogout_Click(object sender, EventArgs e)
         {
-            this.Dispose();
-            cashierModule.cashierLogout();
+            if (cashierModule.dgv_cart.Rows.Count > 0)
+            {
+                MessageBox.Show("Please finish or cancel the transaction before logging out.", "Logout", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                return;
+            } else
+            {
+                if (MessageBox.Show("Logout from the application?", "Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    this.Dispose();
+                    cashierModule.cashierLogout();
+                }
+            }
+            
         }
     }
 }

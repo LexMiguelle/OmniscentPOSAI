@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
+using System.Web.ModelBinding;
 
 namespace OmniscentPOSAI
 {
@@ -18,10 +19,20 @@ namespace OmniscentPOSAI
         DBConnector db_connect = new DBConnector();
         SqlDataReader sql_datareader;
 
-        public module_users()
+        module_inventory inventoryModule;
+
+        public module_users(module_inventory inventory)
         {
             InitializeComponent();
             sql_connect = new SqlConnection(db_connect.DBConnection());
+            inventoryModule = inventory;
+        }
+
+        public void loadUser()
+        {
+            sql_connect.Open();
+            sql_command = new SqlCommand(" "); ;
+            sql_connect.Close();
         }
 
         private void ClearCA()
@@ -71,6 +82,41 @@ namespace OmniscentPOSAI
             ClearCA();
         }
 
+        // void code tab
 
+        private void module_users_Load(object sender, EventArgs e)
+        {
+            
+        }
+
+        public void LoadCode()
+        {
+            sql_connect.Open();
+            sql_command = new SqlCommand("SELECT voidCode FROM tbl_users WHERE username LIKE '" + inventoryModule.tb_username.Text +"'", sql_connect);
+            sql_datareader = sql_command.ExecuteReader();
+            while (sql_datareader.Read())
+            {
+                voidCode.Text = sql_datareader[0].ToString();
+            }
+            sql_datareader.Close();
+            sql_connect.Close();
+        }
+
+        private void btn_generateVoidCode_Click(object sender, EventArgs e)
+        {
+            int min = 1000;
+            int max = 9999;
+            string employee = inventoryModule.tb_username.Text;
+
+            Random vc = new Random();
+            int code = vc.Next(min, max);
+            
+            voidCode.Text = code.ToString();
+
+            sql_connect.Open();
+            sql_command = new SqlCommand("UPDATE tbl_users SET voidCode = " + voidCode.Text + " WHERE username LIKE '" + inventoryModule.tb_username.Text + "'", sql_connect);
+            sql_command.ExecuteNonQuery();
+            sql_connect.Close();
+        }
     }
 }

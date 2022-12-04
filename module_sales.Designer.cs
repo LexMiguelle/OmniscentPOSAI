@@ -28,15 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(module_sales));
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel_salesHead = new System.Windows.Forms.Panel();
             this.tb_salesTotal = new System.Windows.Forms.TextBox();
             this.cb_cashierName = new System.Windows.Forms.ComboBox();
-            this.btn_printSales = new System.Windows.Forms.Button();
             this.dtp_to = new System.Windows.Forms.DateTimePicker();
             this.dtp_from = new System.Windows.Forms.DateTimePicker();
             this.lbl_from = new System.Windows.Forms.Label();
@@ -45,15 +44,18 @@
             this.lbl_dateFilter = new System.Windows.Forms.Label();
             this.lbl_sales = new System.Windows.Forms.Label();
             this.dgv_sales = new System.Windows.Forms.DataGridView();
-            this.cashierSales_num = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cashierSales_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cashierSales_transactionNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.salesCashier_productID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cashierSale_productName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cashierSale_price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cashierSale_quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cashierSale_discount = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.cashierSale_total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
+            this.btn_printSales = new System.Windows.Forms.Button();
+            this.sales_num = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sales_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sales_transactionNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sashier_productID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sale_productName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sale_price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sale_quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sale_discount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sale_total = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.sales_cancel = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel_salesHead.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_sales)).BeginInit();
             this.SuspendLayout();
@@ -89,33 +91,15 @@
             // 
             // cb_cashierName
             // 
-            this.cb_cashierName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.Simple;
+            this.cb_cashierName.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cb_cashierName.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cb_cashierName.FormattingEnabled = true;
             this.cb_cashierName.IntegralHeight = false;
             this.cb_cashierName.ItemHeight = 16;
             this.cb_cashierName.Location = new System.Drawing.Point(519, 32);
             this.cb_cashierName.Name = "cb_cashierName";
             this.cb_cashierName.Size = new System.Drawing.Size(150, 24);
             this.cb_cashierName.TabIndex = 12;
-            this.cb_cashierName.TextChanged += new System.EventHandler(this.cb_cashierName_TextChanged);
-            // 
-            // btn_printSales
-            // 
-            this.btn_printSales.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.btn_printSales.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btn_printSales.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_printSales.ForeColor = System.Drawing.Color.Black;
-            this.btn_printSales.Image = ((System.Drawing.Image)(resources.GetObject("btn_printSales.Image")));
-            this.btn_printSales.Location = new System.Drawing.Point(712, 26);
-            this.btn_printSales.Name = "btn_printSales";
-            this.btn_printSales.Size = new System.Drawing.Size(100, 30);
-            this.btn_printSales.TabIndex = 11;
-            this.btn_printSales.Text = "Print";
-            this.btn_printSales.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btn_printSales.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btn_printSales.UseVisualStyleBackColor = false;
-            this.btn_printSales.Click += new System.EventHandler(this.btn_printSales_Click);
+            this.cb_cashierName.SelectedValueChanged += new System.EventHandler(this.cb_cashierName_SelectedValueChanged);
             // 
             // dtp_to
             // 
@@ -127,7 +111,9 @@
             // 
             // dtp_from
             // 
+            this.dtp_from.Checked = false;
             this.dtp_from.Location = new System.Drawing.Point(296, 16);
+            this.dtp_from.MinDate = new System.DateTime(2010, 1, 1, 0, 0, 0, 0);
             this.dtp_from.Name = "dtp_from";
             this.dtp_from.Size = new System.Drawing.Size(200, 20);
             this.dtp_from.TabIndex = 10;
@@ -195,33 +181,34 @@
             this.dgv_sales.AllowUserToResizeRows = false;
             this.dgv_sales.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgv_sales.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle9.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle9.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle9.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_sales.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle9;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_sales.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgv_sales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_sales.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.cashierSales_num,
-            this.cashierSales_ID,
-            this.cashierSales_transactionNo,
-            this.salesCashier_productID,
-            this.cashierSale_productName,
-            this.cashierSale_price,
-            this.cashierSale_quantity,
-            this.cashierSale_discount,
-            this.cashierSale_total});
-            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle10.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv_sales.DefaultCellStyle = dataGridViewCellStyle10;
+            this.sales_num,
+            this.sales_ID,
+            this.sales_transactionNo,
+            this.sashier_productID,
+            this.sale_productName,
+            this.sale_price,
+            this.sale_quantity,
+            this.sale_discount,
+            this.sale_total,
+            this.sales_cancel});
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv_sales.DefaultCellStyle = dataGridViewCellStyle2;
             this.dgv_sales.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv_sales.EnableHeadersVisualStyles = false;
             this.dgv_sales.GridColor = System.Drawing.Color.Black;
@@ -229,20 +216,20 @@
             this.dgv_sales.MultiSelect = false;
             this.dgv_sales.Name = "dgv_sales";
             this.dgv_sales.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle11.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle11.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_sales.RowHeadersDefaultCellStyle = dataGridViewCellStyle11;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_sales.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
             this.dgv_sales.RowHeadersVisible = false;
-            dataGridViewCellStyle12.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle12.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgv_sales.RowsDefaultCellStyle = dataGridViewCellStyle12;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgv_sales.RowsDefaultCellStyle = dataGridViewCellStyle4;
             this.dgv_sales.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.White;
             this.dgv_sales.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
             this.dgv_sales.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
@@ -250,69 +237,116 @@
             this.dgv_sales.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_sales.Size = new System.Drawing.Size(1064, 586);
             this.dgv_sales.TabIndex = 7;
+            this.dgv_sales.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_sales_CellContentClick);
             // 
-            // cashierSales_num
+            // dataGridViewImageColumn1
             // 
-            this.cashierSales_num.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.cashierSales_num.HeaderText = "#";
-            this.cashierSales_num.MinimumWidth = 30;
-            this.cashierSales_num.Name = "cashierSales_num";
-            this.cashierSales_num.Width = 30;
+            this.dataGridViewImageColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.dataGridViewImageColumn1.HeaderText = "";
+            this.dataGridViewImageColumn1.Image = global::OmniscentPOSAI.Properties.Resources.cross_small_16;
+            this.dataGridViewImageColumn1.MinimumWidth = 25;
+            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
+            this.dataGridViewImageColumn1.Width = 25;
             // 
-            // cashierSales_ID
+            // btn_printSales
             // 
-            this.cashierSales_ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.cashierSales_ID.HeaderText = "ID";
-            this.cashierSales_ID.Name = "cashierSales_ID";
-            this.cashierSales_ID.Visible = false;
+            this.btn_printSales.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.btn_printSales.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_printSales.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_printSales.ForeColor = System.Drawing.Color.Black;
+            this.btn_printSales.Image = ((System.Drawing.Image)(resources.GetObject("btn_printSales.Image")));
+            this.btn_printSales.Location = new System.Drawing.Point(712, 26);
+            this.btn_printSales.Name = "btn_printSales";
+            this.btn_printSales.Size = new System.Drawing.Size(100, 30);
+            this.btn_printSales.TabIndex = 11;
+            this.btn_printSales.Text = "Print";
+            this.btn_printSales.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.btn_printSales.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
+            this.btn_printSales.UseVisualStyleBackColor = false;
+            this.btn_printSales.Click += new System.EventHandler(this.btn_printSales_Click);
             // 
-            // cashierSales_transactionNo
+            // sales_num
             // 
-            this.cashierSales_transactionNo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.cashierSales_transactionNo.HeaderText = "TRANSACTION NO.";
-            this.cashierSales_transactionNo.Name = "cashierSales_transactionNo";
-            this.cashierSales_transactionNo.Width = 119;
+            this.sales_num.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.sales_num.HeaderText = "#";
+            this.sales_num.MinimumWidth = 30;
+            this.sales_num.Name = "sales_num";
+            this.sales_num.ReadOnly = true;
+            this.sales_num.Width = 30;
             // 
-            // salesCashier_productID
+            // sales_ID
             // 
-            this.salesCashier_productID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.salesCashier_productID.HeaderText = "PRODUCT ID";
-            this.salesCashier_productID.Name = "salesCashier_productID";
-            this.salesCashier_productID.Width = 90;
+            this.sales_ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.sales_ID.HeaderText = "ID";
+            this.sales_ID.Name = "sales_ID";
+            this.sales_ID.ReadOnly = true;
+            this.sales_ID.Visible = false;
+            this.sales_ID.Width = 42;
             // 
-            // cashierSale_productName
+            // sales_transactionNo
             // 
-            this.cashierSale_productName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.cashierSale_productName.HeaderText = "PRODUCT";
-            this.cashierSale_productName.Name = "cashierSale_productName";
+            this.sales_transactionNo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.sales_transactionNo.HeaderText = "TRANSACTION NO.";
+            this.sales_transactionNo.Name = "sales_transactionNo";
+            this.sales_transactionNo.ReadOnly = true;
+            this.sales_transactionNo.Width = 119;
             // 
-            // cashierSale_price
+            // sashier_productID
             // 
-            this.cashierSale_price.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.cashierSale_price.HeaderText = "PRICE";
-            this.cashierSale_price.Name = "cashierSale_price";
-            this.cashierSale_price.Width = 63;
+            this.sashier_productID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.sashier_productID.HeaderText = "PRODUCT ID";
+            this.sashier_productID.Name = "sashier_productID";
+            this.sashier_productID.ReadOnly = true;
+            this.sashier_productID.Width = 90;
             // 
-            // cashierSale_quantity
+            // sale_productName
             // 
-            this.cashierSale_quantity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.cashierSale_quantity.HeaderText = "QUANTITY";
-            this.cashierSale_quantity.Name = "cashierSale_quantity";
-            this.cashierSale_quantity.Width = 86;
+            this.sale_productName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.sale_productName.HeaderText = "PRODUCT";
+            this.sale_productName.Name = "sale_productName";
+            this.sale_productName.ReadOnly = true;
             // 
-            // cashierSale_discount
+            // sale_price
             // 
-            this.cashierSale_discount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.cashierSale_discount.HeaderText = "DISCOUNT";
-            this.cashierSale_discount.Name = "cashierSale_discount";
-            this.cashierSale_discount.Width = 87;
+            this.sale_price.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.sale_price.HeaderText = "PRICE";
+            this.sale_price.Name = "sale_price";
+            this.sale_price.ReadOnly = true;
+            this.sale_price.Width = 63;
             // 
-            // cashierSale_total
+            // sale_quantity
             // 
-            this.cashierSale_total.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.cashierSale_total.HeaderText = "TOTAL";
-            this.cashierSale_total.Name = "cashierSale_total";
-            this.cashierSale_total.Width = 66;
+            this.sale_quantity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.sale_quantity.HeaderText = "QUANTITY";
+            this.sale_quantity.Name = "sale_quantity";
+            this.sale_quantity.ReadOnly = true;
+            this.sale_quantity.Width = 86;
+            // 
+            // sale_discount
+            // 
+            this.sale_discount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.sale_discount.HeaderText = "DISCOUNT";
+            this.sale_discount.Name = "sale_discount";
+            this.sale_discount.ReadOnly = true;
+            this.sale_discount.Width = 87;
+            // 
+            // sale_total
+            // 
+            this.sale_total.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.sale_total.HeaderText = "TOTAL";
+            this.sale_total.Name = "sale_total";
+            this.sale_total.ReadOnly = true;
+            this.sale_total.Width = 66;
+            // 
+            // sales_cancel
+            // 
+            this.sales_cancel.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.sales_cancel.HeaderText = "";
+            this.sales_cancel.Image = global::OmniscentPOSAI.Properties.Resources.cross_small_16;
+            this.sales_cancel.MinimumWidth = 25;
+            this.sales_cancel.Name = "sales_cancel";
+            this.sales_cancel.ReadOnly = true;
+            this.sales_cancel.Width = 25;
             // 
             // module_sales
             // 
@@ -338,15 +372,6 @@
         private System.Windows.Forms.Panel panel_salesHead;
         private System.Windows.Forms.Label lbl_sales;
         private System.Windows.Forms.DataGridView dgv_sales;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cashierSales_num;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cashierSales_ID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cashierSales_transactionNo;
-        private System.Windows.Forms.DataGridViewTextBoxColumn salesCashier_productID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cashierSale_productName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cashierSale_price;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cashierSale_quantity;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cashierSale_discount;
-        private System.Windows.Forms.DataGridViewTextBoxColumn cashierSale_total;
         private System.Windows.Forms.Label lbl_to;
         private System.Windows.Forms.Label lbl_cashierName;
         private System.Windows.Forms.Label lbl_dateFilter;
@@ -356,5 +381,16 @@
         public System.Windows.Forms.DateTimePicker dtp_to;
         public System.Windows.Forms.DateTimePicker dtp_from;
         public System.Windows.Forms.TextBox tb_salesTotal;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sales_num;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sales_ID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sales_transactionNo;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sashier_productID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sale_productName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sale_price;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sale_quantity;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sale_discount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn sale_total;
+        private System.Windows.Forms.DataGridViewImageColumn sales_cancel;
+        private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
     }
 }

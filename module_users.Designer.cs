@@ -31,7 +31,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tc_users = new System.Windows.Forms.TabControl();
             this.tp_createAccount = new System.Windows.Forms.TabPage();
             this.btn_cancelCA = new System.Windows.Forms.Button();
             this.btn_createCA = new System.Windows.Forms.Button();
@@ -53,10 +53,19 @@
             this.tp_accountStatus = new System.Windows.Forms.TabPage();
             this.tp_deleteAccount = new System.Windows.Forms.TabPage();
             this.tp_activityLog = new System.Windows.Forms.TabPage();
+            this.tp_voidCode = new System.Windows.Forms.TabPage();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.voidCode = new System.Windows.Forms.Label();
+            this.btn_generateVoidCode = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
-            this.tabControl1.SuspendLayout();
+            this.tc_users.SuspendLayout();
             this.tp_createAccount.SuspendLayout();
             this.panel_createAccountHead.SuspendLayout();
+            this.tp_voidCode.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -88,19 +97,20 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "User Management";
             // 
-            // tabControl1
+            // tc_users
             // 
-            this.tabControl1.Controls.Add(this.tp_createAccount);
-            this.tabControl1.Controls.Add(this.tp_changePassword);
-            this.tabControl1.Controls.Add(this.tp_accountStatus);
-            this.tabControl1.Controls.Add(this.tp_deleteAccount);
-            this.tabControl1.Controls.Add(this.tp_activityLog);
-            this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabControl1.Location = new System.Drawing.Point(0, 75);
-            this.tabControl1.Name = "tabControl1";
-            this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1064, 586);
-            this.tabControl1.TabIndex = 2;
+            this.tc_users.Controls.Add(this.tp_createAccount);
+            this.tc_users.Controls.Add(this.tp_changePassword);
+            this.tc_users.Controls.Add(this.tp_accountStatus);
+            this.tc_users.Controls.Add(this.tp_deleteAccount);
+            this.tc_users.Controls.Add(this.tp_activityLog);
+            this.tc_users.Controls.Add(this.tp_voidCode);
+            this.tc_users.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tc_users.Location = new System.Drawing.Point(0, 75);
+            this.tc_users.Name = "tc_users";
+            this.tc_users.SelectedIndex = 0;
+            this.tc_users.Size = new System.Drawing.Size(1064, 586);
+            this.tc_users.TabIndex = 2;
             // 
             // tp_createAccount
             // 
@@ -340,6 +350,74 @@
             this.tp_activityLog.Text = "Activity Log";
             this.tp_activityLog.UseVisualStyleBackColor = true;
             // 
+            // tp_voidCode
+            // 
+            this.tp_voidCode.BackColor = System.Drawing.Color.Black;
+            this.tp_voidCode.Controls.Add(this.panel3);
+            this.tp_voidCode.Controls.Add(this.panel2);
+            this.tp_voidCode.Location = new System.Drawing.Point(4, 22);
+            this.tp_voidCode.Name = "tp_voidCode";
+            this.tp_voidCode.Padding = new System.Windows.Forms.Padding(3);
+            this.tp_voidCode.Size = new System.Drawing.Size(1056, 560);
+            this.tp_voidCode.TabIndex = 5;
+            this.tp_voidCode.Text = "Void Code";
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.Black;
+            this.panel3.Controls.Add(this.label2);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel3.Location = new System.Drawing.Point(3, 3);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1050, 75);
+            this.panel3.TabIndex = 8;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(27, 15);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(202, 42);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Void Code";
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            this.panel2.Controls.Add(this.voidCode);
+            this.panel2.Controls.Add(this.btn_generateVoidCode);
+            this.panel2.Location = new System.Drawing.Point(37, 115);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(988, 395);
+            this.panel2.TabIndex = 0;
+            // 
+            // voidCode
+            // 
+            this.voidCode.AutoSize = true;
+            this.voidCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 150F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.voidCode.ForeColor = System.Drawing.Color.Lime;
+            this.voidCode.Location = new System.Drawing.Point(248, 72);
+            this.voidCode.Name = "voidCode";
+            this.voidCode.Size = new System.Drawing.Size(532, 226);
+            this.voidCode.TabIndex = 3;
+            this.voidCode.Text = "code";
+            // 
+            // btn_generateVoidCode
+            // 
+            this.btn_generateVoidCode.BackColor = System.Drawing.Color.Red;
+            this.btn_generateVoidCode.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_generateVoidCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_generateVoidCode.ForeColor = System.Drawing.Color.White;
+            this.btn_generateVoidCode.Location = new System.Drawing.Point(820, 335);
+            this.btn_generateVoidCode.Name = "btn_generateVoidCode";
+            this.btn_generateVoidCode.Size = new System.Drawing.Size(141, 41);
+            this.btn_generateVoidCode.TabIndex = 0;
+            this.btn_generateVoidCode.Text = "GENERATE";
+            this.btn_generateVoidCode.UseVisualStyleBackColor = false;
+            this.btn_generateVoidCode.Click += new System.EventHandler(this.btn_generateVoidCode_Click);
+            // 
             // module_users
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -347,18 +425,24 @@
             this.BackColor = System.Drawing.Color.Black;
             this.ClientSize = new System.Drawing.Size(1064, 661);
             this.ControlBox = false;
-            this.Controls.Add(this.tabControl1);
+            this.Controls.Add(this.tc_users);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "module_users";
             this.Text = "module_users";
+            this.Load += new System.EventHandler(this.module_users_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            this.tabControl1.ResumeLayout(false);
+            this.tc_users.ResumeLayout(false);
             this.tp_createAccount.ResumeLayout(false);
             this.tp_createAccount.PerformLayout();
             this.panel_createAccountHead.ResumeLayout(false);
             this.panel_createAccountHead.PerformLayout();
+            this.tp_voidCode.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -367,7 +451,6 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tp_createAccount;
         private System.Windows.Forms.TabPage tp_changePassword;
         private System.Windows.Forms.TabPage tp_accountStatus;
@@ -390,5 +473,12 @@
         private System.Windows.Forms.Label lbl_userNameCA;
         private System.Windows.Forms.Button btn_cancelCA;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TabPage tp_voidCode;
+        public System.Windows.Forms.TabControl tc_users;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Label voidCode;
+        private System.Windows.Forms.Button btn_generateVoidCode;
     }
 }
