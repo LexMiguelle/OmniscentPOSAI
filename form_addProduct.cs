@@ -167,7 +167,7 @@ namespace OmniscentPOSAI
                 {
                     if (string.IsNullOrEmpty(tb_productID.Text) || string.IsNullOrEmpty(tb_productName.Text) || string.IsNullOrEmpty(cb_category.Text) || tb_price.Text == "0.00")
                     {
-                        MessageBox.Show("Empty textbox detected!\nPlease try again.", "Add Product", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("Empty textbox detected!\nPlease try again.", "Add Product: Empty Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                     else
                     {

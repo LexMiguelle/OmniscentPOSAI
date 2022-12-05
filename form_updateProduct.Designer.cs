@@ -50,11 +50,13 @@
             this.lbl_restock = new System.Windows.Forms.Label();
             this.tb_restock = new System.Windows.Forms.TextBox();
             this.tb_ID = new System.Windows.Forms.TextBox();
+            this.lbl_pcode = new System.Windows.Forms.Label();
             this.panel_head.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel_head
             // 
+            this.panel_head.Controls.Add(this.lbl_pcode);
             this.panel_head.Controls.Add(this.lbl_ID);
             this.panel_head.Controls.Add(this.lbl_updateProduct);
             this.panel_head.Dock = System.Windows.Forms.DockStyle.Top;
@@ -68,7 +70,7 @@
             this.lbl_ID.AutoSize = true;
             this.lbl_ID.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_ID.ForeColor = System.Drawing.Color.White;
-            this.lbl_ID.Location = new System.Drawing.Point(349, 19);
+            this.lbl_ID.Location = new System.Drawing.Point(261, 9);
             this.lbl_ID.Name = "lbl_ID";
             this.lbl_ID.Size = new System.Drawing.Size(30, 31);
             this.lbl_ID.TabIndex = 0;
@@ -284,6 +286,17 @@
             this.tb_ID.TabIndex = 16;
             this.tb_ID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_productID_KeyPress);
             // 
+            // lbl_pcode
+            // 
+            this.lbl_pcode.AutoSize = true;
+            this.lbl_pcode.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_pcode.ForeColor = System.Drawing.Color.White;
+            this.lbl_pcode.Location = new System.Drawing.Point(261, 40);
+            this.lbl_pcode.Name = "lbl_pcode";
+            this.lbl_pcode.Size = new System.Drawing.Size(30, 31);
+            this.lbl_pcode.TabIndex = 0;
+            this.lbl_pcode.Text = "#";
+            // 
             // form_updateProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -346,5 +359,6 @@
         private System.Windows.Forms.Label lbl_restock;
         public System.Windows.Forms.TextBox tb_restock;
         public System.Windows.Forms.TextBox tb_ID;
+        public System.Windows.Forms.Label lbl_pcode;
     }
 }

@@ -27,6 +27,17 @@ namespace OmniscentPOSAI
             categoriesList = catList;
         }
 
+        public void updateCategory()
+        {
+            sql_connect.Open();
+            sql_command = new SqlCommand("UPDATE tbl_categories SET categoryName = @categoryName, categoryPrefix = @categoryPrefix WHERE categoryID LIKE '" + lbl_ID.Text + "'", sql_connect);
+            sql_command.Parameters.AddWithValue("@categoryName", tb_updateCategory.Text);
+            sql_command.Parameters.AddWithValue("@categoryPrefix", tb_updateCategoryPrefix.Text);
+            sql_command.ExecuteNonQuery();
+            sql_connect.Close();
+            MessageBox.Show("Category list updated", "Update Category: Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
         private void btn_update_Click(object sender, EventArgs e)
         {
             try
@@ -56,13 +67,7 @@ namespace OmniscentPOSAI
                     {
                         if (MessageBox.Show("Are you sure you want to update this category?", "Update Category", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                         {
-                            sql_connect.Open();
-                            sql_command = new SqlCommand("UPDATE tbl_categories SET categoryName = @categoryName, categoryPrefix = @categoryPrefix WHERE categoryID LIKE '" + lbl_ID.Text + "'", sql_connect);
-                            sql_command.Parameters.AddWithValue("@categoryName", tb_updateCategory.Text);
-                            sql_command.Parameters.AddWithValue("@categoryPrefix", tb_updateCategoryPrefix.Text);
-                            sql_command.ExecuteNonQuery();
-                            sql_connect.Close();
-                            MessageBox.Show("Category list updated");
+                            updateCategory();
                             categoriesList.LoadCategory();
                             this.Dispose();
                         }
@@ -86,13 +91,7 @@ namespace OmniscentPOSAI
                     {
                         if (MessageBox.Show("Are you sure you want to update this category?", "Update Category", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                         {
-                            sql_connect.Open();
-                            sql_command = new SqlCommand("UPDATE tbl_categories SET categoryName = @categoryName, categoryPrefix = @categoryPrefix WHERE categoryID LIKE '" + lbl_ID.Text + "'", sql_connect);
-                            sql_command.Parameters.AddWithValue("@categoryName", tb_updateCategory.Text);
-                            sql_command.Parameters.AddWithValue("@categoryPrefix", tb_updateCategoryPrefix.Text);
-                            sql_command.ExecuteNonQuery();
-                            sql_connect.Close();
-                            MessageBox.Show("Category list updated");
+                            updateCategory();
                             categoriesList.LoadCategory();
                             this.Dispose();
                         }
