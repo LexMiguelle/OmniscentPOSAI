@@ -540,6 +540,7 @@
             this.tb_searchBox.Size = new System.Drawing.Size(310, 26);
             this.tb_searchBox.TabIndex = 2;
             this.tb_searchBox.TextChanged += new System.EventHandler(this.tb_searchBox_TextChanged);
+            this.tb_searchBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_searchBox_KeyPress);
             // 
             // lbl_transactionDate
             // 

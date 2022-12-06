@@ -183,6 +183,7 @@
             this.tb_productCode.Size = new System.Drawing.Size(200, 26);
             this.tb_productCode.TabIndex = 6;
             this.tb_productCode.TextChanged += new System.EventHandler(this.tb_productCode_TextChanged);
+            this.tb_productCode.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_productCode_KeyPress);
             // 
             // panel_checkPrice
             // 

@@ -20,30 +20,43 @@ namespace OmniscentPOSAI
         SqlDataReader sql_datareader;
         module_cashier cashierModule;
 
-        String discountPercentage;
+        String percentValue;
+        String discountPercentageString;
+        Double discountPercentageDouble;
+        int discountPercentageInt;
 
         public form_addDiscount(module_cashier cashier)
         {
             InitializeComponent();
             sql_connect = new SqlConnection(db_connect.DBConnection());
             cashierModule = cashier;
-            addDot();
+        }
+        
+        // get variables
+        public void getDiscountPercentage()
+        {
+            discountPercentageString = tb_wholeNum.Text + tb_dot.Text + tb_decNum.Text;
+            discountPercentageDouble = Convert.ToDouble(discountPercentageString);
+            discountPercentageInt = Convert.ToInt32(discountPercentageDouble * 100);
+            percentValue = Convert.ToString(discountPercentageInt);
         }
 
-        // add dot
-        private void addDot()
+        private void getDiscountPercentage_TextChanged(object sender, EventArgs e)
         {
-            if (!tb_decNum.Text.Contains("."))
+            if (tb_wholeNum.Text == "1")
             {
-                tb_decNum.Text += "0.00";
-            }
-        }
+                tb_decNum.Text = "00";
+                tb_decNum.Enabled = false;
 
-        // tb_discountPercentage text changed event
-        private void tb_discountPercentage_TextChanged(object sender, EventArgs e)
-        {
-            addDot();
-            double disc = Double.Parse(tb_price.Text) * Double.Parse(tb_decNum.Text);
+            }
+            else
+            {
+                tb_decNum.Enabled = true;
+            }
+
+            getDiscountPercentage();
+            tb_percentValue.Text = percentValue.ToString() + "%";
+            double disc = double.Parse(tb_price.Text) * discountPercentageDouble;
             tb_discountedPrice.Text = disc.ToString("#,##0.00");
         }
 
@@ -52,13 +65,14 @@ namespace OmniscentPOSAI
         {
             try
             {
-                if (MessageBox.Show("Add discount to the product?", "Add Discount", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (tb_percentValue.Text == "0%")
                 {
-                    if (string.IsNullOrEmpty(tb_decNum.Text) || tb_decNum.Text == "0.00")
-                    {
-                        MessageBox.Show("Discount Percentage input is empty", "Add Discount: Missing input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-                    else
+                    MessageBox.Show("No discount will be added to the selected product", "Add Discount:Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    this.Dispose();
+                }
+                else
+                {
+                    if (MessageBox.Show("Add discount to the product?", "Add Discount: ", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
                         sql_connect.Open();
                         sql_command = new SqlCommand("UPDATE tbl_transaction SET discount = @discount WHERE transactionID = @transactionID", sql_connect);
@@ -84,24 +98,22 @@ namespace OmniscentPOSAI
             this.Dispose();
         }
 
-        private void tb_wholeNum_TextChanged(object sender, EventArgs e)
+        private void tb_wholeNum_KeyPress(object sender, KeyPressEventArgs e)
         {
-            if (tb_wholeNum.Text == "1")
+            if (!char.IsNumber(e.KeyChar))
             {
-                tb_decNum.Enabled = false;
-                tb_decNum.Text = "00";
+                e.Handled = true;
             }
             else
             {
-                tb_decNum.Enabled = true;
-            }
-        }
-
-        private void tb_wholeNum_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            if (!e.KeyChar.Equals("1") || !e.KeyChar.Equals("0"))
-            {
-                e.Handled = true;
+                if (e.KeyChar == (char)48 || e.KeyChar == (char)49)
+                {
+                    // Do nothing
+                }
+                else
+                {
+                    e.Handled = true;
+                }
             }
         }
 
@@ -113,13 +125,6 @@ namespace OmniscentPOSAI
             }
         }
 
-        private void getDiscountPercentage_TextChanged(object sender, EventArgs e)
-        {
-            discountPercentage = tb_wholeNum.Text + tb_dot.Text + tb_decNum.Text;
-            Double dp = Convert.ToDouble(discountPercentage);
-            int pv = Convert.ToInt32(dp);
-            String percent = Convert.ToString(pv);
-            tb_percentValue.Text = pv + "%";
-        }
+        
     }
 }

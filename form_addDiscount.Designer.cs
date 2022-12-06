@@ -159,6 +159,7 @@
             this.tb_price.ReadOnly = true;
             this.tb_price.Size = new System.Drawing.Size(300, 31);
             this.tb_price.TabIndex = 9;
+            this.tb_price.TabStop = false;
             // 
             // btn_confirmDiscount
             // 
@@ -196,6 +197,7 @@
             this.tb_discountedPrice.ReadOnly = true;
             this.tb_discountedPrice.Size = new System.Drawing.Size(300, 31);
             this.tb_discountedPrice.TabIndex = 9;
+            this.tb_discountedPrice.TabStop = false;
             // 
             // tb_wholeNum
             // 
@@ -220,10 +222,10 @@
             this.tb_dot.Name = "tb_dot";
             this.tb_dot.ReadOnly = true;
             this.tb_dot.Size = new System.Drawing.Size(13, 24);
-            this.tb_dot.TabIndex = 1;
+            this.tb_dot.TabIndex = 0;
+            this.tb_dot.TabStop = false;
             this.tb_dot.Text = ".";
             this.tb_dot.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.tb_dot.TextChanged += new System.EventHandler(this.tb_discountPercentage_TextChanged);
             // 
             // tb_percentValue
             // 
@@ -233,7 +235,8 @@
             this.tb_percentValue.Name = "tb_percentValue";
             this.tb_percentValue.ReadOnly = true;
             this.tb_percentValue.Size = new System.Drawing.Size(81, 31);
-            this.tb_percentValue.TabIndex = 1;
+            this.tb_percentValue.TabIndex = 0;
+            this.tb_percentValue.TabStop = false;
             this.tb_percentValue.Text = "0%";
             this.tb_percentValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 

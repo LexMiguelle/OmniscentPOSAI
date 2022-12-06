@@ -42,10 +42,10 @@ namespace OmniscentPOSAI
         {
             try
             {
-                if (string.IsNullOrEmpty(tb_cancelQuantity.Text) || string.IsNullOrEmpty(tb_remarks.Text))
+                if (string.IsNullOrEmpty(tb_cancelQuantity.Text) || string.IsNullOrEmpty(tb_remarks.Text) || (int.Parse(tb_cancelQuantity.Text) == 0))
                 {
                     MessageBox.Show("One or more textboxes are empty", "Cancel Order", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                } 
+                }
                 else
                 {
                     if (int.Parse(tb_quantity.Text) >= int.Parse(tb_cancelQuantity.Text))
@@ -55,7 +55,7 @@ namespace OmniscentPOSAI
                     }
                     else
                     {
-                        MessageBox.Show("Cancel quantity must be equal or lesser than the transaction quantity", "Cancel Order", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("Cancel quantity must be equal or lesser than the transaction quantity", "Cancel Order: Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                 }
 

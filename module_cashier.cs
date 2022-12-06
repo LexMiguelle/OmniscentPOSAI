@@ -301,6 +301,7 @@ namespace OmniscentPOSAI
             form_addDiscount addDiscount = new form_addDiscount(this);
             addDiscount.lbl_ID.Text = transactionID;
             addDiscount.tb_wholeNum.Focus();
+            addDiscount.tb_wholeNum.SelectAll();
             addDiscount.tb_price.Text = prc;  
             addDiscount.ShowDialog();
         }
@@ -512,6 +513,14 @@ namespace OmniscentPOSAI
         private void totalAmount_TextChanged(object sender, EventArgs e)
         {
             LoadInvoice();
+        }
+
+        private void tb_searchBox_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetterOrDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

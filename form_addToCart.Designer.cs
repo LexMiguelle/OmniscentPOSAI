@@ -107,6 +107,7 @@
             this.tb_searchProductList.Size = new System.Drawing.Size(300, 26);
             this.tb_searchProductList.TabIndex = 6;
             this.tb_searchProductList.TextChanged += new System.EventHandler(this.tb_searchProductList_TextChanged);
+            this.tb_searchProductList.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_searchProductList_KeyPress);
             // 
             // tb_searchBox
             // 

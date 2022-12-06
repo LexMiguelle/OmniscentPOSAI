@@ -76,5 +76,14 @@ namespace OmniscentPOSAI
             this.clearAll();
             this.Dispose();
         }
+
+        // tb_productCode restriction
+        private void tb_productCode_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetterOrDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
     }
 }
