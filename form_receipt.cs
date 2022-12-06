@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Reporting.WinForms;
 using System.Data.SqlClient;
+using System.Drawing.Printing;
 
 namespace OmniscentPOSAI
 {
@@ -36,6 +37,7 @@ namespace OmniscentPOSAI
             ReportDataSource reportDataSource;
             try
             {
+                int height = 1000;
                 this.rv_receipt.LocalReport.ReportPath = Application.StartupPath + @"\Reports\report_receipt.rdlc";
                 this.rv_receipt.LocalReport.DataSources.Clear();
 
@@ -71,9 +73,11 @@ namespace OmniscentPOSAI
 
                 reportDataSource = new ReportDataSource("DataSet1", dataset.Tables["dt_sold"]);
                 rv_receipt.LocalReport.DataSources.Add(reportDataSource);
+                rv_receipt.PrinterSettings.DefaultPageSettings.PaperSize = new PaperSize("Custom", 1100, height);
                 rv_receipt.SetDisplayMode(Microsoft.Reporting.WinForms.DisplayMode.PrintLayout);
                 rv_receipt.ZoomMode = ZoomMode.Percent;
                 rv_receipt.ZoomPercent = 100;
+                rv_receipt.RefreshReport();
             }
             catch (Exception except)
             {

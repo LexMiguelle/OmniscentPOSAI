@@ -47,7 +47,7 @@
             this.btn_settings = new System.Windows.Forms.Button();
             this.btn_cashierSales = new System.Windows.Forms.Button();
             this.btn_checkPrice = new System.Windows.Forms.Button();
-            this.btn_scanBarcode = new System.Windows.Forms.Button();
+            this.btn_scanProductCode = new System.Windows.Forms.Button();
             this.btn_clearTransaction = new System.Windows.Forms.Button();
             this.btn_newTransaction = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -73,6 +73,7 @@
             this.lbl_transactionNo = new System.Windows.Forms.Label();
             this.dgv_cart = new System.Windows.Forms.DataGridView();
             this.timer_clock = new System.Windows.Forms.Timer(this.components);
+            this.tb_quantity = new System.Windows.Forms.TextBox();
             this.cart_num = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cart_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cart_productCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -220,7 +221,7 @@
             this.panel_buttonMenu.Controls.Add(this.btn_settings);
             this.panel_buttonMenu.Controls.Add(this.btn_cashierSales);
             this.panel_buttonMenu.Controls.Add(this.btn_checkPrice);
-            this.panel_buttonMenu.Controls.Add(this.btn_scanBarcode);
+            this.panel_buttonMenu.Controls.Add(this.btn_scanProductCode);
             this.panel_buttonMenu.Controls.Add(this.btn_clearTransaction);
             this.panel_buttonMenu.Controls.Add(this.btn_newTransaction);
             this.panel_buttonMenu.Dock = System.Windows.Forms.DockStyle.Bottom;
@@ -283,19 +284,19 @@
             this.btn_checkPrice.UseVisualStyleBackColor = false;
             this.btn_checkPrice.Click += new System.EventHandler(this.btn_checkPrice_Click);
             // 
-            // btn_scanBarcode
+            // btn_scanProductCode
             // 
-            this.btn_scanBarcode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.btn_scanBarcode.Enabled = false;
-            this.btn_scanBarcode.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btn_scanBarcode.ForeColor = System.Drawing.Color.Black;
-            this.btn_scanBarcode.Location = new System.Drawing.Point(324, 23);
-            this.btn_scanBarcode.Name = "btn_scanBarcode";
-            this.btn_scanBarcode.Size = new System.Drawing.Size(150, 50);
-            this.btn_scanBarcode.TabIndex = 0;
-            this.btn_scanBarcode.Text = "Scan Barcode";
-            this.btn_scanBarcode.UseVisualStyleBackColor = false;
-            this.btn_scanBarcode.Click += new System.EventHandler(this.btn_scanBarcode_Click);
+            this.btn_scanProductCode.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btn_scanProductCode.Enabled = false;
+            this.btn_scanProductCode.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_scanProductCode.ForeColor = System.Drawing.Color.Black;
+            this.btn_scanProductCode.Location = new System.Drawing.Point(324, 23);
+            this.btn_scanProductCode.Name = "btn_scanProductCode";
+            this.btn_scanProductCode.Size = new System.Drawing.Size(150, 50);
+            this.btn_scanProductCode.TabIndex = 0;
+            this.btn_scanProductCode.Text = "Scan Product Code";
+            this.btn_scanProductCode.UseVisualStyleBackColor = false;
+            this.btn_scanProductCode.Click += new System.EventHandler(this.btn_scanBarcode_Click);
             // 
             // btn_clearTransaction
             // 
@@ -468,6 +469,7 @@
             // 
             this.panel2.Controls.Add(this.btn_addDiscount);
             this.panel2.Controls.Add(this.btn_addProduct);
+            this.panel2.Controls.Add(this.tb_quantity);
             this.panel2.Controls.Add(this.tb_searchBox);
             this.panel2.Controls.Add(this.lbl_transactionDate);
             this.panel2.Controls.Add(this.transactionDate);
@@ -486,13 +488,14 @@
             this.btn_addDiscount.Enabled = false;
             this.btn_addDiscount.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_addDiscount.LinkColor = System.Drawing.Color.White;
-            this.btn_addDiscount.Location = new System.Drawing.Point(793, 53);
+            this.btn_addDiscount.Location = new System.Drawing.Point(784, 53);
             this.btn_addDiscount.Name = "btn_addDiscount";
             this.btn_addDiscount.RightToLeft = System.Windows.Forms.RightToLeft.No;
             this.btn_addDiscount.Size = new System.Drawing.Size(159, 24);
             this.btn_addDiscount.TabIndex = 3;
             this.btn_addDiscount.TabStop = true;
             this.btn_addDiscount.Text = "[ Add Discount ]";
+            this.btn_addDiscount.TextAlign = System.Drawing.ContentAlignment.TopRight;
             this.btn_addDiscount.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.btn_addDiscount_LinkClicked);
             // 
             // btn_addProduct
@@ -632,6 +635,18 @@
             this.timer_clock.Enabled = true;
             this.timer_clock.Tick += new System.EventHandler(this.timer_clock_Tick);
             // 
+            // tb_quantity
+            // 
+            this.tb_quantity.Enabled = false;
+            this.tb_quantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_quantity.Location = new System.Drawing.Point(577, 19);
+            this.tb_quantity.Name = "tb_quantity";
+            this.tb_quantity.Size = new System.Drawing.Size(50, 26);
+            this.tb_quantity.TabIndex = 2;
+            this.tb_quantity.Text = "1";
+            this.tb_quantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tb_quantity.TextChanged += new System.EventHandler(this.tb_searchBox_TextChanged);
+            // 
             // cart_num
             // 
             this.cart_num.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
@@ -726,6 +741,7 @@
             // 
             this.cart_subtract.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.cart_subtract.HeaderText = "";
+            this.cart_subtract.Image = global::OmniscentPOSAI.Properties.Resources.minus_16;
             this.cart_subtract.MinimumWidth = 25;
             this.cart_subtract.Name = "cart_subtract";
             this.cart_subtract.ReadOnly = true;
@@ -736,6 +752,7 @@
             // 
             this.cart_add.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.cart_add.HeaderText = "";
+            this.cart_add.Image = global::OmniscentPOSAI.Properties.Resources.plus_16;
             this.cart_add.MinimumWidth = 25;
             this.cart_add.Name = "cart_add";
             this.cart_add.ReadOnly = true;
@@ -746,6 +763,7 @@
             // 
             this.cart_remove.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.cart_remove.HeaderText = "";
+            this.cart_remove.Image = global::OmniscentPOSAI.Properties.Resources.cross_small_16;
             this.cart_remove.MinimumWidth = 25;
             this.cart_remove.Name = "cart_remove";
             this.cart_remove.ReadOnly = true;
@@ -801,7 +819,7 @@
         public System.Windows.Forms.Button btn_settings;
         public System.Windows.Forms.Button btn_cashierSales;
         public System.Windows.Forms.Button btn_checkPrice;
-        public System.Windows.Forms.Button btn_scanBarcode;
+        public System.Windows.Forms.Button btn_scanProductCode;
         public System.Windows.Forms.Button btn_clearTransaction;
         public System.Windows.Forms.Button btn_newTransaction;
         private System.Windows.Forms.Panel panel1;
@@ -833,6 +851,7 @@
         public System.Windows.Forms.Label totalVAT;
         public System.Windows.Forms.Label totalVATable;
         public System.Windows.Forms.Label totalAmount;
+        public System.Windows.Forms.TextBox tb_quantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn cart_num;
         private System.Windows.Forms.DataGridViewTextBoxColumn cart_ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn cart_productCode;

@@ -25,14 +25,24 @@ namespace OmniscentPOSAI
             InitializeComponent();
             sql_connect = new SqlConnection(db_connect.DBConnection());
             cashierModule = cashier;
-
+            addDot();
         }
-        
+
+        // add dot
+        private void addDot()
+        {
+            if (!tb_discountPercentage.Text.Contains("."))
+            {
+                tb_discountPercentage.Text += "0.00";
+            }
+        }
+
         // tb_discountPercentage text changed event
         private void tb_discountPercentage_TextChanged(object sender, EventArgs e)
         {
             try
-            {   
+            {
+                addDot();
                 double disc = Double.Parse(tb_price.Text) * Double.Parse(tb_discountPercentage.Text);
                 tb_discountedPrice.Text = disc.ToString("#,##0.00");
             }
@@ -51,14 +61,21 @@ namespace OmniscentPOSAI
             {
                 if (MessageBox.Show("Add discount to the product?", "Add Discount", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    sql_connect.Open();
-                    sql_command = new SqlCommand("UPDATE tbl_transaction SET discount = @discount WHERE transactionID = @transactionID", sql_connect);
-                    sql_command.Parameters.AddWithValue("@discount", Double.Parse(tb_discountedPrice.Text));
-                    sql_command.Parameters.AddWithValue("@transactionID", int.Parse(lbl_ID.Text));
-                    sql_command.ExecuteNonQuery();
-                    sql_connect.Close();
-                    cashierModule.LoadCart();
-                    this.Dispose();
+                    if (tb_discountPercentage.Text == "0.00")
+                    {
+                        MessageBox.Show("Discount Percentag input is empty", "Add Discount: Missing input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                    else
+                    {
+                        sql_connect.Open();
+                        sql_command = new SqlCommand("UPDATE tbl_transaction SET discount = @discount WHERE transactionID = @transactionID", sql_connect);
+                        sql_command.Parameters.AddWithValue("@discount", Double.Parse(tb_discountedPrice.Text));
+                        sql_command.Parameters.AddWithValue("@transactionID", int.Parse(lbl_ID.Text));
+                        sql_command.ExecuteNonQuery();
+                        sql_connect.Close();
+                        cashierModule.LoadCart();
+                        this.Dispose();
+                    }
                 }
             }
             catch (Exception except)

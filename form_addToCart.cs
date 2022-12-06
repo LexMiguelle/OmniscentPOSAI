@@ -73,7 +73,7 @@ namespace OmniscentPOSAI
             if (col_name == "productList_add")
             {
                 form_addQuantity addQuantity = new form_addQuantity(cashierModule);
-                addQuantity.productDetails(dgv_productList.Rows[e.RowIndex].Cells[1].Value.ToString(), Double.Parse(dgv_productList.Rows[e.RowIndex].Cells[5].Value.ToString()), cashierModule.transactionNo.Text);
+                addQuantity.productDetails(dgv_productList.Rows[e.RowIndex].Cells[1].Value.ToString(), Double.Parse(dgv_productList.Rows[e.RowIndex].Cells[5].Value.ToString()), cashierModule.transactionNo.Text, int.Parse(dgv_productList.Rows[e.RowIndex].Cells[4].Value.ToString()));
                 addQuantity.ShowDialog();
             }
         }

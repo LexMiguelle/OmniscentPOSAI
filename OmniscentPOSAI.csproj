@@ -112,6 +112,12 @@
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </Compile>
     <Compile Include="DBConnector.cs" />
+    <Compile Include="form_inventoryListReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form_inventoryListReport.Designer.cs">
+      <DependentUpon>form_inventoryListReport.cs</DependentUpon>
+    </Compile>
     <Compile Include="form_voidConfirm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -282,6 +288,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="form_inventoryListReport.resx">
+      <DependentUpon>form_inventoryListReport.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="form_voidConfirm.resx">
       <DependentUpon>form_voidConfirm.cs</DependentUpon>
     </EmbeddedResource>
@@ -377,6 +386,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="report_inventoryList.rdlc" />
     <EmbeddedResource Include="report_receipt.rdlc" />
     <EmbeddedResource Include="report_sales.rdlc" />
     <None Include="DataSet1.xsc">

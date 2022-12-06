@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -24,6 +25,8 @@ namespace OmniscentPOSAI
 
         module_login loginModule;
 
+        int quantity;
+
         public module_cashier(module_login login)
         {
             InitializeComponent();
@@ -31,7 +34,7 @@ namespace OmniscentPOSAI
             this.KeyPreview = true;
             btn_addProduct.Enabled = false;
             tb_searchBox.Enabled = false;
-            btn_scanBarcode.Enabled = false;
+            btn_scanProductCode.Enabled = false;
             loginModule = login;
         }
 
@@ -136,8 +139,7 @@ namespace OmniscentPOSAI
             transactionDate.Text = DateTime.Now.ToLongDateString();
             btn_newTransaction.Enabled = false;
             btn_addProduct.Enabled = true;
-            btn_addDiscount.Enabled = true;
-            btn_scanBarcode.Enabled = true;
+            btn_scanProductCode.Enabled = true;
             btn_clearTransaction.Enabled = true;
         }
 
@@ -154,10 +156,11 @@ namespace OmniscentPOSAI
             transactionDate.Text = "00/00/00";
             btn_newTransaction.Enabled = true;
             btn_clearTransaction.Enabled = false;
-            btn_scanBarcode.Enabled = false;
+            btn_scanProductCode.Enabled = false;
             btn_addProduct.Enabled = false;
             btn_addDiscount.Enabled = false;
             tb_searchBox.Enabled = false;
+            tb_quantity.Enabled = false;
             btn_settleTransaction.Enabled = false;
         }
 
@@ -177,6 +180,7 @@ namespace OmniscentPOSAI
         // scan productCode button event
         private void btn_scanBarcode_Click(object sender, EventArgs e)
         {
+            tb_quantity.Enabled = true;
             tb_searchBox.Enabled = true;
             tb_searchBox.Focus();
             //enable productCode scanner
@@ -210,7 +214,33 @@ namespace OmniscentPOSAI
         {
             string col_name = dgv_cart.Columns[e.ColumnIndex].Name;
 
-            if (col_name == "cart_remove")
+            if (col_name == "cart_add")
+            {
+                int i = 0;
+                sql_connect.Open();
+                sql_command = new SqlCommand("SELECT sum(quantity) AS quantity FROM tbl_products WHERE productID LIKE '" + dgv_cart.Rows[e.RowIndex].Cells[2].ToString() + "' GROUP BY productID", sql_connect);
+                i = int.Parse(sql_command.ExecuteScalar().ToString());
+                sql_connect.Close();
+
+                if ( int.Parse(dgv_cart.Rows[e.RowIndex].Cells[6].Value.ToString()) < i)
+                {
+                    sql_connect.Open();
+                    sql_command = new SqlCommand("UPDATE tbl_transacation SET quantity = quantity + " + int.Parse(tb_quantity.Text) + "WHERE transactionNo LIKE '" + transactionNo.Text + "' AND productID LIKE '" + dgv_cart.Rows[e.RowIndex].Cells[3].ToString() + "'",sql_connect);
+                    sql_command.ExecuteNonQuery();
+                    sql_connect.Close();
+
+                    LoadCart();
+                }
+                else
+                {
+                    MessageBox.Show("Unable to process request.\nThe selected product has " + i + " stock(s) on hand", "Add Quantity: Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            else if (col_name == "cart_subtract")
+            {
+                
+            }
+            else if (col_name == "cart_remove")
             {
                 if (MessageBox.Show("Remove from selected product from cart?", "Remove from cart", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
@@ -249,6 +279,73 @@ namespace OmniscentPOSAI
             addDiscount.ShowDialog();
         }
 
+        // add quantity
+        public void addQuantity(string _productID, double _price, int _quantity)
+        {
+            bool hasRows = false;
+            int transactionQuantity = 0;
+
+            sql_connect.Open();
+            sql_command = new SqlCommand("SELECT * FROM tbl_transaction WHERE transactionNo = @transactionNo AND productID = @productID", sql_connect);
+            sql_command.Parameters.AddWithValue("@transactionNo", transactionNo.Text);
+            sql_command.Parameters.AddWithValue("@productID", _productID);
+            sql_datareader = sql_command.ExecuteReader();
+            sql_datareader.Read();
+            if (sql_datareader.HasRows)
+            {
+                hasRows = true;
+                transactionID = sql_datareader["transactionID"].ToString();
+                transactionQuantity = int.Parse(sql_datareader["quantity"].ToString());
+            }
+            else
+            {
+                hasRows = false;
+            }
+            sql_datareader.Close();
+            sql_connect.Close();
+
+            if (hasRows == true)
+            {
+                if (quantity < (int.Parse(tb_quantity.Text) + transactionQuantity))
+                {
+                    MessageBox.Show("Unable to process request.\nThe selected product has " + quantity + " stock(s) on hand", "Add Quantity: Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                sql_connect.Open();
+                sql_command = new SqlCommand("UPDATE tbl_transaction SET quantity = (quantity + " + int.Parse(tb_quantity.Text) + ") WHERE transactionID = '" + transactionID + "'", sql_connect);
+                sql_command.ExecuteNonQuery();
+                sql_connect.Close();
+
+                tb_searchBox.Clear();
+                tb_searchBox.Focus();
+                LoadCart();
+            }
+            else
+            {
+                if (quantity < int.Parse(tb_quantity.Text))
+                {
+                    MessageBox.Show("Unable to process request.\nThe selected product has " + quantity + " stock(s) on hand", "Add Quantity: Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                sql_connect.Open();
+                sql_command = new SqlCommand("INSERT INTO tbl_transaction (transactionNo, productID, price, quantity, transactionDate, cashierName) VALUES (@transactionNo, @productID, @price, @quantity, @transactionDate, @cashierName)", sql_connect);
+                sql_command.Parameters.AddWithValue("@transactionNo", transactionNo.Text);
+                sql_command.Parameters.AddWithValue("@productID", _productID);
+                sql_command.Parameters.AddWithValue("@price", _price);
+                sql_command.Parameters.AddWithValue("@quantity", _quantity);
+                sql_command.Parameters.AddWithValue("@transactionDate", DateTime.Now);
+                sql_command.Parameters.AddWithValue("@cashierName", tb_name.Text);
+                sql_command.ExecuteNonQuery();
+                sql_connect.Close();
+
+                tb_searchBox.Clear();
+                tb_searchBox.Focus();
+                LoadCart();
+            }
+        }
+
         // tb_searchBox trigger
         private void tb_searchBox_TextChanged(object sender, EventArgs e)
         {
@@ -260,17 +357,27 @@ namespace OmniscentPOSAI
                 }
                 else
                 {
+                    String _productID;
+                    double _price;
+                    int _quantity;
+
                     sql_connect.Open();
                     sql_command = new SqlCommand("SELECT * FROM tbl_products WHERE productCode LIKE '" + tb_searchBox.Text + "'", sql_connect);
                     sql_datareader = sql_command.ExecuteReader();
                     sql_datareader.Read();
                     if (sql_datareader.HasRows)
                     {
-                        form_addQuantity addQuantity = new form_addQuantity(this);
-                        addQuantity.productDetails(sql_datareader["productID"].ToString(), double.Parse(sql_datareader["price"].ToString()), transactionNo.Text);
+                        quantity = int.Parse(sql_datareader["quantity"].ToString());
+                        //form_addQuantity addQuantity = new form_addQuantity(this);
+                        //addQuantity.productDetails(sql_datareader["productID"].ToString(), double.Parse(sql_datareader["price"].ToString()), transactionNo.Text, quantity);
+                        _productID = sql_datareader["productID"].ToString();
+                        _price = double.Parse(sql_datareader["price"].ToString());
+                        _quantity = int.Parse(tb_quantity.Text);
                         sql_datareader.Close();
                         sql_connect.Close();
-                        addQuantity.ShowDialog();
+
+                        addQuantity(_productID, _price, _quantity);
+                        //addQuantity.ShowDialog();
                     }
                     else
                     {
@@ -299,6 +406,7 @@ namespace OmniscentPOSAI
         private void dgv_cart_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
             btn_settleTransaction.Enabled = true;
+            btn_addDiscount.Enabled = true;
         }
 
         // settle transaction button

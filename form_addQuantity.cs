@@ -23,6 +23,7 @@ namespace OmniscentPOSAI
         private string productID;
         private string transactionNo;
         private double price;
+        private int quantity;
 
         public form_addQuantity(module_cashier cashier)
         {
@@ -33,11 +34,12 @@ namespace OmniscentPOSAI
         }
 
         // productDetails function
-        public void productDetails(String productID, double price, String transactionNo)
+        public void productDetails(String productID, double price, String transactionNo, int quantity)
         {
             this.productID = productID;
             this.transactionNo = transactionNo;
             this.price = price;
+            this.quantity = quantity;
         }
 
         // tb_addQuantity key pressed event
@@ -47,6 +49,7 @@ namespace OmniscentPOSAI
             {
                 bool hasRows = false;
                 string transactionID = "";
+                int transactionQuantity = 0;
 
                 sql_connect.Open();
                 sql_command = new SqlCommand("SELECT * FROM tbl_transaction WHERE transactionNo = @transactionNo AND productID = @productID", sql_connect);
@@ -58,6 +61,7 @@ namespace OmniscentPOSAI
                 {
                     hasRows = true;
                     transactionID = sql_datareader["transactionID"].ToString();
+                    transactionQuantity = int.Parse(sql_datareader["quantity"].ToString());
                 }
                 else
                 {
@@ -68,6 +72,12 @@ namespace OmniscentPOSAI
 
                 if (hasRows == true)
                 {
+                    if (quantity < (int.Parse(tb_addQuantity.Text) + transactionQuantity))
+                    {
+                        MessageBox.Show("Unable to process request.\nThe selected product has " + quantity + " stock(s) on hand", "Add Quantity: Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
                     sql_connect.Open();
                     sql_command = new SqlCommand("UPDATE tbl_transaction SET quantity = (quantity + " + int.Parse(tb_addQuantity.Text) + ") WHERE transactionID = '" + transactionID + "'", sql_connect);
                     sql_command.ExecuteNonQuery();
@@ -80,6 +90,12 @@ namespace OmniscentPOSAI
                 }
                 else
                 {
+                    if (quantity < int.Parse(tb_addQuantity.Text))
+                    {
+                        MessageBox.Show("Unable to process request.\nThe selected product has " + quantity + " stock(s) on hand", "Add Quantity: Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
                     sql_connect.Open();
                     sql_command = new SqlCommand("INSERT INTO tbl_transaction (transactionNo, productID, price, quantity, transactionDate, cashierName) VALUES (@transactionNo, @productID, @price, @quantity, @transactionDate, @cashierName)", sql_connect);
                     sql_command.Parameters.AddWithValue("@transactionNo", transactionNo);
@@ -105,6 +121,8 @@ namespace OmniscentPOSAI
         {
             bool hasRows = false;
             string transactionID = "";
+            int transactionQuantity = 0;
+
 
             sql_connect.Open();
             sql_command = new SqlCommand("SELECT * FROM tbl_transaction WHERE transactionNo = @transactionNo AND productID = @productID", sql_connect);
@@ -116,6 +134,7 @@ namespace OmniscentPOSAI
             {
                 hasRows = true;
                 transactionID = sql_datareader["transactionID"].ToString();
+                transactionQuantity = int.Parse(sql_datareader["quantity"].ToString());
             }
             else
             {
@@ -126,6 +145,12 @@ namespace OmniscentPOSAI
 
             if (hasRows == true)
             {
+                if (quantity < (int.Parse(tb_addQuantity.Text) + transactionQuantity))
+                {
+                    MessageBox.Show("Unable to process request.\nThe selected product has " + quantity + " stock(s) on hand", "Add Quantity: Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 sql_connect.Open();
                 sql_command = new SqlCommand("UPDATE tbl_transaction SET quantity = (quantity + " + int.Parse(tb_addQuantity.Text) + ") WHERE transactionID = '" + transactionID + "'", sql_connect);
                 sql_command.ExecuteNonQuery();
@@ -138,6 +163,12 @@ namespace OmniscentPOSAI
             }
             else
             {
+                if (quantity < int.Parse(tb_addQuantity.Text))
+                {
+                    MessageBox.Show("Unable to process request.\nThe selected product has " + quantity + " stock(s) on hand", "Add Quantity: Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
                 sql_connect.Open();
                 sql_command = new SqlCommand("INSERT INTO tbl_transaction (transactionNo, productID, price, quantity, transactionDate, cashierName) VALUES (@transactionNo, @productID, @price, @quantity, @transactionDate, @cashierName)", sql_connect);
                 sql_command.Parameters.AddWithValue("@transactionNo", transactionNo);

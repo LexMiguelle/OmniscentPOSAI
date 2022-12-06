@@ -95,6 +95,8 @@ namespace OmniscentPOSAI
             records.TopLevel = false;
             panel_activity.Controls.Add(records);
             records.LoadStockHistory();
+            records.LoadCriticalStocks();
+            records.LoadInventory();
             records.BringToFront();
             records.Show();
         }

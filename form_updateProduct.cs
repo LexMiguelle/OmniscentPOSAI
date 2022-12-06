@@ -197,6 +197,7 @@ namespace OmniscentPOSAI
         // update button click event
         private void btn_update_Click(object sender, EventArgs e)
         {
+            /*
             bool hasRows = false;
             string productCode = (tb_categoryPrefix.Text + tb_productCode.Text).ToString();
 
@@ -217,9 +218,9 @@ namespace OmniscentPOSAI
             }
             sql_datareader.Close();
             sql_connect.Close();
-
-            if (hasRows == true)
-            {
+            */
+            if ( /*hasRows == true &&*/ tb_productCode.TextLength == 12)
+            { 
                 if (lbl_productCodeID.Text == lbl_ID.Text && lbl_productNameID.Text == lbl_ID.Text)
                 {
                     
@@ -235,9 +236,10 @@ namespace OmniscentPOSAI
                     MessageBox.Show("Duplicate input detected!", "Updarte Product: Duplicate", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
-            else if (tb_productCode.Text.Length < 12)
+            else if (tb_productCode.Text.Length != 12)
             {
                 MessageBox.Show("Product Code must contain 12 numbers", "Update Product: Missing Numbers", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
             else
             {

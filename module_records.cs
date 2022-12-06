@@ -56,6 +56,58 @@ namespace OmniscentPOSAI
             LoadTopSelling();
         }
 
+        // Critical Items tab
+        // Load Critical Items
+        public void LoadCriticalStocks()
+        {
+            try
+            {
+                int i = 0;
+
+                dgv_criticalStocks.Rows.Clear();
+                sql_connect.Open();
+                sql_command = new SqlCommand("SELECT * FROM view_criticalStocks", sql_connect);
+                sql_datareader = sql_command.ExecuteReader();
+                while (sql_datareader.Read())
+                {
+                    i++;
+                    dgv_criticalStocks.Rows.Add(i, sql_datareader[0].ToString(), sql_datareader[1].ToString(), sql_datareader[2].ToString(), sql_datareader[3].ToString(), sql_datareader[4].ToString(), sql_datareader[5].ToString(), sql_datareader[6].ToString());
+                }
+                sql_connect.Close();
+
+            } catch (Exception except)
+            {
+                sql_connect.Close();
+                MessageBox.Show(except.Message, "Critical Records: Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+        }
+
+        // Inventory Items tab
+        //Load Inventory Items
+        public void LoadInventory()
+        {
+            int i = 0;
+
+            dgv_inventoryList.Rows.Clear();
+            sql_connect.Open();
+            sql_command = new SqlCommand("SELECT * FROM view_inventoryList",sql_connect);
+            sql_datareader = sql_command.ExecuteReader();
+            while (sql_datareader.Read())
+            {
+                i++;
+                dgv_inventoryList.Rows.Add(i, sql_datareader[0].ToString(), sql_datareader[1].ToString(), sql_datareader[2].ToString(), sql_datareader[3].ToString(), sql_datareader[4].ToString(), sql_datareader[5].ToString(), sql_datareader[6].ToString());
+            }
+            sql_datareader.Close();
+            sql_connect.Close();
+        }
+
+        private void btn_printInventoryList_Click(object sender, EventArgs e)
+        {
+            form_inventoryListReport inventoryReport = new form_inventoryListReport();
+            inventoryReport.LoadInventoryReport();
+            inventoryReport.ShowDialog();
+        }
+
         /*
         // Sold Items
         // load Sold Items
