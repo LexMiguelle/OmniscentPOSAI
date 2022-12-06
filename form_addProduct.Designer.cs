@@ -75,7 +75,7 @@
             this.tb_productID.Location = new System.Drawing.Point(190, 99);
             this.tb_productID.MaxLength = 4;
             this.tb_productID.Name = "tb_productID";
-            this.tb_productID.Size = new System.Drawing.Size(100, 26);
+            this.tb_productID.Size = new System.Drawing.Size(74, 26);
             this.tb_productID.TabIndex = 1;
             this.tb_productID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_productID_KeyPress);
             // 
@@ -138,7 +138,7 @@
             this.lbl_productCode.AutoSize = true;
             this.lbl_productCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_productCode.ForeColor = System.Drawing.Color.White;
-            this.lbl_productCode.Location = new System.Drawing.Point(296, 99);
+            this.lbl_productCode.Location = new System.Drawing.Point(270, 99);
             this.lbl_productCode.Name = "lbl_productCode";
             this.lbl_productCode.Size = new System.Drawing.Size(137, 24);
             this.lbl_productCode.TabIndex = 0;
@@ -148,10 +148,10 @@
             // 
             this.tb_productCode.Enabled = false;
             this.tb_productCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_productCode.Location = new System.Drawing.Point(498, 99);
+            this.tb_productCode.Location = new System.Drawing.Point(448, 99);
             this.tb_productCode.Name = "tb_productCode";
             this.tb_productCode.ReadOnly = true;
-            this.tb_productCode.Size = new System.Drawing.Size(100, 26);
+            this.tb_productCode.Size = new System.Drawing.Size(150, 26);
             this.tb_productCode.TabIndex = 5;
             // 
             // tb_price
@@ -167,6 +167,7 @@
             // 
             // cb_category
             // 
+            this.cb_category.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cb_category.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cb_category.FormattingEnabled = true;
             this.cb_category.Location = new System.Drawing.Point(143, 193);
@@ -201,10 +202,10 @@
             // 
             this.tb_categoryPrefix.Enabled = false;
             this.tb_categoryPrefix.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_categoryPrefix.Location = new System.Drawing.Point(442, 99);
+            this.tb_categoryPrefix.Location = new System.Drawing.Point(413, 99);
             this.tb_categoryPrefix.Name = "tb_categoryPrefix";
             this.tb_categoryPrefix.ReadOnly = true;
-            this.tb_categoryPrefix.Size = new System.Drawing.Size(50, 26);
+            this.tb_categoryPrefix.Size = new System.Drawing.Size(29, 26);
             this.tb_categoryPrefix.TabIndex = 5;
             // 
             // tb_restock

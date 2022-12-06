@@ -228,6 +228,7 @@
             // 
             this.productList_add.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.productList_add.HeaderText = "";
+            this.productList_add.Image = global::OmniscentPOSAI.Properties.Resources.check_16;
             this.productList_add.MinimumWidth = 25;
             this.productList_add.Name = "productList_add";
             this.productList_add.ReadOnly = true;

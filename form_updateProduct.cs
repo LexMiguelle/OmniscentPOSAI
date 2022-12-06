@@ -15,13 +15,15 @@ namespace OmniscentPOSAI
 
     public partial class form_updateProduct : Form
     {
-        SqlConnection sql_connect;
-        SqlCommand sql_command;
+        SqlConnection sql_connect = new SqlConnection();
+        SqlCommand sql_command = new SqlCommand();
         SqlDataReader sql_datareader;
         DBConnector db_connect = new DBConnector();
         module_products productsModule;
 
         int categoryID = 0;
+        string productCode = string.Empty;
+        string productID = string.Empty;
 
         public form_updateProduct(module_products products)
         {
@@ -65,25 +67,88 @@ namespace OmniscentPOSAI
         // update product
         public void updateProduct()
         {
-            string productCode = (tb_categoryPrefix.Text + tb_productCode.Text).ToString();
+            productCode = tb_categoryPrefix.Text + tb_productCode.Text;
+            getCategoryID();
 
             sql_connect.Open();
-            sql_command = new SqlCommand("UPDATE tbl_products SET productCode = @productCode, productName = @productName, categoryID = @categoryID, price = @price, restock = @restock WHERE productID LIKE '" + lbl_ID + "'", sql_connect);
-            sql_command.Parameters.AddWithValue("@productCode", productCode);
-            sql_command.Parameters.AddWithValue("@productName", tb_productName.Text);
-            sql_command.Parameters.AddWithValue("@categoryID", categoryID);
-            sql_command.Parameters.AddWithValue("@price", double.Parse(tb_price.Text));
-            sql_command.Parameters.AddWithValue("@restock", int.Parse(tb_restock.Text));
+            sql_command = new SqlCommand("UPDATE tbl_products SET productCode = '" + productCode + "', productName = '" + tb_productName.Text + "', categoryID = " + categoryID + ", price = " + tb_price.Text + ", restock = " + tb_restock.Text + " WHERE productID LIKE '" + lbl_ID + "'", sql_connect);
             sql_command.ExecuteNonQuery();
             sql_connect.Close();
-            
-            MessageBox.Show("This product has been successfully updated", "Update Product: Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
             productsModule.LoadProducts();
+            MessageBox.Show("This product has been successfully updated", "Update Product: Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        // update button click event
+        private void btn_update_Click(object sender, EventArgs e)
+        {
+            /*
+            bool hasRows = false;
+            productCode = tb_categoryPrefix.Text + tb_productCode.Text;
+
+            sql_connect.Open();
+            sql_command = new SqlCommand("SELECT productID FROM tbl_products WHERE productName = @productName OR productCode = @productCode", sql_connect);
+            sql_command.Parameters.AddWithValue("@productName", tb_productName.Text);
+            sql_command.Parameters.AddWithValue("@productCode", productCode);
+            sql_datareader = sql_command.ExecuteReader();
+            sql_datareader.Read();
+
+            if (sql_datareader.HasRows)
+            {
+                hasRows = true;
+                productID = sql_datareader["productID"].ToString();
+            }
+            else
+            {
+                hasRows = false;
+            }
+            sql_datareader.Close();
+            sql_connect.Close();
+            */
+
+            if (tb_productName.Text == string.Empty || tb_productCode.Text == string.Empty || tb_restock.Text == string.Empty || int.Parse(tb_productCode.Text.Length.ToString()) < 12 || double.Parse(tb_price.Text) <= 0.00)
+            {
+              MessageBox.Show("Invalid input detected!", "Update Product: Invalid Input(s)", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                //if (hasRows == true)
+                //{
+                    if (lbl_productCodeID.Text == lbl_ID.Text && lbl_productNameID.Text == lbl_ID.Text)
+                    {
+                        if (MessageBox.Show("Are you sure you want to edit this product?", "Update Product", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        {
+                            updateProduct();
+                            this.Dispose();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Duplicate input detected!", "Update Product: Duplicate Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                /*}
+                //else
+                //{
+                    if (lbl_productCodeID.Text == lbl_ID.Text && lbl_productNameID.Text == lbl_ID.Text)
+                    {
+                        if (MessageBox.Show("Are you sure you want to edit this product?", "Update Product", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        {
+                            updateProduct();
+                            this.Dispose();
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Duplicate input detected!", "Update Product: Duplicate Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    }
+                }*/
+            }
         }
 
         // product code text change event
         private void tb_productCode_TextChanged(object sender, EventArgs e)
         {
+            lbl_pcodeLength.Text = tb_productCode.Text.Length.ToString();
             sql_connect.Open();
             sql_command = new SqlCommand("SELECT productID FROM tbl_products WHERE productCode = @productCode", sql_connect);
             sql_command.Parameters.AddWithValue("@productCode", tb_productCode.Text);
@@ -134,22 +199,6 @@ namespace OmniscentPOSAI
             }
             sql_datareader.Close();
             sql_connect.Close();
-
-            sql_connect.Open();
-            sql_command = new SqlCommand("SELECT x.productID FROM tbl_products AS x INNER JOIN tbl_categories AS y ON x.categoryID = y.categoryID WHERE y.categoryName = @categoryName", sql_connect);
-            sql_command.Parameters.AddWithValue("@categoryName", cb_category.Text);
-            sql_datareader = sql_command.ExecuteReader();
-            while (sql_datareader.Read())
-            {
-                lbl_categoryID.Text = sql_datareader["productID"].ToString();
-            }
-
-            if (!sql_datareader.HasRows)
-            {
-                lbl_categoryID.Text = lbl_ID.Text;
-            }
-            sql_datareader.Close();
-            sql_connect.Close();
         }
 
         // add dot to tb_price
@@ -194,72 +243,7 @@ namespace OmniscentPOSAI
             }
         }
 
-        // update button click event
-        private void btn_update_Click(object sender, EventArgs e)
-        {
-            /*
-            bool hasRows = false;
-            string productCode = (tb_categoryPrefix.Text + tb_productCode.Text).ToString();
-
-            sql_connect.Open();
-            sql_command = new SqlCommand("SELECT * FROM tbl_products WHERE productName = @productName OR productCode = @productCode", sql_connect);
-            sql_command.Parameters.AddWithValue("@productName", tb_productName.Text);
-            sql_command.Parameters.AddWithValue("@productCode", productCode);
-            sql_datareader = sql_command.ExecuteReader();
-            sql_datareader.Read();
-
-            if (sql_datareader.HasRows)
-            {
-                hasRows = true;
-            }
-            else
-            {
-                hasRows = false;
-            }
-            sql_datareader.Close();
-            sql_connect.Close();
-            */
-            if ( /*hasRows == true &&*/ tb_productCode.TextLength == 12)
-            { 
-                if (lbl_productCodeID.Text == lbl_ID.Text && lbl_productNameID.Text == lbl_ID.Text)
-                {
-                    
-                    if (MessageBox.Show("Are you sure you want to update this category?", "Update Category", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                    {
-                        getCategoryID();
-                        updateProduct();
-                        this.Dispose();
-                    }
-                }
-                else
-                {
-                    MessageBox.Show("Duplicate input detected!", "Updarte Product: Duplicate", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-            }
-            else if (tb_productCode.Text.Length != 12)
-            {
-                MessageBox.Show("Product Code must contain 12 numbers", "Update Product: Missing Numbers", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
-            else
-            {
-                if (string.IsNullOrEmpty(tb_productName.Text) || string.IsNullOrEmpty(tb_productCode.Text) || string.IsNullOrEmpty(cb_category.Text) || tb_price.Text == "0.00")
-                {
-                    MessageBox.Show("One or more textboxes are empty.", "Update Product: Empty Textbox", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                }
-                else
-                {
-                    if (MessageBox.Show("Are you sure you want to update this product?", "Update Product", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                    {
-                        getCategoryID();
-                        updateProduct();
-                        this.Dispose();
-
-                    }
-                }
-            }
-        }
-
+        // cancel button event
         private void btn_cancel_Click(object sender, EventArgs e)
         {
             this.Dispose();

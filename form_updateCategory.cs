@@ -131,7 +131,7 @@ namespace OmniscentPOSAI
                 }
             }
         }
-
+        // tb_updateCategory text change event
         private void tb_updateCategory_TextChanged(object sender, EventArgs e)
         {
             sql_connect.Open();
@@ -152,6 +152,7 @@ namespace OmniscentPOSAI
             sql_connect.Close();
         }
 
+        // category Prefix text changed event
         private void tb_updateCategoryPrefix_TextChanged(object sender, EventArgs e)
         {
             sql_connect.Open();
