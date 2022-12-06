@@ -43,7 +43,7 @@
             this.tb_discountedPrice = new System.Windows.Forms.TextBox();
             this.tb_wholeNum = new System.Windows.Forms.TextBox();
             this.tb_dot = new System.Windows.Forms.TextBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.tb_percentValue = new System.Windows.Forms.TextBox();
             this.lbl_OR = new System.Windows.Forms.Label();
             this.panel_addDiscountHead.SuspendLayout();
             this.panel_checkPrice.SuspendLayout();
@@ -225,17 +225,17 @@
             this.tb_dot.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.tb_dot.TextChanged += new System.EventHandler(this.tb_discountPercentage_TextChanged);
             // 
-            // textBox1
+            // tb_percentValue
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(272, 215);
-            this.textBox1.MaxLength = 2;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ReadOnly = true;
-            this.textBox1.Size = new System.Drawing.Size(81, 31);
-            this.textBox1.TabIndex = 1;
-            this.textBox1.Text = "0%";
-            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tb_percentValue.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_percentValue.Location = new System.Drawing.Point(272, 215);
+            this.tb_percentValue.MaxLength = 2;
+            this.tb_percentValue.Name = "tb_percentValue";
+            this.tb_percentValue.ReadOnly = true;
+            this.tb_percentValue.Size = new System.Drawing.Size(81, 31);
+            this.tb_percentValue.TabIndex = 1;
+            this.tb_percentValue.Text = "0%";
+            this.tb_percentValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lbl_OR
             // 
@@ -260,7 +260,7 @@
             this.Controls.Add(this.tb_discountedPrice);
             this.Controls.Add(this.tb_dot);
             this.Controls.Add(this.tb_wholeNum);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.tb_percentValue);
             this.Controls.Add(this.tb_decNum);
             this.Controls.Add(this.tb_price);
             this.Controls.Add(this.lbl_discountedPrice);
@@ -296,7 +296,7 @@
         public System.Windows.Forms.TextBox tb_discountedPrice;
         public System.Windows.Forms.TextBox tb_wholeNum;
         public System.Windows.Forms.TextBox tb_dot;
-        public System.Windows.Forms.TextBox textBox1;
+        public System.Windows.Forms.TextBox tb_percentValue;
         public System.Windows.Forms.Label lbl_OR;
     }
 }

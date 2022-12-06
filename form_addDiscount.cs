@@ -20,6 +20,8 @@ namespace OmniscentPOSAI
         SqlDataReader sql_datareader;
         module_cashier cashierModule;
 
+        String discountPercentage;
+
         public form_addDiscount(module_cashier cashier)
         {
             InitializeComponent();
@@ -113,7 +115,11 @@ namespace OmniscentPOSAI
 
         private void getDiscountPercentage_TextChanged(object sender, EventArgs e)
         {
-            tb_wholeNum.Text + 
+            discountPercentage = tb_wholeNum.Text + tb_dot.Text + tb_decNum.Text;
+            Double dp = Convert.ToDouble(discountPercentage);
+            int pv = Convert.ToInt32(dp);
+            String percent = Convert.ToString(pv);
+            tb_percentValue.Text = pv + "%";
         }
     }
 }
