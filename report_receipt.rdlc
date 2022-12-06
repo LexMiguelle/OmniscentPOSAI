@@ -76,19 +76,19 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>0.72729cm</Width>
+                  <Width>0.7414cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>5.29391cm</Width>
+                  <Width>5.30802cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.34271cm</Width>
+                  <Width>1.35682cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.01833cm</Width>
+                  <Width>1.03244cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>1.55693cm</Width>
+                  <Width>1.57104cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -557,7 +557,7 @@
             </TablixRowHierarchy>
             <DataSetName>DataSet1</DataSetName>
             <Height>1.8cm</Height>
-            <Width>9.93917cm</Width>
+            <Width>10.00973cm</Width>
             <Style>
               <Border>
                 <Style>None</Style>
@@ -565,13 +565,13 @@
             </Style>
           </Tablix>
         </ReportItems>
-        <Height>1.0879in</Height>
+        <Height>0.78582in</Height>
         <Style />
       </Body>
-      <Width>3.91306in</Width>
+      <Width>3.94084in</Width>
       <Page>
         <PageHeader>
-          <Height>5.49162cm</Height>
+          <Height>6.0737cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -583,7 +583,10 @@
                   <TextRuns>
                     <TextRun>
                       <Value>=Parameters!rp_storeName.Value</Value>
-                      <Style />
+                      <Style>
+                        <FontSize>12pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
                     </TextRun>
                   </TextRuns>
                   <Style>
@@ -591,8 +594,8 @@
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>2.23766cm</Top>
-              <Height>0.6cm</Height>
+              <Top>2.41405cm</Top>
+              <Height>0.60882cm</Height>
               <Width>9.93917cm</Width>
               <Style>
                 <Border>
@@ -612,7 +615,10 @@
                   <TextRuns>
                     <TextRun>
                       <Value>=Parameters!rp_storeAddress.Value</Value>
-                      <Style />
+                      <Style>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
                     </TextRun>
                   </TextRuns>
                   <Style>
@@ -620,7 +626,7 @@
                   </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>2.83766cm</Top>
+              <Top>3.02287cm</Top>
               <Height>0.6cm</Height>
               <Width>9.93917cm</Width>
               <ZIndex>1</ZIndex>
@@ -648,9 +654,9 @@
                   <Style />
                 </Paragraph>
               </Paragraphs>
-              <Top>3.93884cm</Top>
+              <Top>5.17565cm</Top>
               <Height>0.6cm</Height>
-              <Width>1.4725cm</Width>
+              <Width>1.54306cm</Width>
               <ZIndex>2</ZIndex>
               <Style>
                 <Border>
@@ -673,12 +679,14 @@
                       <Style />
                     </TextRun>
                   </TextRuns>
-                  <Style />
+                  <Style>
+                    <TextAlign>Center</TextAlign>
+                  </Style>
                 </Paragraph>
               </Paragraphs>
-              <Top>4.53884cm</Top>
+              <Top>4.39926cm</Top>
               <Height>0.6cm</Height>
-              <Width>9.93917cm</Width>
+              <Width>10.00973cm</Width>
               <ZIndex>3</ZIndex>
               <Style>
                 <Border>
@@ -691,9 +699,10 @@
               </Style>
             </Textbox>
             <Line Name="Line1">
-              <Top>5.31523cm</Top>
+              <Top>5.95023cm</Top>
+              <Left>0.03528cm</Left>
               <Height>0cm</Height>
-              <Width>9.93917cm</Width>
+              <Width>9.97445cm</Width>
               <ZIndex>4</ZIndex>
               <Style>
                 <Border>
@@ -707,7 +716,7 @@
               <Value>omniscent_64</Value>
               <Sizing>FitProportional</Sizing>
               <Top>0.10266cm</Top>
-              <Left>3.75391cm</Left>
+              <Left>3.82447cm</Left>
               <Height>2.135cm</Height>
               <Width>2.26729cm</Width>
               <ZIndex>5</ZIndex>
@@ -732,11 +741,45 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox1</rd:DefaultName>
-              <Top>3.93884cm</Top>
-              <Left>1.4725cm</Left>
+              <Top>5.17565cm</Top>
+              <Left>1.54306cm</Left>
               <Height>0.6cm</Height>
               <Width>8.46667cm</Width>
               <ZIndex>6</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="lbl_transactionNo2">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Parameters!rp_storeContactNo.Value</Value>
+                      <Style>
+                        <FontSize>8pt</FontSize>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Center</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <Top>3.62287cm</Top>
+              <Left>0cm</Left>
+              <Height>0.6cm</Height>
+              <Width>10.00973cm</Width>
+              <ZIndex>7</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -755,7 +798,7 @@
           </Style>
         </PageHeader>
         <PageFooter>
-          <Height>5.31125cm</Height>
+          <Height>8.95776cm</Height>
           <PrintOnFirstPage>true</PrintOnFirstPage>
           <PrintOnLastPage>true</PrintOnLastPage>
           <ReportItems>
@@ -776,9 +819,9 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox39</rd:DefaultName>
-              <Top>4.11125cm</Top>
+              <Top>4.67597cm</Top>
               <Height>0.6cm</Height>
-              <Width>9.93917cm</Width>
+              <Width>9.97445cm</Width>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -806,8 +849,8 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox39</rd:DefaultName>
-              <Top>4.71125cm</Top>
-              <Height>0.6cm</Height>
+              <Top>5.45236cm</Top>
+              <Height>0.65292cm</Height>
               <Width>9.93917cm</Width>
               <ZIndex>1</ZIndex>
               <Style>
@@ -823,7 +866,7 @@
             <Line Name="Line2">
               <Top>0.17639cm</Top>
               <Height>0cm</Height>
-              <Width>9.93917cm</Width>
+              <Width>10.00973cm</Width>
               <ZIndex>2</ZIndex>
               <Style>
                 <Border>
@@ -846,9 +889,9 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox33</rd:DefaultName>
-              <Top>0.35278cm</Top>
+              <Top>0.95278cm</Top>
               <Height>0.6cm</Height>
-              <Width>6.40104cm</Width>
+              <Width>6.43632cm</Width>
               <ZIndex>3</ZIndex>
               <Style>
                 <Border>
@@ -875,9 +918,9 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox33</rd:DefaultName>
-              <Top>0.95278cm</Top>
+              <Top>1.55278cm</Top>
               <Height>0.6cm</Height>
-              <Width>6.40104cm</Width>
+              <Width>6.43632cm</Width>
               <ZIndex>4</ZIndex>
               <Style>
                 <Border>
@@ -906,8 +949,8 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox27</rd:DefaultName>
-              <Top>0.35278cm</Top>
-              <Left>6.40104cm</Left>
+              <Top>0.95278cm</Top>
+              <Left>6.43632cm</Left>
               <Height>0.6cm</Height>
               <Width>3.53813cm</Width>
               <ZIndex>5</ZIndex>
@@ -938,8 +981,8 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox28</rd:DefaultName>
-              <Top>0.95278cm</Top>
-              <Left>6.40104cm</Left>
+              <Top>1.55278cm</Top>
+              <Left>6.43632cm</Left>
               <Height>0.6cm</Height>
               <Width>3.53813cm</Width>
               <ZIndex>6</ZIndex>
@@ -970,8 +1013,8 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox29</rd:DefaultName>
-              <Top>1.55278cm</Top>
-              <Left>6.40104cm</Left>
+              <Top>2.15278cm</Top>
+              <Left>6.43632cm</Left>
               <Height>0.6cm</Height>
               <Width>3.53813cm</Width>
               <ZIndex>7</ZIndex>
@@ -1000,71 +1043,10 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox33</rd:DefaultName>
-              <Top>1.55278cm</Top>
+              <Top>2.15278cm</Top>
               <Height>0.6cm</Height>
-              <Width>6.40104cm</Width>
+              <Width>6.43632cm</Width>
               <ZIndex>8</ZIndex>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-            <Textbox Name="Textbox36">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>Total Amount:</Value>
-                      <Style />
-                    </TextRun>
-                  </TextRuns>
-                  <Style />
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>Textbox36</rd:DefaultName>
-              <Top>2.15278cm</Top>
-              <Height>0.6cm</Height>
-              <Width>6.40104cm</Width>
-              <ZIndex>9</ZIndex>
-              <Style>
-                <Border>
-                  <Style>None</Style>
-                </Border>
-                <PaddingLeft>2pt</PaddingLeft>
-                <PaddingRight>2pt</PaddingRight>
-                <PaddingTop>2pt</PaddingTop>
-                <PaddingBottom>2pt</PaddingBottom>
-              </Style>
-            </Textbox>
-            <Textbox Name="Textbox30">
-              <CanGrow>true</CanGrow>
-              <KeepTogether>true</KeepTogether>
-              <Paragraphs>
-                <Paragraph>
-                  <TextRuns>
-                    <TextRun>
-                      <Value>=Parameters!rp_totalAmount.Value</Value>
-                      <Style />
-                    </TextRun>
-                  </TextRuns>
-                  <Style>
-                    <TextAlign>Right</TextAlign>
-                  </Style>
-                </Paragraph>
-              </Paragraphs>
-              <rd:DefaultName>Textbox30</rd:DefaultName>
-              <Top>2.15278cm</Top>
-              <Left>6.40104cm</Left>
-              <Height>0.6cm</Height>
-              <Width>3.53813cm</Width>
-              <ZIndex>10</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -1090,10 +1072,10 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox37</rd:DefaultName>
-              <Top>2.75278cm</Top>
+              <Top>3.1232cm</Top>
               <Height>0.6cm</Height>
-              <Width>6.40104cm</Width>
-              <ZIndex>11</ZIndex>
+              <Width>6.43632cm</Width>
+              <ZIndex>9</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -1121,11 +1103,11 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox31</rd:DefaultName>
-              <Top>2.75278cm</Top>
-              <Left>6.40104cm</Left>
+              <Top>3.15848cm</Top>
+              <Left>6.43632cm</Left>
               <Height>0.56472cm</Height>
               <Width>3.53813cm</Width>
-              <ZIndex>12</ZIndex>
+              <ZIndex>10</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -1151,10 +1133,10 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox38</rd:DefaultName>
-              <Top>3.38805cm</Top>
+              <Top>3.89959cm</Top>
               <Height>0.6cm</Height>
               <Width>6.40104cm</Width>
-              <ZIndex>13</ZIndex>
+              <ZIndex>11</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -1182,11 +1164,190 @@
                 </Paragraph>
               </Paragraphs>
               <rd:DefaultName>Textbox32</rd:DefaultName>
-              <Top>3.38805cm</Top>
-              <Left>6.40104cm</Left>
+              <Top>3.89959cm</Top>
+              <Left>6.43632cm</Left>
+              <Height>0.6cm</Height>
+              <Width>3.53813cm</Width>
+              <ZIndex>12</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox36">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>Total Amount:</Value>
+                      <Style />
+                    </TextRun>
+                  </TextRuns>
+                  <Style />
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox36</rd:DefaultName>
+              <Top>0.35278cm</Top>
+              <Height>0.6cm</Height>
+              <Width>6.43632cm</Width>
+              <ZIndex>13</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox30">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Parameters!rp_totalAmount.Value</Value>
+                      <Style />
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Right</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox30</rd:DefaultName>
+              <Top>0.35278cm</Top>
+              <Left>6.43632cm</Left>
               <Height>0.6cm</Height>
               <Width>3.53813cm</Width>
               <ZIndex>14</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Line Name="Line3">
+              <Top>2.92917cm</Top>
+              <Height>0cm</Height>
+              <Width>10.00973cm</Width>
+              <ZIndex>15</ZIndex>
+              <Style>
+                <Border>
+                  <Style>Solid</Style>
+                </Border>
+              </Style>
+            </Line>
+            <Textbox Name="Textbox11">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Parameters!rp_storeSocials.Value</Value>
+                      <Style />
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Center</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox11</rd:DefaultName>
+              <Top>6.45806cm</Top>
+              <Height>0.6cm</Height>
+              <Width>9.93917cm</Width>
+              <ZIndex>16</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Line Name="Line5">
+              <Top>6.28167cm</Top>
+              <Left>0.03528cm</Left>
+              <Height>0cm</Height>
+              <Width>9.93917cm</Width>
+              <ZIndex>17</ZIndex>
+              <Style>
+                <Border>
+                  <Style>Solid</Style>
+                </Border>
+              </Style>
+            </Line>
+            <Textbox Name="Textbox12">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>=Parameters!rp_storeEmail.Value</Value>
+                      <Style />
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Center</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox11</rd:DefaultName>
+              <Top>7.05806cm</Top>
+              <Height>0.6cm</Height>
+              <Width>10.00973cm</Width>
+              <ZIndex>18</ZIndex>
+              <Style>
+                <Border>
+                  <Style>None</Style>
+                </Border>
+                <PaddingLeft>2pt</PaddingLeft>
+                <PaddingRight>2pt</PaddingRight>
+                <PaddingTop>2pt</PaddingTop>
+                <PaddingBottom>2pt</PaddingBottom>
+              </Style>
+            </Textbox>
+            <Textbox Name="Textbox41">
+              <CanGrow>true</CanGrow>
+              <KeepTogether>true</KeepTogether>
+              <Paragraphs>
+                <Paragraph>
+                  <TextRuns>
+                    <TextRun>
+                      <Value>THIS IS AN OFFICIAL RECEIPT</Value>
+                      <Style>
+                        <FontWeight>Bold</FontWeight>
+                      </Style>
+                    </TextRun>
+                  </TextRuns>
+                  <Style>
+                    <TextAlign>Center</TextAlign>
+                  </Style>
+                </Paragraph>
+              </Paragraphs>
+              <rd:DefaultName>Textbox39</rd:DefaultName>
+              <Top>7.8169cm</Top>
+              <Height>0.65292cm</Height>
+              <Width>9.97445cm</Width>
+              <ZIndex>19</ZIndex>
               <Style>
                 <Border>
                   <Style>None</Style>
@@ -1204,7 +1365,7 @@
             </Border>
           </Style>
         </PageFooter>
-        <PageHeight>22cm</PageHeight>
+        <PageHeight>25cm</PageHeight>
         <PageWidth>11cm</PageWidth>
         <InteractiveHeight>11cm</InteractiveHeight>
         <InteractiveWidth>11cm</InteractiveWidth>
@@ -1258,11 +1419,23 @@
       <DataType>String</DataType>
       <Prompt>ReportParameter1</Prompt>
     </ReportParameter>
+    <ReportParameter Name="rp_storeEmail">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="rp_storeSocials">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
+    <ReportParameter Name="rp_storeContactNo">
+      <DataType>String</DataType>
+      <Prompt>ReportParameter1</Prompt>
+    </ReportParameter>
   </ReportParameters>
   <ReportParametersLayout>
     <GridLayoutDefinition>
       <NumberOfColumns>4</NumberOfColumns>
-      <NumberOfRows>3</NumberOfRows>
+      <NumberOfRows>4</NumberOfRows>
       <CellDefinitions>
         <CellDefinition>
           <ColumnIndex>0</ColumnIndex>
@@ -1313,6 +1486,21 @@
           <ColumnIndex>1</ColumnIndex>
           <RowIndex>2</RowIndex>
           <ParameterName>rp_cashierName</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>3</ColumnIndex>
+          <RowIndex>2</RowIndex>
+          <ParameterName>rp_storeEmail</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>0</ColumnIndex>
+          <RowIndex>3</RowIndex>
+          <ParameterName>rp_storeSocials</ParameterName>
+        </CellDefinition>
+        <CellDefinition>
+          <ColumnIndex>1</ColumnIndex>
+          <RowIndex>3</RowIndex>
+          <ParameterName>rp_storeContactNo</ParameterName>
         </CellDefinition>
       </CellDefinitions>
     </GridLayoutDefinition>

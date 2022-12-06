@@ -31,27 +31,18 @@ namespace OmniscentPOSAI
         // add dot
         private void addDot()
         {
-            if (!tb_discountPercentage.Text.Contains("."))
+            if (!tb_decNum.Text.Contains("."))
             {
-                tb_discountPercentage.Text += "0.00";
+                tb_decNum.Text += "0.00";
             }
         }
 
         // tb_discountPercentage text changed event
         private void tb_discountPercentage_TextChanged(object sender, EventArgs e)
         {
-            try
-            {
-                addDot();
-                double disc = Double.Parse(tb_price.Text) * Double.Parse(tb_discountPercentage.Text);
-                tb_discountedPrice.Text = disc.ToString("#,##0.00");
-            }
-            catch (Exception except)
-            {
-
-                MessageBox.Show(except.Message, "Add Discount", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            }
-
+            addDot();
+            double disc = Double.Parse(tb_price.Text) * Double.Parse(tb_decNum.Text);
+            tb_discountedPrice.Text = disc.ToString("#,##0.00");
         }
 
         // confirm button event
@@ -61,9 +52,9 @@ namespace OmniscentPOSAI
             {
                 if (MessageBox.Show("Add discount to the product?", "Add Discount", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    if (tb_discountPercentage.Text == "0.00")
+                    if (string.IsNullOrEmpty(tb_decNum.Text) || tb_decNum.Text == "0.00")
                     {
-                        MessageBox.Show("Discount Percentag input is empty", "Add Discount: Missing input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        MessageBox.Show("Discount Percentage input is empty", "Add Discount: Missing input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     }
                     else
                     {
@@ -91,6 +82,38 @@ namespace OmniscentPOSAI
             this.Dispose();
         }
 
-        
+        private void tb_wholeNum_TextChanged(object sender, EventArgs e)
+        {
+            if (tb_wholeNum.Text == "1")
+            {
+                tb_decNum.Enabled = false;
+                tb_decNum.Text = "00";
+            }
+            else
+            {
+                tb_decNum.Enabled = true;
+            }
+        }
+
+        private void tb_wholeNum_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!e.KeyChar.Equals("1") || !e.KeyChar.Equals("0"))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void tb_decNum_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsNumber(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void getDiscountPercentage_TextChanged(object sender, EventArgs e)
+        {
+            tb_wholeNum.Text + 
+        }
     }
 }

@@ -24,6 +24,9 @@ namespace OmniscentPOSAI
 
         string storeName = "Omniscent";
         string storeAddress = "12A Plata St., Brgy. Caniogan, Pasig City, Metro Manila";
+        string storeSocials = "facebook.com/OMNISCENTPHILIPPINES";
+        string storeEmail = "Omniscentph@gmail.com";
+        string storeContactNo = "(+63) 927-774-1908";
 
         public form_receipt(module_cashier cashier)
         {
@@ -57,8 +60,11 @@ namespace OmniscentPOSAI
                 ReportParameter rp_change = new ReportParameter("rp_change", rpChange);
                 ReportParameter rp_storeName = new ReportParameter("rp_storeName", storeName);
                 ReportParameter rp_storeAddress = new ReportParameter("rp_storeAddress", storeAddress);
-                ReportParameter rp_transactionNo = new ReportParameter("rp_transactionNo", "Invoice No.: " + cashierModule.transactionNo.Text);
+                ReportParameter rp_transactionNo = new ReportParameter("rp_transactionNo", "Receipt No.: " + cashierModule.transactionNo.Text);
                 ReportParameter rp_cashierName = new ReportParameter("rp_cashierName", cashierModule.tb_name.Text);
+                ReportParameter rp_storeEmail = new ReportParameter("rp_storeEmail", storeEmail);
+                ReportParameter rp_storeSocials = new ReportParameter("rp_storeSocials", storeSocials);
+                ReportParameter rp_storeContactNo = new ReportParameter("rp_storeContactNo", storeContactNo);
 
                 rv_receipt.LocalReport.SetParameters(rp_VATable);
                 rv_receipt.LocalReport.SetParameters(rp_VAT);
@@ -70,6 +76,9 @@ namespace OmniscentPOSAI
                 rv_receipt.LocalReport.SetParameters(rp_storeAddress);
                 rv_receipt.LocalReport.SetParameters(rp_transactionNo);
                 rv_receipt.LocalReport.SetParameters(rp_cashierName);
+                rv_receipt.LocalReport.SetParameters(rp_storeEmail);
+                rv_receipt.LocalReport.SetParameters(rp_storeSocials);
+                rv_receipt.LocalReport.SetParameters(rp_storeContactNo);
 
                 reportDataSource = new ReportDataSource("DataSet1", dataset.Tables["dt_sold"]);
                 rv_receipt.LocalReport.DataSources.Add(reportDataSource);

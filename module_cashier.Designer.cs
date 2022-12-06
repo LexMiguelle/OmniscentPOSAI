@@ -50,8 +50,10 @@
             this.btn_scanProductCode = new System.Windows.Forms.Button();
             this.btn_clearTransaction = new System.Windows.Forms.Button();
             this.btn_newTransaction = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel_invoice = new System.Windows.Forms.Panel();
+            this.totalAmount = new System.Windows.Forms.TextBox();
             this.panel_preview = new System.Windows.Forms.Panel();
+            this.rv_invoice = new Microsoft.Reporting.WinForms.ReportViewer();
             this.panel_compute = new System.Windows.Forms.Panel();
             this.subTotal = new System.Windows.Forms.Label();
             this.totalDiscount = new System.Windows.Forms.Label();
@@ -61,19 +63,16 @@
             this.lbl_totalVAT = new System.Windows.Forms.Label();
             this.lbl_totalDiscount = new System.Windows.Forms.Label();
             this.lbl_subTotal = new System.Windows.Forms.Label();
-            this.panel_totalAmount = new System.Windows.Forms.Panel();
-            this.totalAmount = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.btn_addDiscount = new System.Windows.Forms.LinkLabel();
             this.btn_addProduct = new System.Windows.Forms.LinkLabel();
+            this.tb_quantity = new System.Windows.Forms.TextBox();
             this.tb_searchBox = new System.Windows.Forms.TextBox();
             this.lbl_transactionDate = new System.Windows.Forms.Label();
             this.transactionDate = new System.Windows.Forms.Label();
             this.transactionNo = new System.Windows.Forms.Label();
             this.lbl_transactionNo = new System.Windows.Forms.Label();
             this.dgv_cart = new System.Windows.Forms.DataGridView();
-            this.timer_clock = new System.Windows.Forms.Timer(this.components);
-            this.tb_quantity = new System.Windows.Forms.TextBox();
             this.cart_num = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cart_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.cart_productCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -87,14 +86,15 @@
             this.cart_subtract = new System.Windows.Forms.DataGridViewImageColumn();
             this.cart_add = new System.Windows.Forms.DataGridViewImageColumn();
             this.cart_remove = new System.Windows.Forms.DataGridViewImageColumn();
+            this.timer_clock = new System.Windows.Forms.Timer(this.components);
             this.panel_cashierHead.SuspendLayout();
             this.panel_cashierInfo.SuspendLayout();
             this.panel_dateTime.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel_buttonMenu.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.panel_invoice.SuspendLayout();
+            this.panel_preview.SuspendLayout();
             this.panel_compute.SuspendLayout();
-            this.panel_totalAmount.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_cart)).BeginInit();
             this.SuspendLayout();
@@ -325,23 +325,47 @@
             this.btn_newTransaction.UseVisualStyleBackColor = false;
             this.btn_newTransaction.Click += new System.EventHandler(this.btn_newTransaction_Click);
             // 
-            // panel1
+            // panel_invoice
             // 
-            this.panel1.Controls.Add(this.panel_preview);
-            this.panel1.Controls.Add(this.panel_compute);
-            this.panel1.Controls.Add(this.panel_totalAmount);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel1.Location = new System.Drawing.Point(966, 130);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(400, 538);
-            this.panel1.TabIndex = 4;
+            this.panel_invoice.Controls.Add(this.totalAmount);
+            this.panel_invoice.Controls.Add(this.panel_preview);
+            this.panel_invoice.Controls.Add(this.panel_compute);
+            this.panel_invoice.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel_invoice.Location = new System.Drawing.Point(966, 130);
+            this.panel_invoice.Name = "panel_invoice";
+            this.panel_invoice.Size = new System.Drawing.Size(400, 538);
+            this.panel_invoice.TabIndex = 4;
+            // 
+            // totalAmount
+            // 
+            this.totalAmount.BackColor = System.Drawing.Color.Black;
+            this.totalAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 45F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.totalAmount.ForeColor = System.Drawing.Color.Lime;
+            this.totalAmount.Location = new System.Drawing.Point(6, 457);
+            this.totalAmount.Name = "totalAmount";
+            this.totalAmount.ReadOnly = true;
+            this.totalAmount.Size = new System.Drawing.Size(386, 75);
+            this.totalAmount.TabIndex = 2;
+            this.totalAmount.Text = "0.00";
+            this.totalAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.totalAmount.TextChanged += new System.EventHandler(this.totalAmount_TextChanged);
             // 
             // panel_preview
             // 
+            this.panel_preview.Controls.Add(this.rv_invoice);
             this.panel_preview.Location = new System.Drawing.Point(7, 6);
             this.panel_preview.Name = "panel_preview";
             this.panel_preview.Size = new System.Drawing.Size(385, 339);
             this.panel_preview.TabIndex = 2;
+            // 
+            // rv_invoice
+            // 
+            this.rv_invoice.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rv_invoice.Location = new System.Drawing.Point(0, 0);
+            this.rv_invoice.Name = "rv_invoice";
+            this.rv_invoice.ServerReport.BearerToken = null;
+            this.rv_invoice.Size = new System.Drawing.Size(385, 339);
+            this.rv_invoice.TabIndex = 0;
             // 
             // panel_compute
             // 
@@ -364,45 +388,49 @@
             // 
             this.subTotal.AutoSize = true;
             this.subTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.subTotal.Location = new System.Drawing.Point(327, 8);
+            this.subTotal.Location = new System.Drawing.Point(279, 6);
             this.subTotal.Name = "subTotal";
             this.subTotal.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.subTotal.Size = new System.Drawing.Size(40, 20);
             this.subTotal.TabIndex = 1;
             this.subTotal.Text = "0.00";
+            this.subTotal.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // totalDiscount
             // 
             this.totalDiscount.AutoSize = true;
             this.totalDiscount.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.totalDiscount.Location = new System.Drawing.Point(327, 29);
+            this.totalDiscount.Location = new System.Drawing.Point(279, 27);
             this.totalDiscount.Name = "totalDiscount";
             this.totalDiscount.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.totalDiscount.Size = new System.Drawing.Size(40, 20);
             this.totalDiscount.TabIndex = 1;
             this.totalDiscount.Text = "0.00";
+            this.totalDiscount.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // totalVAT
             // 
             this.totalVAT.AutoSize = true;
             this.totalVAT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.totalVAT.Location = new System.Drawing.Point(327, 49);
+            this.totalVAT.Location = new System.Drawing.Point(279, 47);
             this.totalVAT.Name = "totalVAT";
             this.totalVAT.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.totalVAT.Size = new System.Drawing.Size(40, 20);
             this.totalVAT.TabIndex = 1;
             this.totalVAT.Text = "0.00";
+            this.totalVAT.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // totalVATable
             // 
             this.totalVATable.AutoSize = true;
             this.totalVATable.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.totalVATable.Location = new System.Drawing.Point(327, 71);
+            this.totalVATable.Location = new System.Drawing.Point(279, 69);
             this.totalVATable.Name = "totalVATable";
             this.totalVATable.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.totalVATable.Size = new System.Drawing.Size(40, 20);
             this.totalVATable.TabIndex = 1;
             this.totalVATable.Text = "0.00";
+            this.totalVATable.TextAlign = System.Drawing.ContentAlignment.TopRight;
             // 
             // lbl_totalVATable
             // 
@@ -443,27 +471,6 @@
             this.lbl_subTotal.Size = new System.Drawing.Size(102, 20);
             this.lbl_subTotal.TabIndex = 1;
             this.lbl_subTotal.Text = "SUB-TOTAL:";
-            // 
-            // panel_totalAmount
-            // 
-            this.panel_totalAmount.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.panel_totalAmount.Controls.Add(this.totalAmount);
-            this.panel_totalAmount.ForeColor = System.Drawing.Color.Lime;
-            this.panel_totalAmount.Location = new System.Drawing.Point(6, 457);
-            this.panel_totalAmount.Name = "panel_totalAmount";
-            this.panel_totalAmount.Size = new System.Drawing.Size(386, 75);
-            this.panel_totalAmount.TabIndex = 0;
-            // 
-            // totalAmount
-            // 
-            this.totalAmount.AutoSize = true;
-            this.totalAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.totalAmount.Location = new System.Drawing.Point(278, 14);
-            this.totalAmount.Name = "totalAmount";
-            this.totalAmount.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.totalAmount.Size = new System.Drawing.Size(91, 42);
-            this.totalAmount.TabIndex = 1;
-            this.totalAmount.Text = "0.00";
             // 
             // panel2
             // 
@@ -513,6 +520,17 @@
             this.btn_addProduct.TabStop = true;
             this.btn_addProduct.Text = "[ Add Product ]";
             this.btn_addProduct.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.btn_addProduct_LinkClicked);
+            // 
+            // tb_quantity
+            // 
+            this.tb_quantity.Enabled = false;
+            this.tb_quantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_quantity.Location = new System.Drawing.Point(577, 19);
+            this.tb_quantity.Name = "tb_quantity";
+            this.tb_quantity.Size = new System.Drawing.Size(50, 26);
+            this.tb_quantity.TabIndex = 2;
+            this.tb_quantity.Text = "1";
+            this.tb_quantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // tb_searchBox
             // 
@@ -629,23 +647,6 @@
             this.dgv_cart.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_cart_CellContentClick);
             this.dgv_cart.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgv_cart_RowsAdded);
             this.dgv_cart.SelectionChanged += new System.EventHandler(this.dgv_cart_SelectionChanged);
-            // 
-            // timer_clock
-            // 
-            this.timer_clock.Enabled = true;
-            this.timer_clock.Tick += new System.EventHandler(this.timer_clock_Tick);
-            // 
-            // tb_quantity
-            // 
-            this.tb_quantity.Enabled = false;
-            this.tb_quantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_quantity.Location = new System.Drawing.Point(577, 19);
-            this.tb_quantity.Name = "tb_quantity";
-            this.tb_quantity.Size = new System.Drawing.Size(50, 26);
-            this.tb_quantity.TabIndex = 2;
-            this.tb_quantity.Text = "1";
-            this.tb_quantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.tb_quantity.TextChanged += new System.EventHandler(this.tb_searchBox_TextChanged);
             // 
             // cart_num
             // 
@@ -770,6 +771,11 @@
             this.cart_remove.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.cart_remove.Width = 25;
             // 
+            // timer_clock
+            // 
+            this.timer_clock.Enabled = true;
+            this.timer_clock.Tick += new System.EventHandler(this.timer_clock_Tick);
+            // 
             // module_cashier
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -779,7 +785,7 @@
             this.ControlBox = false;
             this.Controls.Add(this.dgv_cart);
             this.Controls.Add(this.panel2);
-            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.panel_invoice);
             this.Controls.Add(this.panel_buttonMenu);
             this.Controls.Add(this.panel_cashierInfo);
             this.Controls.Add(this.panel_cashierHead);
@@ -795,11 +801,11 @@
             this.panel_dateTime.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel_buttonMenu.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
+            this.panel_invoice.ResumeLayout(false);
+            this.panel_invoice.PerformLayout();
+            this.panel_preview.ResumeLayout(false);
             this.panel_compute.ResumeLayout(false);
             this.panel_compute.PerformLayout();
-            this.panel_totalAmount.ResumeLayout(false);
-            this.panel_totalAmount.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_cart)).EndInit();
@@ -822,14 +828,13 @@
         public System.Windows.Forms.Button btn_scanProductCode;
         public System.Windows.Forms.Button btn_clearTransaction;
         public System.Windows.Forms.Button btn_newTransaction;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel_invoice;
         private System.Windows.Forms.Panel panel_preview;
         private System.Windows.Forms.Panel panel_compute;
         private System.Windows.Forms.Label lbl_totalVATable;
         private System.Windows.Forms.Label lbl_totalVAT;
         private System.Windows.Forms.Label lbl_totalDiscount;
         private System.Windows.Forms.Label lbl_subTotal;
-        private System.Windows.Forms.Panel panel_totalAmount;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.LinkLabel btn_addProduct;
         private System.Windows.Forms.Label lbl_transactionDate;
@@ -850,7 +855,6 @@
         public System.Windows.Forms.Label totalDiscount;
         public System.Windows.Forms.Label totalVAT;
         public System.Windows.Forms.Label totalVATable;
-        public System.Windows.Forms.Label totalAmount;
         public System.Windows.Forms.TextBox tb_quantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn cart_num;
         private System.Windows.Forms.DataGridViewTextBoxColumn cart_ID;
@@ -865,5 +869,7 @@
         private System.Windows.Forms.DataGridViewImageColumn cart_subtract;
         private System.Windows.Forms.DataGridViewImageColumn cart_add;
         private System.Windows.Forms.DataGridViewImageColumn cart_remove;
+        public System.Windows.Forms.TextBox totalAmount;
+        private Microsoft.Reporting.WinForms.ReportViewer rv_invoice;
     }
 }

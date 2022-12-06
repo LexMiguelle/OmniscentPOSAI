@@ -39,8 +39,12 @@
             this.lbl_discountedPrice = new System.Windows.Forms.Label();
             this.tb_price = new System.Windows.Forms.TextBox();
             this.btn_confirmDiscount = new System.Windows.Forms.Button();
-            this.tb_discountPercentage = new System.Windows.Forms.TextBox();
+            this.tb_decNum = new System.Windows.Forms.TextBox();
             this.tb_discountedPrice = new System.Windows.Forms.TextBox();
+            this.tb_wholeNum = new System.Windows.Forms.TextBox();
+            this.tb_dot = new System.Windows.Forms.TextBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.lbl_OR = new System.Windows.Forms.Label();
             this.panel_addDiscountHead.SuspendLayout();
             this.panel_checkPrice.SuspendLayout();
             this.SuspendLayout();
@@ -55,7 +59,7 @@
             this.btn_closeAddDiscount.Location = new System.Drawing.Point(374, 0);
             this.btn_closeAddDiscount.Name = "btn_closeAddDiscount";
             this.btn_closeAddDiscount.Size = new System.Drawing.Size(28, 28);
-            this.btn_closeAddDiscount.TabIndex = 5;
+            this.btn_closeAddDiscount.TabIndex = 0;
             this.btn_closeAddDiscount.Text = "X";
             this.btn_closeAddDiscount.UseVisualStyleBackColor = false;
             this.btn_closeAddDiscount.Click += new System.EventHandler(this.btn_closeAddDiscount_Click);
@@ -166,19 +170,23 @@
             this.btn_confirmDiscount.Location = new System.Drawing.Point(0, 329);
             this.btn_confirmDiscount.Name = "btn_confirmDiscount";
             this.btn_confirmDiscount.Size = new System.Drawing.Size(404, 75);
-            this.btn_confirmDiscount.TabIndex = 10;
+            this.btn_confirmDiscount.TabIndex = 3;
             this.btn_confirmDiscount.Text = "CONFIRM";
             this.btn_confirmDiscount.UseVisualStyleBackColor = false;
             this.btn_confirmDiscount.Click += new System.EventHandler(this.btn_confirmDiscount_Click);
             // 
-            // tb_discountPercentage
+            // tb_decNum
             // 
-            this.tb_discountPercentage.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_discountPercentage.Location = new System.Drawing.Point(53, 215);
-            this.tb_discountPercentage.Name = "tb_discountPercentage";
-            this.tb_discountPercentage.Size = new System.Drawing.Size(300, 31);
-            this.tb_discountPercentage.TabIndex = 9;
-            this.tb_discountPercentage.TextChanged += new System.EventHandler(this.tb_discountPercentage_TextChanged);
+            this.tb_decNum.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tb_decNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_decNum.Location = new System.Drawing.Point(136, 215);
+            this.tb_decNum.MaxLength = 2;
+            this.tb_decNum.Name = "tb_decNum";
+            this.tb_decNum.Size = new System.Drawing.Size(93, 24);
+            this.tb_decNum.TabIndex = 2;
+            this.tb_decNum.Text = "00";
+            this.tb_decNum.TextChanged += new System.EventHandler(this.getDiscountPercentage_TextChanged);
+            this.tb_decNum.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_decNum_KeyPress);
             // 
             // tb_discountedPrice
             // 
@@ -189,6 +197,57 @@
             this.tb_discountedPrice.Size = new System.Drawing.Size(300, 31);
             this.tb_discountedPrice.TabIndex = 9;
             // 
+            // tb_wholeNum
+            // 
+            this.tb_wholeNum.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tb_wholeNum.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_wholeNum.Location = new System.Drawing.Point(53, 215);
+            this.tb_wholeNum.MaxLength = 1;
+            this.tb_wholeNum.Name = "tb_wholeNum";
+            this.tb_wholeNum.Size = new System.Drawing.Size(70, 24);
+            this.tb_wholeNum.TabIndex = 1;
+            this.tb_wholeNum.Text = "0";
+            this.tb_wholeNum.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tb_wholeNum.TextChanged += new System.EventHandler(this.getDiscountPercentage_TextChanged);
+            this.tb_wholeNum.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_wholeNum_KeyPress);
+            // 
+            // tb_dot
+            // 
+            this.tb_dot.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tb_dot.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_dot.Location = new System.Drawing.Point(123, 215);
+            this.tb_dot.MaxLength = 4;
+            this.tb_dot.Name = "tb_dot";
+            this.tb_dot.ReadOnly = true;
+            this.tb_dot.Size = new System.Drawing.Size(13, 24);
+            this.tb_dot.TabIndex = 1;
+            this.tb_dot.Text = ".";
+            this.tb_dot.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tb_dot.TextChanged += new System.EventHandler(this.tb_discountPercentage_TextChanged);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(272, 215);
+            this.textBox1.MaxLength = 2;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ReadOnly = true;
+            this.textBox1.Size = new System.Drawing.Size(81, 31);
+            this.textBox1.TabIndex = 1;
+            this.textBox1.Text = "0%";
+            this.textBox1.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
+            // lbl_OR
+            // 
+            this.lbl_OR.AutoSize = true;
+            this.lbl_OR.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_OR.ForeColor = System.Drawing.Color.White;
+            this.lbl_OR.Location = new System.Drawing.Point(236, 223);
+            this.lbl_OR.Name = "lbl_OR";
+            this.lbl_OR.Size = new System.Drawing.Size(29, 16);
+            this.lbl_OR.TabIndex = 4;
+            this.lbl_OR.Text = "OR";
+            // 
             // form_addDiscount
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -197,8 +256,12 @@
             this.ClientSize = new System.Drawing.Size(404, 404);
             this.ControlBox = false;
             this.Controls.Add(this.btn_confirmDiscount);
+            this.Controls.Add(this.lbl_OR);
             this.Controls.Add(this.tb_discountedPrice);
-            this.Controls.Add(this.tb_discountPercentage);
+            this.Controls.Add(this.tb_dot);
+            this.Controls.Add(this.tb_wholeNum);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.tb_decNum);
             this.Controls.Add(this.tb_price);
             this.Controls.Add(this.lbl_discountedPrice);
             this.Controls.Add(this.lbl_discountPercentage);
@@ -229,7 +292,11 @@
         public System.Windows.Forms.Label lbl_prc;
         public System.Windows.Forms.Label lbl_ID;
         public System.Windows.Forms.TextBox tb_price;
-        public System.Windows.Forms.TextBox tb_discountPercentage;
+        public System.Windows.Forms.TextBox tb_decNum;
         public System.Windows.Forms.TextBox tb_discountedPrice;
+        public System.Windows.Forms.TextBox tb_wholeNum;
+        public System.Windows.Forms.TextBox tb_dot;
+        public System.Windows.Forms.TextBox textBox1;
+        public System.Windows.Forms.Label lbl_OR;
     }
 }

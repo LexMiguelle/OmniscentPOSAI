@@ -110,11 +110,11 @@
             this.lbl_productCode.AutoSize = true;
             this.lbl_productCode.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_productCode.ForeColor = System.Drawing.Color.White;
-            this.lbl_productCode.Location = new System.Drawing.Point(62, 297);
+            this.lbl_productCode.Location = new System.Drawing.Point(17, 295);
             this.lbl_productCode.Name = "lbl_productCode";
-            this.lbl_productCode.Size = new System.Drawing.Size(86, 24);
+            this.lbl_productCode.Size = new System.Drawing.Size(131, 24);
             this.lbl_productCode.TabIndex = 4;
-            this.lbl_productCode.Text = "Barcode:";
+            this.lbl_productCode.Text = "Product Code:";
             // 
             // lbl_price
             // 
@@ -227,7 +227,6 @@
             this.Controls.Add(this.lbl_product);
             this.Controls.Add(this.lbl_productID);
             this.Controls.Add(this.panel_checkPriceHead);
-            this.Enabled = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "form_checkPrice";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;

@@ -42,10 +42,17 @@ namespace OmniscentPOSAI
             this.quantity = quantity;
         }
 
-        // tb_addQuantity key pressed event
-        private void tb_addQuantity_KeyPress(object sender, KeyPressEventArgs e)
+        // addQuantity function
+        public void addQuantity()
         {
-            if ((e.KeyChar == 13) && (tb_addQuantity.Text != String.Empty))
+            if ((string.IsNullOrEmpty(tb_addQuantity.Text) || tb_addQuantity.Text == "0"))
+            {
+                MessageBox.Show("Incorrect input", "Add Quantity: Missing Input", MessageBoxButtons.OK, MessageBoxIcon.Hand);
+                tb_addQuantity.Text = "1";
+                tb_addQuantity.Focus();
+                tb_addQuantity.SelectAll();
+            }
+            else
             {
                 bool hasRows = false;
                 string transactionID = "";
@@ -57,6 +64,7 @@ namespace OmniscentPOSAI
                 sql_command.Parameters.AddWithValue("@productID", productID);
                 sql_datareader = sql_command.ExecuteReader();
                 sql_datareader.Read();
+
                 if (sql_datareader.HasRows)
                 {
                     hasRows = true;
@@ -74,117 +82,71 @@ namespace OmniscentPOSAI
                 {
                     if (quantity < (int.Parse(tb_addQuantity.Text) + transactionQuantity))
                     {
-                        MessageBox.Show("Unable to process request.\nThe selected product has " + quantity + " stock(s) on hand", "Add Quantity: Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return;
+                        MessageBox.Show("The selected product only has " + quantity + " stock(s) on hand", "Add Quantity: Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        
+                        tb_addQuantity.Focus();
+                        tb_addQuantity.SelectAll();
+                    }
+                    else
+                    {
+                        sql_connect.Open();
+                        sql_command = new SqlCommand("UPDATE tbl_transaction SET quantity = (quantity + " + int.Parse(tb_addQuantity.Text) + ") WHERE transactionID = '" + transactionID + "'", sql_connect);
+                        sql_command.ExecuteNonQuery();
+                        sql_connect.Close();
+                        this.Dispose();
                     }
 
-                    sql_connect.Open();
-                    sql_command = new SqlCommand("UPDATE tbl_transaction SET quantity = (quantity + " + int.Parse(tb_addQuantity.Text) + ") WHERE transactionID = '" + transactionID + "'", sql_connect);
-                    sql_command.ExecuteNonQuery();
-                    sql_connect.Close();
-
-                    cashierModule.tb_searchBox.Clear();
-                    cashierModule.tb_searchBox.Focus();
                     cashierModule.LoadCart();
-                    this.Dispose();
                 }
                 else
                 {
                     if (quantity < int.Parse(tb_addQuantity.Text))
                     {
-                        MessageBox.Show("Unable to process request.\nThe selected product has " + quantity + " stock(s) on hand", "Add Quantity: Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                        return;
+                        MessageBox.Show("The selected product only has " + quantity + " stock(s) on hand", "Add Quantity: Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        
+                        tb_addQuantity.Focus();
+                        tb_addQuantity.SelectAll();
+                    }
+                    else
+                    {
+                        sql_connect.Open();
+                        sql_command = new SqlCommand("INSERT INTO tbl_transaction (transactionNo, productID, price, quantity, transactionDate, cashierName) VALUES (@transactionNo, @productID, @price, @quantity, @transactionDate, @cashierName)", sql_connect);
+                        sql_command.Parameters.AddWithValue("@transactionNo", transactionNo);
+                        sql_command.Parameters.AddWithValue("@productID", productID);
+                        sql_command.Parameters.AddWithValue("@price", price);
+                        sql_command.Parameters.AddWithValue("@quantity", int.Parse(tb_addQuantity.Text));
+                        sql_command.Parameters.AddWithValue("@transactionDate", DateTime.Now);
+                        sql_command.Parameters.AddWithValue("@cashierName", cashierModule.tb_name.Text);
+                        sql_command.ExecuteNonQuery();
+                        sql_connect.Close();
+                        this.Dispose();
                     }
 
-                    sql_connect.Open();
-                    sql_command = new SqlCommand("INSERT INTO tbl_transaction (transactionNo, productID, price, quantity, transactionDate, cashierName) VALUES (@transactionNo, @productID, @price, @quantity, @transactionDate, @cashierName)", sql_connect);
-                    sql_command.Parameters.AddWithValue("@transactionNo", transactionNo);
-                    sql_command.Parameters.AddWithValue("@productID", productID);
-                    sql_command.Parameters.AddWithValue("@price", price);
-                    sql_command.Parameters.AddWithValue("@quantity", int.Parse(tb_addQuantity.Text));
-                    sql_command.Parameters.AddWithValue("@transactionDate", DateTime.Now);
-                    sql_command.Parameters.AddWithValue("@cashierName", cashierModule.tb_name.Text);
-                    sql_command.ExecuteNonQuery();
-                    sql_connect.Close();
-
-                    cashierModule.tb_searchBox.Clear();
-                    cashierModule.tb_searchBox.Focus();
                     cashierModule.LoadCart();
-                    this.Dispose();
                 }
-                
             }
         }
 
-        // OK button event
-        private void btn_OK_Click(object sender, EventArgs e)
+        // tb_addQuantity key pressed event
+        private void tb_addQuantity_KeyPress(object sender, KeyPressEventArgs e)
         {
-            bool hasRows = false;
-            string transactionID = "";
-            int transactionQuantity = 0;
-
-
-            sql_connect.Open();
-            sql_command = new SqlCommand("SELECT * FROM tbl_transaction WHERE transactionNo = @transactionNo AND productID = @productID", sql_connect);
-            sql_command.Parameters.AddWithValue("@transactionNo", cashierModule.transactionNo.Text);
-            sql_command.Parameters.AddWithValue("@productID", productID);
-            sql_datareader = sql_command.ExecuteReader();
-            sql_datareader.Read();
-            if (sql_datareader.HasRows)
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
             {
-                hasRows = true;
-                transactionID = sql_datareader["transactionID"].ToString();
-                transactionQuantity = int.Parse(sql_datareader["quantity"].ToString());
+                e.Handled = true;
             }
             else
             {
-                hasRows = false;
-            }
-            sql_datareader.Close();
-            sql_connect.Close();
-
-            if (hasRows == true)
-            {
-                if (quantity < (int.Parse(tb_addQuantity.Text) + transactionQuantity))
+                if ((e.KeyChar == 13))
                 {
-                    MessageBox.Show("Unable to process request.\nThe selected product has " + quantity + " stock(s) on hand", "Add Quantity: Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
+                    addQuantity();
                 }
-
-                sql_connect.Open();
-                sql_command = new SqlCommand("UPDATE tbl_transaction SET quantity = (quantity + " + int.Parse(tb_addQuantity.Text) + ") WHERE transactionID = '" + transactionID + "'", sql_connect);
-                sql_command.ExecuteNonQuery();
-                sql_connect.Close();
-
-                cashierModule.tb_searchBox.Clear();
-                cashierModule.tb_searchBox.Focus();
-                cashierModule.LoadCart();
-                this.Dispose();
             }
-            else
-            {
-                if (quantity < int.Parse(tb_addQuantity.Text))
-                {
-                    MessageBox.Show("Unable to process request.\nThe selected product has " + quantity + " stock(s) on hand", "Add Quantity: Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    return;
-                }
+        }
 
-                sql_connect.Open();
-                sql_command = new SqlCommand("INSERT INTO tbl_transaction (transactionNo, productID, price, quantity, transactionDate, cashierName) VALUES (@transactionNo, @productID, @price, @quantity, @transactionDate, @cashierName)", sql_connect);
-                sql_command.Parameters.AddWithValue("@transactionNo", transactionNo);
-                sql_command.Parameters.AddWithValue("@productID", productID);
-                sql_command.Parameters.AddWithValue("@price", price);
-                sql_command.Parameters.AddWithValue("@quantity", int.Parse(tb_addQuantity.Text));
-                sql_command.Parameters.AddWithValue("@transactionDate", DateTime.Now);
-                sql_command.Parameters.AddWithValue("@cashierName", cashierModule.tb_name.Text);
-                sql_command.ExecuteNonQuery();
-                sql_connect.Close();
-
-                cashierModule.tb_searchBox.Clear();
-                cashierModule.tb_searchBox.Focus();
-                cashierModule.LoadCart();
-                this.Dispose();
-            }
+            // OK button event
+            private void btn_OK_Click(object sender, EventArgs e)
+        {
+            addQuantity();
         }
 
         // close button event

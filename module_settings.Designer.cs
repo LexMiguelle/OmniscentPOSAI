@@ -39,7 +39,7 @@
             this.btn_back = new System.Windows.Forms.Button();
             this.tb_userName = new System.Windows.Forms.TextBox();
             this.lbl_confirmPassword = new System.Windows.Forms.Label();
-            this.tb_oldPasswod = new System.Windows.Forms.TextBox();
+            this.tb_oldPassword = new System.Windows.Forms.TextBox();
             this.tb_newPassword = new System.Windows.Forms.TextBox();
             this.tb_confirmPassword = new System.Windows.Forms.TextBox();
             this.btn_updatePassword = new System.Windows.Forms.Button();
@@ -133,7 +133,7 @@
             this.lbl_OldPassword.BackColor = System.Drawing.Color.Transparent;
             this.lbl_OldPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_OldPassword.ForeColor = System.Drawing.Color.White;
-            this.lbl_OldPassword.Location = new System.Drawing.Point(76, 213);
+            this.lbl_OldPassword.Location = new System.Drawing.Point(76, 206);
             this.lbl_OldPassword.Name = "lbl_OldPassword";
             this.lbl_OldPassword.Size = new System.Drawing.Size(151, 25);
             this.lbl_OldPassword.TabIndex = 0;
@@ -147,7 +147,7 @@
             this.lbl_NewPassword.BackColor = System.Drawing.Color.Transparent;
             this.lbl_NewPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_NewPassword.ForeColor = System.Drawing.Color.White;
-            this.lbl_NewPassword.Location = new System.Drawing.Point(67, 263);
+            this.lbl_NewPassword.Location = new System.Drawing.Point(67, 251);
             this.lbl_NewPassword.Name = "lbl_NewPassword";
             this.lbl_NewPassword.Size = new System.Drawing.Size(160, 25);
             this.lbl_NewPassword.TabIndex = 0;
@@ -158,7 +158,7 @@
             this.btn_back.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.btn_back.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_back.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_back.Location = new System.Drawing.Point(12, 458);
+            this.btn_back.Location = new System.Drawing.Point(30, 444);
             this.btn_back.Name = "btn_back";
             this.btn_back.Size = new System.Drawing.Size(150, 30);
             this.btn_back.TabIndex = 5;
@@ -171,6 +171,7 @@
             this.tb_userName.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_userName.Location = new System.Drawing.Point(233, 158);
             this.tb_userName.Name = "tb_userName";
+            this.tb_userName.ReadOnly = true;
             this.tb_userName.Size = new System.Drawing.Size(200, 29);
             this.tb_userName.TabIndex = 7;
             // 
@@ -182,24 +183,24 @@
             this.lbl_confirmPassword.BackColor = System.Drawing.Color.Transparent;
             this.lbl_confirmPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_confirmPassword.ForeColor = System.Drawing.Color.White;
-            this.lbl_confirmPassword.Location = new System.Drawing.Point(35, 313);
+            this.lbl_confirmPassword.Location = new System.Drawing.Point(35, 295);
             this.lbl_confirmPassword.Name = "lbl_confirmPassword";
             this.lbl_confirmPassword.Size = new System.Drawing.Size(192, 25);
             this.lbl_confirmPassword.TabIndex = 0;
             this.lbl_confirmPassword.Text = "Confirm Password:";
             // 
-            // tb_oldPasswod
+            // tb_oldPassword
             // 
-            this.tb_oldPasswod.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_oldPasswod.Location = new System.Drawing.Point(233, 209);
-            this.tb_oldPasswod.Name = "tb_oldPasswod";
-            this.tb_oldPasswod.Size = new System.Drawing.Size(200, 29);
-            this.tb_oldPasswod.TabIndex = 7;
+            this.tb_oldPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_oldPassword.Location = new System.Drawing.Point(233, 202);
+            this.tb_oldPassword.Name = "tb_oldPassword";
+            this.tb_oldPassword.Size = new System.Drawing.Size(200, 29);
+            this.tb_oldPassword.TabIndex = 7;
             // 
             // tb_newPassword
             // 
             this.tb_newPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_newPassword.Location = new System.Drawing.Point(233, 259);
+            this.tb_newPassword.Location = new System.Drawing.Point(233, 247);
             this.tb_newPassword.Name = "tb_newPassword";
             this.tb_newPassword.Size = new System.Drawing.Size(200, 29);
             this.tb_newPassword.TabIndex = 7;
@@ -207,7 +208,7 @@
             // tb_confirmPassword
             // 
             this.tb_confirmPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_confirmPassword.Location = new System.Drawing.Point(233, 309);
+            this.tb_confirmPassword.Location = new System.Drawing.Point(233, 291);
             this.tb_confirmPassword.Name = "tb_confirmPassword";
             this.tb_confirmPassword.Size = new System.Drawing.Size(200, 29);
             this.tb_confirmPassword.TabIndex = 7;
@@ -217,7 +218,7 @@
             this.btn_updatePassword.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.btn_updatePassword.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_updatePassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_updatePassword.Location = new System.Drawing.Point(233, 365);
+            this.btn_updatePassword.Location = new System.Drawing.Point(233, 339);
             this.btn_updatePassword.Name = "btn_updatePassword";
             this.btn_updatePassword.Size = new System.Drawing.Size(200, 40);
             this.btn_updatePassword.TabIndex = 6;
@@ -234,7 +235,7 @@
             this.ControlBox = false;
             this.Controls.Add(this.tb_confirmPassword);
             this.Controls.Add(this.tb_newPassword);
-            this.Controls.Add(this.tb_oldPasswod);
+            this.Controls.Add(this.tb_oldPassword);
             this.Controls.Add(this.tb_userName);
             this.Controls.Add(this.btn_updatePassword);
             this.Controls.Add(this.btn_back);
@@ -265,11 +266,11 @@
         private System.Windows.Forms.Label lbl_OldPassword;
         private System.Windows.Forms.Label lbl_NewPassword;
         private System.Windows.Forms.Button btn_back;
-        private System.Windows.Forms.TextBox tb_userName;
         private System.Windows.Forms.Label lbl_confirmPassword;
-        private System.Windows.Forms.TextBox tb_oldPasswod;
-        private System.Windows.Forms.TextBox tb_newPassword;
-        private System.Windows.Forms.TextBox tb_confirmPassword;
         private System.Windows.Forms.Button btn_updatePassword;
+        public System.Windows.Forms.TextBox tb_userName;
+        public System.Windows.Forms.TextBox tb_oldPassword;
+        public System.Windows.Forms.TextBox tb_newPassword;
+        public System.Windows.Forms.TextBox tb_confirmPassword;
     }
 }

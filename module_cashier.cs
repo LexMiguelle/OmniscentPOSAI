@@ -6,10 +6,13 @@ using System.Data;
 using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Drawing;
+using System.Drawing.Printing;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Microsoft.Reporting.WinForms;
 
 namespace OmniscentPOSAI
 {
@@ -26,7 +29,8 @@ namespace OmniscentPOSAI
         module_login loginModule;
 
         int quantity;
-
+        
+        // init
         public module_cashier(module_login login)
         {
             InitializeComponent();
@@ -205,6 +209,7 @@ namespace OmniscentPOSAI
         private void btn_settings_Click(object sender, EventArgs e)
         {
             module_settings settings = new module_settings(this);
+            settings.tb_userName.Text = tb_username.Text;
             settings.ShowDialog();
 
         }
@@ -214,18 +219,18 @@ namespace OmniscentPOSAI
         {
             string col_name = dgv_cart.Columns[e.ColumnIndex].Name;
 
-            if (col_name == "cart_add")
+            if (col_name == "cart_add") //add
             {
-                int i = 0;
+                int i = 0; 
                 sql_connect.Open();
-                sql_command = new SqlCommand("SELECT sum(quantity) AS quantity FROM tbl_products WHERE productID LIKE '" + dgv_cart.Rows[e.RowIndex].Cells[2].ToString() + "' GROUP BY productID", sql_connect);
+                sql_command = new SqlCommand("SELECT sum(quantity) AS quantity FROM tbl_products WHERE productID LIKE '" + dgv_cart.Rows[e.RowIndex].Cells[3].Value.ToString() + "' GROUP BY productID", sql_connect);
                 i = int.Parse(sql_command.ExecuteScalar().ToString());
                 sql_connect.Close();
 
-                if ( int.Parse(dgv_cart.Rows[e.RowIndex].Cells[6].Value.ToString()) < i)
+                if ( int.Parse(dgv_cart.Rows[e.RowIndex].Cells[7].Value.ToString()) < i)
                 {
                     sql_connect.Open();
-                    sql_command = new SqlCommand("UPDATE tbl_transacation SET quantity = quantity + " + int.Parse(tb_quantity.Text) + "WHERE transactionNo LIKE '" + transactionNo.Text + "' AND productID LIKE '" + dgv_cart.Rows[e.RowIndex].Cells[3].ToString() + "'",sql_connect);
+                    sql_command = new SqlCommand("UPDATE tbl_transaction SET quantity = quantity + 1 WHERE transactionNo LIKE '" + transactionNo.Text + "' AND productID LIKE '" + dgv_cart.Rows[e.RowIndex].Cells[3].Value.ToString() + "'", sql_connect);
                     sql_command.ExecuteNonQuery();
                     sql_connect.Close();
 
@@ -233,14 +238,33 @@ namespace OmniscentPOSAI
                 }
                 else
                 {
-                    MessageBox.Show("Unable to process request.\nThe selected product has " + i + " stock(s) on hand", "Add Quantity: Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("The selected product has only " + i + " stock(s) left in the inventory", "Add Quantity: Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
-            else if (col_name == "cart_subtract")
+            else if (col_name == "cart_subtract") // subtract
             {
-                
+                int i = 0;
+                sql_connect.Open();
+                sql_command = new SqlCommand("SELECT sum(quantity) AS quantity FROM tbl_transaction WHERE productID LIKE '" + dgv_cart.Rows[e.RowIndex].Cells[3].Value.ToString() + "' AND transactionNo LIKE '" + transactionNo.Text + "' GROUP BY transactionNo, productID", sql_connect);
+                i = int.Parse(sql_command.ExecuteScalar().ToString());
+                sql_connect.Close();
+
+                if (i > 1)
+                {
+                    sql_connect.Open();
+                    sql_command = new SqlCommand("UPDATE tbl_transaction SET quantity = quantity - 1 WHERE transactionNo LIKE '" + transactionNo.Text + "' AND productID LIKE '" + dgv_cart.Rows[e.RowIndex].Cells[3].Value.ToString() + "'", sql_connect);
+                    sql_command.ExecuteNonQuery();
+                    sql_connect.Close();
+
+                    LoadCart();
+                }
+                else
+                {
+                    MessageBox.Show("The selected product has only " + i + " stock left in the cart", "Subtract Quantity: Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    tb_searchBox.Clear();
+                }
             }
-            else if (col_name == "cart_remove")
+            else if (col_name == "cart_remove") // remove
             {
                 if (MessageBox.Show("Remove from selected product from cart?", "Remove from cart", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
@@ -250,6 +274,7 @@ namespace OmniscentPOSAI
                     sql_connect.Close();
                     LoadCart();
                     MessageBox.Show("The selected product has been removed from the cart", "Remove from cart", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    tb_searchBox.Clear();
                 }
             }
         }
@@ -275,6 +300,7 @@ namespace OmniscentPOSAI
         {
             form_addDiscount addDiscount = new form_addDiscount(this);
             addDiscount.lbl_ID.Text = transactionID;
+            addDiscount.tb_wholeNum.Focus();
             addDiscount.tb_price.Text = prc;  
             addDiscount.ShowDialog();
         }
@@ -402,7 +428,7 @@ namespace OmniscentPOSAI
             lbl_date.Text = DateTime.Now.ToLongDateString();
         }
 
-        // Enable btn_settleTransaction trigger
+        // Rows Added event
         private void dgv_cart_RowsAdded(object sender, DataGridViewRowsAddedEventArgs e)
         {
             btn_settleTransaction.Enabled = true;
@@ -438,6 +464,54 @@ namespace OmniscentPOSAI
             {
                 return;
             }
+        }
+
+        public void LoadInvoice()
+        {
+            
+            ReportDataSource reportDataSource;
+
+            try
+            {
+                rv_invoice.Clear();
+                int height = 1000;
+                this.rv_invoice.LocalReport.ReportPath = Application.StartupPath + @"\Reports\report_invoice.rdlc";
+                this.rv_invoice.LocalReport.DataSources.Clear();
+
+                DataSet1 dataset = new DataSet1();
+                SqlDataAdapter sql_dataadapter = new SqlDataAdapter();
+
+                sql_connect.Open();
+                sql_dataadapter.SelectCommand = new SqlCommand("SELECT x.transactionID, x.transactionNo, x.productID, x.price, x.quantity, x.discount, x.total, x.transactionDate, y.productName FROM tbl_transaction AS x INNER JOIN tbl_products AS y ON x.productID = y.productID WHERE transactionNo LIKE '" + transactionNo.Text + "'", sql_connect);
+                sql_dataadapter.Fill(dataset.Tables["dt_sold"]);
+                sql_connect.Close();
+
+                ReportParameter rp_cashierName = new ReportParameter("rp_cashierName", tb_name.Text);
+                ReportParameter rp_invoiceNo = new ReportParameter("rp_invoiceNo", transactionNo.Text);
+                ReportParameter rp_totalAmount = new ReportParameter("rp_totalAmount", totalAmount.Text);
+
+                rv_invoice.LocalReport.SetParameters(rp_cashierName);
+                rv_invoice.LocalReport.SetParameters(rp_invoiceNo);
+                rv_invoice.LocalReport.SetParameters(rp_totalAmount);
+
+                reportDataSource = new ReportDataSource("DataSet1", dataset.Tables["dt_sold"]);
+                rv_invoice.LocalReport.DataSources.Add(reportDataSource);
+                rv_invoice.PrinterSettings.DefaultPageSettings.PaperSize = new PaperSize("Custom", 1100, height);
+                rv_invoice.SetDisplayMode(Microsoft.Reporting.WinForms.DisplayMode.PrintLayout);
+                rv_invoice.ZoomMode = ZoomMode.Percent;
+                rv_invoice.ZoomPercent = 80;
+                rv_invoice.RefreshReport();
+            }
+            catch (Exception except)
+            {
+                sql_connect.Close();
+                MessageBox.Show(except.Message);
+            }
+        }
+
+        private void totalAmount_TextChanged(object sender, EventArgs e)
+        {
+            LoadInvoice();
         }
     }
 }

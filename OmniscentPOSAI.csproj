@@ -386,6 +386,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="report_invoice.rdlc" />
     <EmbeddedResource Include="report_inventoryList.rdlc" />
     <EmbeddedResource Include="report_receipt.rdlc" />
     <EmbeddedResource Include="report_sales.rdlc" />

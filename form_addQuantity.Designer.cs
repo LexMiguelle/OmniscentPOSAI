@@ -100,7 +100,9 @@
             this.tb_addQuantity.Location = new System.Drawing.Point(28, 129);
             this.tb_addQuantity.Name = "tb_addQuantity";
             this.tb_addQuantity.Size = new System.Drawing.Size(200, 38);
-            this.tb_addQuantity.TabIndex = 6;
+            this.tb_addQuantity.TabIndex = 1;
+            this.tb_addQuantity.Text = "1";
+            this.tb_addQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             this.tb_addQuantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_addQuantity_KeyPress);
             // 
             // btn_OK
