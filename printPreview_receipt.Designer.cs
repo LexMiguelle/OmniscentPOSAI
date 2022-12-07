@@ -1,6 +1,6 @@
 ﻿namespace OmniscentPOSAI
 {
-    partial class form_receipt
+    partial class printPreview_receipt
     {
         /// <summary>
         /// Required designer variable.

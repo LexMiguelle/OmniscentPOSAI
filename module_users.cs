@@ -28,13 +28,8 @@ namespace OmniscentPOSAI
             inventoryModule = inventory;
         }
 
-        public void loadUser()
-        {
-            sql_connect.Open();
-            sql_command = new SqlCommand(" "); ;
-            sql_connect.Close();
-        }
-
+        // create account tab
+        // clear create account function
         private void ClearCA()
         {
             tb_userNameCA.Clear();
@@ -80,13 +75,6 @@ namespace OmniscentPOSAI
         private void btn_cancelCA_Click(object sender, EventArgs e)
         {
             ClearCA();
-        }
-
-        // void code tab
-
-        private void module_users_Load(object sender, EventArgs e)
-        {
-            
         }
 
         public void LoadCode()

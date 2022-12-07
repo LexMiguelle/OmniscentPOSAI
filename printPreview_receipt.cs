@@ -13,7 +13,7 @@ using System.Drawing.Printing;
 
 namespace OmniscentPOSAI
 {
-    public partial class form_receipt : Form
+    public partial class printPreview_receipt : Form
     {
         SqlConnection sql_connect = new SqlConnection();
         SqlCommand sql_command = new SqlCommand();
@@ -28,7 +28,7 @@ namespace OmniscentPOSAI
         string storeEmail = "Omniscentph@gmail.com";
         string storeContactNo = "(+63) 927-774-1908";
 
-        public form_receipt(module_cashier cashier)
+        public printPreview_receipt(module_cashier cashier)
         {
             InitializeComponent();
             sql_connect = new SqlConnection(db_connect.DBConnection());

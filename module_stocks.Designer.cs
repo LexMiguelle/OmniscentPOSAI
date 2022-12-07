@@ -47,7 +47,6 @@
             this.tc_stocks = new System.Windows.Forms.TabControl();
             this.tp_overView = new System.Windows.Forms.TabPage();
             this.panel_dateFilter = new System.Windows.Forms.Panel();
-            this.btn_load = new System.Windows.Forms.Button();
             this.dtp_to = new System.Windows.Forms.DateTimePicker();
             this.dtp_from = new System.Windows.Forms.DateTimePicker();
             this.lbl_from = new System.Windows.Forms.Label();
@@ -72,22 +71,10 @@
             this.btn_save = new System.Windows.Forms.Button();
             this.btn_generate = new System.Windows.Forms.Button();
             this.dgv_addProducts = new System.Windows.Forms.DataGridView();
-            this.addProducts_num = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.addProducts_productID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.addProducts_productName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.addProducts_quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.addProducts_add = new System.Windows.Forms.DataGridViewImageColumn();
+            this.lbl_pid = new System.Windows.Forms.Label();
             this.lbl_date = new System.Windows.Forms.Label();
             this.lbl_referenceNo = new System.Windows.Forms.Label();
             this.dgv_addStocks = new System.Windows.Forms.DataGridView();
-            this.addStocks_num = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.addStocks_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.addStocks_referenceNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.addStocks_productID = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.addStocks_productName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.addStocks_quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.addStocks_date = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.addStocks_remove = new System.Windows.Forms.DataGridViewImageColumn();
             this.tp_manageStock = new System.Windows.Forms.TabPage();
             this.btn_clearTextboxes = new System.Windows.Forms.Button();
             this.btn_confirm = new System.Windows.Forms.Button();
@@ -112,6 +99,20 @@
             this.lbl_remarks = new System.Windows.Forms.Label();
             this.lbl_action = new System.Windows.Forms.Label();
             this.lbl_refNo = new System.Windows.Forms.Label();
+            this.cid = new System.Windows.Forms.Label();
+            this.addStocks_num = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.addStocks_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.addStocks_referenceNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.addStocks_productID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.addStocks_productName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.addStocks_quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.addStocks_date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.addStocks_remove = new System.Windows.Forms.DataGridViewImageColumn();
+            this.addProducts_num = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.addProducts_productID = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.addProducts_productName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.addProducts_quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.addProducts_add = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel_stocksHead.SuspendLayout();
             this.tc_stocks.SuspendLayout();
             this.tp_overView.SuspendLayout();
@@ -183,7 +184,6 @@
             // panel_dateFilter
             // 
             this.panel_dateFilter.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            this.panel_dateFilter.Controls.Add(this.btn_load);
             this.panel_dateFilter.Controls.Add(this.dtp_to);
             this.panel_dateFilter.Controls.Add(this.dtp_from);
             this.panel_dateFilter.Controls.Add(this.lbl_from);
@@ -191,22 +191,8 @@
             this.panel_dateFilter.Controls.Add(this.lbl_dateFilter);
             this.panel_dateFilter.Location = new System.Drawing.Point(384, 452);
             this.panel_dateFilter.Name = "panel_dateFilter";
-            this.panel_dateFilter.Size = new System.Drawing.Size(664, 100);
+            this.panel_dateFilter.Size = new System.Drawing.Size(487, 100);
             this.panel_dateFilter.TabIndex = 3;
-            // 
-            // btn_load
-            // 
-            this.btn_load.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.btn_load.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btn_load.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_load.ForeColor = System.Drawing.Color.Black;
-            this.btn_load.Location = new System.Drawing.Point(501, 27);
-            this.btn_load.Name = "btn_load";
-            this.btn_load.Size = new System.Drawing.Size(140, 40);
-            this.btn_load.TabIndex = 2;
-            this.btn_load.Text = "LOAD";
-            this.btn_load.UseVisualStyleBackColor = false;
-            this.btn_load.Click += new System.EventHandler(this.btn_load_Click);
             // 
             // dtp_to
             // 
@@ -215,6 +201,7 @@
             this.dtp_to.Name = "dtp_to";
             this.dtp_to.Size = new System.Drawing.Size(256, 20);
             this.dtp_to.TabIndex = 1;
+            this.dtp_to.ValueChanged += new System.EventHandler(this.dtp_to_ValueChanged);
             // 
             // dtp_from
             // 
@@ -224,6 +211,7 @@
             this.dtp_from.Size = new System.Drawing.Size(256, 20);
             this.dtp_from.TabIndex = 1;
             this.dtp_from.Value = new System.DateTime(2022, 11, 26, 0, 0, 0, 0);
+            this.dtp_from.ValueChanged += new System.EventHandler(this.dtp_from_ValueChanged);
             // 
             // lbl_from
             // 
@@ -267,6 +255,7 @@
             // 
             // cb_status
             // 
+            this.cb_status.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cb_status.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cb_status.FormattingEnabled = true;
             this.cb_status.Items.AddRange(new object[] {
@@ -276,6 +265,7 @@
             this.cb_status.Name = "cb_status";
             this.cb_status.Size = new System.Drawing.Size(200, 28);
             this.cb_status.TabIndex = 1;
+            this.cb_status.TextChanged += new System.EventHandler(this.cb_status_TextChanged);
             // 
             // lbl_statusFilter
             // 
@@ -317,7 +307,7 @@
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
@@ -411,6 +401,8 @@
             this.tp_addStocks.Controls.Add(this.btn_save);
             this.tp_addStocks.Controls.Add(this.btn_generate);
             this.tp_addStocks.Controls.Add(this.dgv_addProducts);
+            this.tp_addStocks.Controls.Add(this.cid);
+            this.tp_addStocks.Controls.Add(this.lbl_pid);
             this.tp_addStocks.Controls.Add(this.lbl_date);
             this.tp_addStocks.Controls.Add(this.lbl_referenceNo);
             this.tp_addStocks.Controls.Add(this.dgv_addStocks);
@@ -442,6 +434,7 @@
             // btn_clear
             // 
             this.btn_clear.BackColor = System.Drawing.Color.Red;
+            this.btn_clear.Enabled = false;
             this.btn_clear.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_clear.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_clear.ForeColor = System.Drawing.Color.White;
@@ -456,6 +449,7 @@
             // btn_save
             // 
             this.btn_save.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            this.btn_save.Enabled = false;
             this.btn_save.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_save.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_save.ForeColor = System.Drawing.Color.Black;
@@ -499,6 +493,7 @@
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgv_addProducts.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgv_addProducts.ColumnHeadersHeight = 25;
+            this.dgv_addProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgv_addProducts.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.addProducts_num,
             this.addProducts_productID,
@@ -508,7 +503,7 @@
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
@@ -526,52 +521,22 @@
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgv_addProducts.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dgv_addProducts.RowHeadersVisible = false;
+            this.dgv_addProducts.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgv_addProducts.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_addProducts.Size = new System.Drawing.Size(404, 382);
             this.dgv_addProducts.TabIndex = 2;
             this.dgv_addProducts.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_addProducts_CellContentClick);
+            this.dgv_addProducts.SelectionChanged += new System.EventHandler(this.dgv_addProducts_SelectionChanged);
             // 
-            // addProducts_num
+            // lbl_pid
             // 
-            this.addProducts_num.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.addProducts_num.HeaderText = "#";
-            this.addProducts_num.MinimumWidth = 25;
-            this.addProducts_num.Name = "addProducts_num";
-            this.addProducts_num.Width = 25;
-            // 
-            // addProducts_productID
-            // 
-            this.addProducts_productID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.addProducts_productID.FillWeight = 90.14085F;
-            this.addProducts_productID.HeaderText = "PRODUCT ID";
-            this.addProducts_productID.Name = "addProducts_productID";
-            this.addProducts_productID.Width = 97;
-            // 
-            // addProducts_productName
-            // 
-            this.addProducts_productName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.addProducts_productName.FillWeight = 90.14085F;
-            this.addProducts_productName.HeaderText = "PRODUCT";
-            this.addProducts_productName.Name = "addProducts_productName";
-            // 
-            // addProducts_quantity
-            // 
-            this.addProducts_quantity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.addProducts_quantity.FillWeight = 90.14085F;
-            this.addProducts_quantity.HeaderText = "QUANTITY";
-            this.addProducts_quantity.Name = "addProducts_quantity";
-            this.addProducts_quantity.Width = 85;
-            // 
-            // addProducts_add
-            // 
-            this.addProducts_add.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.addProducts_add.FillWeight = 169.0141F;
-            this.addProducts_add.HeaderText = "";
-            this.addProducts_add.MinimumWidth = 30;
-            this.addProducts_add.Name = "addProducts_add";
-            this.addProducts_add.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.addProducts_add.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.addProducts_add.Width = 30;
+            this.lbl_pid.AutoSize = true;
+            this.lbl_pid.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_pid.Location = new System.Drawing.Point(24, 129);
+            this.lbl_pid.Name = "lbl_pid";
+            this.lbl_pid.Size = new System.Drawing.Size(21, 24);
+            this.lbl_pid.TabIndex = 0;
+            this.lbl_pid.Text = "#";
             // 
             // lbl_date
             // 
@@ -611,6 +576,7 @@
             dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgv_addStocks.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dgv_addStocks.ColumnHeadersHeight = 25;
+            this.dgv_addStocks.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dgv_addStocks.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.addStocks_num,
             this.addStocks_ID,
@@ -623,7 +589,7 @@
             dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
             dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
             dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
@@ -641,73 +607,13 @@
             dataGridViewCellStyle9.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.dgv_addStocks.RowHeadersDefaultCellStyle = dataGridViewCellStyle9;
             this.dgv_addStocks.RowHeadersVisible = false;
+            this.dgv_addStocks.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dgv_addStocks.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_addStocks.Size = new System.Drawing.Size(585, 478);
             this.dgv_addStocks.TabIndex = 2;
             this.dgv_addStocks.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_addStocks_CellContentClick);
-            // 
-            // addStocks_num
-            // 
-            this.addStocks_num.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.addStocks_num.HeaderText = "#";
-            this.addStocks_num.MinimumWidth = 25;
-            this.addStocks_num.Name = "addStocks_num";
-            this.addStocks_num.Width = 25;
-            // 
-            // addStocks_ID
-            // 
-            this.addStocks_ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.addStocks_ID.HeaderText = "ID";
-            this.addStocks_ID.Name = "addStocks_ID";
-            this.addStocks_ID.Visible = false;
-            this.addStocks_ID.Width = 43;
-            // 
-            // addStocks_referenceNo
-            // 
-            this.addStocks_referenceNo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.addStocks_referenceNo.FillWeight = 90.14085F;
-            this.addStocks_referenceNo.HeaderText = "REFERENCE NO.";
-            this.addStocks_referenceNo.Name = "addStocks_referenceNo";
-            this.addStocks_referenceNo.Width = 117;
-            // 
-            // addStocks_productID
-            // 
-            this.addStocks_productID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.addStocks_productID.FillWeight = 90.14085F;
-            this.addStocks_productID.HeaderText = "PRODUCT ID";
-            this.addStocks_productID.Name = "addStocks_productID";
-            this.addStocks_productID.Width = 97;
-            // 
-            // addStocks_productName
-            // 
-            this.addStocks_productName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.addStocks_productName.FillWeight = 90.14085F;
-            this.addStocks_productName.HeaderText = "PRODUCT";
-            this.addStocks_productName.Name = "addStocks_productName";
-            // 
-            // addStocks_quantity
-            // 
-            this.addStocks_quantity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.addStocks_quantity.FillWeight = 90.14085F;
-            this.addStocks_quantity.HeaderText = "QUANTITY";
-            this.addStocks_quantity.Name = "addStocks_quantity";
-            this.addStocks_quantity.Width = 85;
-            // 
-            // addStocks_date
-            // 
-            this.addStocks_date.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.addStocks_date.FillWeight = 90.14085F;
-            this.addStocks_date.HeaderText = "DATE";
-            this.addStocks_date.Name = "addStocks_date";
-            this.addStocks_date.Width = 59;
-            // 
-            // addStocks_remove
-            // 
-            this.addStocks_remove.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.addStocks_remove.HeaderText = "";
-            this.addStocks_remove.MinimumWidth = 30;
-            this.addStocks_remove.Name = "addStocks_remove";
-            this.addStocks_remove.Width = 30;
+            this.dgv_addStocks.CellValueChanged += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_addStocks_CellValueChanged);
+            this.dgv_addStocks.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Control_KeyPress);
             // 
             // tp_manageStock
             // 
@@ -757,6 +663,7 @@
             // 
             // cb_action
             // 
+            this.cb_action.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cb_action.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cb_action.FormattingEnabled = true;
             this.cb_action.Items.AddRange(new object[] {
@@ -776,6 +683,7 @@
             this.tb_remarks.Name = "tb_remarks";
             this.tb_remarks.Size = new System.Drawing.Size(323, 88);
             this.tb_remarks.TabIndex = 2;
+            this.tb_remarks.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_remarks_KeyPress);
             // 
             // tb_quantity
             // 
@@ -784,6 +692,7 @@
             this.tb_quantity.Name = "tb_quantity";
             this.tb_quantity.Size = new System.Drawing.Size(231, 26);
             this.tb_quantity.TabIndex = 2;
+            this.tb_quantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_quantity_KeyPress);
             // 
             // tb_productName
             // 
@@ -995,6 +904,134 @@
             this.lbl_refNo.TabIndex = 0;
             this.lbl_refNo.Text = "Reference No.:";
             // 
+            // cid
+            // 
+            this.cid.AutoSize = true;
+            this.cid.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cid.Location = new System.Drawing.Point(585, 514);
+            this.cid.Name = "cid";
+            this.cid.Size = new System.Drawing.Size(21, 24);
+            this.cid.TabIndex = 0;
+            this.cid.Text = "#";
+            // 
+            // addStocks_num
+            // 
+            this.addStocks_num.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.addStocks_num.HeaderText = "#";
+            this.addStocks_num.MinimumWidth = 25;
+            this.addStocks_num.Name = "addStocks_num";
+            this.addStocks_num.ReadOnly = true;
+            this.addStocks_num.Width = 25;
+            // 
+            // addStocks_ID
+            // 
+            this.addStocks_ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.addStocks_ID.HeaderText = "ID";
+            this.addStocks_ID.Name = "addStocks_ID";
+            this.addStocks_ID.ReadOnly = true;
+            this.addStocks_ID.Visible = false;
+            this.addStocks_ID.Width = 41;
+            // 
+            // addStocks_referenceNo
+            // 
+            this.addStocks_referenceNo.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.addStocks_referenceNo.FillWeight = 90.14085F;
+            this.addStocks_referenceNo.HeaderText = "REFERENCE NO.";
+            this.addStocks_referenceNo.Name = "addStocks_referenceNo";
+            this.addStocks_referenceNo.ReadOnly = true;
+            this.addStocks_referenceNo.Width = 117;
+            // 
+            // addStocks_productID
+            // 
+            this.addStocks_productID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.addStocks_productID.FillWeight = 90.14085F;
+            this.addStocks_productID.HeaderText = "PRODUCT ID";
+            this.addStocks_productID.Name = "addStocks_productID";
+            this.addStocks_productID.ReadOnly = true;
+            this.addStocks_productID.Width = 97;
+            // 
+            // addStocks_productName
+            // 
+            this.addStocks_productName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.addStocks_productName.FillWeight = 90.14085F;
+            this.addStocks_productName.HeaderText = "PRODUCT";
+            this.addStocks_productName.Name = "addStocks_productName";
+            this.addStocks_productName.ReadOnly = true;
+            // 
+            // addStocks_quantity
+            // 
+            this.addStocks_quantity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.addStocks_quantity.FillWeight = 90.14085F;
+            this.addStocks_quantity.HeaderText = "QUANTITY";
+            this.addStocks_quantity.Name = "addStocks_quantity";
+            this.addStocks_quantity.ReadOnly = true;
+            this.addStocks_quantity.Width = 85;
+            // 
+            // addStocks_date
+            // 
+            this.addStocks_date.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.addStocks_date.FillWeight = 90.14085F;
+            this.addStocks_date.HeaderText = "DATE";
+            this.addStocks_date.Name = "addStocks_date";
+            this.addStocks_date.ReadOnly = true;
+            this.addStocks_date.Width = 59;
+            // 
+            // addStocks_remove
+            // 
+            this.addStocks_remove.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.addStocks_remove.HeaderText = "";
+            this.addStocks_remove.MinimumWidth = 30;
+            this.addStocks_remove.Name = "addStocks_remove";
+            this.addStocks_remove.ReadOnly = true;
+            this.addStocks_remove.Width = 30;
+            // 
+            // addProducts_num
+            // 
+            this.addProducts_num.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.addProducts_num.HeaderText = "#";
+            this.addProducts_num.MinimumWidth = 25;
+            this.addProducts_num.Name = "addProducts_num";
+            this.addProducts_num.ReadOnly = true;
+            this.addProducts_num.Width = 25;
+            // 
+            // addProducts_productID
+            // 
+            this.addProducts_productID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.addProducts_productID.FillWeight = 90.14085F;
+            this.addProducts_productID.HeaderText = "PRODUCT ID";
+            this.addProducts_productID.Name = "addProducts_productID";
+            this.addProducts_productID.ReadOnly = true;
+            this.addProducts_productID.Width = 97;
+            // 
+            // addProducts_productName
+            // 
+            this.addProducts_productName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.addProducts_productName.FillWeight = 90.14085F;
+            this.addProducts_productName.HeaderText = "PRODUCT";
+            this.addProducts_productName.Name = "addProducts_productName";
+            this.addProducts_productName.ReadOnly = true;
+            // 
+            // addProducts_quantity
+            // 
+            this.addProducts_quantity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.addProducts_quantity.FillWeight = 90.14085F;
+            this.addProducts_quantity.HeaderText = "QUANTITY";
+            this.addProducts_quantity.Name = "addProducts_quantity";
+            this.addProducts_quantity.ReadOnly = true;
+            this.addProducts_quantity.Width = 85;
+            // 
+            // addProducts_add
+            // 
+            this.addProducts_add.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.addProducts_add.FillWeight = 169.0141F;
+            this.addProducts_add.HeaderText = "";
+            this.addProducts_add.MinimumWidth = 30;
+            this.addProducts_add.Name = "addProducts_add";
+            this.addProducts_add.ReadOnly = true;
+            this.addProducts_add.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.addProducts_add.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.addProducts_add.Width = 30;
+            // 
             // module_stocks
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -1039,7 +1076,6 @@
         private System.Windows.Forms.DataGridView dgv_stockOverview;
         private System.Windows.Forms.TabPage tp_manageStock;
         public System.Windows.Forms.TextBox tb_searchBar;
-        private System.Windows.Forms.Button btn_load;
         private System.Windows.Forms.DateTimePicker dtp_to;
         private System.Windows.Forms.DateTimePicker dtp_from;
         private System.Windows.Forms.Label lbl_from;
@@ -1078,6 +1114,17 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn stockOverview_quantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn stockOverview_date;
         private System.Windows.Forms.DataGridViewTextBoxColumn stockOverview_status;
+        private System.Windows.Forms.DataGridViewTextBoxColumn manageStocks_num;
+        private System.Windows.Forms.DataGridViewTextBoxColumn manageStocks_productID;
+        private System.Windows.Forms.DataGridViewTextBoxColumn manageStocks_productCode;
+        private System.Windows.Forms.DataGridViewTextBoxColumn manageStocks_productName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn manageStocks_category;
+        private System.Windows.Forms.DataGridViewTextBoxColumn manageStocks_price;
+        private System.Windows.Forms.DataGridViewTextBoxColumn manageStocks_quantity;
+        private System.Windows.Forms.DataGridViewImageColumn manageStocks_select;
+        public System.Windows.Forms.TextBox tb_remarks;
+        private System.Windows.Forms.Label lbl_pid;
+        private System.Windows.Forms.Label cid;
         private System.Windows.Forms.DataGridViewTextBoxColumn addProducts_num;
         private System.Windows.Forms.DataGridViewTextBoxColumn addProducts_productID;
         private System.Windows.Forms.DataGridViewTextBoxColumn addProducts_productName;
@@ -1091,14 +1138,5 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn addStocks_quantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn addStocks_date;
         private System.Windows.Forms.DataGridViewImageColumn addStocks_remove;
-        private System.Windows.Forms.DataGridViewTextBoxColumn manageStocks_num;
-        private System.Windows.Forms.DataGridViewTextBoxColumn manageStocks_productID;
-        private System.Windows.Forms.DataGridViewTextBoxColumn manageStocks_productCode;
-        private System.Windows.Forms.DataGridViewTextBoxColumn manageStocks_productName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn manageStocks_category;
-        private System.Windows.Forms.DataGridViewTextBoxColumn manageStocks_price;
-        private System.Windows.Forms.DataGridViewTextBoxColumn manageStocks_quantity;
-        private System.Windows.Forms.DataGridViewImageColumn manageStocks_select;
-        public System.Windows.Forms.TextBox tb_remarks;
     }
 }

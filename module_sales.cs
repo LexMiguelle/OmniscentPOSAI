@@ -79,15 +79,6 @@ namespace OmniscentPOSAI
             sql_datareader.Close();
             sql_connect.Close();
             tb_salesTotal.Text = totalSales.ToString("#,##0.00");
-
-            if (cb_cashierName.Text == " ")
-            {
-                btn_printSales.Enabled = false;
-            }
-            else
-            {
-                btn_printSales.Enabled = true;
-            }
         }
 
         // dtp_from value changed event
@@ -106,13 +97,6 @@ namespace OmniscentPOSAI
         private void cb_cashierName_SelectedValueChanged(object sender, EventArgs e)
         {
             LoadSalesRecords();
-        }
-
-        private void btn_printSales_Click(object sender, EventArgs e)
-        {
-            form_salesReport salesReport = new form_salesReport(this);
-            salesReport.LoadSalesReport();
-            salesReport.ShowDialog();
         }
 
         private void dgv_sales_CellContentClick(object sender, DataGridViewCellEventArgs e)

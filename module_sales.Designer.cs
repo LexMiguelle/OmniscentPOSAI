@@ -32,7 +32,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(module_sales));
             this.panel_salesHead = new System.Windows.Forms.Panel();
             this.tb_salesTotal = new System.Windows.Forms.TextBox();
             this.cb_cashierName = new System.Windows.Forms.ComboBox();
@@ -44,8 +43,6 @@
             this.lbl_dateFilter = new System.Windows.Forms.Label();
             this.lbl_sales = new System.Windows.Forms.Label();
             this.dgv_sales = new System.Windows.Forms.DataGridView();
-            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
-            this.btn_printSales = new System.Windows.Forms.Button();
             this.sales_num = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sales_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sales_transactionNo = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -56,6 +53,7 @@
             this.sale_discount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sale_total = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.sales_cancel = new System.Windows.Forms.DataGridViewImageColumn();
+            this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel_salesHead.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_sales)).BeginInit();
             this.SuspendLayout();
@@ -64,7 +62,6 @@
             // 
             this.panel_salesHead.Controls.Add(this.tb_salesTotal);
             this.panel_salesHead.Controls.Add(this.cb_cashierName);
-            this.panel_salesHead.Controls.Add(this.btn_printSales);
             this.panel_salesHead.Controls.Add(this.dtp_to);
             this.panel_salesHead.Controls.Add(this.dtp_from);
             this.panel_salesHead.Controls.Add(this.lbl_from);
@@ -239,32 +236,6 @@
             this.dgv_sales.TabIndex = 7;
             this.dgv_sales.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_sales_CellContentClick);
             // 
-            // dataGridViewImageColumn1
-            // 
-            this.dataGridViewImageColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.dataGridViewImageColumn1.HeaderText = "";
-            this.dataGridViewImageColumn1.Image = global::OmniscentPOSAI.Properties.Resources.cross_small_16;
-            this.dataGridViewImageColumn1.MinimumWidth = 25;
-            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
-            this.dataGridViewImageColumn1.Width = 25;
-            // 
-            // btn_printSales
-            // 
-            this.btn_printSales.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            this.btn_printSales.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btn_printSales.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_printSales.ForeColor = System.Drawing.Color.Black;
-            this.btn_printSales.Image = ((System.Drawing.Image)(resources.GetObject("btn_printSales.Image")));
-            this.btn_printSales.Location = new System.Drawing.Point(712, 26);
-            this.btn_printSales.Name = "btn_printSales";
-            this.btn_printSales.Size = new System.Drawing.Size(100, 30);
-            this.btn_printSales.TabIndex = 11;
-            this.btn_printSales.Text = "Print";
-            this.btn_printSales.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.btn_printSales.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btn_printSales.UseVisualStyleBackColor = false;
-            this.btn_printSales.Click += new System.EventHandler(this.btn_printSales_Click);
-            // 
             // sales_num
             // 
             this.sales_num.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
@@ -281,7 +252,6 @@
             this.sales_ID.Name = "sales_ID";
             this.sales_ID.ReadOnly = true;
             this.sales_ID.Visible = false;
-            this.sales_ID.Width = 42;
             // 
             // sales_transactionNo
             // 
@@ -348,6 +318,15 @@
             this.sales_cancel.ReadOnly = true;
             this.sales_cancel.Width = 25;
             // 
+            // dataGridViewImageColumn1
+            // 
+            this.dataGridViewImageColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.dataGridViewImageColumn1.HeaderText = "";
+            this.dataGridViewImageColumn1.Image = global::OmniscentPOSAI.Properties.Resources.cross_small_16;
+            this.dataGridViewImageColumn1.MinimumWidth = 25;
+            this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
+            this.dataGridViewImageColumn1.Width = 25;
+            // 
             // module_sales
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -375,7 +354,6 @@
         private System.Windows.Forms.Label lbl_to;
         private System.Windows.Forms.Label lbl_cashierName;
         private System.Windows.Forms.Label lbl_dateFilter;
-        private System.Windows.Forms.Button btn_printSales;
         private System.Windows.Forms.Label lbl_from;
         public System.Windows.Forms.ComboBox cb_cashierName;
         public System.Windows.Forms.DateTimePicker dtp_to;

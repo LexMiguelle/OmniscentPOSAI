@@ -19,40 +19,34 @@ namespace OmniscentPOSAI
         SqlDataReader sql_datareader;
 
         int _quantity = 0;
+        string productID = string.Empty;
 
         public module_stocks()
         {
             InitializeComponent();
             sql_connect = new SqlConnection(db_connect.DBConnection());
-            
+            this.KeyPreview = true;
+            this.KeyPress += new KeyPressEventHandler(Control_KeyPress);
+        }
+
+        private void Control_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if(!char.IsControl(e.KeyChar) && !char.IsNumber(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
 
         private void module_stocks_Load(object sender, EventArgs e)
         {
-            LoadStockOverview();
+            LoadStocks();
             LoadAddProducts();
+            cb_status.Text = "Done";
         }
 
-        // tp_Overview event
-        // load stocks to dgv_stockOverview
-        public void LoadStockOverview()
-        {
-            int i = 0;
-            dgv_stockOverview.Rows.Clear();
-            sql_connect.Open();
-            sql_command = new SqlCommand("SELECT * FROM view_stockOverview", sql_connect);
-            sql_datareader = sql_command.ExecuteReader();
-            while (sql_datareader.Read())
-            {
-                i++;
-                dgv_stockOverview.Rows.Add(i, sql_datareader[1].ToString(), sql_datareader[2].ToString(), sql_datareader[3].ToString(), sql_datareader[4].ToString(), sql_datareader[5].ToString(), sql_datareader[6].ToString(), sql_datareader[7].ToString());
-            }
-            sql_datareader.Close();
-            sql_connect.Close();
-        }
-
-        // load button event
-        private void btn_load_Click(object sender, EventArgs e)
+        // Stock Overview tab
+        // Load Stocks
+        public void LoadStocks()
         {
             int i = 0;
             string dateMin = dtp_from.Value.ToString("yyyy-MM-dd 00:00:00");
@@ -73,6 +67,24 @@ namespace OmniscentPOSAI
             sql_connect.Close();
         }
 
+        // cb_status value changed
+        private void cb_status_TextChanged(object sender, EventArgs e)
+        {
+            LoadStocks();
+        }
+
+        // dtp_from value changed
+        private void dtp_from_ValueChanged(object sender, EventArgs e)
+        {
+            LoadStocks();
+        }
+
+        // dtp_to value changed
+        private void dtp_to_ValueChanged(object sender, EventArgs e)
+        {
+            LoadStocks();
+        }
+
         // tp_addStock
         // load products to dgv_addProducts
         public void LoadAddProducts()
@@ -91,7 +103,7 @@ namespace OmniscentPOSAI
             sql_connect.Close();
         }
 
-        // tb_referenceNo event
+        // tb_referenceNo text changed event
         private void tb_referenceNo_TextChanged(object sender, EventArgs e)
         {
             LoadAddProducts();
@@ -113,29 +125,65 @@ namespace OmniscentPOSAI
             sql_datareader.Close();
             sql_connect.Close();
         }
+        private void dgv_addProducts_SelectionChanged(object sender, EventArgs e)
+        {
+            int i = dgv_addProducts.CurrentRow.Index;
+            productID = dgv_addProducts[1, i].Value.ToString();
+            lbl_pid.Text = productID;
+        }
+
 
         // dgv_addProducts click event
         private void dgv_addProducts_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            bool hasRows = false;
             string col_name = dgv_addProducts.Columns[e.ColumnIndex].Name;
+            
+
             if (tb_referenceNo.Text == string.Empty)
             {
                 MessageBox.Show("Reference number is missing", "Missing Reference Number", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 btn_generate.Focus();
                 return;
             }
+
             if (col_name == "addProducts_add") // addProducts_add event
             {
                 sql_connect.Open();
-                sql_command = new SqlCommand("INSERT INTO tbl_addStock (referenceNo, productID, stockDate) VALUES (@referenceNo, @productID, @stockDate)", sql_connect);
-                sql_command.Parameters.AddWithValue("@referenceNo", tb_referenceNo.Text);
-                sql_command.Parameters.AddWithValue("@productID", dgv_addProducts.Rows[e.RowIndex].Cells[1].Value.ToString());
-                sql_command.Parameters.AddWithValue("@stockDate", dtp_date.Value);
-                sql_command.ExecuteNonQuery();
+                sql_command = new SqlCommand("SELECT * from tbl_addStock WHERE referenceNo LIKE '" + tb_referenceNo.Text + "' AND productID LIKE '" + productID + "'", sql_connect);
+                sql_datareader = sql_command.ExecuteReader();
+                while (sql_datareader.Read())
+                {
+                    if (sql_datareader.HasRows)
+                    {
+                        hasRows = true;
+                    }
+                    else
+                    {
+                        hasRows = false;
+                    }
+                }
                 sql_connect.Close();
-                LoadAddStock(); 
-                MessageBox.Show("Product added to list", "Add Stock", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
+                if (hasRows == true)
+                {
+                    MessageBox.Show("The selected product has already been added.", "Add Stock: Products", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+
+                }
+                else
+                {
+                    sql_connect.Open();
+                    sql_command = new SqlCommand("INSERT INTO tbl_addStock (referenceNo, productID, stockDate, quantity) VALUES (@referenceNo, @productID, @stockDate, @quantity)", sql_connect);
+                    sql_command.Parameters.AddWithValue("@referenceNo", tb_referenceNo.Text);
+                    sql_command.Parameters.AddWithValue("@productID", dgv_addProducts.Rows[e.RowIndex].Cells[1].Value.ToString());
+                    sql_command.Parameters.AddWithValue("@stockDate", dtp_date.Value);
+                    sql_command.Parameters.AddWithValue("@quantity", 1);
+                    sql_command.ExecuteNonQuery();
+                    sql_connect.Close();
+                    LoadAddStock();
+                    MessageBox.Show("Product added to list", "Add Stock: Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    
+                }
             }
         }
 
@@ -156,6 +204,11 @@ namespace OmniscentPOSAI
                     LoadAddStock();
                 }
             }
+            else if (col_name == "addStocks_quantity") // add quantity
+            {
+                form_addStockQuantity addStockQuantity = new form_addStockQuantity(this);
+                addStockQuantity.ShowDialog();
+            }
         }
 
         // reset function
@@ -169,6 +222,8 @@ namespace OmniscentPOSAI
         {
             tb_referenceNo.Text = DateTime.Now.ToString("yyyyMMddHHmmss");
             btn_generate.Hide();
+            btn_clear.Enabled = true;
+            btn_save.Enabled = true;
         }
 
         // clear button event
@@ -195,24 +250,41 @@ namespace OmniscentPOSAI
             {
                 if (dgv_addStocks.Rows.Count > 0)
                 {
-                    if (MessageBox.Show("Do you want to save this list?", "Add Stock", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                    {
-                        for (int i = 0; i < dgv_addStocks.Rows.Count; i++)
-                        {
-                            sql_connect.Open();
-                            sql_command = new SqlCommand("UPDATE tbl_products SET quantity = quantity + '" + int.Parse(dgv_addStocks.Rows[i].Cells[5].Value.ToString()) + "' WHERE productID LIKE '" + dgv_addStocks.Rows[i].Cells[3].Value.ToString() + "'", sql_connect);
-                            sql_command.ExecuteNonQuery();
-                            sql_connect.Close();
 
-                            sql_connect.Open();
-                            sql_command = new SqlCommand("UPDATE tbl_addStock SET quantity = quantity + '" + int.Parse(dgv_addStocks.Rows[i].Cells[5].Value.ToString()) + "', status = 'Done' WHERE ID LIKE '" + dgv_addStocks.Rows[i].Cells[1].Value.ToString() + "'", sql_connect);
-                            sql_command.ExecuteNonQuery();
-                            sql_connect.Close();
+                    for (int x = 0; x < dgv_addStocks.Rows.Count; x++)
+                    {
+                        var checkNull = dgv_addStocks.Rows[x].Cells[5].Value.ToString();
+                        cid.Text = checkNull;
+                        if (int.Parse(checkNull) == 0 || String.IsNullOrEmpty(checkNull))
+                        {
+                            MessageBox.Show("One or more row(s) contain an invalid input", "Add Stocks", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                            return;
                         }
-                        dgv_addStocks.Rows.Clear();
-                        LoadAddStock();
-                        btn_generate.Show();
+                        else
+                        {
+                            if (MessageBox.Show("Do you want to save this list?", "Add Stock", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                            {
+                                sql_connect.Open();
+                                sql_command = new SqlCommand("UPDATE tbl_products SET quantity = quantity + '" + int.Parse(dgv_addStocks.Rows[x].Cells[5].Value.ToString()) + "' WHERE productID LIKE '" + dgv_addStocks.Rows[x].Cells[3].Value.ToString() + "'", sql_connect);
+                                sql_command.ExecuteNonQuery();
+                                sql_connect.Close();
+
+                                sql_connect.Open();
+                                sql_command = new SqlCommand("UPDATE tbl_addStock SET quantity = quantity + '" + int.Parse(dgv_addStocks.Rows[x].Cells[5].Value.ToString()) + "', status = 'Done' WHERE ID LIKE '" + dgv_addStocks.Rows[x].Cells[1].Value.ToString() + "'", sql_connect);
+                                sql_command.ExecuteNonQuery();
+                                sql_connect.Close();
+                            }
+                        }
                     }
+                    LoadAddProducts();
+                    LoadAddStock();
+                    tb_referenceNo.Clear();
+                    btn_generate.Show();
+                    btn_clear.Enabled = false;
+                }
+                else
+                {
+                    MessageBox.Show("The stock table does not contain any rows.", "Add Stock: Empty Table", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
             }
             catch (Exception except)
@@ -327,5 +399,43 @@ namespace OmniscentPOSAI
             sql_command.ExecuteNonQuery();
             sql_connect.Close();
         }
+
+        private void tb_quantity_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsNumber(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void tb_remarks_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetterOrDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void dgv_addStocks_CellValueChanged(object sender, DataGridViewCellEventArgs e)
+        {
+            for (int i = 0; i < dgv_addStocks.Rows.Count; i++)
+            {
+                if (int.Parse(dgv_addStocks.Rows[i].Cells[5].Value.ToString()) == 0)
+                {
+                    MessageBox.Show("NO ZERO");
+                    return;
+                }
+                else if (dgv_addStocks.Rows[i].Cells[5].Value.ToString() == "")
+                {
+                    MessageBox.Show("EMPTY");
+                    return;
+                } else if (dgv_addStocks.Rows[i].Cells[5].Value.ToString() == null)
+                {
+                    MessageBox.Show("NULL");
+                }
+                cid.Text = dgv_addStocks.Rows[i].Cells[5].Value.ToString();
+            }
+        }
     }
+
 }

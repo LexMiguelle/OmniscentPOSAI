@@ -12,7 +12,7 @@ using System.Data.SqlClient;
 
 namespace OmniscentPOSAI
 {
-    public partial class form_salesReport : Form
+    public partial class printPreview_salesReport : Form
     {
         SqlConnection sql_connect = new SqlConnection();
         SqlCommand sql_command = new SqlCommand();
@@ -21,13 +21,13 @@ namespace OmniscentPOSAI
         DataSet1 dataset = new DataSet1();
         SqlDataReader sql_datareader;
 
-        module_sales salesModule;
+        module_records recordsModule;
 
-        public form_salesReport(module_sales sales)
+        public printPreview_salesReport(module_records records)
         {
             InitializeComponent();
             sql_connect = new SqlConnection(db_connect.DBConnection());
-            salesModule = sales;
+            recordsModule = records;
         }
 
         public void LoadSalesReport()
@@ -39,25 +39,25 @@ namespace OmniscentPOSAI
                 this.rv_sales.LocalReport.ReportPath = Application.StartupPath + @"\Reports\report_sales.rdlc";
                 this.rv_sales.LocalReport.DataSources.Clear();
 
-                string dateMin = salesModule.dtp_from.Value.ToString("yyyy-MM-dd 00:00:00");
-                string dateMax = salesModule.dtp_to.Value.ToString("yyyy-MM-dd 23:59:59");
+                string dateMin = recordsModule.dtp_soldItemsFrom.Value.ToString("yyyy-MM-dd 00:00:00");
+                string dateMax = recordsModule.dtp_soldItemsTo.Value.ToString("yyyy-MM-dd 23:59:59");
 
 
                 sql_connect.Open();
-                if (salesModule.cb_cashierName.Text == "All Cashiers")
+                if (recordsModule.cb_cashierName.Text == "All Cashiers")
                 {
                     sql_dataadapter.SelectCommand = new SqlCommand("SELECT x.transactionID, x.transactionNo, x.productID, y.productName, x.price, x.quantity, x.discount, x.total FROM tbl_transaction AS x INNER JOIN tbl_products AS y ON x.productID = y.productID WHERE status LIKE 'Sold'  AND transactionDate BETWEEN '" + dateMin + "' AND '" + dateMax + "'", sql_connect);
 
                 }
                 else
                 {
-                    sql_dataadapter.SelectCommand = new SqlCommand("SELECT x.transactionID, x.transactionNo, x.productID, y.productName, x.price, x.quantity, x.discount, x.total FROM tbl_transaction AS x INNER JOIN tbl_products AS y ON x.productID = y.productID WHERE (status LIKE 'Sold')  AND (transactionDate BETWEEN '" + dateMin + "' AND '" + dateMax + "') AND (cashierName LIKE '%" + salesModule.cb_cashierName.Text + "%')", sql_connect);
+                    sql_dataadapter.SelectCommand = new SqlCommand("SELECT x.transactionID, x.transactionNo, x.productID, y.productName, x.price, x.quantity, x.discount, x.total FROM tbl_transaction AS x INNER JOIN tbl_products AS y ON x.productID = y.productID WHERE (status LIKE 'Sold')  AND (transactionDate BETWEEN '" + dateMin + "' AND '" + dateMax + "') AND (cashierName LIKE '%" + recordsModule.cb_cashierName.Text + "%')", sql_connect);
                 }
                 sql_dataadapter.Fill(dataset.Tables["dt_soldReport"]);
                 sql_connect.Close();
 
                 ReportParameter rp_date = new ReportParameter("rp_date", "Date From: " + dateMin + " - Date To: " + dateMax);
-                ReportParameter rp_cashierName = new ReportParameter("rp_cashierName", "Cashier: " + salesModule.cb_cashierName.Text);
+                ReportParameter rp_cashierName = new ReportParameter("rp_cashierName", "Cashier: " + recordsModule.cb_cashierName.Text);
                 ReportParameter rp_headTitle = new ReportParameter("rp_headTitle", "SALES REPORT");
 
                 rv_sales.LocalReport.SetParameters(rp_date);

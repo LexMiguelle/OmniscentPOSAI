@@ -29,12 +29,6 @@ namespace OmniscentPOSAI
             loginModule = login;
         }
 
-        // closeAdmin function
-        public void closeAdmin()
-        {
-            Application.Run(new module_login());
-        }
-
         //dashboard button event
         private void btn_dashboard_Click(object sender, EventArgs e)
         {
@@ -79,7 +73,8 @@ namespace OmniscentPOSAI
             stocks.TopLevel = false;
             panel_activity.Controls.Add(stocks);
             stocks.BringToFront();
-            stocks.LoadStockOverview();
+            stocks.cb_status.Text = "Done";
+            stocks.LoadStocks();
             stocks.LoadAddProducts();
             stocks.LoadAddStock();
             stocks.LoadManageStocks();
@@ -95,6 +90,9 @@ namespace OmniscentPOSAI
             records.TopLevel = false;
             panel_activity.Controls.Add(records);
             records.LoadStockHistory();
+            records.LoadCashiers();
+            records.cb_cashierName.Text = "All Cashiers";
+            records.LoadSoldItems();
             records.LoadCriticalStocks();
             records.LoadInventory();
             records.BringToFront();
@@ -140,7 +138,8 @@ namespace OmniscentPOSAI
             {
                 this.Dispose();
                 loginModule.Dispose();
-            } else
+            }
+            else
             {
                 return;
             }

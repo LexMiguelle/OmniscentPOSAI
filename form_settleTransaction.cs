@@ -157,7 +157,7 @@ namespace OmniscentPOSAI
                         sql_connect.Close();
                     }
 
-                    form_receipt receipt = new form_receipt(cashierModule);
+                    printPreview_receipt receipt = new printPreview_receipt(cashierModule);
                     receipt.LoadReport(tb_amountPaid.Text, tb_change.Text);
                     receipt.ShowDialog();
 

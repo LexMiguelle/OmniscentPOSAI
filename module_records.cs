@@ -56,6 +56,88 @@ namespace OmniscentPOSAI
             LoadTopSelling();
         }
 
+        // Top Selling print button event
+        private void btn_printTopSelling_Click(object sender, EventArgs e)
+        {
+            printPreview_topSellingReport topSelling = new printPreview_topSellingReport();
+            topSelling.LoadTopSellingReport();
+            topSelling.ShowDialog();
+        }
+
+        // Sold Items tab
+        // load Sold Items
+        public void LoadSoldItems()
+        {
+            int i = 0;
+            double totalSales = 0;
+
+            string dateMin = dtp_soldItemsFrom.Value.ToString("yyyy-MM-dd 00:00:00");
+            string dateMax = dtp_soldItemsTo.Value.ToString("yyyy-MM-dd 23:59:59");
+
+
+            dgv_soldItems.Rows.Clear();
+            sql_connect.Open();
+            if (cb_cashierName.Text == "All Cashiers")
+            {
+                sql_command = new SqlCommand("SELECT x.productID, y.productCode, y.productName, z.categoryName, x.price, x.quantity, x.discount , x.cashierName, x.transactionDate FROM tbl_transaction AS x INNER JOIN tbl_products AS y ON x.productID = y.productID INNER JOIN tbl_categories AS z ON y.categoryID = z.categoryID WHERE (status LIKE 'Sold') AND (transactionDate BETWEEN '" + dateMin + "' AND '" + dateMax + "')", sql_connect);
+            }
+            else
+            {
+                sql_command = new SqlCommand("SELECT x.productID, y.productCode, y.productName, z.categoryName, x.price, x.quantity, x.discount , x.cashierName, x.transactionDate FROM tbl_transaction AS x INNER JOIN tbl_products AS y ON x.productID = y.productID INNER JOIN tbl_categories AS z ON y.categoryID = z.categoryID WHERE (status LIKE 'Sold') AND (transactionDate BETWEEN '" + dateMin + "' AND '" + dateMax + "') AND (cashierName LIKE '" + cb_cashierName.Text + "') GROUP BY cashierName", sql_connect);
+            }
+            sql_datareader = sql_command.ExecuteReader();
+            while (sql_datareader.Read())
+            {
+                i++;
+                totalSales += double.Parse(sql_datareader[7].ToString());
+                dgv_soldItems.Rows.Add(i, sql_datareader[0].ToString(), sql_datareader[1].ToString(), sql_datareader[2].ToString(), sql_datareader[3].ToString(), sql_datareader[4].ToString(), sql_datareader[5].ToString(), sql_datareader[6].ToString(), sql_datareader[7].ToString(), sql_datareader[8].ToString());
+            }
+            sql_datareader.Close();
+            sql_connect.Close();
+        }
+
+        // Load cashiers function
+        public void LoadCashiers()
+        {
+            cb_cashierName.Items.Clear();
+            cb_cashierName.Items.Add("All Cashiers");
+            sql_connect.Open();
+            sql_command = new SqlCommand("SELECT * FROM tbl_users WHERE role LIKE 'cashier'", sql_connect);
+            sql_datareader = sql_command.ExecuteReader();
+            while (sql_datareader.Read())
+            {
+                cb_cashierName.Items.Add(sql_datareader["lastName"].ToString() + ", " + sql_datareader["firstName"].ToString());
+            }
+            sql_datareader.Close();
+            sql_connect.Close();
+        }
+
+        // dtp_soldItemsFrom value changed event
+        private void dtp_soldItemsFrom_ValueChanged(object sender, EventArgs e)
+        {
+            LoadSoldItems();
+        }
+
+        // dtp_soldItemsTo value changed event
+        private void dtp_soldItemsTo_ValueChanged(object sender, EventArgs e)
+        {
+            LoadSoldItems();
+        }
+
+        // cb_cashierName text changed
+        private void cb_soldItemsCashierName_TextChanged(object sender, EventArgs e)
+        {
+            LoadSoldItems();
+        }
+
+        // Print Sold Items Report
+        private void btn_printSoldItems_Click(object sender, EventArgs e)
+        {
+            printPreview_salesReport salesReport = new printPreview_salesReport(this);
+            salesReport.LoadSalesReport();
+            salesReport.ShowDialog();
+        }
+
         // Critical Items tab
         // Load Critical Items
         public void LoadCriticalStocks()
@@ -103,55 +185,12 @@ namespace OmniscentPOSAI
 
         private void btn_printInventoryList_Click(object sender, EventArgs e)
         {
-            form_inventoryListReport inventoryReport = new form_inventoryListReport();
+            printPreview_inventoryListReport inventoryReport = new printPreview_inventoryListReport();
             inventoryReport.LoadInventoryReport();
             inventoryReport.ShowDialog();
         }
-
-        /*
-        // Sold Items
-        // load Sold Items
-        public void LoadSoldItems()
-        {
-            int i = 0;
-            double totalSales = 0;
-
-            string dateMin = dtp_soldItemsFrom.Value.ToString("yyyy-MM-dd 00:00:00");
-            string dateMax = dtp_soldItemsTo.Value.ToString("yyyy-MM-dd 23:59:59");
-
-
-            dgv_soldItems.Rows.Clear();
-            sql_connect.Open();
-            sql_command = new SqlCommand("SELECT x.transactionID, x.transactionNo, x.productID, y.productName, x.price, x.quantity, x.discount, x.total, x.cashierName FROM tbl_transaction AS x INNER JOIN tbl_products AS y ON x.productID = y.productID WHERE (status LIKE 'Sold') AND (transactionDate BETWEEN '" + dateMin + "' AND '" + dateMax + "')", sql_connect);
-            sql_datareader = sql_command.ExecuteReader();
-            while (sql_datareader.Read())
-            {
-                i++;
-                totalSales += double.Parse(sql_datareader[7].ToString());
-                dgv_soldItems.Rows.Add(i, sql_datareader[0].ToString(), sql_datareader[1].ToString(), sql_datareader[2].ToString(), sql_datareader[3].ToString(), sql_datareader[4].ToString(), sql_datareader[5].ToString(), sql_datareader[6].ToString(), sql_datareader[7].ToString(), sql_datareader[7].ToString());
-            }
-            sql_datareader.Close();
-            sql_connect.Close();
-        }
-
-         // dtp_soldItemsFrom value changed event
-        private void dtp_soldItemsFrom_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        // dtp_soldItemsTo value changed event
-        private void dtp_soldItemsTo_ValueChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void btn_soldItemsPrint_Click(object sender, EventArgs e)
-        {
-            form_salesReport salesReport = new form_salesReport();
-            salesReport.ShowDialog();
-        }
-        */
+        
+        
 
         // Stock History
         // load stocks to Stock History
@@ -174,32 +213,31 @@ namespace OmniscentPOSAI
             sql_connect.Close();
         }
 
-       
-
-        public void print_stocks(object sender, PrintPageEventArgs e)
-        {
-            e.Graphics.DrawImage(stockHistory, 0, 0);
-        }
-
 
         // printStockHistory button click event
         private void btn_printStockHistory_Click(object sender, EventArgs e)
         {
-            Graphics g = this.CreateGraphics();
-            stockHistory = new Bitmap(this.Size.Width, this.Size.Height, g);
-            Graphics mg = Graphics.FromImage(stockHistory);
-            mg.CopyFromScreen(this.Location.X, this.Location.Y, 0, 0, this.Size);
+            
         }
 
-        //
+        // dtp_stockHistoryFrom value changed
         private void dtp_stockHistoryFrom_ValueChanged(object sender, EventArgs e)
         {
             LoadStockHistory();
         }
 
+        // dtp_stockHistoryTo value changed
         private void dtp_stockHistoryTo_ValueChanged(object sender, EventArgs e)
         {
             LoadStockHistory();
+        }
+
+        
+
+        // Critical Stocks print button event
+        private void btn_printCriticalStocks_Click(object sender, EventArgs e)
+        {
+
         }
 
         

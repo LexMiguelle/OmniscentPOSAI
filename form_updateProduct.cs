@@ -149,6 +149,7 @@ namespace OmniscentPOSAI
         private void tb_productCode_TextChanged(object sender, EventArgs e)
         {
             lbl_pcodeLength.Text = tb_productCode.Text.Length.ToString();
+
             sql_connect.Open();
             sql_command = new SqlCommand("SELECT productID FROM tbl_products WHERE productCode = @productCode", sql_connect);
             sql_command.Parameters.AddWithValue("@productCode", tb_productCode.Text);
@@ -195,7 +196,7 @@ namespace OmniscentPOSAI
             while (sql_datareader.Read())
             {
                 tb_categoryPrefix.Text = sql_datareader[0].ToString();
-                string categoryID = sql_datareader[1].ToString();
+                categoryID = int.Parse(sql_datareader[1].ToString());
             }
             sql_datareader.Close();
             sql_connect.Close();

@@ -12,7 +12,7 @@ using System.Data.SqlClient;
 
 namespace OmniscentPOSAI
 {
-    public partial class form_inventoryListReport : Form
+    public partial class printPreview_inventoryListReport : Form
     {
         SqlConnection sql_connect = new SqlConnection();
         SqlCommand sql_command = new SqlCommand();
@@ -23,7 +23,7 @@ namespace OmniscentPOSAI
 
         
 
-        public form_inventoryListReport()
+        public printPreview_inventoryListReport()
         {
             InitializeComponent();
             sql_connect = new SqlConnection(db_connect.DBConnection());

@@ -1,6 +1,6 @@
 ﻿namespace OmniscentPOSAI
 {
-    partial class form_salesReport
+    partial class printPreview_salesReport
     {
         /// <summary>
         /// Required designer variable.

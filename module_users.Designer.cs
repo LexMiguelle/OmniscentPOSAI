@@ -430,7 +430,6 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "module_users";
             this.Text = "module_users";
-            this.Load += new System.EventHandler(this.module_users_Load);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.tc_users.ResumeLayout(false);
