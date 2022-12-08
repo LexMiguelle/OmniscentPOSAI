@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace OmniscentPOSAI
 {
-    public partial class form_addStockQuantity : Form
+    public partial class form_editStockQuantity : Form
     {
         SqlConnection sql_connect = new SqlConnection();
         SqlCommand sql_command = new SqlCommand();
@@ -21,33 +21,29 @@ namespace OmniscentPOSAI
         module_stocks stocksModule;
 
 
-        public form_addStockQuantity(module_stocks stocks)
+        public form_editStockQuantity(module_stocks stocks)
         {
             InitializeComponent();
             sql_connect = new SqlConnection(db_connect.DBConnection());
             stocksModule = stocks;
         }
 
-        // addQuantity function
-        public void addStockQuantity()
+        // editQuantity function
+        public void editStockQuantity()
         {
-            if (string.IsNullOrWhiteSpace(tb_addStockQuantity.Text) || int.Parse(tb_addStockQuantity.Text) == 0)
+            if (string.IsNullOrWhiteSpace(tb_editStockQuantity.Text) || int.Parse(tb_editStockQuantity.Text) == 0)
             {
                 MessageBox.Show("The input cannot be empty nor 0", "Add Stock Quantity: Invalid input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
                 sql_connect.Open();
-                sql_command = new SqlCommand("INSERT INTO tbl_addStock (referenceNo, productID, stockDate, quantity, stockedBy) VALUES (@referenceNo, @productID, @stockDate, @quantity, @stockedBy)", sql_connect);
-                sql_command.Parameters.AddWithValue("@referenceNo", stocksModule.tb_referenceNo.Text);
-                sql_command.Parameters.AddWithValue("@productID", ID.Text);
-                sql_command.Parameters.AddWithValue("@stockDate", stocksModule.dtp_date.Value);
-                sql_command.Parameters.AddWithValue("@quantity", tb_addStockQuantity.Text);
-                sql_command.Parameters.AddWithValue("@stockedBy", stocksModule.lbl_stockedBy.Text);
+                sql_command = new SqlCommand("UPDATE tbl_addStock SET quantity = " + tb_editStockQuantity.Text + " WHERE ID = '" + ID.Text + "'", sql_connect);
                 sql_command.ExecuteNonQuery();
                 sql_connect.Close();
+
                 stocksModule.LoadAddStock();
-                MessageBox.Show("Product added to list", "Add Stock: Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("The desired quantity has been added to the product in the stock list");
                 this.Dispose();
             }
         }
@@ -63,7 +59,7 @@ namespace OmniscentPOSAI
             {
                 if ((e.KeyChar == 13))
                 {
-                    addStockQuantity();
+                    editStockQuantity();
                 }
             }
         }
@@ -71,7 +67,7 @@ namespace OmniscentPOSAI
         // OK button event
         private void btn_OK_Click(object sender, EventArgs e)
         {
-            addStockQuantity();
+            editStockQuantity();
         }
 
         // close button event

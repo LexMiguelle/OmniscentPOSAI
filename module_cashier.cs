@@ -13,6 +13,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Reporting.WinForms;
+using Tulpep.NotificationWindow;
 
 namespace OmniscentPOSAI
 {
@@ -40,6 +41,36 @@ namespace OmniscentPOSAI
             tb_searchBox.Enabled = false;
             btn_scanProductCode.Enabled = false;
             loginModule = login;
+            notifyCriticalItems();
+        }
+
+        public void notifyCriticalItems()
+        {
+            int i = 0;
+            string critical = "";
+            string count = "";
+
+            sql_connect.Open();
+            sql_command = new SqlCommand("SELECT count(*) FROM view_criticalStocks", sql_connect);
+            count = sql_command.ExecuteScalar().ToString();
+            sql_connect.Close();
+
+            sql_connect.Open();
+            sql_command = new SqlCommand("SELECT * FROM view_criticalStocks", sql_connect);
+            sql_datareader = sql_command.ExecuteReader();
+            while (sql_datareader.Read())
+            {
+                i++;
+                critical += i + ". " + sql_datareader["productName"].ToString() + " (" + sql_datareader["categoryName"].ToString() + ")" + Environment.NewLine;
+            }
+            sql_datareader.Close();
+            sql_connect.Close();
+
+            PopupNotifier popUp = new PopupNotifier();
+            popUp.Image = Properties.Resources.warning_24;
+            popUp.TitleText = count + " CRITICAL ITEM(S):";
+            popUp.ContentText = critical;
+            popUp.Popup();
         }
 
         // logout function

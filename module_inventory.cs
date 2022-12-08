@@ -9,14 +9,16 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Threading;
+using Tulpep.NotificationWindow;
 
 namespace OmniscentPOSAI
 {
     public partial class module_inventory : Form
     {
-        Thread thread;
-        SqlConnection sql_connect;
+        SqlConnection sql_connect = new SqlConnection();
+        SqlCommand sql_command = new SqlCommand();
         DBConnector db_connect = new DBConnector();
+        SqlDataReader sql_datareader;
 
         module_login loginModule;
 
@@ -25,8 +27,37 @@ namespace OmniscentPOSAI
 
             InitializeComponent();
             sql_connect = new SqlConnection(db_connect.DBConnection());
-            sql_connect.Open();
             loginModule = login;
+            notifyCriticalItems();
+        }
+
+        public void notifyCriticalItems()
+        {
+            int i = 0;
+            string critical = "";
+            string count = "";
+
+            sql_connect.Open();
+            sql_command = new SqlCommand("SELECT count(*) FROM view_criticalStocks", sql_connect);
+            count = sql_command.ExecuteScalar().ToString();
+            sql_connect.Close();
+
+            sql_connect.Open();
+            sql_command = new SqlCommand("SELECT * FROM view_criticalStocks", sql_connect);
+            sql_datareader = sql_command.ExecuteReader();
+            while (sql_datareader.Read())
+            {
+                i++;
+                critical += i + ". " + sql_datareader["productName"].ToString() + " (" + sql_datareader["categoryName"].ToString() + ")" + Environment.NewLine;
+            }
+            sql_datareader.Close();
+            sql_connect.Close();
+
+            PopupNotifier popUp = new PopupNotifier();
+            popUp.Image = Properties.Resources.warning_24;
+            popUp.TitleText = count + " CRITICAL ITEM(S):";
+            popUp.ContentText = critical;
+            popUp.Popup();
         }
 
         //dashboard button event
@@ -73,6 +104,7 @@ namespace OmniscentPOSAI
             stocks.TopLevel = false;
             panel_activity.Controls.Add(stocks);
             stocks.BringToFront();
+            stocks.lbl_stockedBy.Text = tb_name.Text;
             stocks.cb_status.Text = "Done";
             stocks.LoadStocks();
             stocks.LoadAddProducts();
@@ -92,9 +124,9 @@ namespace OmniscentPOSAI
             records.LoadStockHistory();
             records.LoadCashiers();
             records.cb_cashierName.Text = "All Cashiers";
-            records.LoadSoldItems();
             records.LoadCriticalStocks();
             records.LoadInventory();
+            records.LoadReturnedItems();
             records.BringToFront();
             records.Show();
         }

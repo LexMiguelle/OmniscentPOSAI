@@ -35,6 +35,7 @@
             this.panel_head = new System.Windows.Forms.Panel();
             this.tb_search = new System.Windows.Forms.TextBox();
             this.btn_addProduct = new System.Windows.Forms.LinkLabel();
+            this.lbl_prodID = new System.Windows.Forms.Label();
             this.lbl_products = new System.Windows.Forms.Label();
             this.dgv_products = new System.Windows.Forms.DataGridView();
             this.col_no = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -47,7 +48,6 @@
             this.col_restock = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_edit = new System.Windows.Forms.DataGridViewImageColumn();
             this.col_delete = new System.Windows.Forms.DataGridViewImageColumn();
-            this.lbl_prodID = new System.Windows.Forms.Label();
             this.panel_head.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_products)).BeginInit();
             this.SuspendLayout();
@@ -85,6 +85,16 @@
             this.btn_addProduct.TabStop = true;
             this.btn_addProduct.Text = "[Add Product]";
             this.btn_addProduct.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.btn_addProduct_LinkClicked);
+            // 
+            // lbl_prodID
+            // 
+            this.lbl_prodID.AutoSize = true;
+            this.lbl_prodID.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_prodID.Location = new System.Drawing.Point(185, 19);
+            this.lbl_prodID.Name = "lbl_prodID";
+            this.lbl_prodID.Size = new System.Drawing.Size(30, 31);
+            this.lbl_prodID.TabIndex = 0;
+            this.lbl_prodID.Text = "#";
             // 
             // lbl_products
             // 
@@ -140,6 +150,7 @@
             this.dgv_products.EnableHeadersVisualStyles = false;
             this.dgv_products.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.dgv_products.Location = new System.Drawing.Point(0, 75);
+            this.dgv_products.MultiSelect = false;
             this.dgv_products.Name = "dgv_products";
             this.dgv_products.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -245,16 +256,6 @@
             this.col_delete.MinimumWidth = 30;
             this.col_delete.Name = "col_delete";
             this.col_delete.Width = 30;
-            // 
-            // lbl_prodID
-            // 
-            this.lbl_prodID.AutoSize = true;
-            this.lbl_prodID.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_prodID.Location = new System.Drawing.Point(185, 19);
-            this.lbl_prodID.Name = "lbl_prodID";
-            this.lbl_prodID.Size = new System.Drawing.Size(30, 31);
-            this.lbl_prodID.TabIndex = 0;
-            this.lbl_prodID.Text = "#";
             // 
             // module_products
             // 

@@ -292,7 +292,7 @@ namespace OmniscentPOSAI
             this.panel_activity.Size = new System.Drawing.Size(1064, 736);
             this.panel_activity.TabIndex = 2;
             // 
-            // module_admin
+            // module_inventory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -303,7 +303,7 @@ namespace OmniscentPOSAI
             this.Controls.Add(this.panel_menu);
             this.Controls.Add(this.panel_head);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Name = "module_admin";
+            this.Name = "module_inventory";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.panel_head.ResumeLayout(false);
             this.panel_menu.ResumeLayout(false);

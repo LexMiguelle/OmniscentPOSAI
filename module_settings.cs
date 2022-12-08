@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Web.UI;
 using System.Windows.Forms;
 
 namespace OmniscentPOSAI
@@ -31,47 +32,61 @@ namespace OmniscentPOSAI
         // update button event
         private void btn_updatePassword_Click(object sender, EventArgs e)
         {
-            try
+            string oldPass = "";
+
+            sql_connect.Open();
+            sql_command = new SqlCommand("SELECT password FROM tbl_users WHERE username LIKE '" + tb_userName.Text + "'", sql_connect);
+            sql_datareader = sql_command.ExecuteReader();
+            while (sql_datareader.Read())
             {
-                string oldPass = "";
+                oldPass = sql_datareader["password"].ToString();
+            }
+            sql_datareader.Close();
+            sql_connect.Close();
 
-                sql_connect.Open();
-                sql_command = new SqlCommand("SELECT password FROM tbl_users WHERE username LIKE '" + tb_userName.Text + "'", sql_connect);
-                sql_datareader = sql_command.ExecuteReader();
-                while (sql_datareader.Read()) 
+            if (tb_oldPassword.Text == oldPass)
+            {
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                if (tb_newPassword.Text != tb_confirmPassword.Text)
                 {
-                    oldPass = sql_datareader["password"].ToString();
+                    MessageBox.Show("Your new password does not match your confirmpassowrd");
                 }
-                sql_datareader.Close();
-                sql_connect.Close();
-
-                if (tb_oldPassword.Text == oldPass)
+                else if (tb_newPassword.Text == oldPass)
                 {
-                    if (tb_newPassword.Text == tb_confirmPassword.Text)
-                    {
-                        sql_connect.Open();
-                        sql_command = new SqlCommand("UPDATE tbl_users SET password = @password WHERE username LIKE '" + cashierModule.tb_username.Text + "'", sql_connect);
-                        sql_command.Parameters.AddWithValue("@password", tb_newPassword.Text);
-                        sql_command.ExecuteNonQuery();
-                        sql_connect.Close();
-
-                        MessageBox.Show("Your password has been successfully changed", "Change Password: Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        this.Dispose();
-                    }
-                    else
-                    {
-                        sql_connect.Close();
-                        MessageBox.Show("Your new password does not match with the confirmation password.", "Change Password: Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
+                    MessageBox.Show("Your new password must not be the same as your old password.", "Change Password: Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
+                else if (String.IsNullOrWhiteSpace(tb_newPassword.Text))
+                {
+                    MessageBox.Show("Empty textbox detected", "Change Password: Empty Textbox detected!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+                else if (tb_newPassword.Text.Length < 6)
+                {
+                    MessageBox.Show("Your password is too short!", "Change Password: Short Password", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                }
+                
                 else
                 {
-                    MessageBox.Show("Old Password input is incorrect.", "Change Password: Incorrect Input", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    sql_connect.Open();
+                    sql_command = new SqlCommand("UPDATE tbl_users SET password = @password WHERE username LIKE '" + cashierModule.tb_username.Text + "'", sql_connect);
+                    sql_command.Parameters.AddWithValue("@password", tb_newPassword.Text);
+                    sql_command.ExecuteNonQuery();
+                    sql_connect.Close();
+
+                    MessageBox.Show("Your password has been successfully changed", "Change Password: Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.Dispose();
                 }
             }
-            catch (Exception except)
+            else
             {
-                MessageBox.Show(except.Message, "Settings: ERROR", MessageBoxButtons.OK,MessageBoxIcon.Error);
+                MessageBox.Show("Old Password input is incorrect.", "Change Password: Incorrect Input", MessageBoxButtons.OK, MessageBoxIcon.Stop);
             }
         }
 
@@ -103,6 +118,14 @@ namespace OmniscentPOSAI
                 }
             }
             
+        }
+
+        private void tb_settings_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetterOrDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
         }
     }
 }

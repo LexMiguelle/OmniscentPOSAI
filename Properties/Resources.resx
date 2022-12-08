@@ -118,58 +118,85 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="omniscent_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\omniscent_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="omniscent_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\omniscent_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="omniscent_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\omniscent_24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="omniscent_128" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\omniscent_128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="omniscent_64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\omniscent_64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="omniscent_256" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\omniscent_256.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="coins_64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\coins_64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="omniscent_512" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\omniscent_512.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="logout_64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\logout_64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="check_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\check_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="print_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\print_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="cross_small_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cross_small_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="cross_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cross_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="cross_64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\cross_64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="plus_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\plus_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="omniscent_256" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\omniscent_256.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="minus_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\minus_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="add_64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\add_64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="products_64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\products_64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="omniscent_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\omniscent_24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="plus_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\plus_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="omniscent_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\omniscent_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cross_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cross_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="print_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\print_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="logout_64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\logout_64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="omniscent_64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\omniscent_64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="warning_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\warning_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="trash_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\trash_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="warning_32" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\warning_32.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="warning" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\warning.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cross_small_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cross_small_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="warning_24" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\warning_24.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="low_64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sales_641.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="omniscent_128" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\omniscent_128.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="check_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\check_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cross_64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cross_64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="sales_64" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sales_64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="edit_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\edit_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="add_64" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\add_64.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  <data name="omniscent_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\omniscent_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="select_16" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\select_16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

@@ -68,6 +68,10 @@ namespace OmniscentPOSAI
                         {
                             returnToInventory();
                             updateQuantity();
+                        } 
+                        else
+                        {
+                            removedFromInventory();
                         }
 
                         MessageBox.Show("Sales transaction has been successfully cancelled", "Void Code: Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -114,6 +118,14 @@ namespace OmniscentPOSAI
         {
             sql_connect.Open();
             sql_command = new SqlCommand("UPDATE tbl_products SET quantity = quantity + " + int.Parse(cancelOrderForm.tb_cancelQuantity.Text) + " WHERE productID = '" + cancelOrderForm.tb_productID.Text + "'", sql_connect);
+            sql_command.ExecuteNonQuery();
+            sql_connect.Close();
+        }
+
+        public void removedFromInventory()
+        {
+            sql_connect.Open();
+            sql_command = new SqlCommand("INSERT INTO tbl_" , sql_connect);
             sql_command.ExecuteNonQuery();
             sql_connect.Close();
         }

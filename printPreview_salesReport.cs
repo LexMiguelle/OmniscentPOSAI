@@ -69,9 +69,9 @@ namespace OmniscentPOSAI
                 rv_sales.ZoomMode = ZoomMode.Percent;
                 rv_sales.ZoomPercent = 100;
             }
-            catch
+            catch (Exception except)
             {
-
+                MessageBox.Show(except.Message);
             }
         }
 

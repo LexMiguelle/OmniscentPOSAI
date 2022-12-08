@@ -32,16 +32,16 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgv_categories = new System.Windows.Forms.DataGridView();
-            this.lbl_categories = new System.Windows.Forms.Label();
-            this.panel_head = new System.Windows.Forms.Panel();
-            this.btn_addCategory = new System.Windows.Forms.LinkLabel();
-            this.lbl_catID = new System.Windows.Forms.Label();
             this.categories_num = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.categories_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.categoriescategory = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.categories_categoryPrefix = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.categories_edit = new System.Windows.Forms.DataGridViewImageColumn();
             this.categories_delete = new System.Windows.Forms.DataGridViewImageColumn();
+            this.lbl_categories = new System.Windows.Forms.Label();
+            this.panel_head = new System.Windows.Forms.Panel();
+            this.btn_addCategory = new System.Windows.Forms.LinkLabel();
+            this.lbl_catID = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_categories)).BeginInit();
             this.panel_head.SuspendLayout();
             this.SuspendLayout();
@@ -84,6 +84,7 @@
             this.dgv_categories.EnableHeadersVisualStyles = false;
             this.dgv_categories.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.dgv_categories.Location = new System.Drawing.Point(0, 75);
+            this.dgv_categories.MultiSelect = false;
             this.dgv_categories.Name = "dgv_categories";
             this.dgv_categories.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -100,6 +101,64 @@
             this.dgv_categories.TabIndex = 3;
             this.dgv_categories.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_categories_CellContentClick);
             this.dgv_categories.SelectionChanged += new System.EventHandler(this.dgv_categories_SelectionChanged);
+            // 
+            // categories_num
+            // 
+            this.categories_num.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.categories_num.HeaderText = "#";
+            this.categories_num.MinimumWidth = 25;
+            this.categories_num.Name = "categories_num";
+            this.categories_num.ReadOnly = true;
+            this.categories_num.Width = 25;
+            // 
+            // categories_ID
+            // 
+            this.categories_ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.categories_ID.FillWeight = 90.14085F;
+            this.categories_ID.HeaderText = "ID";
+            this.categories_ID.Name = "categories_ID";
+            this.categories_ID.ReadOnly = true;
+            this.categories_ID.Visible = false;
+            this.categories_ID.Width = 43;
+            // 
+            // categoriescategory
+            // 
+            this.categoriescategory.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.categoriescategory.FillWeight = 90.14085F;
+            this.categoriescategory.HeaderText = "CATEGORY";
+            this.categoriescategory.Name = "categoriescategory";
+            this.categoriescategory.ReadOnly = true;
+            // 
+            // categories_categoryPrefix
+            // 
+            this.categories_categoryPrefix.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.categories_categoryPrefix.HeaderText = "PREFIX";
+            this.categories_categoryPrefix.Name = "categories_categoryPrefix";
+            this.categories_categoryPrefix.ReadOnly = true;
+            this.categories_categoryPrefix.Width = 69;
+            // 
+            // categories_edit
+            // 
+            this.categories_edit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.categories_edit.FillWeight = 169.0141F;
+            this.categories_edit.HeaderText = "";
+            this.categories_edit.Image = global::OmniscentPOSAI.Properties.Resources.edit_16;
+            this.categories_edit.MinimumWidth = 30;
+            this.categories_edit.Name = "categories_edit";
+            this.categories_edit.ReadOnly = true;
+            this.categories_edit.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.categories_edit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.categories_edit.Width = 30;
+            // 
+            // categories_delete
+            // 
+            this.categories_delete.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.categories_delete.HeaderText = "";
+            this.categories_delete.Image = global::OmniscentPOSAI.Properties.Resources.trash_16;
+            this.categories_delete.MinimumWidth = 30;
+            this.categories_delete.Name = "categories_delete";
+            this.categories_delete.ReadOnly = true;
+            this.categories_delete.Width = 30;
             // 
             // lbl_categories
             // 
@@ -146,64 +205,6 @@
             this.lbl_catID.Size = new System.Drawing.Size(30, 31);
             this.lbl_catID.TabIndex = 0;
             this.lbl_catID.Text = "#";
-            // 
-            // categories_num
-            // 
-            this.categories_num.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.categories_num.HeaderText = "#";
-            this.categories_num.MinimumWidth = 25;
-            this.categories_num.Name = "categories_num";
-            this.categories_num.ReadOnly = true;
-            this.categories_num.Width = 25;
-            // 
-            // categories_ID
-            // 
-            this.categories_ID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.categories_ID.FillWeight = 90.14085F;
-            this.categories_ID.HeaderText = "ID";
-            this.categories_ID.Name = "categories_ID";
-            this.categories_ID.ReadOnly = true;
-            this.categories_ID.Visible = false;
-            this.categories_ID.Width = 42;
-            // 
-            // categoriescategory
-            // 
-            this.categoriescategory.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.categoriescategory.FillWeight = 90.14085F;
-            this.categoriescategory.HeaderText = "CATEGORY";
-            this.categoriescategory.Name = "categoriescategory";
-            this.categoriescategory.ReadOnly = true;
-            // 
-            // categories_categoryPrefix
-            // 
-            this.categories_categoryPrefix.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.categories_categoryPrefix.HeaderText = "PREFIX";
-            this.categories_categoryPrefix.Name = "categories_categoryPrefix";
-            this.categories_categoryPrefix.ReadOnly = true;
-            this.categories_categoryPrefix.Width = 69;
-            // 
-            // categories_edit
-            // 
-            this.categories_edit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.categories_edit.FillWeight = 169.0141F;
-            this.categories_edit.HeaderText = "";
-            this.categories_edit.Image = global::OmniscentPOSAI.Properties.Resources.edit_16;
-            this.categories_edit.MinimumWidth = 30;
-            this.categories_edit.Name = "categories_edit";
-            this.categories_edit.ReadOnly = true;
-            this.categories_edit.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.categories_edit.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.categories_edit.Width = 30;
-            // 
-            // categories_delete
-            // 
-            this.categories_delete.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.categories_delete.HeaderText = "";
-            this.categories_delete.Image = global::OmniscentPOSAI.Properties.Resources.trash_16;
-            this.categories_delete.MinimumWidth = 30;
-            this.categories_delete.Name = "categories_delete";
-            this.categories_delete.ReadOnly = true;
-            this.categories_delete.Width = 30;
             // 
             // module_categories
             // 

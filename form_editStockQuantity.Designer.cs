@@ -1,6 +1,6 @@
 ﻿namespace OmniscentPOSAI
 {
-    partial class form_addStockQuantity
+    partial class form_editStockQuantity
     {
         /// <summary>
         /// Required designer variable.
@@ -34,7 +34,7 @@
             this.tb_searchBox = new System.Windows.Forms.TextBox();
             this.ID = new System.Windows.Forms.Label();
             this.lbl_addQuantity = new System.Windows.Forms.Label();
-            this.tb_addStockQuantity = new System.Windows.Forms.TextBox();
+            this.tb_editStockQuantity = new System.Windows.Forms.TextBox();
             this.btn_OK = new System.Windows.Forms.Button();
             this.panel_addQuantityHead.SuspendLayout();
             this.panel_addToCart.SuspendLayout();
@@ -68,6 +68,7 @@
             // panel_addToCart
             // 
             this.panel_addToCart.Controls.Add(this.tb_searchBox);
+            this.panel_addToCart.Controls.Add(this.ID);
             this.panel_addToCart.Controls.Add(this.lbl_addQuantity);
             this.panel_addToCart.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel_addToCart.Location = new System.Drawing.Point(0, 30);
@@ -86,11 +87,11 @@
             // ID
             // 
             this.ID.AutoSize = true;
-            this.ID.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ID.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ID.ForeColor = System.Drawing.Color.White;
-            this.ID.Location = new System.Drawing.Point(25, 110);
+            this.ID.Location = new System.Drawing.Point(329, 20);
             this.ID.Name = "ID";
-            this.ID.Size = new System.Drawing.Size(14, 16);
+            this.ID.Size = new System.Drawing.Size(30, 31);
             this.ID.TabIndex = 4;
             this.ID.Text = "#";
             // 
@@ -103,19 +104,19 @@
             this.lbl_addQuantity.Name = "lbl_addQuantity";
             this.lbl_addQuantity.Size = new System.Drawing.Size(265, 31);
             this.lbl_addQuantity.TabIndex = 4;
-            this.lbl_addQuantity.Text = "Add Stock Quantity";
+            this.lbl_addQuantity.Text = "Edit Stock Quantity";
             // 
-            // tb_addStockQuantity
+            // tb_editStockQuantity
             // 
-            this.tb_addStockQuantity.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.tb_addStockQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_addStockQuantity.Location = new System.Drawing.Point(28, 129);
-            this.tb_addStockQuantity.Name = "tb_addStockQuantity";
-            this.tb_addStockQuantity.Size = new System.Drawing.Size(200, 38);
-            this.tb_addStockQuantity.TabIndex = 1;
-            this.tb_addStockQuantity.Text = "1";
-            this.tb_addStockQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.tb_addStockQuantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_addQuantity_KeyPress);
+            this.tb_editStockQuantity.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.tb_editStockQuantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_editStockQuantity.Location = new System.Drawing.Point(28, 129);
+            this.tb_editStockQuantity.Name = "tb_editStockQuantity";
+            this.tb_editStockQuantity.Size = new System.Drawing.Size(200, 38);
+            this.tb_editStockQuantity.TabIndex = 1;
+            this.tb_editStockQuantity.Text = "1";
+            this.tb_editStockQuantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.tb_editStockQuantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_addQuantity_KeyPress);
             // 
             // btn_OK
             // 
@@ -130,7 +131,7 @@
             this.btn_OK.UseVisualStyleBackColor = false;
             this.btn_OK.Click += new System.EventHandler(this.btn_OK_Click);
             // 
-            // form_addStockQuantity
+            // form_editStockQuantity
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -138,13 +139,12 @@
             this.ClientSize = new System.Drawing.Size(394, 194);
             this.ControlBox = false;
             this.Controls.Add(this.btn_OK);
-            this.Controls.Add(this.ID);
-            this.Controls.Add(this.tb_addStockQuantity);
+            this.Controls.Add(this.tb_editStockQuantity);
             this.Controls.Add(this.panel_addToCart);
             this.Controls.Add(this.panel_addQuantityHead);
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Name = "form_addStockQuantity";
+            this.Name = "form_editStockQuantity";
             this.panel_addQuantityHead.ResumeLayout(false);
             this.panel_addToCart.ResumeLayout(false);
             this.panel_addToCart.PerformLayout();
@@ -160,8 +160,8 @@
         private System.Windows.Forms.Panel panel_addToCart;
         private System.Windows.Forms.TextBox tb_searchBox;
         private System.Windows.Forms.Label lbl_addQuantity;
-        private System.Windows.Forms.TextBox tb_addStockQuantity;
         private System.Windows.Forms.Button btn_OK;
         public System.Windows.Forms.Label ID;
+        public System.Windows.Forms.TextBox tb_editStockQuantity;
     }
 }

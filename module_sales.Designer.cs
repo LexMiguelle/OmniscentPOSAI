@@ -80,9 +80,9 @@
             this.tb_salesTotal.BackColor = System.Drawing.Color.Black;
             this.tb_salesTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_salesTotal.ForeColor = System.Drawing.Color.Lime;
-            this.tb_salesTotal.Location = new System.Drawing.Point(852, 8);
+            this.tb_salesTotal.Location = new System.Drawing.Point(734, 8);
             this.tb_salesTotal.Name = "tb_salesTotal";
-            this.tb_salesTotal.Size = new System.Drawing.Size(200, 53);
+            this.tb_salesTotal.Size = new System.Drawing.Size(318, 53);
             this.tb_salesTotal.TabIndex = 13;
             this.tb_salesTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 

@@ -21,8 +21,6 @@ namespace OmniscentPOSAI
         DataSet1 dataset = new DataSet1();
         SqlDataReader sql_datareader;
 
-        
-
         public printPreview_inventoryListReport()
         {
             InitializeComponent();

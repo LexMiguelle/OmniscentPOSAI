@@ -67,16 +67,7 @@ namespace OmniscentPOSAI
         // update product
         public void updateProduct()
         {
-            productCode = tb_categoryPrefix.Text + tb_productCode.Text;
-            getCategoryID();
-
-            sql_connect.Open();
-            sql_command = new SqlCommand("UPDATE tbl_products SET productCode = '" + productCode + "', productName = '" + tb_productName.Text + "', categoryID = " + categoryID + ", price = " + tb_price.Text + ", restock = " + tb_restock.Text + " WHERE productID LIKE '" + lbl_ID + "'", sql_connect);
-            sql_command.ExecuteNonQuery();
-            sql_connect.Close();
-
-            productsModule.LoadProducts();
-            MessageBox.Show("This product has been successfully updated", "Update Product: Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            
         }
 
         // update button click event
@@ -106,7 +97,7 @@ namespace OmniscentPOSAI
             sql_connect.Close();
             */
 
-            if (tb_productName.Text == string.Empty || tb_productCode.Text == string.Empty || tb_restock.Text == string.Empty || int.Parse(tb_productCode.Text.Length.ToString()) < 12 || double.Parse(tb_price.Text) <= 0.00)
+            if (string.IsNullOrWhiteSpace(tb_productName.Text) || string.IsNullOrWhiteSpace(tb_productCode.Text) || string.IsNullOrEmpty(tb_restock.Text) || int.Parse(tb_productCode.Text.Length.ToString()) < 12 || double.Parse(tb_price.Text) <= 0.00)
             {
               MessageBox.Show("Invalid input detected!", "Update Product: Invalid Input(s)", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
@@ -118,8 +109,17 @@ namespace OmniscentPOSAI
                     {
                         if (MessageBox.Show("Are you sure you want to edit this product?", "Update Product", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                         {
-                            updateProduct();
-                            this.Dispose();
+                        productCode = tb_categoryPrefix.Text + tb_productCode.Text;
+                        getCategoryID();
+
+                        sql_connect.Open();
+                        sql_command = new SqlCommand("UPDATE tbl_products SET productCode = '" + productCode + "', productName = '" + tb_productName.Text + "', categoryID = " + categoryID + ", price = " + tb_price.Text + ", restock = " + tb_restock.Text + " WHERE productID LIKE '" + lbl_ID.Text + "'", sql_connect);
+                        sql_command.ExecuteNonQuery();
+                        sql_connect.Close();
+
+                        productsModule.LoadProducts();
+                        MessageBox.Show("This product has been successfully updated", "Update Product: Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        this.Dispose();
                         }
                     }
                     else

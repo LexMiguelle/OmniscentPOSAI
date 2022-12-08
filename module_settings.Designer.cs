@@ -82,7 +82,7 @@
             this.btn_closeSettings.Location = new System.Drawing.Point(468, 0);
             this.btn_closeSettings.Name = "btn_closeSettings";
             this.btn_closeSettings.Size = new System.Drawing.Size(30, 28);
-            this.btn_closeSettings.TabIndex = 1;
+            this.btn_closeSettings.TabIndex = 8;
             this.btn_closeSettings.Text = "X";
             this.btn_closeSettings.UseVisualStyleBackColor = false;
             this.btn_closeSettings.Click += new System.EventHandler(this.btn_closeSettings_Click);
@@ -106,7 +106,7 @@
             this.btn_settingsLogout.Location = new System.Drawing.Point(288, 19);
             this.btn_settingsLogout.Name = "btn_settingsLogout";
             this.btn_settingsLogout.Size = new System.Drawing.Size(200, 40);
-            this.btn_settingsLogout.TabIndex = 6;
+            this.btn_settingsLogout.TabIndex = 7;
             this.btn_settingsLogout.Text = "Logout";
             this.btn_settingsLogout.UseVisualStyleBackColor = false;
             this.btn_settingsLogout.Click += new System.EventHandler(this.btn_settingsLogout_Click);
@@ -161,7 +161,7 @@
             this.btn_back.Location = new System.Drawing.Point(30, 444);
             this.btn_back.Name = "btn_back";
             this.btn_back.Size = new System.Drawing.Size(150, 30);
-            this.btn_back.TabIndex = 5;
+            this.btn_back.TabIndex = 6;
             this.btn_back.Text = "Back";
             this.btn_back.UseVisualStyleBackColor = false;
             this.btn_back.Click += new System.EventHandler(this.btn_back_Click);
@@ -173,7 +173,8 @@
             this.tb_userName.Name = "tb_userName";
             this.tb_userName.ReadOnly = true;
             this.tb_userName.Size = new System.Drawing.Size(200, 29);
-            this.tb_userName.TabIndex = 7;
+            this.tb_userName.TabIndex = 1;
+            this.tb_userName.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_settings_KeyPress);
             // 
             // lbl_confirmPassword
             // 
@@ -194,24 +195,33 @@
             this.tb_oldPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_oldPassword.Location = new System.Drawing.Point(233, 202);
             this.tb_oldPassword.Name = "tb_oldPassword";
+            this.tb_oldPassword.PasswordChar = '•';
             this.tb_oldPassword.Size = new System.Drawing.Size(200, 29);
-            this.tb_oldPassword.TabIndex = 7;
+            this.tb_oldPassword.TabIndex = 2;
+            this.tb_oldPassword.UseSystemPasswordChar = true;
+            this.tb_oldPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_settings_KeyPress);
             // 
             // tb_newPassword
             // 
             this.tb_newPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_newPassword.Location = new System.Drawing.Point(233, 247);
             this.tb_newPassword.Name = "tb_newPassword";
+            this.tb_newPassword.PasswordChar = '•';
             this.tb_newPassword.Size = new System.Drawing.Size(200, 29);
-            this.tb_newPassword.TabIndex = 7;
+            this.tb_newPassword.TabIndex = 3;
+            this.tb_newPassword.UseSystemPasswordChar = true;
+            this.tb_newPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_settings_KeyPress);
             // 
             // tb_confirmPassword
             // 
             this.tb_confirmPassword.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_confirmPassword.Location = new System.Drawing.Point(233, 291);
             this.tb_confirmPassword.Name = "tb_confirmPassword";
+            this.tb_confirmPassword.PasswordChar = '•';
             this.tb_confirmPassword.Size = new System.Drawing.Size(200, 29);
-            this.tb_confirmPassword.TabIndex = 7;
+            this.tb_confirmPassword.TabIndex = 4;
+            this.tb_confirmPassword.UseSystemPasswordChar = true;
+            this.tb_confirmPassword.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_settings_KeyPress);
             // 
             // btn_updatePassword
             // 
@@ -221,7 +231,7 @@
             this.btn_updatePassword.Location = new System.Drawing.Point(233, 339);
             this.btn_updatePassword.Name = "btn_updatePassword";
             this.btn_updatePassword.Size = new System.Drawing.Size(200, 40);
-            this.btn_updatePassword.TabIndex = 6;
+            this.btn_updatePassword.TabIndex = 5;
             this.btn_updatePassword.Text = "Update";
             this.btn_updatePassword.UseVisualStyleBackColor = false;
             this.btn_updatePassword.Click += new System.EventHandler(this.btn_updatePassword_Click);
