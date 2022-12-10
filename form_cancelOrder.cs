@@ -26,11 +26,13 @@ namespace OmniscentPOSAI
             sql_connect = new SqlConnection(db_connect.DBConnection());
             cb_action.Text = "Return to Inventory";
             cashierSalesForm = cashierSales;
+            username.Text = cashierSalesForm.username.Text;
         }
 
         private void btn_closeCancelOrder_Click(object sender, EventArgs e)
         {
             this.Dispose();
+            cashierSalesForm.Show();
         }
 
         public void reloadSales()
@@ -52,6 +54,7 @@ namespace OmniscentPOSAI
                     {
                         form_voidCode voidCode = new form_voidCode(this);
                         voidCode.ShowDialog();
+                        this.Hide();
                     }
                     else
                     {

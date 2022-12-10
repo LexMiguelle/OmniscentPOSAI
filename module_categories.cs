@@ -13,10 +13,10 @@ namespace OmniscentPOSAI
 {
     public partial class module_categories : Form
     {
-        SqlConnection sql_connect;
-        SqlCommand sql_command;
-        SqlDataReader sql_datareader;
+        SqlConnection sql_connect = new SqlConnection();
+        SqlCommand sql_command = new SqlCommand();
         DBConnector db_connect = new DBConnector();
+        SqlDataReader sql_datareader;
 
         String catID;
         
@@ -112,6 +112,22 @@ namespace OmniscentPOSAI
             int i = dgv_categories.CurrentRow.Index;
             catID = dgv_categories[1, i].Value.ToString();
             lbl_catID.Text = catID;
+        }
+
+        private void searchCategory_TextChanged(object sender, EventArgs e)
+        {
+            int i = 0;
+
+            dgv_categories.Rows.Clear();
+            sql_connect.Open();
+            sql_command = new SqlCommand("SELECT * FROM tbl_categories WHERE categoryName LIKE '%" + searchCategory.Text + "%'", sql_connect);
+            sql_datareader = sql_command.ExecuteReader();
+            while (sql_datareader.Read())
+            {
+                i++;
+                dgv_categories.Rows.Add(i, sql_datareader[0].ToString(), sql_datareader[1].ToString(), sql_datareader[2].ToString());
+            }
+            sql_connect.Close();
         }
     }
 }

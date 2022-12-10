@@ -28,10 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel_cashierSalesHead = new System.Windows.Forms.Panel();
             this.btn_closeCashierSales = new System.Windows.Forms.Button();
             this.panel_cashierSales = new System.Windows.Forms.Panel();
@@ -41,7 +41,7 @@
             this.lbl_to = new System.Windows.Forms.Label();
             this.lbl_from = new System.Windows.Forms.Label();
             this.lbl_dateFilter = new System.Windows.Forms.Label();
-            this.testMe = new System.Windows.Forms.Label();
+            this.username = new System.Windows.Forms.Label();
             this.lbl_cashierSales = new System.Windows.Forms.Label();
             this.dgv_cashierSales = new System.Windows.Forms.DataGridView();
             this.cashierSales_num = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -93,7 +93,7 @@
             this.panel_cashierSales.Controls.Add(this.lbl_to);
             this.panel_cashierSales.Controls.Add(this.lbl_from);
             this.panel_cashierSales.Controls.Add(this.lbl_dateFilter);
-            this.panel_cashierSales.Controls.Add(this.testMe);
+            this.panel_cashierSales.Controls.Add(this.username);
             this.panel_cashierSales.Controls.Add(this.lbl_cashierSales);
             this.panel_cashierSales.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel_cashierSales.Location = new System.Drawing.Point(0, 30);
@@ -158,19 +158,19 @@
             this.lbl_dateFilter.TabIndex = 1;
             this.lbl_dateFilter.Text = "Date Filter:";
             // 
-            // testMe
+            // username
             // 
-            this.testMe.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.username.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left)));
-            this.testMe.AutoSize = true;
-            this.testMe.BackColor = System.Drawing.Color.Transparent;
-            this.testMe.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.testMe.ForeColor = System.Drawing.Color.White;
-            this.testMe.Location = new System.Drawing.Point(563, 20);
-            this.testMe.Name = "testMe";
-            this.testMe.Size = new System.Drawing.Size(87, 31);
-            this.testMe.TabIndex = 0;
-            this.testMe.Text = "Sales";
+            this.username.AutoSize = true;
+            this.username.BackColor = System.Drawing.Color.Transparent;
+            this.username.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.username.ForeColor = System.Drawing.Color.White;
+            this.username.Location = new System.Drawing.Point(563, 20);
+            this.username.Name = "username";
+            this.username.Size = new System.Drawing.Size(87, 31);
+            this.username.TabIndex = 0;
+            this.username.Text = "Sales";
             // 
             // lbl_cashierSales
             // 
@@ -193,14 +193,14 @@
             this.dgv_cashierSales.AllowUserToResizeRows = false;
             this.dgv_cashierSales.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgv_cashierSales.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_cashierSales.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_cashierSales.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
             this.dgv_cashierSales.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_cashierSales.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.cashierSales_num,
@@ -213,14 +213,14 @@
             this.cashierSales_discount,
             this.cashierSales_total,
             this.cashierSales_cancel});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv_cashierSales.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv_cashierSales.DefaultCellStyle = dataGridViewCellStyle6;
             this.dgv_cashierSales.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv_cashierSales.EnableHeadersVisualStyles = false;
             this.dgv_cashierSales.GridColor = System.Drawing.Color.Black;
@@ -228,20 +228,20 @@
             this.dgv_cashierSales.MultiSelect = false;
             this.dgv_cashierSales.Name = "dgv_cashierSales";
             this.dgv_cashierSales.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_cashierSales.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_cashierSales.RowHeadersDefaultCellStyle = dataGridViewCellStyle7;
             this.dgv_cashierSales.RowHeadersVisible = false;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
-            this.dgv_cashierSales.RowsDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle8.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle8.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.Color.Black;
+            this.dgv_cashierSales.RowsDefaultCellStyle = dataGridViewCellStyle8;
             this.dgv_cashierSales.RowTemplate.DefaultCellStyle.BackColor = System.Drawing.Color.White;
             this.dgv_cashierSales.RowTemplate.DefaultCellStyle.ForeColor = System.Drawing.Color.Black;
             this.dgv_cashierSales.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
@@ -265,7 +265,6 @@
             this.cashierSales_ID.HeaderText = "ID";
             this.cashierSales_ID.Name = "cashierSales_ID";
             this.cashierSales_ID.Visible = false;
-            this.cashierSales_ID.Width = 42;
             // 
             // cashierSales_transactionNo
             // 
@@ -359,7 +358,6 @@
         private System.Windows.Forms.Label lbl_from;
         private System.Windows.Forms.Label lbl_dateFilter;
         private System.Windows.Forms.TextBox tb_totalSales;
-        private System.Windows.Forms.Label testMe;
         private System.Windows.Forms.DataGridViewTextBoxColumn cashierSales_num;
         private System.Windows.Forms.DataGridViewTextBoxColumn cashierSales_ID;
         private System.Windows.Forms.DataGridViewTextBoxColumn cashierSales_transactionNo;
@@ -370,5 +368,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn cashierSales_discount;
         private System.Windows.Forms.DataGridViewTextBoxColumn cashierSales_total;
         private System.Windows.Forms.DataGridViewImageColumn cashierSales_cancel;
+        public System.Windows.Forms.Label username;
     }
 }

@@ -359,7 +359,7 @@ namespace OmniscentPOSAI
                     SqlStatement("UPDATE tbl_products SET quantity = (quantity - " + int.Parse(tb_quantity.Text) + ") WHERE productID LIKE '" + tb_productID.Text + "'");
                 }
                 
-                SqlStatement ("INSERT INTO tbl_manageStocks(referenceNo, productID, quantity, action, remarks, stockDate) VALUES ('" + tb_refNo.Text + "','" + tb_productID.Text + "','" + int.Parse(tb_quantity.Text) + "','" + cb_action.Text + "','" + tb_stockRemarks.Text + "','" + DateTime.Now.ToString("yyyy-MM-dd") + "')");
+                SqlStatement ("INSERT INTO tbl_manageStocks(referenceNo, productID, quantity, action, remarks, stockDate, modifiedBy) VALUES ('" + tb_refNo.Text + "','" + tb_productID.Text + "','" + int.Parse(tb_quantity.Text) + "','" + cb_action.Text + "','" + tb_stockRemarks.Text + "','" + DateTime.Now.ToString("yyyy-MM-dd") + "', '" + user.Text + "')");
                 MessageBox.Show("Stocks have been successfully modified", "Manage Stocks", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                 LoadManageStocks();

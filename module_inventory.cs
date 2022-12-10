@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Threading;
 using Tulpep.NotificationWindow;
+using System.Web.Security;
 
 namespace OmniscentPOSAI
 {
@@ -21,6 +22,10 @@ namespace OmniscentPOSAI
         SqlDataReader sql_datareader;
 
         module_login loginModule;
+        module_cashier cashierModule;
+
+        String activity = "";
+        
 
         public module_inventory(module_login login)
         {
@@ -29,6 +34,20 @@ namespace OmniscentPOSAI
             sql_connect = new SqlConnection(db_connect.DBConnection());
             loginModule = login;
             notifyCriticalItems();
+        }
+
+        public void LogActivity()
+        {
+            String role = tb_role.Text;
+
+            sql_connect.Open();
+            sql_command = new SqlCommand("INSERT INTO tbl_activity (username, role, activity, datetime) VALUES (@username, @role, @activity, @datetime)", sql_connect);
+            sql_command.Parameters.AddWithValue("@username", tb_username.Text);
+            sql_command.Parameters.AddWithValue("@role", role);
+            sql_command.Parameters.AddWithValue("@activity", activity);
+            sql_command.Parameters.AddWithValue("@datetime", DateTime.Now.ToString());
+            sql_command.ExecuteNonQuery();
+            sql_connect.Close();
         }
 
         public void notifyCriticalItems()
@@ -104,7 +123,7 @@ namespace OmniscentPOSAI
             stocks.TopLevel = false;
             panel_activity.Controls.Add(stocks);
             stocks.BringToFront();
-            stocks.lbl_stockedBy.Text = tb_name.Text;
+            stocks.user.Text = tb_name.Text;
             stocks.cb_status.Text = "Done";
             stocks.LoadStocks();
             stocks.LoadAddProducts();
@@ -123,7 +142,6 @@ namespace OmniscentPOSAI
             panel_activity.Controls.Add(records);
             records.LoadStockHistory();
             records.LoadCashiers();
-            records.cb_cashierName.Text = "All Cashiers";
             records.LoadCriticalStocks();
             records.LoadInventory();
             records.LoadReturnedItems();
@@ -157,6 +175,8 @@ namespace OmniscentPOSAI
         // logout button event
         private void btn_logout_Click(object sender, EventArgs e)
         {
+            activity = "Logged out";
+            LogActivity();
             this.Dispose();
             loginModule.Show();
         }
@@ -176,6 +196,13 @@ namespace OmniscentPOSAI
                 return;
             }
             
+        }
+
+        private void pb_logo_Click(object sender, EventArgs e)
+        {
+            module_cashier cashierModule = new module_cashier(this);
+            this.Hide();
+            cashierModule.Show();
         }
     }
 }

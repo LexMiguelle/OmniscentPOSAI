@@ -28,9 +28,12 @@ namespace OmniscentPOSAI
         DBConnector db_connect = new DBConnector();
 
         module_login loginModule;
+        module_inventory inventoryModule;
 
         int quantity;
-        
+        private module_cashier cashierModule;
+
+
         // init
         public module_cashier(module_login login)
         {
@@ -42,6 +45,24 @@ namespace OmniscentPOSAI
             btn_scanProductCode.Enabled = false;
             loginModule = login;
             notifyCriticalItems();
+        }
+
+        public module_cashier(module_inventory inventory)
+        {
+            inventoryModule = inventory;
+            InitializeComponent();
+            sql_connect = new SqlConnection(db_connect.DBConnection());
+            this.tb_name.Text = inventoryModule.tb_name.Text;
+            this.tb_username.Text = inventoryModule.tb_username.Text;
+            this.tb_role.Text = inventoryModule.tb_role.Text;
+        }
+
+        public void getInfo(String name, String role, String username)
+        {
+            name = tb_name.Text;
+            role = tb_role.Text;
+            username = tb_role.Text;
+
         }
 
         public void notifyCriticalItems()
@@ -234,6 +255,7 @@ namespace OmniscentPOSAI
             form_cashierSales cashierSales = new form_cashierSales(this);
             cashierSales.LoadCashierSales();
             cashierSales.ShowDialog();
+            
         }
 
         // settings button event
@@ -552,6 +574,17 @@ namespace OmniscentPOSAI
             {
                 e.Handled = true;
             }
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            if (tb_role.Text != "cashier")
+            {
+                this.Dispose();
+                inventoryModule.Show();
+            }
+            
+            
         }
     }
 }

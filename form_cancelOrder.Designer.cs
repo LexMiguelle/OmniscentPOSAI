@@ -61,6 +61,8 @@
             this.panel_cancelDetails = new System.Windows.Forms.Panel();
             this.lbl_cancelDetails = new System.Windows.Forms.Label();
             this.transactionID = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.username = new System.Windows.Forms.Label();
             this.panel_cancelOrderHead.SuspendLayout();
             this.panel_cancelOrder.SuspendLayout();
             this.panel_itemDetails.SuspendLayout();
@@ -95,6 +97,7 @@
             // panel_cancelOrder
             // 
             this.panel_cancelOrder.Controls.Add(this.tb_searchBox);
+            this.panel_cancelOrder.Controls.Add(this.username);
             this.panel_cancelOrder.Controls.Add(this.lbl_cancelOrder);
             this.panel_cancelOrder.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel_cancelOrder.Location = new System.Drawing.Point(0, 30);
@@ -420,6 +423,28 @@
             this.transactionID.TabIndex = 4;
             this.transactionID.Text = "#";
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(725, 120);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(19, 20);
+            this.label1.TabIndex = 4;
+            this.label1.Text = "#";
+            // 
+            // username
+            // 
+            this.username.AutoSize = true;
+            this.username.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.username.ForeColor = System.Drawing.Color.White;
+            this.username.Location = new System.Drawing.Point(233, 31);
+            this.username.Name = "username";
+            this.username.Size = new System.Drawing.Size(19, 20);
+            this.username.TabIndex = 4;
+            this.username.Text = "#";
+            // 
             // form_cancelOrder
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -428,6 +453,7 @@
             this.ClientSize = new System.Drawing.Size(770, 472);
             this.ControlBox = false;
             this.Controls.Add(this.panel_cancelDetails);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.transactionID);
             this.Controls.Add(this.panel_itemDetails);
             this.Controls.Add(this.btn_cancelOrder);
@@ -486,5 +512,7 @@
         public System.Windows.Forms.TextBox tb_cancelQuantity;
         private System.Windows.Forms.Label lbl_discount;
         public System.Windows.Forms.TextBox tb_discount;
+        public System.Windows.Forms.Label username;
+        public System.Windows.Forms.Label label1;
     }
 }

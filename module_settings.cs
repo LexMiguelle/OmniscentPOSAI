@@ -15,18 +15,36 @@ namespace OmniscentPOSAI
 {
     public partial class module_settings : Form
     {
-        SqlConnection sql_connect;
-        SqlCommand sql_command;
+        SqlConnection sql_connect = new SqlConnection();
+        SqlCommand sql_command = new SqlCommand();
         SqlDataReader sql_datareader;
         DBConnector db_connect = new DBConnector();
 
         module_cashier cashierModule;
+
+        String role = "";
+        String activity = "";
 
         public module_settings(module_cashier cashier)
         {
             InitializeComponent();
             sql_connect = new SqlConnection(db_connect.DBConnection());
             cashierModule = cashier;
+            checkRole();
+        }
+
+        public void checkRole()
+        {
+            if (cashierModule.tb_role.Text == "cashier")
+            {
+                btn_settingsLogout.Visible = true;
+                btn_settingsLogout.Show();
+            }
+            else
+            {
+                btn_settingsLogout.Visible = false;
+                btn_settingsLogout.Hide();
+            }
         }
 
         // update button event
@@ -46,15 +64,6 @@ namespace OmniscentPOSAI
 
             if (tb_oldPassword.Text == oldPass)
             {
-                
-                
-                
-                
-                
-                
-                
-                
-                
                 if (tb_newPassword.Text != tb_confirmPassword.Text)
                 {
                     MessageBox.Show("Your new password does not match your confirmpassowrd");
@@ -67,9 +76,9 @@ namespace OmniscentPOSAI
                 {
                     MessageBox.Show("Empty textbox detected", "Change Password: Empty Textbox detected!", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 }
-                else if (tb_newPassword.Text.Length < 6)
+                else if (tb_newPassword.Text.Length < 8 || tb_newPassword.Text.Length > 16)
                 {
-                    MessageBox.Show("Your password is too short!", "Change Password: Short Password", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    MessageBox.Show("Your password must have 8 to 16 characters", "Change Password: Weak Password", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 }
                 
                 else
@@ -102,17 +111,34 @@ namespace OmniscentPOSAI
             this.Dispose();
         }
 
+        // Log Activity
+        public void LogActivity()
+        {
+            role = cashierModule.tb_role.Text;
+
+            sql_connect.Open();
+            sql_command = new SqlCommand("INSERT INTO tbl_activity (username, role, activity, datetime) VALUES (@username, @role, @activity, @datetime)", sql_connect);
+            sql_command.Parameters.AddWithValue("@username", tb_userName.Text);
+            sql_command.Parameters.AddWithValue("@role", role);
+            sql_command.Parameters.AddWithValue("@activity", activity);
+            sql_command.Parameters.AddWithValue("@datetime", DateTime.Now.ToString());
+            sql_command.ExecuteNonQuery();
+            sql_connect.Close();
+        }
+
         // logout button event
         private void btn_settingsLogout_Click(object sender, EventArgs e)
         {
             if (cashierModule.dgv_cart.Rows.Count > 0)
             {
-                MessageBox.Show("Please finish or cancel the transaction before logging out.", "Logout", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                MessageBox.Show("Please finish or cancel the transaction before logging out.", "Logout: Warning", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 return;
             } else
             {
-                if (MessageBox.Show("Logout from the application?", "Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                if (MessageBox.Show("Logout from the application?", "Logout: Prompt", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
+                    activity = "Logged out";
+                    LogActivity();
                     this.Dispose();
                     cashierModule.cashierLogout();
                 }

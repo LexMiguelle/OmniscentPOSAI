@@ -73,42 +73,16 @@ namespace OmniscentPOSAI
         // update button click event
         private void btn_update_Click(object sender, EventArgs e)
         {
-            /*
-            bool hasRows = false;
-            productCode = tb_categoryPrefix.Text + tb_productCode.Text;
-
-            sql_connect.Open();
-            sql_command = new SqlCommand("SELECT productID FROM tbl_products WHERE productName = @productName OR productCode = @productCode", sql_connect);
-            sql_command.Parameters.AddWithValue("@productName", tb_productName.Text);
-            sql_command.Parameters.AddWithValue("@productCode", productCode);
-            sql_datareader = sql_command.ExecuteReader();
-            sql_datareader.Read();
-
-            if (sql_datareader.HasRows)
-            {
-                hasRows = true;
-                productID = sql_datareader["productID"].ToString();
-            }
-            else
-            {
-                hasRows = false;
-            }
-            sql_datareader.Close();
-            sql_connect.Close();
-            */
-
             if (string.IsNullOrWhiteSpace(tb_productName.Text) || string.IsNullOrWhiteSpace(tb_productCode.Text) || string.IsNullOrEmpty(tb_restock.Text) || int.Parse(tb_productCode.Text.Length.ToString()) < 12 || double.Parse(tb_price.Text) <= 0.00)
             {
-              MessageBox.Show("Invalid input detected!", "Update Product: Invalid Input(s)", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Invalid input detected!", "Update Product: Invalid Input(s)", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
             else
             {
-                //if (hasRows == true)
-                //{
-                    if (lbl_productCodeID.Text == lbl_ID.Text && lbl_productNameID.Text == lbl_ID.Text)
+                if (lbl_productCodeID.Text == lbl_ID.Text && lbl_productNameID.Text == lbl_ID.Text)
+                {
+                    if (MessageBox.Show("Are you sure you want to edit this product?", "Update Product", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                     {
-                        if (MessageBox.Show("Are you sure you want to edit this product?", "Update Product", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                        {
                         productCode = tb_categoryPrefix.Text + tb_productCode.Text;
                         getCategoryID();
 
@@ -120,28 +94,12 @@ namespace OmniscentPOSAI
                         productsModule.LoadProducts();
                         MessageBox.Show("This product has been successfully updated", "Update Product: Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         this.Dispose();
-                        }
                     }
-                    else
-                    {
-                        MessageBox.Show("Duplicate input detected!", "Update Product: Duplicate Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-                /*}
-                //else
-                //{
-                    if (lbl_productCodeID.Text == lbl_ID.Text && lbl_productNameID.Text == lbl_ID.Text)
-                    {
-                        if (MessageBox.Show("Are you sure you want to edit this product?", "Update Product", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                        {
-                            updateProduct();
-                            this.Dispose();
-                        }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Duplicate input detected!", "Update Product: Duplicate Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                    }
-                }*/
+                }
+                else
+                {
+                    MessageBox.Show("Duplicate input detected!", "Update Product: Duplicate Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
         }
 

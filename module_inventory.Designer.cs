@@ -43,8 +43,8 @@ namespace OmniscentPOSAI
             this.btn_products = new System.Windows.Forms.Button();
             this.btn_categories = new System.Windows.Forms.Button();
             this.btn_dashboard = new System.Windows.Forms.Button();
-            this.pb_logo = new System.Windows.Forms.PictureBox();
             this.panel_activity = new System.Windows.Forms.Panel();
+            this.pb_logo = new System.Windows.Forms.PictureBox();
             this.panel_head.SuspendLayout();
             this.panel_menu.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pb_logo)).BeginInit();
@@ -271,6 +271,14 @@ namespace OmniscentPOSAI
             this.btn_dashboard.UseVisualStyleBackColor = true;
             this.btn_dashboard.Click += new System.EventHandler(this.btn_dashboard_Click);
             // 
+            // panel_activity
+            // 
+            this.panel_activity.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_activity.Location = new System.Drawing.Point(300, 30);
+            this.panel_activity.Name = "panel_activity";
+            this.panel_activity.Size = new System.Drawing.Size(1064, 736);
+            this.panel_activity.TabIndex = 2;
+            // 
             // pb_logo
             // 
             this.pb_logo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -283,14 +291,7 @@ namespace OmniscentPOSAI
             this.pb_logo.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pb_logo.TabIndex = 0;
             this.pb_logo.TabStop = false;
-            // 
-            // panel_activity
-            // 
-            this.panel_activity.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel_activity.Location = new System.Drawing.Point(300, 30);
-            this.panel_activity.Name = "panel_activity";
-            this.panel_activity.Size = new System.Drawing.Size(1064, 736);
-            this.panel_activity.TabIndex = 2;
+            this.pb_logo.Click += new System.EventHandler(this.pb_logo_Click);
             // 
             // module_inventory
             // 

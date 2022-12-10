@@ -21,12 +21,62 @@ namespace OmniscentPOSAI
 
         form_cancelOrder cancelOrderForm;
 
+        bool hasRows = false;
+        String voidCode = "";
+        String username = "";
+        String userRole = "";
+
         public form_voidCode(form_cancelOrder cancelOrder)
         {
             InitializeComponent();
             sql_connect = new SqlConnection(db_connect.DBConnection());
 
             cancelOrderForm = cancelOrder;
+            getUserInfo();
+            getVoidCode();
+        }
+
+        public void getUserInfo()
+        {
+            username = cancelOrderForm.username.Text;
+
+            sql_connect.Open();
+            sql_command = new SqlCommand("SELECT role FROM tbl_users WHERE username = '" + username + "'", sql_connect);
+            sql_datareader = sql_command.ExecuteReader();
+            while (sql_datareader.Read())
+            {
+                userRole = sql_datareader["role"].ToString();
+            }
+            sql_datareader.Close();
+            sql_connect.Close();
+        }
+
+        public void getVoidCode()
+        {
+            getUserInfo();
+            sql_connect.Open();
+            sql_command = new SqlCommand("SELECT * FROM tbl_users WHERE username = @username AND role NOT LIKE 'cashier'", sql_connect);
+            sql_command.Parameters.AddWithValue("@username", tb_voidBy.Text);
+            sql_datareader = sql_command.ExecuteReader();
+            sql_datareader.Read();
+
+            if (sql_datareader.HasRows)
+            {
+                hasRows = true;
+                voidCode = sql_datareader["voidCode"].ToString();
+            }
+            else
+            {
+                hasRows = false;
+            }
+            sql_datareader.Close();
+            sql_connect.Close();
+
+            if (userRole != "cashier")
+            {
+                tb_voidBy.Text = username.ToString();
+                tb_voidCode.Text = voidCode;
+            }
         }
 
         private void btn_OK_Click(object sender, EventArgs e)
@@ -37,27 +87,6 @@ namespace OmniscentPOSAI
             }
             else
             {
-                bool hasRows = false;
-                string voidCode = "";
-
-                sql_connect.Open();
-                sql_command = new SqlCommand("SELECT * FROM tbl_users WHERE username = @username AND role NOT LIKE 'cashier'", sql_connect);
-                sql_command.Parameters.AddWithValue("@username", tb_voidBy.Text);
-                sql_datareader = sql_command.ExecuteReader();
-                sql_datareader.Read();
-                
-                if (sql_datareader.HasRows)
-                {
-                    hasRows = true;
-                    voidCode = sql_datareader["voidCode"].ToString();
-                }
-                else
-                {
-                    hasRows = false;
-                }
-                sql_datareader.Close();
-                sql_connect.Close();
-
                 if (hasRows == true)
                 {
                     if (tb_voidCode.Text == voidCode)
@@ -141,6 +170,7 @@ namespace OmniscentPOSAI
         private void btn_voidCodeClose_Click(object sender, EventArgs e)
         {
             this.Dispose();
+            cancelOrderForm.Show();
         }
 
         private void tb_voidCode_KeyPress(object sender, KeyPressEventArgs e)

@@ -14,6 +14,8 @@ namespace OmniscentPOSAI
         DBConnector db_connect = new DBConnector();
         SqlDataReader sql_datareader;
 
+        String role = "";
+        String activity = "";
         int attempt;
         int count;
 
@@ -27,6 +29,19 @@ namespace OmniscentPOSAI
         {
             attempt = 0;
             
+        }
+
+        public void LogActivity()
+        {
+            sql_connect.Open();
+            sql_command = new SqlCommand("INSERT INTO tbl_activity (username, role, activity, datetime) VALUES (@username, @role, @activity, @datetime)", sql_connect);
+
+            sql_command.Parameters.AddWithValue("@username", tb_username.Text);
+            sql_command.Parameters.AddWithValue("@role", role);
+            sql_command.Parameters.AddWithValue("@activity", activity);
+            sql_command.Parameters.AddWithValue("@datetime", DateTime.Now.ToString());
+            sql_command.ExecuteNonQuery();
+            sql_connect.Close();
         }
 
         private void loginTimer_Tick(object sender, EventArgs e)
@@ -68,11 +83,8 @@ namespace OmniscentPOSAI
             string _lastName = "";
             string _firstName = "";
 
-            
-
             try
             {
-                
                 bool found = false;
 
                 sql_connect.Open();
@@ -103,6 +115,9 @@ namespace OmniscentPOSAI
                     if (_role == "administrator")
                     {
                         MessageBox.Show("Welcome back " + _firstName + " " + _lastName + "!", "Access Granted", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        activity = "Logged In";
+                        role = _role;
+                        LogActivity();
                         tb_username.Clear();
                         tb_password.Clear();
                         this.Hide();
@@ -117,6 +132,8 @@ namespace OmniscentPOSAI
                     else if (_role == "cashier")
                     {
                         MessageBox.Show("Welcome " + _firstName + " " + _lastName + "!", "Access Granted", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        activity = "Logged In";
+                        LogActivity();
                         tb_username.Clear();
                         tb_password.Clear();
                         this.Hide();
@@ -130,6 +147,8 @@ namespace OmniscentPOSAI
                     else if (_role == "manager")
                     {
                         MessageBox.Show("Welcome " + _firstName + " " + _lastName + "!", "Access Granted", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        activity = "Logged In";
+                        LogActivity();
                         tb_username.Clear();
                         tb_password.Clear();
                         this.Hide();
@@ -138,23 +157,29 @@ namespace OmniscentPOSAI
                         inventory.tb_name.Text = _lastName + ", " + _firstName;
                         inventory.tb_username.Text = _username;
                         inventory.tb_role.Text = _role;
+                        
                         inventory.ShowDialog();
+                        
 
                     }
                     else
                     {
                         MessageBox.Show("Invalid User!", "LOGIN", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        
                         this.Dispose();
                     }
                 }
                 else
                 {
                     MessageBox.Show("Invalid username/password\nPlease try again.", "Access Denied", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    activity = "Invalid User Input";
+                    LogActivity();
                     tb_username.Clear();
                     tb_password.Clear();
                     tb_username.Focus();
                     attempt++;
                     disableLogin();
+                    
                 }
             }
             catch (Exception except)

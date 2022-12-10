@@ -43,7 +43,7 @@ namespace OmniscentPOSAI
                 sql_command.Parameters.AddWithValue("@productID", ID.Text);
                 sql_command.Parameters.AddWithValue("@stockDate", stocksModule.dtp_date.Value);
                 sql_command.Parameters.AddWithValue("@quantity", tb_addStockQuantity.Text);
-                sql_command.Parameters.AddWithValue("@stockedBy", stocksModule.lbl_stockedBy.Text);
+                sql_command.Parameters.AddWithValue("@stockedBy", stocksModule.user.Text);
                 sql_command.ExecuteNonQuery();
                 sql_connect.Close();
                 stocksModule.LoadAddStock();

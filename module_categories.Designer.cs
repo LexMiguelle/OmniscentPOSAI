@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.dgv_categories = new System.Windows.Forms.DataGridView();
             this.categories_num = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.categories_ID = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -42,6 +42,7 @@
             this.panel_head = new System.Windows.Forms.Panel();
             this.btn_addCategory = new System.Windows.Forms.LinkLabel();
             this.lbl_catID = new System.Windows.Forms.Label();
+            this.searchCategory = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_categories)).BeginInit();
             this.panel_head.SuspendLayout();
             this.SuspendLayout();
@@ -56,14 +57,14 @@
             this.dgv_categories.BackgroundColor = System.Drawing.SystemColors.ControlDarkDark;
             this.dgv_categories.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgv_categories.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_categories.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_categories.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgv_categories.ColumnHeadersHeight = 25;
             this.dgv_categories.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.categories_num,
@@ -72,14 +73,14 @@
             this.categories_categoryPrefix,
             this.categories_edit,
             this.categories_delete});
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgv_categories.DefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgv_categories.DefaultCellStyle = dataGridViewCellStyle5;
             this.dgv_categories.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv_categories.EnableHeadersVisualStyles = false;
             this.dgv_categories.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
@@ -87,14 +88,14 @@
             this.dgv_categories.MultiSelect = false;
             this.dgv_categories.Name = "dgv_categories";
             this.dgv_categories.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Sunken;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_categories.RowHeadersDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_categories.RowHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.dgv_categories.RowHeadersVisible = false;
             this.dgv_categories.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgv_categories.Size = new System.Drawing.Size(1064, 661);
@@ -173,6 +174,7 @@
             // 
             // panel_head
             // 
+            this.panel_head.Controls.Add(this.searchCategory);
             this.panel_head.Controls.Add(this.btn_addCategory);
             this.panel_head.Controls.Add(this.lbl_catID);
             this.panel_head.Controls.Add(this.lbl_categories);
@@ -187,7 +189,7 @@
             this.btn_addCategory.AutoSize = true;
             this.btn_addCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_addCategory.LinkColor = System.Drawing.Color.White;
-            this.btn_addCategory.Location = new System.Drawing.Point(885, 29);
+            this.btn_addCategory.Location = new System.Drawing.Point(653, 25);
             this.btn_addCategory.Name = "btn_addCategory";
             this.btn_addCategory.Size = new System.Drawing.Size(114, 20);
             this.btn_addCategory.TabIndex = 1;
@@ -205,6 +207,15 @@
             this.lbl_catID.Size = new System.Drawing.Size(30, 31);
             this.lbl_catID.TabIndex = 0;
             this.lbl_catID.Text = "#";
+            // 
+            // searchCategory
+            // 
+            this.searchCategory.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.searchCategory.Location = new System.Drawing.Point(785, 19);
+            this.searchCategory.Name = "searchCategory";
+            this.searchCategory.Size = new System.Drawing.Size(250, 29);
+            this.searchCategory.TabIndex = 2;
+            this.searchCategory.TextChanged += new System.EventHandler(this.searchCategory_TextChanged);
             // 
             // module_categories
             // 
@@ -237,5 +248,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn categories_categoryPrefix;
         private System.Windows.Forms.DataGridViewImageColumn categories_edit;
         private System.Windows.Forms.DataGridViewImageColumn categories_delete;
+        private System.Windows.Forms.TextBox searchCategory;
     }
 }

@@ -22,7 +22,7 @@ namespace OmniscentPOSAI
 
         module_cashier cashierModule;
 
-        string userCashier;
+        public string userCashier = "";
 
         public form_cashierSales(module_cashier cashier)
         {
@@ -30,7 +30,7 @@ namespace OmniscentPOSAI
             sql_connect = new SqlConnection(db_connect.DBConnection());
             LoadCashierSales();
             cashierModule = cashier;
-            testMe.Text = cashierModule.tb_username.Text;
+            username.Text = cashierModule.tb_username.Text;
             userCashier = cashierModule.tb_name.Text.ToString();
         }
 
@@ -74,7 +74,9 @@ namespace OmniscentPOSAI
                 cancelOrder.tb_discount.Text = dgv_cashierSales.Rows[e.RowIndex].Cells[7].Value.ToString();
                 cancelOrder.tb_total.Text = dgv_cashierSales.Rows[e.RowIndex].Cells[8].Value.ToString();
                 cancelOrder.tb_cancelledBy.Text = cashierModule.tb_name.Text;
+                this.Hide();
                 cancelOrder.ShowDialog();
+                
             }
         }
 

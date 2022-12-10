@@ -20,18 +20,20 @@ namespace OmniscentPOSAI
         SqlCommand sql_command = new SqlCommand();
         DBConnector db_connect = new DBConnector();
         SqlDataReader sql_datareader;
-        Bitmap stockHistory;
+
+        String name;
 
         public module_records()
         {
             InitializeComponent();
             sql_connect = new SqlConnection(db_connect.DBConnection());
-
+            cb_cashierName.Text = "All Cashiers";
         }
 
         private void module_records_Load(object sender, EventArgs e)
         {
             LoadCashiers();
+            LoadManagers();
         }
 
         // Top Selling tab
@@ -273,6 +275,22 @@ namespace OmniscentPOSAI
             cancelledOrdersReport.ShowDialog();
         }
 
+        public void LoadManagers()
+        {
+            cb_modifiedBy.Items.Clear();
+            cb_modifiedBy.Items.Add("All Managers");
+            sql_connect.Open();
+            sql_command = new SqlCommand("SELECT LastName, FirstName from tbl_users WHERE NOT role = 'cashier'", sql_connect);
+            sql_datareader = sql_command.ExecuteReader();
+            while(sql_datareader.Read())
+            {
+                name = sql_datareader["lastName"].ToString() + ", " + sql_datareader["firstName"].ToString();
+                cb_modifiedBy.Items.Add(name);
+            }
+            sql_datareader.Close();
+            sql_connect.Close();
+        }
+
         // Stock History
         // load stocks to Stock History
         public void LoadStockHistory()
@@ -283,7 +301,15 @@ namespace OmniscentPOSAI
 
             dgv_stockHistory.Rows.Clear();
             sql_connect.Open();
-            sql_command = new SqlCommand("SELECT * FROM view_stockOverview WHERE stockDate BETWEEN '" + dateMin + "' AND '" + dateMax + "' AND status LIKE 'Done'", sql_connect);
+            if (cb_modifiedBy.Text == "All Managers")
+            {
+                sql_command = new SqlCommand("SELECT * FROM view_stockHistory WHERE (stockDate BETWEEN '" + dateMin + "' AND '" + dateMax + "')", sql_connect);
+            }
+            else
+            {
+                sql_command = new SqlCommand("SELECT * FROM view_stockHistory WHERE (stockDate BETWEEN '" + dateMin + "' AND '" + dateMax + "') AND modifiedBy = '" + cb_modifiedBy.Text + "'", sql_connect);
+            }
+
             sql_datareader = sql_command.ExecuteReader();
             while (sql_datareader.Read())
             {
@@ -300,6 +326,12 @@ namespace OmniscentPOSAI
             LoadStockHistory();
         }
 
+        // cb_managers value changed
+        private void cb_modifiedBy_SelectedValueChanged(object sender, EventArgs e)
+        {
+            LoadStockHistory();
+        }
+
         // printStockHistory button click event
         private void btn_printStockHistory_Click(object sender, EventArgs e)
         {
@@ -308,6 +340,5 @@ namespace OmniscentPOSAI
             stockHistoryReport.ShowDialog();
         }
 
-        
     }
 }
