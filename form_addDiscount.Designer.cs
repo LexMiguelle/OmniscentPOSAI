@@ -273,7 +273,7 @@
             this.Controls.Add(this.panel_addDiscountHead);
             this.ForeColor = System.Drawing.Color.White;
             this.Name = "form_addDiscount";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.panel_addDiscountHead.ResumeLayout(false);
             this.panel_checkPrice.ResumeLayout(false);
             this.panel_checkPrice.PerformLayout();

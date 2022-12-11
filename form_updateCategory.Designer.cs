@@ -177,6 +177,7 @@
             this.Controls.Add(this.panel_head);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "form_updateCategory";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "form_addCategory";
             this.panel_head.ResumeLayout(false);
             this.panel_head.PerformLayout();

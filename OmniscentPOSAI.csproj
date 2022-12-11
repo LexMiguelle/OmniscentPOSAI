@@ -16,6 +16,23 @@
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
     <TargetFrameworkProfile />
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>C:\Users\kyamegel\Downloads\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <AutorunEnabled>true</AutorunEnabled>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -38,6 +55,18 @@
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>omniscent_icon.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>08D90E9CD48C484F139F3FC621E1B57F7D46F09A</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>OmniscentPOSAI_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="CairoSharp, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -272,12 +301,6 @@
     <Compile Include="module_cashier.Designer.cs">
       <DependentUpon>module_cashier.cs</DependentUpon>
     </Compile>
-    <Compile Include="module_manager.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="module_manager.Designer.cs">
-      <DependentUpon>module_manager.cs</DependentUpon>
-    </Compile>
     <Compile Include="module_records.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -406,9 +429,6 @@
     <EmbeddedResource Include="module_cashier.resx">
       <DependentUpon>module_cashier.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="module_manager.resx">
-      <DependentUpon>module_manager.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="module_records.resx">
       <DependentUpon>module_records.cs</DependentUpon>
     </EmbeddedResource>
@@ -468,6 +488,7 @@
     <None Include="DataSet1.xss">
       <DependentUpon>DataSet1.xsd</DependentUpon>
     </None>
+    <None Include="OmniscentPOSAI_TemporaryKey.pfx" />
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -512,6 +533,18 @@
     <None Include="Resources\omniscent_24.png" />
     <None Include="Resources\omniscent_32.png" />
     <None Include="Resources\omniscent_16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.7.1">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.7.1 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

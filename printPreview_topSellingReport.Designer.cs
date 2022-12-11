@@ -92,6 +92,7 @@
             this.Controls.Add(this.panel_inventoryListReportHead);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "printPreview_topSellingReport";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel_inventoryListReportHead.ResumeLayout(false);
             this.panel_inventoryListReportHead.PerformLayout();

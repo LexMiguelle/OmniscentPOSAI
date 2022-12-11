@@ -34,6 +34,26 @@ namespace OmniscentPOSAI
             sql_connect = new SqlConnection(db_connect.DBConnection());
             loginModule = login;
             notifyCriticalItems();
+            
+        }
+
+        private void module_inventory_Load(object sender, EventArgs e)
+        {
+            checkRole();
+        }
+
+        public void checkRole()
+        {
+            if (tb_role.Text == "manager")
+            {
+                btn_users.Visible = false;
+                btn_users.Hide();
+            }
+            else
+            {
+                btn_users.Visible = true;
+                btn_users.Show();
+            }
         }
 
         public void LogActivity()
@@ -204,5 +224,7 @@ namespace OmniscentPOSAI
             this.Hide();
             cashierModule.Show();
         }
+
+        
     }
 }

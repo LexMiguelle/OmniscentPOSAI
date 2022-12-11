@@ -31,6 +31,8 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(form_settleTransaction));
             this.panel_settleTransactionHead = new System.Windows.Forms.Panel();
             this.btn_settleTransaction = new System.Windows.Forms.Button();
+            this.transactionNo = new System.Windows.Forms.Label();
+            this.lbl_transactionNo = new System.Windows.Forms.Label();
             this.lbl_settleTransaction = new System.Windows.Forms.Label();
             this.panel_settleTransaction = new System.Windows.Forms.Panel();
             this.tb_searchBox = new System.Windows.Forms.TextBox();
@@ -55,8 +57,6 @@
             this.btn_dot = new System.Windows.Forms.Button();
             this.btn_deleteLast = new System.Windows.Forms.Button();
             this.btn_clearAmountPaid = new System.Windows.Forms.Button();
-            this.transactionNo = new System.Windows.Forms.Label();
-            this.lbl_transactionNo = new System.Windows.Forms.Label();
             this.panel_settleTransactionHead.SuspendLayout();
             this.panel_settleTransaction.SuspendLayout();
             this.SuspendLayout();
@@ -87,6 +87,28 @@
             this.btn_settleTransaction.Text = "X";
             this.btn_settleTransaction.UseVisualStyleBackColor = false;
             this.btn_settleTransaction.Click += new System.EventHandler(this.btn_exitSettleTransaction_Click);
+            // 
+            // transactionNo
+            // 
+            this.transactionNo.AutoSize = true;
+            this.transactionNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.transactionNo.ForeColor = System.Drawing.Color.White;
+            this.transactionNo.Location = new System.Drawing.Point(117, 6);
+            this.transactionNo.Name = "transactionNo";
+            this.transactionNo.Size = new System.Drawing.Size(91, 16);
+            this.transactionNo.TabIndex = 4;
+            this.transactionNo.Text = "000000000000";
+            // 
+            // lbl_transactionNo
+            // 
+            this.lbl_transactionNo.AutoSize = true;
+            this.lbl_transactionNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_transactionNo.ForeColor = System.Drawing.Color.White;
+            this.lbl_transactionNo.Location = new System.Drawing.Point(5, 6);
+            this.lbl_transactionNo.Name = "lbl_transactionNo";
+            this.lbl_transactionNo.Size = new System.Drawing.Size(106, 16);
+            this.lbl_transactionNo.TabIndex = 4;
+            this.lbl_transactionNo.Text = "Tramsaction No.";
             // 
             // lbl_settleTransaction
             // 
@@ -428,28 +450,6 @@
             this.btn_clearAmountPaid.UseVisualStyleBackColor = false;
             this.btn_clearAmountPaid.Click += new System.EventHandler(this.btn_clearAmountPaid_Click);
             // 
-            // transactionNo
-            // 
-            this.transactionNo.AutoSize = true;
-            this.transactionNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.transactionNo.ForeColor = System.Drawing.Color.White;
-            this.transactionNo.Location = new System.Drawing.Point(117, 6);
-            this.transactionNo.Name = "transactionNo";
-            this.transactionNo.Size = new System.Drawing.Size(91, 16);
-            this.transactionNo.TabIndex = 4;
-            this.transactionNo.Text = "000000000000";
-            // 
-            // lbl_transactionNo
-            // 
-            this.lbl_transactionNo.AutoSize = true;
-            this.lbl_transactionNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_transactionNo.ForeColor = System.Drawing.Color.White;
-            this.lbl_transactionNo.Location = new System.Drawing.Point(5, 6);
-            this.lbl_transactionNo.Name = "lbl_transactionNo";
-            this.lbl_transactionNo.Size = new System.Drawing.Size(106, 16);
-            this.lbl_transactionNo.TabIndex = 4;
-            this.lbl_transactionNo.Text = "Tramsaction No.";
-            // 
             // form_settleTransaction
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -482,6 +482,7 @@
             this.Controls.Add(this.panel_settleTransactionHead);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "form_settleTransaction";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.panel_settleTransactionHead.ResumeLayout(false);
             this.panel_settleTransactionHead.PerformLayout();
             this.panel_settleTransaction.ResumeLayout(false);

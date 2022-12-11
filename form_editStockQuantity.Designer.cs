@@ -145,6 +145,7 @@
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "form_editStockQuantity";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.panel_addQuantityHead.ResumeLayout(false);
             this.panel_addToCart.ResumeLayout(false);
             this.panel_addToCart.PerformLayout();

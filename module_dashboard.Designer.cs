@@ -28,12 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.panel_head = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -63,12 +63,12 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.chart_sales = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.dgv_dashboardTop = new System.Windows.Forms.DataGridView();
             this.top_num = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.top_productName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.top_quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.chart_sales = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.panel_head.SuspendLayout();
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -80,9 +80,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel_topSell.SuspendLayout();
             this.panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_dashboardTop)).BeginInit();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.chart_sales)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_dashboardTop)).BeginInit();
             this.SuspendLayout();
             // 
             // panel_head
@@ -223,6 +223,7 @@
             this.totalCriticalStocks.TabIndex = 5;
             this.totalCriticalStocks.Text = "0";
             this.totalCriticalStocks.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.totalCriticalStocks.Click += new System.EventHandler(this.totalCriticalStocks_Click);
             // 
             // label14
             // 
@@ -419,32 +420,6 @@
             this.panel2.Size = new System.Drawing.Size(350, 420);
             this.panel2.TabIndex = 0;
             // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.chart_sales);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 200);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(664, 536);
-            this.panel1.TabIndex = 2;
-            // 
-            // chart_sales
-            // 
-            chartArea1.Name = "ChartArea1";
-            this.chart_sales.ChartAreas.Add(chartArea1);
-            this.chart_sales.Dock = System.Windows.Forms.DockStyle.Fill;
-            legend1.Name = "Legend1";
-            this.chart_sales.Legends.Add(legend1);
-            this.chart_sales.Location = new System.Drawing.Point(0, 0);
-            this.chart_sales.Name = "chart_sales";
-            series1.ChartArea = "ChartArea1";
-            series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart_sales.Series.Add(series1);
-            this.chart_sales.Size = new System.Drawing.Size(664, 536);
-            this.chart_sales.TabIndex = 0;
-            this.chart_sales.Text = "chart1";
-            // 
             // dgv_dashboardTop
             // 
             this.dgv_dashboardTop.AllowUserToAddRows = false;
@@ -509,7 +484,33 @@
             this.top_quantity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.top_quantity.HeaderText = "SOLD QUANTITY";
             this.top_quantity.Name = "top_quantity";
-            this.top_quantity.Width = 109;
+            this.top_quantity.Width = 108;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.chart_sales);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 200);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(664, 536);
+            this.panel1.TabIndex = 2;
+            // 
+            // chart_sales
+            // 
+            chartArea1.Name = "ChartArea1";
+            this.chart_sales.ChartAreas.Add(chartArea1);
+            this.chart_sales.Dock = System.Windows.Forms.DockStyle.Fill;
+            legend1.Name = "Legend1";
+            this.chart_sales.Legends.Add(legend1);
+            this.chart_sales.Location = new System.Drawing.Point(0, 0);
+            this.chart_sales.Name = "chart_sales";
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            this.chart_sales.Series.Add(series1);
+            this.chart_sales.Size = new System.Drawing.Size(664, 536);
+            this.chart_sales.TabIndex = 0;
+            this.chart_sales.Text = "chart1";
             // 
             // module_dashboard
             // 
@@ -523,6 +524,7 @@
             this.Controls.Add(this.panel_head);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "module_dashboard";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.panel_head.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
@@ -539,9 +541,9 @@
             this.panel_topSell.ResumeLayout(false);
             this.panel_topSell.PerformLayout();
             this.panel2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dgv_dashboardTop)).EndInit();
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.chart_sales)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dgv_dashboardTop)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -269,6 +269,7 @@
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "module_products";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "module_products";
             this.Load += new System.EventHandler(this.module_products_Load);
             this.panel_head.ResumeLayout(false);

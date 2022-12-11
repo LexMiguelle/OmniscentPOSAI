@@ -257,6 +257,7 @@
             this.Controls.Add(this.panel_stocksHead);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "module_settings";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.panel_stocksHead.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();

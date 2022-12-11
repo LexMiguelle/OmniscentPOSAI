@@ -268,7 +268,7 @@
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "form_addProduct";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "form_addProduct";
             this.Load += new System.EventHandler(this.form_addProduct_Load);
             this.panel_head.ResumeLayout(false);

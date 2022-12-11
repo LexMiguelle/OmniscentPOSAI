@@ -43,6 +43,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel_stocksHead = new System.Windows.Forms.Panel();
             this.lbl_stocks = new System.Windows.Forms.Label();
+            this.user = new System.Windows.Forms.Label();
             this.tb_searchBar = new System.Windows.Forms.TextBox();
             this.tc_stocks = new System.Windows.Forms.TabControl();
             this.tp_overView = new System.Windows.Forms.TabPage();
@@ -79,7 +80,6 @@
             this.addProducts_add = new System.Windows.Forms.DataGridViewImageColumn();
             this.cid = new System.Windows.Forms.Label();
             this.lbl_pid = new System.Windows.Forms.Label();
-            this.user = new System.Windows.Forms.Label();
             this.lbl_date = new System.Windows.Forms.Label();
             this.lbl_referenceNo = new System.Windows.Forms.Label();
             this.dgv_addStocks = new System.Windows.Forms.DataGridView();
@@ -151,6 +151,17 @@
             this.lbl_stocks.Size = new System.Drawing.Size(103, 31);
             this.lbl_stocks.TabIndex = 0;
             this.lbl_stocks.Text = "Stocks";
+            // 
+            // user
+            // 
+            this.user.AutoSize = true;
+            this.user.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.user.ForeColor = System.Drawing.Color.White;
+            this.user.Location = new System.Drawing.Point(934, 26);
+            this.user.Name = "user";
+            this.user.Size = new System.Drawing.Size(103, 24);
+            this.user.TabIndex = 0;
+            this.user.Text = "username";
             // 
             // tb_searchBar
             // 
@@ -623,17 +634,6 @@
             this.lbl_pid.Size = new System.Drawing.Size(21, 24);
             this.lbl_pid.TabIndex = 0;
             this.lbl_pid.Text = "#";
-            // 
-            // user
-            // 
-            this.user.AutoSize = true;
-            this.user.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.user.ForeColor = System.Drawing.Color.White;
-            this.user.Location = new System.Drawing.Point(934, 26);
-            this.user.Name = "user";
-            this.user.Size = new System.Drawing.Size(103, 24);
-            this.user.TabIndex = 0;
-            this.user.Text = "username";
             // 
             // lbl_date
             // 
@@ -1122,6 +1122,7 @@
             this.Controls.Add(this.panel_stocksHead);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "module_stocks";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "module_products";
             this.panel_stocksHead.ResumeLayout(false);
             this.panel_stocksHead.PerformLayout();

@@ -338,6 +338,7 @@
             this.Controls.Add(this.panel_salesHead);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "module_sales";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "module_sales";
             this.panel_salesHead.ResumeLayout(false);
             this.panel_salesHead.PerformLayout();

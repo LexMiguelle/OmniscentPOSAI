@@ -81,7 +81,7 @@
             this.rv_receipt.Size = new System.Drawing.Size(460, 611);
             this.rv_receipt.TabIndex = 2;
             // 
-            // form_receipt
+            // printPreview_receipt
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -91,7 +91,8 @@
             this.Controls.Add(this.rv_receipt);
             this.Controls.Add(this.panel_checkPriceHead);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Name = "form_receipt";
+            this.Name = "printPreview_receipt";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Load += new System.EventHandler(this.form_receipt_Load);
             this.panel_checkPriceHead.ResumeLayout(false);
             this.panel_checkPriceHead.PerformLayout();

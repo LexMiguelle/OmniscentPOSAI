@@ -32,8 +32,8 @@
             this.panel_addQuantityHead = new System.Windows.Forms.Panel();
             this.panel_addToCart = new System.Windows.Forms.Panel();
             this.tb_searchBox = new System.Windows.Forms.TextBox();
-            this.ID = new System.Windows.Forms.Label();
             this.lbl_addQuantity = new System.Windows.Forms.Label();
+            this.ID = new System.Windows.Forms.Label();
             this.tb_addStockQuantity = new System.Windows.Forms.TextBox();
             this.btn_OK = new System.Windows.Forms.Button();
             this.panel_addQuantityHead.SuspendLayout();
@@ -83,17 +83,6 @@
             this.tb_searchBox.Size = new System.Drawing.Size(0, 29);
             this.tb_searchBox.TabIndex = 5;
             // 
-            // ID
-            // 
-            this.ID.AutoSize = true;
-            this.ID.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ID.ForeColor = System.Drawing.Color.White;
-            this.ID.Location = new System.Drawing.Point(25, 110);
-            this.ID.Name = "ID";
-            this.ID.Size = new System.Drawing.Size(14, 16);
-            this.ID.TabIndex = 4;
-            this.ID.Text = "#";
-            // 
             // lbl_addQuantity
             // 
             this.lbl_addQuantity.AutoSize = true;
@@ -104,6 +93,17 @@
             this.lbl_addQuantity.Size = new System.Drawing.Size(265, 31);
             this.lbl_addQuantity.TabIndex = 4;
             this.lbl_addQuantity.Text = "Add Stock Quantity";
+            // 
+            // ID
+            // 
+            this.ID.AutoSize = true;
+            this.ID.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.ID.ForeColor = System.Drawing.Color.White;
+            this.ID.Location = new System.Drawing.Point(25, 110);
+            this.ID.Name = "ID";
+            this.ID.Size = new System.Drawing.Size(14, 16);
+            this.ID.TabIndex = 4;
+            this.ID.Text = "#";
             // 
             // tb_addStockQuantity
             // 
@@ -145,6 +145,7 @@
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "form_addStockQuantity";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.panel_addQuantityHead.ResumeLayout(false);
             this.panel_addToCart.ResumeLayout(false);
             this.panel_addToCart.PerformLayout();

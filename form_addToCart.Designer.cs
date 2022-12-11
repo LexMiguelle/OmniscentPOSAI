@@ -247,6 +247,7 @@
             this.Controls.Add(this.panel_addToCartHead);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "form_addToCart";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.panel_addToCartHead.ResumeLayout(false);
             this.panel_addToCart.ResumeLayout(false);
             this.panel_addToCart.PerformLayout();

@@ -502,7 +502,7 @@ namespace OmniscentPOSAI
         {
             int i = dgv_cart.CurrentRow.Index;
             transactionID = dgv_cart[1, i].Value.ToString();
-            prc = dgv_cart[6, i].Value.ToString();
+            prc = dgv_cart[9, i].Value.ToString();
         }
 
         // close button event

@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel_head = new System.Windows.Forms.Panel();
+            this.lbl_pcodeLength = new System.Windows.Forms.Label();
             this.lbl_pcode = new System.Windows.Forms.Label();
             this.lbl_ID = new System.Windows.Forms.Label();
             this.lbl_updateProduct = new System.Windows.Forms.Label();
@@ -50,7 +51,6 @@
             this.lbl_restock = new System.Windows.Forms.Label();
             this.tb_restock = new System.Windows.Forms.TextBox();
             this.tb_ID = new System.Windows.Forms.TextBox();
-            this.lbl_pcodeLength = new System.Windows.Forms.Label();
             this.panel_head.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -65,6 +65,17 @@
             this.panel_head.Name = "panel_head";
             this.panel_head.Size = new System.Drawing.Size(630, 75);
             this.panel_head.TabIndex = 4;
+            // 
+            // lbl_pcodeLength
+            // 
+            this.lbl_pcodeLength.AutoSize = true;
+            this.lbl_pcodeLength.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbl_pcodeLength.ForeColor = System.Drawing.Color.White;
+            this.lbl_pcodeLength.Location = new System.Drawing.Point(496, 19);
+            this.lbl_pcodeLength.Name = "lbl_pcodeLength";
+            this.lbl_pcodeLength.Size = new System.Drawing.Size(30, 31);
+            this.lbl_pcodeLength.TabIndex = 0;
+            this.lbl_pcodeLength.Text = "#";
             // 
             // lbl_pcode
             // 
@@ -288,17 +299,6 @@
             this.tb_ID.TabIndex = 16;
             this.tb_ID.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_productID_KeyPress);
             // 
-            // lbl_pcodeLength
-            // 
-            this.lbl_pcodeLength.AutoSize = true;
-            this.lbl_pcodeLength.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_pcodeLength.ForeColor = System.Drawing.Color.White;
-            this.lbl_pcodeLength.Location = new System.Drawing.Point(496, 19);
-            this.lbl_pcodeLength.Name = "lbl_pcodeLength";
-            this.lbl_pcodeLength.Size = new System.Drawing.Size(30, 31);
-            this.lbl_pcodeLength.TabIndex = 0;
-            this.lbl_pcodeLength.Text = "#";
-            // 
             // form_updateProduct
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -327,7 +327,7 @@
             this.ForeColor = System.Drawing.Color.White;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "form_updateProduct";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "form_updateProduct";
             this.panel_head.ResumeLayout(false);
             this.panel_head.PerformLayout();

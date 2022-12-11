@@ -102,5 +102,15 @@ namespace OmniscentPOSAI
             sql_datareader.Close();
             sql_connect.Close();
         }
+
+        private void totalCriticalStocks_Click(object sender, EventArgs e)
+        {   /*
+            Panel.
+            dashboard.TopLevel = false;
+            panel_activity.Controls.Add(dashboard);
+            dashboard.BringToFront();
+            dashboard.Show();
+            */
+        }
     }
 }

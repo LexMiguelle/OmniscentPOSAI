@@ -81,7 +81,7 @@
             this.rv_topSelling.Size = new System.Drawing.Size(794, 964);
             this.rv_topSelling.TabIndex = 4;
             // 
-            // printPreview_topSellingReport
+            // printPreview_criticalStocksReport
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -91,7 +91,8 @@
             this.Controls.Add(this.rv_topSelling);
             this.Controls.Add(this.panel_inventoryListReportHead);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
-            this.Name = "printPreview_topSellingReport";
+            this.Name = "printPreview_criticalStocksReport";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Load += new System.EventHandler(this.Form1_Load);
             this.panel_inventoryListReportHead.ResumeLayout(false);
             this.panel_inventoryListReportHead.PerformLayout();
