@@ -104,13 +104,8 @@ namespace OmniscentPOSAI
         }
 
         private void totalCriticalStocks_Click(object sender, EventArgs e)
-        {   /*
-            Panel.
-            dashboard.TopLevel = false;
-            panel_activity.Controls.Add(dashboard);
-            dashboard.BringToFront();
-            dashboard.Show();
-            */
+        {
+            // btn_stocks_Click(sender, e);
         }
     }
 }

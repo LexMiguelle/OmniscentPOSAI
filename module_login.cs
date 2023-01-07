@@ -127,7 +127,7 @@ namespace OmniscentPOSAI
                         inventory.tb_username.Text = _username;
                         inventory.tb_role.Text = _role;
                         inventory.ShowDialog();
-                        
+
                     }
                     else if (_role == "cashier")
                     {

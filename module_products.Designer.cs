@@ -46,6 +46,7 @@
             this.col_price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_quantity = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_restock = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_active = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_edit = new System.Windows.Forms.DataGridViewImageColumn();
             this.col_delete = new System.Windows.Forms.DataGridViewImageColumn();
             this.panel_head.SuspendLayout();
@@ -136,6 +137,7 @@
             this.col_price,
             this.col_quantity,
             this.col_restock,
+            this.col_active,
             this.col_edit,
             this.col_delete});
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -236,6 +238,14 @@
             this.col_restock.Name = "col_restock";
             this.col_restock.Width = 82;
             // 
+            // col_active
+            // 
+            this.col_active.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
+            this.col_active.FillWeight = 90.14085F;
+            this.col_active.HeaderText = "ACTIVE";
+            this.col_active.Name = "col_active";
+            this.col_active.Width = 82;
+            // 
             // col_edit
             // 
             this.col_edit.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
@@ -252,9 +262,9 @@
             // 
             this.col_delete.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
             this.col_delete.HeaderText = "";
-            this.col_delete.Image = global::OmniscentPOSAI.Properties.Resources.trash_16;
+            this.col_delete.Image = global::OmniscentPOSAI.Properties.Resources.cross_small_16;
             this.col_delete.MinimumWidth = 30;
-            this.col_delete.Name = "col_delete";
+            this.col_delete.Name = "col_deactivate";
             this.col_delete.Width = 30;
             // 
             // module_products
@@ -294,6 +304,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn col_price;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_quantity;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_restock;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_active;
         private System.Windows.Forms.DataGridViewImageColumn col_edit;
         private System.Windows.Forms.DataGridViewImageColumn col_delete;
         private System.Windows.Forms.Label lbl_prodID;

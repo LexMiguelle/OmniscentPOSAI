@@ -20,6 +20,7 @@ namespace OmniscentPOSAI
 
         module_categories categoryModule;
 
+        string defpre = "";
         public form_addCategory(module_categories categories)
         {
             InitializeComponent();
@@ -111,6 +112,26 @@ namespace OmniscentPOSAI
             if (!char.IsLetterOrDigit(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar) && !char.IsControl(e.KeyChar))
             {
                 e.Handled = true;
+            }
+        }
+
+        // tb_categoryPrefix AutoGenerate
+        public void tb_categoryPrefix_GotFocus(object sender, EventArgs e)
+        {
+            string defpre = tb_addCategory.Text;
+            char[] defP = defpre.ToCharArray();
+            int index = 0;
+            string[] words = defpre.Split(' ');
+            if (words.Length == 1)
+            {
+                tb_categoryPrefix.Text = defP[0].ToString() + defP[defpre.Length - 1];
+            }
+            else
+            {
+                for(index = 0; defP[index] != ' '; index++)
+                {
+                    tb_categoryPrefix.Text = defP[0].ToString() + defP[index+2];
+                }
             }
         }
 

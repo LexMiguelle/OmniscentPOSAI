@@ -24,6 +24,7 @@ namespace OmniscentPOSAI
         int categoryID = 0;
         string productCode = string.Empty;
         string productID = string.Empty;
+        internal object tb_active;
 
         public form_updateProduct(module_products products)
         {

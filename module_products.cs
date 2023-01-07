@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data.SqlClient;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace OmniscentPOSAI
@@ -29,15 +30,30 @@ namespace OmniscentPOSAI
         public void LoadProducts()
         {
             int id = 0;
-
+            string actStatus = "";
             dgv_products.Rows.Clear();
             sql_connect.Open();
-            sql_command = new SqlCommand("SELECT x.productID, x.productCode, x.productName, y.categoryName, x.price, x.quantity, x.restock FROM tbl_products AS x INNER JOIN tbl_categories AS y ON y.categoryID = x.categoryID WHERE x.productName LIKE '%" + tb_search.Text + "%'", sql_connect);
+            sql_command = new SqlCommand("SELECT x.productID, x.productCode, x.productName, y.categoryName, x.price, x.quantity, x.restock, x.active FROM tbl_products AS x INNER JOIN tbl_categories AS y ON y.categoryID = x.categoryID WHERE x.productName LIKE '%" + tb_search.Text + "%'", sql_connect);
             sql_datareader = sql_command.ExecuteReader();
             while (sql_datareader.Read())
             {
                 id++;
-                dgv_products.Rows.Add(id, sql_datareader[0].ToString(), sql_datareader[1].ToString(), sql_datareader[2].ToString(), sql_datareader[3].ToString(), sql_datareader[4].ToString(), sql_datareader[5].ToString(), sql_datareader[6].ToString());
+                if (sql_datareader[7].ToString() == "True")
+                {
+                    if (sql_datareader[5].ToString() == "0")
+                    {
+                        actStatus = "Inactive";
+                    }
+                    else
+                    {
+                        actStatus = "Active";
+                    }
+                }
+                else
+                {
+                    actStatus = "Inactive";
+                }
+                dgv_products.Rows.Add(id, sql_datareader[0].ToString(), sql_datareader[1].ToString(), sql_datareader[2].ToString(), sql_datareader[3].ToString(), sql_datareader[4].ToString(), sql_datareader[5].ToString(), sql_datareader[6].ToString(), actStatus.ToString());
             }
             sql_datareader.Close();
             sql_connect.Close();
@@ -80,9 +96,10 @@ namespace OmniscentPOSAI
                 updateProduct.cb_category.Text = dgv_products.Rows[e.RowIndex].Cells[4].Value.ToString();
                 updateProduct.tb_price.Text = dgv_products.Rows[e.RowIndex].Cells[5].Value.ToString();
                 updateProduct.tb_restock.Text = dgv_products.Rows[e.RowIndex].Cells[7].Value.ToString();
+                updateProduct.tb_active = dgv_products.Rows[e.RowIndex].Cells[8].Value.ToString();
                 updateProduct.ShowDialog();
             }
-            else if (col_name == "col_delete") //delete column event
+            else if (col_name == "col_deactivate") //activate and deactivate column event
             {
                 bool hasRows = false;
                 int i = dgv_products.CurrentRow.Index;
@@ -107,18 +124,31 @@ namespace OmniscentPOSAI
 
                 if (hasRows == true)
                 {
-                    MessageBox.Show("This product cannot be deleted.\nSelected product still contain stocks in the inventory.", "Delete Product", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+                    if (dgv_products[8, i].Value.ToString() == "Active")
+                    {
+                        if (MessageBox.Show("Selected product still contain stocks in the inventory. Deactivate Product?", "Deactivate Product", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        {
+                            sql_connect.Open();
+                            sql_command = new SqlCommand("UPDATE tbl_products SET active = 0 WHERE productID LIKE '" + dgv_products.Rows[e.RowIndex].Cells[1].Value.ToString() + "'", sql_connect);
+                            sql_command.ExecuteNonQuery();
+                            sql_connect.Close();
+                            LoadProducts();
+                        }
+                    } else
+                    {
+                        if (MessageBox.Show("Re-Activate Product?", "Activate Product", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                        {
+                            sql_connect.Open();
+                            sql_command = new SqlCommand("UPDATE tbl_products SET active = 1 WHERE productID LIKE '" + dgv_products.Rows[e.RowIndex].Cells[1].Value.ToString() + "'", sql_connect);
+                            sql_command.ExecuteNonQuery();
+                            sql_connect.Close();
+                            LoadProducts();
+                        }
+                    }
                 }
                 else
                 {
-                    if (MessageBox.Show("Delete this product?", "Delete Product", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
-                    {
-                        sql_connect.Open();
-                        sql_command = new SqlCommand("DELETE FROM tbl_products WHERE productID LIKE '" + dgv_products.Rows[e.RowIndex].Cells[1].Value.ToString() + "'", sql_connect);
-                        sql_command.ExecuteNonQuery();
-                        sql_connect.Close();
-                        LoadProducts();
-                    }
+                    MessageBox.Show("This product cannot be Activated.\nSelected product has no stocks in the inventory.", "Activate Product", MessageBoxButtons.OK, MessageBoxIcon.Stop);
                 }
             }
         }

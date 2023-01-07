@@ -34,12 +34,13 @@ namespace OmniscentPOSAI
             sql_connect = new SqlConnection(db_connect.DBConnection());
             loginModule = login;
             notifyCriticalItems();
-            
+
         }
 
         private void module_inventory_Load(object sender, EventArgs e)
         {
             checkRole();
+            btn_dashboard_Click(sender, e);
         }
 
         public void checkRole()

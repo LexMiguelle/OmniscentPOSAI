@@ -39,6 +39,7 @@ namespace OmniscentPOSAI
             {
                 sql_connect.Open();
                 sql_command = new SqlCommand("UPDATE tbl_addStock SET quantity = " + tb_editStockQuantity.Text + " WHERE ID = '" + ID.Text + "'", sql_connect);
+                sql_command = new SqlCommand("UPDATE tbl_products SET active = 1 WHERE ID = '" + ID.Text + "'", sql_connect);
                 sql_command.ExecuteNonQuery();
                 sql_connect.Close();
 

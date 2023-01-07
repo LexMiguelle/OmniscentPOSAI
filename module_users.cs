@@ -17,8 +17,8 @@ namespace OmniscentPOSAI
     {
         SqlConnection sql_connect = new SqlConnection();
         SqlCommand sql_command = new SqlCommand();
-        DBConnector db_connect = new DBConnector();
         SqlDataReader sql_datareader;
+        DBConnector db_connect = new DBConnector();
 
         module_inventory inventoryModule;
 
@@ -426,7 +426,7 @@ namespace OmniscentPOSAI
         public void LoadUsernameAS()
         {
             sql_connect.Open();
-            sql_command = new SqlCommand("SELECT usernam FROM tbl_users", sql_connect);
+            sql_command = new SqlCommand("SELECT username FROM tbl_users", sql_connect);
             sql_datareader = sql_command.ExecuteReader();
             while (sql_datareader.Read())
             {
@@ -530,13 +530,13 @@ namespace OmniscentPOSAI
         // Load Logs AL
         public void LoadLogsAL()
         {
-            string dateMin = dtp_logFrom.Value.ToString("yyyy-MM-dd 00:00:00");
-            string dateMax = dtp_logTo.Value.ToString("yyyy-MM-dd 23:59:59");
+            string dateMin = dtp_logFrom.Value.ToString("dd-MM-yyyy 00:00:00");
+            string dateMax = dtp_logTo.Value.ToString("dd-MM-yyyy 23:59:59");
             dgv_log.Rows.Clear();
             sql_connect.Open();
             if (cb_roleLog.Text == "All Roles")
             {
-                sql_command = new SqlCommand("SELECT * FROM tbl_activity WHERE (datetime BETWEEN '" + dateMin + "' AND '" + dateMax + "')", sql_connect);
+                sql_command = new SqlCommand("SELECT activityID, username, role, activity, datetime FROM tbl_activity WHERE (datetime BETWEEN '" + dateMin + "' AND '" + dateMax + "')", sql_connect);
                 cb_usernameLog.Enabled = false;
             }
             else
@@ -558,7 +558,7 @@ namespace OmniscentPOSAI
             sql_datareader = sql_command.ExecuteReader();
             while (sql_datareader.Read())
             {
-                dgv_log.Rows.Add(sql_datareader[0].ToString(), sql_datareader[1].ToString(), sql_datareader[2].ToString(), sql_datareader[3].ToString(), sql_datareader[4].ToString(), sql_datareader[5].ToString());
+                dgv_log.Rows.Add(sql_datareader[1].ToString(), sql_datareader[2].ToString(), sql_datareader[3].ToString(), sql_datareader[4].ToString());
             }
             sql_datareader.Close();
             sql_connect.Close();

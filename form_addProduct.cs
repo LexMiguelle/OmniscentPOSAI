@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Controls.Primitives;
 using System.Windows.Forms;
 
 namespace OmniscentPOSAI
@@ -31,13 +32,29 @@ namespace OmniscentPOSAI
         {
             tb_price.Text = "0.00";
             generateProductCode();
-            
+            generateproductID();
+
         }
 
         // generate product code function
         public void generateProductCode()
         {
             tb_productCode.Text = DateTime.Now.ToString("yyyyMMddHHmm");
+        }
+
+        //generate productID and restock level
+        public void generateproductID()
+        {
+            sql_connect.Open();
+            sql_command = new SqlCommand("SELECT MAX(productID) FROM tbl_products", sql_connect);
+            sql_datareader = sql_command.ExecuteReader();
+            sql_datareader.Read();
+            string lastIDResult = sql_datareader[0].ToString();
+            int lastID = Int16.Parse(lastIDResult.Trim('O', 'S')) + 1;
+            sql_datareader.Close();
+            sql_connect.Close();
+            tb_productID.Text = lastID.ToString();
+            tb_restock.Text = "50"; //restock level
         }
 
         // add dot to tb_price
@@ -189,13 +206,14 @@ namespace OmniscentPOSAI
                             sql_connect.Close();
 
                             sql_connect.Open();
-                            sql_command = new SqlCommand("INSERT INTO tbl_products (productID, productCode, productName, categoryID, price, restock) VALUES (@productID, @productCode, @productName, @categoryID, @price, @restock)", sql_connect);
+                            sql_command = new SqlCommand("INSERT INTO tbl_products (productID, productCode, productName, categoryID, price, restock, active) VALUES (@productID, @productCode, @productName, @categoryID, @price, @restock, @active)", sql_connect);
                             sql_command.Parameters.AddWithValue("@productID",  tb_ID.Text + tb_productID.Text);
                             sql_command.Parameters.AddWithValue("@productCode", tb_categoryPrefix.Text + tb_productCode.Text);
                             sql_command.Parameters.AddWithValue("@productName", tb_productName.Text);
                             sql_command.Parameters.AddWithValue("@categoryID", categoryID);
                             sql_command.Parameters.AddWithValue("@price", tb_price.Text);
                             sql_command.Parameters.AddWithValue("@restock", tb_restock.Text);
+                            sql_command.Parameters.AddWithValue("@active", 1);
                             sql_command.ExecuteNonQuery();
                             sql_connect.Close();
                             MessageBox.Show("A product has been successfully added");

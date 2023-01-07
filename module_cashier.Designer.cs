@@ -32,8 +32,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.panel_cashierHead = new System.Windows.Forms.Panel();
-            this.btn_close = new System.Windows.Forms.Button();
             this.panel_cashierInfo = new System.Windows.Forms.Panel();
             this.panel_dateTime = new System.Windows.Forms.Panel();
             this.lbl_date = new System.Windows.Forms.Label();
@@ -87,7 +85,6 @@
             this.cart_add = new System.Windows.Forms.DataGridViewImageColumn();
             this.cart_remove = new System.Windows.Forms.DataGridViewImageColumn();
             this.timer_clock = new System.Windows.Forms.Timer(this.components);
-            this.panel_cashierHead.SuspendLayout();
             this.panel_cashierInfo.SuspendLayout();
             this.panel_dateTime.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -99,30 +96,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgv_cart)).BeginInit();
             this.SuspendLayout();
             // 
-            // panel_cashierHead
-            // 
-            this.panel_cashierHead.Controls.Add(this.btn_close);
-            this.panel_cashierHead.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel_cashierHead.Location = new System.Drawing.Point(0, 0);
-            this.panel_cashierHead.Name = "panel_cashierHead";
-            this.panel_cashierHead.Size = new System.Drawing.Size(1366, 30);
-            this.panel_cashierHead.TabIndex = 1;
-            // 
-            // btn_close
-            // 
-            this.btn_close.BackColor = System.Drawing.Color.Red;
-            this.btn_close.Dock = System.Windows.Forms.DockStyle.Right;
-            this.btn_close.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
-            this.btn_close.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_close.ForeColor = System.Drawing.Color.White;
-            this.btn_close.Location = new System.Drawing.Point(1336, 0);
-            this.btn_close.Name = "btn_close";
-            this.btn_close.Size = new System.Drawing.Size(30, 30);
-            this.btn_close.TabIndex = 0;
-            this.btn_close.Text = "X";
-            this.btn_close.UseVisualStyleBackColor = false;
-            this.btn_close.Click += new System.EventHandler(this.btn_close_Click);
-            // 
             // panel_cashierInfo
             // 
             this.panel_cashierInfo.Controls.Add(this.panel_dateTime);
@@ -131,9 +104,10 @@
             this.panel_cashierInfo.Controls.Add(this.tb_name);
             this.panel_cashierInfo.Controls.Add(this.pictureBox1);
             this.panel_cashierInfo.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel_cashierInfo.Location = new System.Drawing.Point(0, 30);
+            this.panel_cashierInfo.Location = new System.Drawing.Point(0, 0);
+            this.panel_cashierInfo.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel_cashierInfo.Name = "panel_cashierInfo";
-            this.panel_cashierInfo.Size = new System.Drawing.Size(1366, 100);
+            this.panel_cashierInfo.Size = new System.Drawing.Size(1898, 154);
             this.panel_cashierInfo.TabIndex = 2;
             // 
             // panel_dateTime
@@ -141,18 +115,20 @@
             this.panel_dateTime.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
             this.panel_dateTime.Controls.Add(this.lbl_date);
             this.panel_dateTime.Controls.Add(this.lbl_time);
-            this.panel_dateTime.Location = new System.Drawing.Point(554, 12);
+            this.panel_dateTime.Location = new System.Drawing.Point(831, 18);
+            this.panel_dateTime.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel_dateTime.Name = "panel_dateTime";
-            this.panel_dateTime.Size = new System.Drawing.Size(800, 75);
+            this.panel_dateTime.Size = new System.Drawing.Size(1200, 115);
             this.panel_dateTime.TabIndex = 2;
             // 
             // lbl_date
             // 
             this.lbl_date.AutoSize = true;
             this.lbl_date.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_date.Location = new System.Drawing.Point(337, 28);
+            this.lbl_date.Location = new System.Drawing.Point(506, 43);
+            this.lbl_date.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_date.Name = "lbl_date";
-            this.lbl_date.Size = new System.Drawing.Size(445, 31);
+            this.lbl_date.Size = new System.Drawing.Size(662, 47);
             this.lbl_date.TabIndex = 7;
             this.lbl_date.Text = "Wednesday, September 30, 2022";
             // 
@@ -160,9 +136,10 @@
             // 
             this.lbl_time.AutoSize = true;
             this.lbl_time.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_time.Location = new System.Drawing.Point(13, 10);
+            this.lbl_time.Location = new System.Drawing.Point(20, 15);
+            this.lbl_time.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_time.Name = "lbl_time";
-            this.lbl_time.Size = new System.Drawing.Size(303, 55);
+            this.lbl_time.Size = new System.Drawing.Size(445, 82);
             this.lbl_time.TabIndex = 7;
             this.lbl_time.Text = "00:00:00 am";
             // 
@@ -172,9 +149,10 @@
             this.tb_username.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tb_username.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_username.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
-            this.tb_username.Location = new System.Drawing.Point(99, 46);
+            this.tb_username.Location = new System.Drawing.Point(148, 71);
+            this.tb_username.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tb_username.Name = "tb_username";
-            this.tb_username.Size = new System.Drawing.Size(227, 19);
+            this.tb_username.Size = new System.Drawing.Size(340, 28);
             this.tb_username.TabIndex = 2;
             this.tb_username.Text = "@username";
             this.tb_username.TextChanged += new System.EventHandler(this.tb_searchBox_TextChanged);
@@ -185,9 +163,10 @@
             this.tb_role.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tb_role.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_role.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(192)))), ((int)(((byte)(255)))));
-            this.tb_role.Location = new System.Drawing.Point(99, 71);
+            this.tb_role.Location = new System.Drawing.Point(148, 109);
+            this.tb_role.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tb_role.Name = "tb_role";
-            this.tb_role.Size = new System.Drawing.Size(219, 19);
+            this.tb_role.Size = new System.Drawing.Size(328, 28);
             this.tb_role.TabIndex = 2;
             this.tb_role.Text = "cashier";
             this.tb_role.TextChanged += new System.EventHandler(this.tb_searchBox_TextChanged);
@@ -198,9 +177,10 @@
             this.tb_name.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.tb_name.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_name.ForeColor = System.Drawing.Color.White;
-            this.tb_name.Location = new System.Drawing.Point(99, 12);
+            this.tb_name.Location = new System.Drawing.Point(148, 18);
+            this.tb_name.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tb_name.Name = "tb_name";
-            this.tb_name.Size = new System.Drawing.Size(310, 28);
+            this.tb_name.Size = new System.Drawing.Size(465, 41);
             this.tb_name.TabIndex = 2;
             this.tb_name.Text = "Last name, First name ";
             this.tb_name.TextChanged += new System.EventHandler(this.tb_searchBox_TextChanged);
@@ -208,9 +188,10 @@
             // pictureBox1
             // 
             this.pictureBox1.Image = global::OmniscentPOSAI.Properties.Resources.omniscent_128;
-            this.pictureBox1.Location = new System.Drawing.Point(12, 12);
+            this.pictureBox1.Location = new System.Drawing.Point(18, 18);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(75, 75);
+            this.pictureBox1.Size = new System.Drawing.Size(112, 115);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
@@ -226,9 +207,10 @@
             this.panel_buttonMenu.Controls.Add(this.btn_clearTransaction);
             this.panel_buttonMenu.Controls.Add(this.btn_newTransaction);
             this.panel_buttonMenu.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel_buttonMenu.Location = new System.Drawing.Point(0, 668);
+            this.panel_buttonMenu.Location = new System.Drawing.Point(0, 896);
+            this.panel_buttonMenu.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel_buttonMenu.Name = "panel_buttonMenu";
-            this.panel_buttonMenu.Size = new System.Drawing.Size(1366, 100);
+            this.panel_buttonMenu.Size = new System.Drawing.Size(1898, 154);
             this.panel_buttonMenu.TabIndex = 3;
             // 
             // btn_settleTransaction
@@ -238,9 +220,10 @@
             this.btn_settleTransaction.Enabled = false;
             this.btn_settleTransaction.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_settleTransaction.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_settleTransaction.Location = new System.Drawing.Point(966, 0);
+            this.btn_settleTransaction.Location = new System.Drawing.Point(1298, 0);
+            this.btn_settleTransaction.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btn_settleTransaction.Name = "btn_settleTransaction";
-            this.btn_settleTransaction.Size = new System.Drawing.Size(400, 100);
+            this.btn_settleTransaction.Size = new System.Drawing.Size(600, 154);
             this.btn_settleTransaction.TabIndex = 0;
             this.btn_settleTransaction.Text = "Settle Transaction";
             this.btn_settleTransaction.UseVisualStyleBackColor = false;
@@ -251,9 +234,10 @@
             this.btn_settings.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btn_settings.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_settings.ForeColor = System.Drawing.Color.Black;
-            this.btn_settings.Location = new System.Drawing.Point(792, 23);
+            this.btn_settings.Location = new System.Drawing.Point(1188, 35);
+            this.btn_settings.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btn_settings.Name = "btn_settings";
-            this.btn_settings.Size = new System.Drawing.Size(150, 50);
+            this.btn_settings.Size = new System.Drawing.Size(225, 77);
             this.btn_settings.TabIndex = 0;
             this.btn_settings.Text = "Settings";
             this.btn_settings.UseVisualStyleBackColor = false;
@@ -264,9 +248,10 @@
             this.btn_cashierSales.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btn_cashierSales.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_cashierSales.ForeColor = System.Drawing.Color.Black;
-            this.btn_cashierSales.Location = new System.Drawing.Point(636, 23);
+            this.btn_cashierSales.Location = new System.Drawing.Point(954, 35);
+            this.btn_cashierSales.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btn_cashierSales.Name = "btn_cashierSales";
-            this.btn_cashierSales.Size = new System.Drawing.Size(150, 50);
+            this.btn_cashierSales.Size = new System.Drawing.Size(225, 77);
             this.btn_cashierSales.TabIndex = 0;
             this.btn_cashierSales.Text = "Sales";
             this.btn_cashierSales.UseVisualStyleBackColor = false;
@@ -277,9 +262,10 @@
             this.btn_checkPrice.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btn_checkPrice.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_checkPrice.ForeColor = System.Drawing.Color.Black;
-            this.btn_checkPrice.Location = new System.Drawing.Point(480, 23);
+            this.btn_checkPrice.Location = new System.Drawing.Point(720, 35);
+            this.btn_checkPrice.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btn_checkPrice.Name = "btn_checkPrice";
-            this.btn_checkPrice.Size = new System.Drawing.Size(150, 50);
+            this.btn_checkPrice.Size = new System.Drawing.Size(225, 77);
             this.btn_checkPrice.TabIndex = 0;
             this.btn_checkPrice.Text = "Check Price";
             this.btn_checkPrice.UseVisualStyleBackColor = false;
@@ -291,9 +277,10 @@
             this.btn_scanProductCode.Enabled = false;
             this.btn_scanProductCode.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_scanProductCode.ForeColor = System.Drawing.Color.Black;
-            this.btn_scanProductCode.Location = new System.Drawing.Point(324, 23);
+            this.btn_scanProductCode.Location = new System.Drawing.Point(486, 35);
+            this.btn_scanProductCode.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btn_scanProductCode.Name = "btn_scanProductCode";
-            this.btn_scanProductCode.Size = new System.Drawing.Size(150, 50);
+            this.btn_scanProductCode.Size = new System.Drawing.Size(225, 77);
             this.btn_scanProductCode.TabIndex = 0;
             this.btn_scanProductCode.Text = "Scan Product Code";
             this.btn_scanProductCode.UseVisualStyleBackColor = false;
@@ -305,9 +292,10 @@
             this.btn_clearTransaction.Enabled = false;
             this.btn_clearTransaction.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_clearTransaction.ForeColor = System.Drawing.Color.Black;
-            this.btn_clearTransaction.Location = new System.Drawing.Point(168, 23);
+            this.btn_clearTransaction.Location = new System.Drawing.Point(252, 35);
+            this.btn_clearTransaction.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btn_clearTransaction.Name = "btn_clearTransaction";
-            this.btn_clearTransaction.Size = new System.Drawing.Size(150, 50);
+            this.btn_clearTransaction.Size = new System.Drawing.Size(225, 77);
             this.btn_clearTransaction.TabIndex = 0;
             this.btn_clearTransaction.Text = "Clear Transaction";
             this.btn_clearTransaction.UseVisualStyleBackColor = false;
@@ -318,9 +306,10 @@
             this.btn_newTransaction.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.btn_newTransaction.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btn_newTransaction.ForeColor = System.Drawing.Color.Black;
-            this.btn_newTransaction.Location = new System.Drawing.Point(12, 23);
+            this.btn_newTransaction.Location = new System.Drawing.Point(18, 35);
+            this.btn_newTransaction.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.btn_newTransaction.Name = "btn_newTransaction";
-            this.btn_newTransaction.Size = new System.Drawing.Size(150, 50);
+            this.btn_newTransaction.Size = new System.Drawing.Size(225, 77);
             this.btn_newTransaction.TabIndex = 0;
             this.btn_newTransaction.Text = "New Transaction";
             this.btn_newTransaction.UseVisualStyleBackColor = false;
@@ -332,9 +321,10 @@
             this.panel_invoice.Controls.Add(this.panel_preview);
             this.panel_invoice.Controls.Add(this.panel_compute);
             this.panel_invoice.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel_invoice.Location = new System.Drawing.Point(966, 130);
+            this.panel_invoice.Location = new System.Drawing.Point(1298, 154);
+            this.panel_invoice.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel_invoice.Name = "panel_invoice";
-            this.panel_invoice.Size = new System.Drawing.Size(400, 538);
+            this.panel_invoice.Size = new System.Drawing.Size(600, 742);
             this.panel_invoice.TabIndex = 4;
             // 
             // totalAmount
@@ -342,10 +332,11 @@
             this.totalAmount.BackColor = System.Drawing.Color.Black;
             this.totalAmount.Font = new System.Drawing.Font("Microsoft Sans Serif", 45F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.totalAmount.ForeColor = System.Drawing.Color.Lime;
-            this.totalAmount.Location = new System.Drawing.Point(6, 457);
+            this.totalAmount.Location = new System.Drawing.Point(9, 703);
+            this.totalAmount.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.totalAmount.Name = "totalAmount";
             this.totalAmount.ReadOnly = true;
-            this.totalAmount.Size = new System.Drawing.Size(386, 75);
+            this.totalAmount.Size = new System.Drawing.Size(577, 109);
             this.totalAmount.TabIndex = 2;
             this.totalAmount.Text = "0.00";
             this.totalAmount.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -354,18 +345,20 @@
             // panel_preview
             // 
             this.panel_preview.Controls.Add(this.rv_invoice);
-            this.panel_preview.Location = new System.Drawing.Point(7, 6);
+            this.panel_preview.Location = new System.Drawing.Point(10, 9);
+            this.panel_preview.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel_preview.Name = "panel_preview";
-            this.panel_preview.Size = new System.Drawing.Size(385, 339);
+            this.panel_preview.Size = new System.Drawing.Size(578, 522);
             this.panel_preview.TabIndex = 2;
             // 
             // rv_invoice
             // 
             this.rv_invoice.Dock = System.Windows.Forms.DockStyle.Fill;
             this.rv_invoice.Location = new System.Drawing.Point(0, 0);
+            this.rv_invoice.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.rv_invoice.Name = "rv_invoice";
             this.rv_invoice.ServerReport.BearerToken = null;
-            this.rv_invoice.Size = new System.Drawing.Size(385, 339);
+            this.rv_invoice.Size = new System.Drawing.Size(578, 522);
             this.rv_invoice.TabIndex = 0;
             // 
             // panel_compute
@@ -380,19 +373,21 @@
             this.panel_compute.Controls.Add(this.lbl_totalDiscount);
             this.panel_compute.Controls.Add(this.lbl_subTotal);
             this.panel_compute.ForeColor = System.Drawing.Color.Black;
-            this.panel_compute.Location = new System.Drawing.Point(7, 351);
+            this.panel_compute.Location = new System.Drawing.Point(10, 540);
+            this.panel_compute.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel_compute.Name = "panel_compute";
-            this.panel_compute.Size = new System.Drawing.Size(385, 100);
+            this.panel_compute.Size = new System.Drawing.Size(578, 154);
             this.panel_compute.TabIndex = 1;
             // 
             // subTotal
             // 
             this.subTotal.AutoSize = true;
             this.subTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.subTotal.Location = new System.Drawing.Point(279, 6);
+            this.subTotal.Location = new System.Drawing.Point(418, 9);
+            this.subTotal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.subTotal.Name = "subTotal";
             this.subTotal.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.subTotal.Size = new System.Drawing.Size(40, 20);
+            this.subTotal.Size = new System.Drawing.Size(58, 29);
             this.subTotal.TabIndex = 1;
             this.subTotal.Text = "0.00";
             this.subTotal.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -401,10 +396,11 @@
             // 
             this.totalDiscount.AutoSize = true;
             this.totalDiscount.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.totalDiscount.Location = new System.Drawing.Point(279, 27);
+            this.totalDiscount.Location = new System.Drawing.Point(418, 42);
+            this.totalDiscount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.totalDiscount.Name = "totalDiscount";
             this.totalDiscount.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.totalDiscount.Size = new System.Drawing.Size(40, 20);
+            this.totalDiscount.Size = new System.Drawing.Size(58, 29);
             this.totalDiscount.TabIndex = 1;
             this.totalDiscount.Text = "0.00";
             this.totalDiscount.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -413,10 +409,11 @@
             // 
             this.totalVAT.AutoSize = true;
             this.totalVAT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.totalVAT.Location = new System.Drawing.Point(279, 47);
+            this.totalVAT.Location = new System.Drawing.Point(418, 72);
+            this.totalVAT.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.totalVAT.Name = "totalVAT";
             this.totalVAT.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.totalVAT.Size = new System.Drawing.Size(40, 20);
+            this.totalVAT.Size = new System.Drawing.Size(58, 29);
             this.totalVAT.TabIndex = 1;
             this.totalVAT.Text = "0.00";
             this.totalVAT.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -425,10 +422,11 @@
             // 
             this.totalVATable.AutoSize = true;
             this.totalVATable.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.totalVATable.Location = new System.Drawing.Point(279, 69);
+            this.totalVATable.Location = new System.Drawing.Point(418, 106);
+            this.totalVATable.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.totalVATable.Name = "totalVATable";
             this.totalVATable.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.totalVATable.Size = new System.Drawing.Size(40, 20);
+            this.totalVATable.Size = new System.Drawing.Size(58, 29);
             this.totalVATable.TabIndex = 1;
             this.totalVATable.Text = "0.00";
             this.totalVATable.TextAlign = System.Drawing.ContentAlignment.TopRight;
@@ -437,9 +435,10 @@
             // 
             this.lbl_totalVATable.AutoSize = true;
             this.lbl_totalVATable.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_totalVATable.Location = new System.Drawing.Point(14, 69);
+            this.lbl_totalVATable.Location = new System.Drawing.Point(21, 106);
+            this.lbl_totalVATable.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_totalVATable.Name = "lbl_totalVATable";
-            this.lbl_totalVATable.Size = new System.Drawing.Size(86, 20);
+            this.lbl_totalVATable.Size = new System.Drawing.Size(125, 29);
             this.lbl_totalVATable.TabIndex = 1;
             this.lbl_totalVATable.Text = "VATABLE:";
             // 
@@ -447,9 +446,10 @@
             // 
             this.lbl_totalVAT.AutoSize = true;
             this.lbl_totalVAT.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_totalVAT.Location = new System.Drawing.Point(14, 49);
+            this.lbl_totalVAT.Location = new System.Drawing.Point(21, 75);
+            this.lbl_totalVAT.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_totalVAT.Name = "lbl_totalVAT";
-            this.lbl_totalVAT.Size = new System.Drawing.Size(44, 20);
+            this.lbl_totalVAT.Size = new System.Drawing.Size(65, 29);
             this.lbl_totalVAT.TabIndex = 1;
             this.lbl_totalVAT.Text = "VAT:";
             // 
@@ -457,9 +457,10 @@
             // 
             this.lbl_totalDiscount.AutoSize = true;
             this.lbl_totalDiscount.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_totalDiscount.Location = new System.Drawing.Point(14, 29);
+            this.lbl_totalDiscount.Location = new System.Drawing.Point(21, 45);
+            this.lbl_totalDiscount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_totalDiscount.Name = "lbl_totalDiscount";
-            this.lbl_totalDiscount.Size = new System.Drawing.Size(150, 20);
+            this.lbl_totalDiscount.Size = new System.Drawing.Size(230, 29);
             this.lbl_totalDiscount.TabIndex = 1;
             this.lbl_totalDiscount.Text = "TOTAL DISCOUNT:";
             // 
@@ -467,9 +468,10 @@
             // 
             this.lbl_subTotal.AutoSize = true;
             this.lbl_subTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_subTotal.Location = new System.Drawing.Point(14, 8);
+            this.lbl_subTotal.Location = new System.Drawing.Point(21, 12);
+            this.lbl_subTotal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_subTotal.Name = "lbl_subTotal";
-            this.lbl_subTotal.Size = new System.Drawing.Size(102, 20);
+            this.lbl_subTotal.Size = new System.Drawing.Size(155, 29);
             this.lbl_subTotal.TabIndex = 1;
             this.lbl_subTotal.Text = "SUB-TOTAL:";
             // 
@@ -484,9 +486,10 @@
             this.panel2.Controls.Add(this.transactionNo);
             this.panel2.Controls.Add(this.lbl_transactionNo);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 130);
+            this.panel2.Location = new System.Drawing.Point(0, 154);
+            this.panel2.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(966, 100);
+            this.panel2.Size = new System.Drawing.Size(1298, 154);
             this.panel2.TabIndex = 5;
             // 
             // btn_addDiscount
@@ -496,10 +499,11 @@
             this.btn_addDiscount.Enabled = false;
             this.btn_addDiscount.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_addDiscount.LinkColor = System.Drawing.Color.White;
-            this.btn_addDiscount.Location = new System.Drawing.Point(784, 53);
+            this.btn_addDiscount.Location = new System.Drawing.Point(1176, 82);
+            this.btn_addDiscount.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.btn_addDiscount.Name = "btn_addDiscount";
             this.btn_addDiscount.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btn_addDiscount.Size = new System.Drawing.Size(159, 24);
+            this.btn_addDiscount.Size = new System.Drawing.Size(236, 33);
             this.btn_addDiscount.TabIndex = 3;
             this.btn_addDiscount.TabStop = true;
             this.btn_addDiscount.Text = "[ Add Discount ]";
@@ -513,10 +517,11 @@
             this.btn_addProduct.Enabled = false;
             this.btn_addProduct.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_addProduct.LinkColor = System.Drawing.Color.White;
-            this.btn_addProduct.Location = new System.Drawing.Point(633, 53);
+            this.btn_addProduct.Location = new System.Drawing.Point(950, 82);
+            this.btn_addProduct.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.btn_addProduct.Name = "btn_addProduct";
             this.btn_addProduct.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.btn_addProduct.Size = new System.Drawing.Size(150, 24);
+            this.btn_addProduct.Size = new System.Drawing.Size(221, 33);
             this.btn_addProduct.TabIndex = 3;
             this.btn_addProduct.TabStop = true;
             this.btn_addProduct.Text = "[ Add Product ]";
@@ -526,9 +531,10 @@
             // 
             this.tb_quantity.Enabled = false;
             this.tb_quantity.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_quantity.Location = new System.Drawing.Point(577, 19);
+            this.tb_quantity.Location = new System.Drawing.Point(866, 29);
+            this.tb_quantity.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tb_quantity.Name = "tb_quantity";
-            this.tb_quantity.Size = new System.Drawing.Size(50, 26);
+            this.tb_quantity.Size = new System.Drawing.Size(73, 35);
             this.tb_quantity.TabIndex = 2;
             this.tb_quantity.Text = "1";
             this.tb_quantity.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -536,9 +542,10 @@
             // tb_searchBox
             // 
             this.tb_searchBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_searchBox.Location = new System.Drawing.Point(633, 20);
+            this.tb_searchBox.Location = new System.Drawing.Point(950, 31);
+            this.tb_searchBox.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.tb_searchBox.Name = "tb_searchBox";
-            this.tb_searchBox.Size = new System.Drawing.Size(310, 26);
+            this.tb_searchBox.Size = new System.Drawing.Size(463, 35);
             this.tb_searchBox.TabIndex = 2;
             this.tb_searchBox.TextChanged += new System.EventHandler(this.tb_searchBox_TextChanged);
             this.tb_searchBox.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.tb_searchBox_KeyPress);
@@ -547,9 +554,10 @@
             // 
             this.lbl_transactionDate.AutoSize = true;
             this.lbl_transactionDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_transactionDate.Location = new System.Drawing.Point(20, 53);
+            this.lbl_transactionDate.Location = new System.Drawing.Point(30, 82);
+            this.lbl_transactionDate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_transactionDate.Name = "lbl_transactionDate";
-            this.lbl_transactionDate.Size = new System.Drawing.Size(156, 24);
+            this.lbl_transactionDate.Size = new System.Drawing.Size(245, 33);
             this.lbl_transactionDate.TabIndex = 1;
             this.lbl_transactionDate.Text = "Transaction Date:";
             // 
@@ -557,9 +565,10 @@
             // 
             this.transactionDate.AutoSize = true;
             this.transactionDate.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.transactionDate.Location = new System.Drawing.Point(182, 53);
+            this.transactionDate.Location = new System.Drawing.Point(273, 82);
+            this.transactionDate.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.transactionDate.Name = "transactionDate";
-            this.transactionDate.Size = new System.Drawing.Size(289, 24);
+            this.transactionDate.Size = new System.Drawing.Size(446, 33);
             this.transactionDate.TabIndex = 1;
             this.transactionDate.Text = "Wednesday, September 30, 2022";
             // 
@@ -568,9 +577,10 @@
             this.transactionNo.AutoSize = true;
             this.transactionNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.transactionNo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.transactionNo.Location = new System.Drawing.Point(182, 20);
+            this.transactionNo.Location = new System.Drawing.Point(273, 31);
+            this.transactionNo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.transactionNo.Name = "transactionNo";
-            this.transactionNo.Size = new System.Drawing.Size(130, 24);
+            this.transactionNo.Size = new System.Drawing.Size(207, 33);
             this.transactionNo.TabIndex = 1;
             this.transactionNo.Text = "000000000000";
             // 
@@ -578,9 +588,10 @@
             // 
             this.lbl_transactionNo.AutoSize = true;
             this.lbl_transactionNo.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbl_transactionNo.Location = new System.Drawing.Point(28, 20);
+            this.lbl_transactionNo.Location = new System.Drawing.Point(42, 31);
+            this.lbl_transactionNo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lbl_transactionNo.Name = "lbl_transactionNo";
-            this.lbl_transactionNo.Size = new System.Drawing.Size(148, 24);
+            this.lbl_transactionNo.Size = new System.Drawing.Size(229, 33);
             this.lbl_transactionNo.TabIndex = 1;
             this.lbl_transactionNo.Text = "Transaction No.:";
             // 
@@ -626,7 +637,8 @@
             this.dgv_cart.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgv_cart.EnableHeadersVisualStyles = false;
             this.dgv_cart.GridColor = System.Drawing.Color.Black;
-            this.dgv_cart.Location = new System.Drawing.Point(0, 230);
+            this.dgv_cart.Location = new System.Drawing.Point(0, 308);
+            this.dgv_cart.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.dgv_cart.MultiSelect = false;
             this.dgv_cart.Name = "dgv_cart";
             dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -644,7 +656,7 @@
             this.dgv_cart.RowTemplate.DefaultCellStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(255)))), ((int)(((byte)(128)))));
             this.dgv_cart.RowTemplate.DefaultCellStyle.SelectionForeColor = System.Drawing.Color.Black;
             this.dgv_cart.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgv_cart.Size = new System.Drawing.Size(966, 438);
+            this.dgv_cart.Size = new System.Drawing.Size(1298, 588);
             this.dgv_cart.TabIndex = 6;
             this.dgv_cart.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_cart_CellContentClick);
             this.dgv_cart.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dgv_cart_RowsAdded);
@@ -675,24 +687,27 @@
             // 
             this.cart_productCode.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.cart_productCode.HeaderText = "PRODUCT CODE";
+            this.cart_productCode.MinimumWidth = 8;
             this.cart_productCode.Name = "cart_productCode";
             this.cart_productCode.ReadOnly = true;
             this.cart_productCode.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.cart_productCode.Width = 116;
+            this.cart_productCode.Width = 180;
             // 
             // cart_productID
             // 
             this.cart_productID.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.cart_productID.HeaderText = "PRODUCT ID";
+            this.cart_productID.MinimumWidth = 8;
             this.cart_productID.Name = "cart_productID";
             this.cart_productID.ReadOnly = true;
             this.cart_productID.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.cart_productID.Width = 97;
+            this.cart_productID.Width = 148;
             // 
             // cart_productName
             // 
             this.cart_productName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.cart_productName.HeaderText = "PRODUCT";
+            this.cart_productName.MinimumWidth = 8;
             this.cart_productName.Name = "cart_productName";
             this.cart_productName.ReadOnly = true;
             this.cart_productName.Resizable = System.Windows.Forms.DataGridViewTriState.False;
@@ -701,44 +716,49 @@
             // 
             this.cart_category.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.cart_category.HeaderText = "CATEGORY";
+            this.cart_category.MinimumWidth = 8;
             this.cart_category.Name = "cart_category";
             this.cart_category.ReadOnly = true;
             this.cart_category.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.cart_category.Width = 89;
+            this.cart_category.Width = 135;
             // 
             // cart_price
             // 
             this.cart_price.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.cart_price.HeaderText = "PRICE";
+            this.cart_price.MinimumWidth = 8;
             this.cart_price.Name = "cart_price";
             this.cart_price.ReadOnly = true;
             this.cart_price.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.cart_price.Width = 62;
+            this.cart_price.Width = 93;
             // 
             // cart_quantity
             // 
             this.cart_quantity.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.cart_quantity.HeaderText = "QUANTITY";
+            this.cart_quantity.MinimumWidth = 8;
             this.cart_quantity.Name = "cart_quantity";
             this.cart_quantity.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.cart_quantity.Width = 85;
+            this.cart_quantity.Width = 125;
             // 
             // cart_discount
             // 
             this.cart_discount.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.cart_discount.HeaderText = "DISCOUNT";
+            this.cart_discount.MinimumWidth = 8;
             this.cart_discount.Name = "cart_discount";
             this.cart_discount.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.cart_discount.Width = 86;
+            this.cart_discount.Width = 130;
             // 
             // cart_total
             // 
             this.cart_total.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
             this.cart_total.HeaderText = "TOTAL";
+            this.cart_total.MinimumWidth = 8;
             this.cart_total.Name = "cart_total";
             this.cart_total.ReadOnly = true;
             this.cart_total.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.cart_total.Width = 65;
+            this.cart_total.Width = 97;
             // 
             // cart_subtract
             // 
@@ -780,23 +800,26 @@
             // 
             // module_cashier
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
             this.BackColor = System.Drawing.Color.Black;
-            this.ClientSize = new System.Drawing.Size(1366, 768);
-            this.ControlBox = false;
+            this.ClientSize = new System.Drawing.Size(1898, 1050);
             this.Controls.Add(this.dgv_cart);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel_invoice);
             this.Controls.Add(this.panel_buttonMenu);
             this.Controls.Add(this.panel_cashierInfo);
-            this.Controls.Add(this.panel_cashierHead);
             this.ForeColor = System.Drawing.Color.White;
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.HelpButton = true;
+            this.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.MaximumSize = new System.Drawing.Size(1920, 1108);
+            this.MinimumSize = new System.Drawing.Size(1200, 923);
             this.Name = "module_cashier";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "module_cashier";
-            this.panel_cashierHead.ResumeLayout(false);
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.module_cashier_Load);
             this.panel_cashierInfo.ResumeLayout(false);
             this.panel_cashierInfo.PerformLayout();
             this.panel_dateTime.ResumeLayout(false);
@@ -816,9 +839,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Panel panel_cashierHead;
-        private System.Windows.Forms.Button btn_close;
         private System.Windows.Forms.Panel panel_cashierInfo;
         private System.Windows.Forms.Panel panel_dateTime;
         private System.Windows.Forms.PictureBox pictureBox1;

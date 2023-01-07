@@ -355,7 +355,7 @@ namespace OmniscentPOSAI
             addDiscount.lbl_ID.Text = transactionID;
             addDiscount.tb_wholeNum.Focus();
             addDiscount.tb_wholeNum.SelectAll();
-            addDiscount.tb_price.Text = prc;  
+            addDiscount.tb_price.Text = subTotal.Text;  
             addDiscount.ShowDialog();
         }
 
@@ -585,6 +585,11 @@ namespace OmniscentPOSAI
             }
             
             
+        }
+
+        private void module_cashier_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }
